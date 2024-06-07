@@ -1,0 +1,18 @@
+.header {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  &__logo {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  &__box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+  }
+}
