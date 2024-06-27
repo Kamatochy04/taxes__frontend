@@ -1,0 +1,31 @@
+.model {
+  position: absolute;
+  height: 100vh;
+  background: #00000081;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  &__input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+  }
+  &__checkbox {
+    // margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+}

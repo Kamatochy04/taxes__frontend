@@ -1,8 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 
+import { MainLayout } from "@/app/layouts/main/MainLayout";
+
 import { AuthModel } from "@/widgets";
 import { Suspense } from "react";
+
 import { Main } from "@/pages/Main";
+import { RegisterModel } from "@/widgets/registerModel/ui/ModelRegister";
 
 export const Router = () => {
   return (
@@ -14,6 +18,14 @@ export const Router = () => {
             element={
               <Suspense fallback={<div>Загрузка...</div>}>
                 <AuthModel />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="register"
+            element={
+              <Suspense fallback={<div>Загрузка...</div>}>
+                <RegisterModel />
               </Suspense>
             }
           ></Route>
