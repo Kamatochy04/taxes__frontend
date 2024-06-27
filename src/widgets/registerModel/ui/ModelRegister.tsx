@@ -1,52 +1,57 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import { Input } from "@/shared/components/input/Input";
-import { Button } from "@/shared/components/button/Button";
-
 import style from "./registerModel.module.scss";
+import { Step1, Step2, Step3 } from "@/features/signup";
+import { Dialog, IconButton } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CloseIcon from "@mui/icons-material/Close";
+import { Step4 } from "@/features/signup/ui/step4";
 
 export const RegisterModel = () => {
-  const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const [isOpen, setIsOpen] = useState(true);
 
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked);
-    console.log(isChecked);
+  const nextStep = () => {
+    setStep(step + 1);
   };
 
-  const nextStep = () => {};
-
   const prevStep = () => {
-    navigate("/");
+    setStep(step - 1);
   };
 
   return (
-    <div className={style.model}>
-      <div className={style.model__window}>
-        <h1>Регистрация</h1>
-        <form className={style.model__form}>
-          <Input placeholder={"Имя"} type={"text"} />
-          <Input placeholder={"Фамилия"} type={"text"} />
-          <Input placeholder={"Отчество"} type={"text"} />
+    <>
+      <Dialog open={isOpen}>
+        {step !== 4 && (
+          <>
+            {" "}
+            <div className={style.model__nav}>
+              <IconButton onClick={prevStep}>
+                <ArrowBackIcon />{" "}
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <h1
+              style={{
+                margin: "0 auto",
+                fontFamily: "Verdana",
+              }}
+            >
+              Регистрация
+            </h1>
+          </>
+        )}
 
-          <Button text={"Далее"} event={nextStep} />
-          <Button text={"Назад"} event={prevStep} />
-
-          <div className={style.model__checkbox}>
-            <input
-              type="checkbox"
-              name="my-checkbox"
-              checked={isChecked}
-              onChange={handleChange}
-              className={style.model__input}
-              id="scales"
-            />
-            <label htmlFor="scales">Согласие с условиями</label>
-          </div>
-        </form>
-      </div>
-    </div>
+        {step === 1 && <Step1 step={step} nextStep={nextStep} />}
+        {step === 2 && <Step2 nextStep={nextStep} />}
+        {step === 3 && <Step3 nextStep={nextStep} />}
+        {step === 4 && <Step4 />}
+      </Dialog>
+    </>
   );
 };

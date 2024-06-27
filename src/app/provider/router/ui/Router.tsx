@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 
 import { MainLayout } from "@/app/layouts/main/MainLayout";
-import { RegisterModel } from "@/widgets";
+
 import { Suspense } from "react";
+import { RegisterModel } from "@/widgets/registerModel";
 
 export const Router = () => {
   return (
