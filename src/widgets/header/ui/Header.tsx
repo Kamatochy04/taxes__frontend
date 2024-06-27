@@ -1,23 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import style from "./header.module.scss";
 
 export const Header = () => {
   const navigate = useNavigate();
 
-  const onRegister = () => {
-    navigate("/register");
-  };
-
   return (
     <header className={style.header}>
-      <div className={style.header__wrapper}>
-        <Link to={"/"} className={style.header__logo}>
-          LOGO
-        </Link>
-        <div className={style.header__box}>
-          <button onClick={onRegister}>Регисрация</button>
-          <button onClick={onRegister}>Войти</button>
+      <div className="container">
+        <div className={style.header__container}>
+          <div className={style.logo}>Logo</div>
+          <input type="text" />
+          <div className={style.login} onClick={() => navigate("/auth")}>
+            Войти
+          </div>
         </div>
       </div>
     </header>

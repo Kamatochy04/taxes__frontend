@@ -12,4 +12,13 @@ export default defineConfig({
     },
   },
   plugins: [react(), svgr()],
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://84.38.182.213:1337",
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 });

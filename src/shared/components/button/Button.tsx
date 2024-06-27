@@ -1,14 +1,15 @@
 import style from "./button.module.scss";
 
 type Props = {
-  text: string;
-  event: () => void;
+  children: React.ReactNode;
+  event?: () => void;
+  type: "button" | "submit" | "reset" | undefined;
 };
 
-export const Button = ({ text, event }: Props) => {
+export const Button = ({ children, event, type }: Props) => {
   return (
-    <button className={style.button} onClick={event}>
-      {text}
+    <button className={style.button} onClick={event} type={type}>
+      {children}
     </button>
   );
 };

@@ -15,19 +15,7 @@ body {
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  overflow-x: hidden;
-}
-
-#root {
-  width: 100%;
-}
-
-main {
-  min-height: 100vh;
-  max-width: 1240px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16px;
+  // overflow-x: hidden;
 }
 
 button {
@@ -60,7 +48,7 @@ p {
   padding: 0;
 }
 
-.app {
-  width: 1720px;
+.container {
+  max-width: 1500px;
   margin: 0 auto;
 }

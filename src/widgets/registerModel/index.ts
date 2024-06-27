@@ -1,1 +1,1 @@
-export { RegisterModel } from "./ui/ModelRegister";
+export { AuthModel } from "./ui/AuthModel";
