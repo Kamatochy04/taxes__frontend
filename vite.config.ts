@@ -21,5 +21,5 @@ export default defineConfig({
       },
     },
   },
-  base: "taxes__frontend",
+  // base: "taxes__frontend",
 });
