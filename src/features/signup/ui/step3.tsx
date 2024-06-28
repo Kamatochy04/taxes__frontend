@@ -32,9 +32,9 @@ export const Step3 = ({ nextStep }: Step3Props) => {
       .then((response) => response.json())
       .then((date) => {
         localStorage.removeItem("confirm_code_id");
-        console.log(date);
+        console.log;
+        nextStep();
       });
-    nextStep();
   };
 
   return (
