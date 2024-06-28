@@ -18,7 +18,7 @@ export const Step3 = ({ nextStep }: Step3Props) => {
     },
   });
   const isFormValid = Object.keys(errors).length === 0;
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     const confirm_code_id = localStorage.getItem("confirm_code_id");
     const code = data.code;
 

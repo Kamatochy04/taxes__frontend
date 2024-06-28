@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -37,7 +37,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
   const isFormValid = Object.keys(errors).length === 0;
   const dataSekector = useAppSelector((state) => state.dataRegisterReducer);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     const dataUser = { ...dataSekector, ...data };
     fetch("api/dev/signup/", {
       method: "POST",

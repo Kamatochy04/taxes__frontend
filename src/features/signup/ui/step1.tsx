@@ -15,10 +15,9 @@ import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 
 type Step1Props = {
   nextStep: () => void;
-  step: number;
 };
 
-export const Step1 = ({ nextStep, step }: Step1Props) => {
+export const Step1 = ({ nextStep }: Step1Props) => {
   const [isChecked, setIsChecked] = useState(false);
   const dataSekector = useAppSelector((state) => state.dataRegisterReducer);
   const handleCheckboxChange = (e: {

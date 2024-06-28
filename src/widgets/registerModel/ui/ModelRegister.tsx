@@ -47,7 +47,7 @@ export const RegisterModel = () => {
           </>
         )}
 
-        {step === 1 && <Step1 step={step} nextStep={nextStep} />}
+        {step === 1 && <Step1 nextStep={nextStep} />}
         {step === 2 && <Step2 nextStep={nextStep} />}
         {step === 3 && <Step3 nextStep={nextStep} />}
         {step === 4 && <Step4 />}
