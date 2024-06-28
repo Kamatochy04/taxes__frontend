@@ -30,8 +30,9 @@ export const Step3 = ({ nextStep }: Step3Props) => {
       body: JSON.stringify({}),
     })
       .then((response) => response.json())
-      .then(() => {
+      .then((date) => {
         localStorage.removeItem("confirm_code_id");
+        console.log(date);
         nextStep();
       });
   };
