@@ -1,6 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const Step4 = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Box
@@ -15,7 +17,13 @@ export const Step4 = () => {
         <Typography>Cпасибо! </Typography>
         <Typography>Регистрация выполнена успешно</Typography>
         <Typography>Для уточнения данных перейдите в профиль</Typography>
-        <Button>Ок</Button>
+        <Button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Ок
+        </Button>
       </Box>
     </>
   );

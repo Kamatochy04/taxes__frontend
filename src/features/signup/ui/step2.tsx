@@ -48,9 +48,11 @@ export const Step2 = ({ nextStep }: Step2Props) => {
     })
       .then((response) => response.json())
       .then((date) => {
+        console.log;
+
         localStorage.setItem("confirm_code_id", date.confirm_code_id);
+        nextStep();
       });
-    nextStep();
   };
 
   return (

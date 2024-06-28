@@ -5,11 +5,12 @@ import { Dialog, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CloseIcon from "@mui/icons-material/Close";
 import { Step4 } from "@/features/signup/ui/step4";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterModel = () => {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
-
+  const navigate = useNavigate();
   const nextStep = () => {
     setStep(step + 1);
   };
@@ -25,9 +26,17 @@ export const RegisterModel = () => {
           <>
             {" "}
             <div className={style.model__nav}>
-              <IconButton onClick={prevStep}>
+              <IconButton
+                onClick={() => {
+                  prevStep();
+                  if (step <= 1) {
+                    navigate("/auth");
+                  }
+                }}
+              >
                 <ArrowBackIcon />{" "}
               </IconButton>
+
               <IconButton
                 onClick={() => {
                   setIsOpen(false);
