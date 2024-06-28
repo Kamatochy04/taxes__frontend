@@ -21,5 +21,5 @@ export default defineConfig({
       },
     },
   },
-  base: "Breadcrumbstaxes__frontend",
+  base: "taxes__frontend",
 });
