@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-import { Input } from "@/shared/components/input/Input";
-import { Button } from "@/shared/components/button/Button";
-
-import style from "./auth.module.scss";
+import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Button, IconButton, TextField } from "@mui/material";
+import { EmailRules } from "@/shared/validationRules/EmailValidation";
+import { PasswordRules } from "@/shared/validationRules/PasswordValodation";
 
 interface FormData {
   email: string;
@@ -21,7 +21,8 @@ export const FirstStep = () => {
   const {
     formState: { errors },
     handleSubmit,
-    control,
+    register,
+    resetField,
   } = useForm<FormData>({
     defaultValues: {
       email: "",
@@ -52,60 +53,61 @@ export const FirstStep = () => {
   };
 
   return (
-    <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name={"email"}
-        control={control}
-        rules={{
-          required: "поле должно быть заполнено",
-          pattern: {
-            message: "Некоректные сиволы",
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-          },
+    <Box
+      component={"form"}
+      onSubmit={handleSubmit(onSubmit)}
+      sx={{
+        width: "100%",
+        marginBottom: "3rem",
+        padding: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "1.5rem",
+      }}
+    >
+      <TextField
+        sx={{ width: "100%" }}
+        label={"email*"}
+        {...register("email", {
+          ...EmailRules(),
+        })}
+        error={!!errors.email}
+        helperText={errors.email?.message}
+        InputProps={{
+          endAdornment: (
+            <IconButton
+              onClick={() => {
+                resetField("email");
+              }}
+            >
+              <ClearIcon />
+            </IconButton>
+          ),
         }}
-        render={({ field }) => (
-          <>
-            <Input
-              placeholder={"email"}
-              type={"text"}
-              name={field.name}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          </>
-        )}
       />
-      {errors.email?.message}
-      <Controller
-        name={"password"}
-        control={control}
-        rules={{
-          required: "поле должно быть заполнено",
-          maxLength: {
-            value: 8,
-            message: "Пароль должне быть длиннее 8 символов ",
-          },
-          pattern: {
-            message: "Пароль должен содержать хотя бы один спецсимвол", // Изменено сообщение
-            value: /^(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/,
-          },
+      <TextField
+        sx={{ width: "100%" }}
+        label={"password*"}
+        {...register("password", { ...PasswordRules() })}
+        error={!!errors.password}
+        helperText={errors.password?.message}
+        InputProps={{
+          endAdornment: (
+            <IconButton
+              onClick={() => {
+                resetField("password");
+              }}
+            >
+              <ClearIcon />
+            </IconButton>
+          ),
         }}
-        render={({ field }) => (
-          <>
-            <Input
-              name={field.name}
-              placeholder={"пароль"}
-              type={"text"}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          </>
-        )}
       />
-
-      {errors.password?.message}
-      <Button children={"Войти"} type={"submit"} />
-    </form>
+      <Button sx={{ width: "100%" }} variant="contained" type="submit">
+        Далее
+      </Button>
+    </Box>
   );
 };

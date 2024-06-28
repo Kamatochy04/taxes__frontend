@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";

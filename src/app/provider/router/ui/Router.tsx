@@ -1,7 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 
-import { MainLayout } from "@/app/layouts/main/MainLayout";
-
 import { AuthModel } from "@/widgets";
 import { Suspense } from "react";
 
