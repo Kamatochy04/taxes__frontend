@@ -1,9 +1,9 @@
 {
   "name": "taxes__frontend",
   "private": true,
+  "homepage": "https://kamatochy04.github.io/taxes__frontend/",
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kamatochy04.github.io/taxes__frontend/",
   "scripts": {
     "dev": "vite --open",
     "build": "tsc && vite build",
