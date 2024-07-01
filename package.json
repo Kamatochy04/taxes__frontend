@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://kamatochy04.github.io/taxes__frontend/",
   "scripts": {
     "dev": "vite --open",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -17,6 +20,7 @@
     "@mui/material": "^5.15.20",
     "@reduxjs/toolkit": "^2.2.5",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "gh-pages": "^6.1.1",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
