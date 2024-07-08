@@ -7,15 +7,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: #fff;
 }
 
+.app {
+  height: 100vh;
+}
 body {
-  min-height: 100vh;
   min-width: 320px;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  // overflow-x: hidden;
+  background: #0c1038;
+  overflow-y: hidden;
 }
 
 button {
@@ -26,6 +30,7 @@ button {
 
 a {
   text-decoration: none;
+  color: inherit;
   cursor: pointer;
 }
 
@@ -49,6 +54,6 @@ p {
 }
 
 .container {
-  max-width: 1500px;
+  max-width: 1650px;
   margin: 0 auto;
 }

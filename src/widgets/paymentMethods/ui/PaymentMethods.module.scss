@@ -1,0 +1,23 @@
+.payment {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.card {
+  width: 738px;
+  height: 327px;
+  background: #00000027;
+  border-radius: 20px;
+  display: flex;
+  padding: 50px;
+  &__img {
+    background: #fff;
+    width: 224px;
+    height: 126px;
+    border-radius: 20px;
+  }
+  &__wrapper {
+    margin-left: 20px;
+  }
+}

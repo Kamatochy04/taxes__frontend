@@ -4,6 +4,7 @@
   "homepage": "https://kamatochy04.github.io/taxes__frontend/",
   "version": "0.0.0",
   "type": "module",
+  "proxy": "http://localhost:8010",
   "scripts": {
     "dev": "vite --open",
     "build": "tsc && vite build",
@@ -40,6 +41,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "local-cors-proxy": "^1.1.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }

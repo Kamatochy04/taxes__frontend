@@ -1,0 +1,22 @@
+.bar {
+  border-right: 2px solid #ffffff17;
+  padding: 80px 100px 80px 100px;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  &__img {
+    width: 100px;
+    height: 100px;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff54;
+    font-weight: 700;
+  }
+}

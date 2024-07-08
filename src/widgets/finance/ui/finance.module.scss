@@ -1,0 +1,16 @@
+.finance {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.card {
+  width: 730px;
+  height: 327px;
+  background: #00000031;
+  border-radius: 20px;
+  padding: 60px 20px 20px 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

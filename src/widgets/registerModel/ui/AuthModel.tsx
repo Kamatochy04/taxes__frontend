@@ -6,6 +6,7 @@ import { ClouseIcon } from "@/shared/assets/icons/ClouseIcon";
 import { Nav } from "./Nav";
 
 import style from "./registerModel.module.scss";
+import { Dialog } from "@mui/material";
 
 export const AuthModel = () => {
   const [step, setStep] = useState(0);
@@ -24,15 +25,16 @@ export const AuthModel = () => {
   }, [step]);
 
   return (
-    <div className={style.model}>
+    <Dialog open={true} className={style.model}>
       <div className={style.model__window}>
         <h1>{titleText}</h1>
         <AuthForm step={step} />
         <div className={style.model__clouse} onClick={() => navigate("/")}>
           <ClouseIcon />
         </div>
+
         {step === 0 ? <Nav onClick={() => setStep(1)} /> : null}
       </div>
-    </div>
+    </Dialog>
   );
 };

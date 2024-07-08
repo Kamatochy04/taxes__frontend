@@ -62,6 +62,17 @@
 }
 
 .footer {
-  background: #b7b7b79c;
   min-height: 120px;
+  background: #000;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  gap: 24px;
+
+  &__item {
+    margin-top: 20px;
+    width: 1500px;
+  }
 }

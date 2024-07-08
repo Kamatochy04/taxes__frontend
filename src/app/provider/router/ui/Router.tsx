@@ -1,6 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
-import { AuthModel } from "@/widgets";
+import {
+  AuthModel,
+  Basket,
+  Finance,
+  Offers,
+  Orders,
+  PaymentMethods,
+  Purchases,
+  Support,
+} from "@/widgets";
 import { Suspense } from "react";
 
 import { Main } from "@/pages/Main";
@@ -11,6 +20,13 @@ export const Router = () => {
     <div className="app">
       <Routes>
         <Route path="/" element={<Main />}>
+          <Route path="offers" element={<Offers />} />
+          <Route path="finance" element={<Finance />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="payment-methods" element={<PaymentMethods />} />
+          <Route path="basket" element={<Basket />} />
+          <Route path="purchases" element={<Purchases />} />
+          <Route path="support" element={<Support />} />
           <Route
             path="auth"
             element={
@@ -18,7 +34,7 @@ export const Router = () => {
                 <AuthModel />
               </Suspense>
             }
-          ></Route>
+          />
           <Route
             path="register"
             element={
@@ -26,7 +42,7 @@ export const Router = () => {
                 <RegisterModel />
               </Suspense>
             }
-          ></Route>
+          />
         </Route>
       </Routes>
     </div>

@@ -9,6 +9,7 @@
   align-items: center;
   // overflow-y: hidden;
   justify-content: center;
+  z-index: 100;
   &__window {
     position: relative;
     height: 768px;

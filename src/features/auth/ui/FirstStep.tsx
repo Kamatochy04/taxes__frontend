@@ -3,8 +3,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import ClearIcon from "@mui/icons-material/Clear";
 import { Box, Button, IconButton, TextField } from "@mui/material";
+
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
 import { PasswordRules } from "@/shared/validationRules/PasswordValodation";
+import { useLoginMutation } from "../api/authApi";
 
 interface FormData {
   email: string;
@@ -18,6 +20,7 @@ interface TokenResponse {
 
 export const FirstStep = () => {
   const navigate = useNavigate();
+  const [login] = useLoginMutation();
   const {
     formState: { errors },
     handleSubmit,
@@ -32,7 +35,7 @@ export const FirstStep = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      const response = await fetch("/api/dev/token/", {
+      const response = await fetch("api/dev/token/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +48,7 @@ export const FirstStep = () => {
         localStorage.setItem("refreshToken", payload.refresh);
         navigate("/");
       } else {
-        console.error("Ошибка ответа:", response.status);
+        console.error(response);
       }
     } catch (error) {
       console.error("Ошибка запроса:", error);
