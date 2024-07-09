@@ -59,7 +59,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       .then((response) => response.json())
       .then((date) => {
         console.log;
-        localStorage.setItem("dataUser", data);
+        localStorage.setItem("dataUser", JSON.stringify(data));
         localStorage.setItem("confirm_code_id", date.confirm_code_id);
         nextStep();
       });
