@@ -12,6 +12,10 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { DataRegisterUser, setFormData } from "@/app/redux/registerSlice";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
+import {
+  NameRules,
+  PatronymicRules,
+} from "@/shared/validationRules/NameValidation";
 
 type Step1Props = {
   nextStep: () => void;
@@ -19,12 +23,14 @@ type Step1Props = {
 
 export const Step1 = ({ nextStep }: Step1Props) => {
   const [isChecked, setIsChecked] = useState(false);
-  const dataSekector = useAppSelector((state) => state.dataRegisterReducer);
+  const dataSelector = useAppSelector((state) => state.dataRegisterReducer);
+
   const handleCheckboxChange = (e: {
     target: { checked: boolean | ((prevState: boolean) => boolean) };
   }) => {
     setIsChecked(e.target.checked);
   };
+
   const {
     register,
     handleSubmit,
@@ -33,14 +39,13 @@ export const Step1 = ({ nextStep }: Step1Props) => {
   } = useForm<DataRegisterUser>({
     mode: "onBlur",
     defaultValues: {
-      first_name: dataSekector.first_name || "",
-      last_name: dataSekector.last_name || "",
-      patronymic: dataSekector.patronymic || "",
+      first_name: dataSelector.first_name || "",
+      last_name: dataSelector.last_name || "",
+      patronymic: dataSelector.patronymic || "",
     },
   });
 
   const dispatch = useAppDispatch();
-
   const onSubmit = (data: DataRegisterUser) => {
     dispatch(setFormData(data));
     nextStep();
@@ -69,16 +74,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         sx={{ width: "80%" }}
         label={"Имя*"}
         {...register("first_name", {
-          required: "Поле обязательно для заполнения",
-          pattern: /^[а-яА-ЯёЁ-]+$/,
-          minLength: {
-            value: 1,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
-          maxLength: {
-            value: 30,
-            message: "Имя должно содержать не более 30 символов",
-          },
+          ...NameRules(),
         })}
         error={!!errors.first_name}
         helperText={errors.first_name?.message}
@@ -98,16 +94,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         sx={{ width: "80%" }}
         label={"Фамилия*"}
         {...register("last_name", {
-          required: "Поле обязательно для заполнения",
-          pattern: /^[а-яА-ЯёЁ-]+$/,
-          minLength: {
-            value: 1,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
-          maxLength: {
-            value: 30,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
+          ...NameRules(),
         })}
         error={!!errors.last_name}
         helperText={errors.last_name?.message}
@@ -127,15 +114,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         sx={{ width: "80%" }}
         label={"Отчество"}
         {...register("patronymic", {
-          pattern: /^[а-яА-ЯёЁ-]+$/,
-          minLength: {
-            value: 1,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
-          maxLength: {
-            value: 30,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
+          ...PatronymicRules(),
         })}
         error={!!errors.patronymic}
         helperText={errors.patronymic?.message}
