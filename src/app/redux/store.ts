@@ -3,7 +3,7 @@ import dataRegisterReducer from "./registerSlice";
 
 export const store = configureStore({
   reducer: {
-    dataRegisterReducer,
+    step1: dataRegisterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat().prepend(),

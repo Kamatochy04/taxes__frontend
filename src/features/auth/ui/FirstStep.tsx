@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
-import { PasswordRules } from "@/shared/validationRules/PasswordValodation";
+import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 
 interface FormData {
   email: string;

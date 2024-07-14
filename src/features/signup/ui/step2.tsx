@@ -5,7 +5,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
-import { PasswordRules } from "@/shared/validationRules/PasswordValodation";
+import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
 import { NameRules } from "@/shared/validationRules/NameValidation";
 
@@ -31,7 +31,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
     handleSubmit,
     resetField,
     watch,
-    formState: { errors, isDirty },
+    formState: { errors, isValid },
   } = useForm<IDataUser>({
     mode: "onBlur",
     defaultValues: {
@@ -84,8 +84,8 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       <ProgressBar progress={66.66} />
       <TextField
         sx={{ width: "80%" }}
-        type="email"
-        label={"Логин/Email"}
+        // type="email"
+        placeholder={"Email*"}
         {...register("email", { ...EmailRules() })}
         error={!!errors.email}
         helperText={errors.email?.message}
@@ -103,7 +103,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       />
       <TextField
         sx={{ width: "80%" }}
-        label={"Пароль"}
+        placeholder={"Пароль*"}
         type={vision ? "password" : "text"}
         {...register("password", {
           ...PasswordRules(),
@@ -130,7 +130,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       />
       <TextField
         sx={{ width: "80%" }}
-        label={"Повторите пароль"}
+        placeholder={"Повторите пароль*"}
         {...register("repeat_password", {
           validate: (value: string) => {
             return value === password.current || "Пароли не совпадают";
@@ -160,7 +160,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       />
       <TextField
         sx={{ width: "80%" }}
-        label={"Секретное слово"}
+        placeholder={"Секретное слово*"}
         {...register("secret_word", {
           ...NameRules(),
         })}
@@ -182,7 +182,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         sx={{ width: "80%" }}
         variant="contained"
         type="submit"
-        disabled={!isDirty || !isFormValid}
+        disabled={!isValid}
       >
         Далее
       </Button>

@@ -23,7 +23,7 @@ type Step1Props = {
 
 export const Step1 = ({ nextStep }: Step1Props) => {
   const [isChecked, setIsChecked] = useState(false);
-  const dataSelector = useAppSelector((state) => state.dataRegisterReducer);
+  const dataSelector = useAppSelector((state) => state.step1);
 
   const handleCheckboxChange = (e: {
     target: { checked: boolean | ((prevState: boolean) => boolean) };
@@ -35,7 +35,8 @@ export const Step1 = ({ nextStep }: Step1Props) => {
     register,
     handleSubmit,
     resetField,
-    formState: { errors, isDirty },
+    formState: { errors, isValid },
+    setValue,
   } = useForm<DataRegisterUser>({
     mode: "onBlur",
     defaultValues: {
@@ -72,7 +73,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       <ProgressBar progress={33.33} />
       <TextField
         sx={{ width: "80%" }}
-        label={"Имя*"}
+        placeholder="Имя*"
         {...register("first_name", {
           ...NameRules(),
         })}
@@ -83,6 +84,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
             <IconButton
               onClick={() => {
                 resetField("first_name");
+                setValue("first_name", "");
               }}
             >
               <ClearIcon />
@@ -92,7 +94,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       />
       <TextField
         sx={{ width: "80%" }}
-        label={"Фамилия*"}
+        placeholder={"Фамилия*"}
         {...register("last_name", {
           ...NameRules(),
         })}
@@ -103,6 +105,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
             <IconButton
               onClick={() => {
                 resetField("last_name");
+                setValue("last_name", "");
               }}
             >
               <ClearIcon />
@@ -112,7 +115,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       />
       <TextField
         sx={{ width: "80%" }}
-        label={"Отчество"}
+        placeholder={"Отчество"}
         {...register("patronymic", {
           ...PatronymicRules(),
         })}
@@ -123,6 +126,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
             <IconButton
               onClick={() => {
                 resetField("patronymic");
+                setValue("patronymic", "");
               }}
             >
               <ClearIcon />
@@ -144,7 +148,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         label={`Я согласен на обработку персональных данных`}
       />
       <Button
-        disabled={!isChecked || !isDirty}
+        disabled={!isChecked || !isValid}
         sx={{ width: "80%" }}
         variant="contained"
         type="submit"
