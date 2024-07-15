@@ -13,10 +13,13 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 
 import style from "./sideBar.module.scss";
+import { useAppSelector } from "@/app/redux/hook";
 
 export const SideBar = () => {
+  const isShow = useAppSelector((state) => state.SideBar.isShow);
+
   return (
-    <div className={style.bar}>
+    <div className={`${style.bar} ${isShow ? style.show : null}`}>
       <img src={accauntImg} alt="accaunt-img" className={style.bar__img} />
       <ul className={style.bar__list}>
         <NavLink

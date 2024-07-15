@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import ClearIcon from "@mui/icons-material/Clear";
@@ -13,13 +12,7 @@ interface FormData {
   password: string;
 }
 
-interface TokenResponse {
-  access: string;
-  refresh: string;
-}
-
 export const FirstStep = () => {
-  const navigate = useNavigate();
   const [login] = useLoginMutation();
   const {
     formState: { errors },
@@ -34,25 +27,7 @@ export const FirstStep = () => {
   });
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    try {
-      const response = await fetch("api/dev/token/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        const payload: TokenResponse = await response.json();
-        localStorage.setItem("accessToken", payload.access);
-        localStorage.setItem("refreshToken", payload.refresh);
-        navigate("/");
-      } else {
-        console.error(response);
-      }
-    } catch (error) {
-      console.error("Ошибка запроса:", error);
-    }
+    login(data).unwrap().then(console.log).catch(console.log);
   };
 
   return (
@@ -62,12 +37,12 @@ export const FirstStep = () => {
       sx={{
         width: "100%",
         marginBottom: "3rem",
-        padding: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5rem",
+
+        gap: "30px",
       }}
     >
       <TextField
@@ -108,7 +83,17 @@ export const FirstStep = () => {
           ),
         }}
       />
-      <Button sx={{ width: "100%" }} variant="contained" type="submit">
+      <Button
+        sx={{
+          width: "100%",
+          background: "#0C1038",
+          padding: "15px 0",
+          borderRadius: "8px",
+          marginTop: "20px",
+        }}
+        variant="contained"
+        type="submit"
+      >
         Далее
       </Button>
     </Box>

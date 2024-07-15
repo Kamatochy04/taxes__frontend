@@ -1,23 +1,33 @@
 .header {
   width: 100%;
   padding: 20px 0;
-  height: 100px;
   &__container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-  }
-  &__input {
-    width: 480px;
-    background: #fff;
-    border-radius: 50px;
-    padding: 5px;
-    font-size: 38px;
   }
   &__box {
     display: flex;
     align-items: center;
     gap: 20px;
+  }
+  &__wrapper {
+    gap: 33px;
+    display: flex;
+    align-items: center;
+    margin-left: 44px;
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #fff;
+    }
+  }
+  &__login {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
   }
 }
 
@@ -33,6 +43,11 @@
 .login {
   font-weight: 400;
   font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.catalog {
   color: #fff;
   cursor: pointer;
 }

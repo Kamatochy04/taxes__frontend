@@ -7,19 +7,20 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #fff;
 }
 
-.app {
-  height: 100vh;
+.root {
+  background: #000;
+  height: 100%;
+  position: relative;
 }
 body {
   min-width: 320px;
+  height: 100%;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   background: #0c1038;
-  overflow-y: hidden;
 }
 
 button {
@@ -51,9 +52,4 @@ svg stroke {
 p {
   margin: 0;
   padding: 0;
-}
-
-.container {
-  max-width: 1650px;
-  margin: 0 auto;
 }

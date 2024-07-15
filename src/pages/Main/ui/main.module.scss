@@ -9,7 +9,13 @@
 }
 
 .cards {
-  padding: 69px 0 92px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 34px;
+  width: 100%;
+  border: 1px solid #c2c2c2;
+  border-radius: 20px;
+  padding: 32px 64px;
   &__container {
     display: flex;
     flex-direction: column;
@@ -75,4 +81,9 @@
     margin-top: 20px;
     width: 1500px;
   }
+}
+
+.main {
+  position: relative;
+  height: 80vh;
 }

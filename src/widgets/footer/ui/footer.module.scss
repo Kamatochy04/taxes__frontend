@@ -1,3 +1,47 @@
 .footer {
   background: none;
+  margin-top: 24px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: #fff;
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  &__inf {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+  }
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    font-weight: 400;
+    font-size: 20px;
+    a {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+  }
+  &__polit {
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+  }
+  &__media {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  }
 }

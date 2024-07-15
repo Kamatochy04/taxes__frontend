@@ -1,0 +1,16 @@
+.header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  // background: #000;
+}
+
+.icon {
+  color: #000;
+  cursor: pointer;
+}

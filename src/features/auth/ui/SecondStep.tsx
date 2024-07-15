@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -9,8 +8,6 @@ interface FormData {
 }
 
 export const SecondStep = () => {
-  const [email, setEmail] = useState<string>("");
-
   const navigate = useNavigate();
 
   const {
@@ -22,10 +19,6 @@ export const SecondStep = () => {
   const onSubmit = () => {
     navigate("/");
   };
-
-  function resetField(arg0: string) {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <Box
@@ -50,50 +43,25 @@ export const SecondStep = () => {
         helperText={errors.code?.message}
         InputProps={{
           endAdornment: (
-            <IconButton
-              onClick={() => {
-                resetField("code");
-              }}
-            >
+            <IconButton onClick={() => {}}>
               <ClearIcon />
             </IconButton>
           ),
         }}
       />
-      <Button sx={{ width: "100%" }} variant="contained" type="submit">
-        Войти
+      <Button
+        sx={{
+          width: "100%",
+          background: "#0C1038",
+          padding: "15px 0",
+          borderRadius: "8px",
+          marginTop: "20px",
+        }}
+        variant="contained"
+        type="submit"
+      >
+        Ок
       </Button>
     </Box>
-    // <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-    //   <Controller
-    //     name={"email"}
-    //     control={control}
-    //     rules={{
-    //       required: "поле должно быть заполнено",
-    //       pattern: {
-    //         message: "Некоректные сиволы",
-    //         value: /^\S+@\S+$/i,
-    //       },
-    //     }}
-    //     render={({ field }) => (
-    //       <>
-    //         <Input
-    //           placeholder={"email"}
-    //           type={"text"}
-    //           name="email"
-    //           value={email}
-    //           onChange={(event) => {
-    //             field.onChange(event);
-    //             setEmail(event.target.value);
-    //           }}
-    //         />
-    //       </>
-    //     )}
-    //   />
-    //   {errors.email?.message}
-
-    //   {errors.password?.message}
-    //   <Button children={"Войти"} type={"submit"} />
-    // </form>
   );
 };
