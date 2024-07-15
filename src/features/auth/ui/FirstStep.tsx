@@ -4,8 +4,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
-import { PasswordRules } from "@/shared/validationRules/PasswordValodation";
 import { useLoginMutation } from "../api/authApi";
+import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 
 interface FormData {
   email: string;

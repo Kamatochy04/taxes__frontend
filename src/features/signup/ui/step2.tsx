@@ -44,8 +44,8 @@ export const Step2 = ({ nextStep }: Step2Props) => {
 
   const password = useRef({});
   password.current = watch("password", "");
-  const isFormValid = Object.keys(errors).length === 0;
-  const dataSekector = useAppSelector((state) => state.dataRegisterReducer);
+  // const isFormValid = Object.keys(errors).length === 0;
+  const dataSekector = useAppSelector((state) => state.step1);
 
   const onSubmit = (data: IDataUser) => {
     const dataUser = { ...dataSekector, ...data };
