@@ -12,6 +12,10 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { DataRegisterUser, setFormData } from "@/app/redux/registerSlice";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
+import {
+  NameRules,
+  PatronymicRules,
+} from "@/shared/validationRules/NameValidation";
 
 type Step1Props = {
   nextStep: () => void;
@@ -19,28 +23,30 @@ type Step1Props = {
 
 export const Step1 = ({ nextStep }: Step1Props) => {
   const [isChecked, setIsChecked] = useState(false);
-  const dataSekector = useAppSelector((state) => state.dataRegisterReducer);
+  const dataSelector = useAppSelector((state) => state.step1);
+
   const handleCheckboxChange = (e: {
     target: { checked: boolean | ((prevState: boolean) => boolean) };
   }) => {
     setIsChecked(e.target.checked);
   };
+
   const {
     register,
     handleSubmit,
     resetField,
-    formState: { errors, isDirty },
+    formState: { errors, isValid },
+    setValue,
   } = useForm<DataRegisterUser>({
     mode: "onBlur",
     defaultValues: {
-      first_name: dataSekector.first_name || "",
-      last_name: dataSekector.last_name || "",
-      patronymic: dataSekector.patronymic || "",
+      first_name: dataSelector.first_name || "",
+      last_name: dataSelector.last_name || "",
+      patronymic: dataSelector.patronymic || "",
     },
   });
 
   const dispatch = useAppDispatch();
-
   const onSubmit = (data: DataRegisterUser) => {
     dispatch(setFormData(data));
     nextStep();
@@ -67,18 +73,9 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       <ProgressBar progress={33.33} />
       <TextField
         sx={{ width: "80%" }}
-        label={"Имя*"}
+        placeholder="Имя*"
         {...register("first_name", {
-          required: "Поле обязательно для заполнения",
-          pattern: /^[а-яА-ЯёЁ-]+$/,
-          minLength: {
-            value: 1,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
-          maxLength: {
-            value: 30,
-            message: "Имя должно содержать не более 30 символов",
-          },
+          ...NameRules(),
         })}
         error={!!errors.first_name}
         helperText={errors.first_name?.message}
@@ -87,6 +84,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
             <IconButton
               onClick={() => {
                 resetField("first_name");
+                setValue("first_name", "");
               }}
             >
               <ClearIcon />
@@ -96,18 +94,9 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       />
       <TextField
         sx={{ width: "80%" }}
-        label={"Фамилия*"}
+        placeholder={"Фамилия*"}
         {...register("last_name", {
-          required: "Поле обязательно для заполнения",
-          pattern: /^[а-яА-ЯёЁ-]+$/,
-          minLength: {
-            value: 1,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
-          maxLength: {
-            value: 30,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
+          ...NameRules(),
         })}
         error={!!errors.last_name}
         helperText={errors.last_name?.message}
@@ -116,6 +105,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
             <IconButton
               onClick={() => {
                 resetField("last_name");
+                setValue("last_name", "");
               }}
             >
               <ClearIcon />
@@ -125,17 +115,9 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       />
       <TextField
         sx={{ width: "80%" }}
-        label={"Отчество"}
+        placeholder={"Отчество"}
         {...register("patronymic", {
-          pattern: /^[а-яА-ЯёЁ-]+$/,
-          minLength: {
-            value: 1,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
-          maxLength: {
-            value: 30,
-            message: "Имя должно содержать от 1 до 30 символов",
-          },
+          ...PatronymicRules(),
         })}
         error={!!errors.patronymic}
         helperText={errors.patronymic?.message}
@@ -144,6 +126,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
             <IconButton
               onClick={() => {
                 resetField("patronymic");
+                setValue("patronymic", "");
               }}
             >
               <ClearIcon />
@@ -165,7 +148,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         label={`Я согласен на обработку персональных данных`}
       />
       <Button
-        disabled={!isChecked || !isDirty}
+        disabled={!isChecked || !isValid}
         sx={{ width: "80%" }}
         variant="contained"
         type="submit"

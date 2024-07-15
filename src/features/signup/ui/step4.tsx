@@ -15,7 +15,7 @@ export const Step4 = () => {
         }}
       >
         <Typography>Cпасибо! </Typography>
-        <Typography>Регистрация выполнена успешно</Typography>
+        <Typography>Регистрация прошла успешно! </Typography>
         <Typography>Для уточнения данных перейдите в профиль</Typography>
         <Button
           onClick={() => {

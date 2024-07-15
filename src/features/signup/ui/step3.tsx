@@ -10,14 +10,14 @@ export const Step3 = ({ nextStep }: Step3Props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+
+    formState: { errors, isValid },
   } = useForm({
     mode: "onBlur",
     defaultValues: {
       code: undefined,
     },
   });
-  const isFormValid = Object.keys(errors).length === 0;
   const onSubmit = (data: any) => {
     const confirm_code_id = localStorage.getItem("confirm_code_id");
     const code = data.code;
@@ -32,6 +32,7 @@ export const Step3 = ({ nextStep }: Step3Props) => {
       .then((response) => response.json())
       .then((date) => {
         localStorage.removeItem("confirm_code_id");
+        localStorage.removeItem("dataUser");
         console.log(date);
         nextStep();
       });
@@ -54,12 +55,12 @@ export const Step3 = ({ nextStep }: Step3Props) => {
     >
       <p>Шаг 3/3</p>
       <ProgressBar progress={100} />
-      <p>Введите код, отправленый на e-mail</p>
+      <p>Введите код, отправленный на e-mail</p>
       <TextField
         autoFocus
         {...register("code", { required: "Поле обязательно для заполнения" })}
         sx={{ width: "80%" }}
-        label="Введите код"
+        placeholder="Введите код"
         error={!!errors.code}
         helperText={errors.code?.message}
       />
@@ -67,7 +68,7 @@ export const Step3 = ({ nextStep }: Step3Props) => {
         sx={{ width: "80%" }}
         variant="contained"
         type="submit"
-        disabled={!isFormValid}
+        disabled={!isValid}
       >
         Отправить
       </Button>

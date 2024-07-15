@@ -7,7 +7,7 @@ import { listenerMiddleware } from "@/features/auth/midleware/auth";
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    dataRegisterReducer,
+    step1: dataRegisterReducer,
     SideBar,
   },
   middleware: (getDefaultMiddleware) =>
