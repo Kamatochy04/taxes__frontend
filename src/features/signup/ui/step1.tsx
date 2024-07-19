@@ -57,14 +57,14 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        width: "25vw",
+        width: "100%",
         marginBottom: "3rem",
-        padding: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5rem",
+
+        gap: "30px",
       }}
     >
       {" "}

@@ -3,12 +3,14 @@ import dataRegisterReducer from "./registerSlice";
 import SideBar from "./sideBarSlice";
 import { api } from "./services/api";
 import { listenerMiddleware } from "@/features/auth/midleware/auth";
+import dataRegister2Reducer from "./register2Slice";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     step1: dataRegisterReducer,
     SideBar,
+    step2: dataRegister2Reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

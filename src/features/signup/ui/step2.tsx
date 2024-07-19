@@ -2,12 +2,13 @@ import { useForm } from "react-hook-form";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useAppSelector } from "@/app/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
 import { NameRules } from "@/shared/validationRules/NameValidation";
+import { set2FormData } from "@/app/redux/register2Slice";
 
 type Step2Props = {
   nextStep: () => void;
@@ -26,6 +27,8 @@ export const Step2 = ({ nextStep }: Step2Props) => {
     setVision((prev) => !prev);
   }, []);
 
+  const dataSelector = useAppSelector((store) => store.step2);
+
   const {
     register,
     handleSubmit,
@@ -35,10 +38,10 @@ export const Step2 = ({ nextStep }: Step2Props) => {
   } = useForm<IDataUser>({
     mode: "onBlur",
     defaultValues: {
-      email: "",
-      password: "",
-      repeat_password: "",
-      secret_word: "",
+      email: dataSelector.email || "",
+      password: dataSelector.password || "",
+      repeat_password: dataSelector.repeat_password || "",
+      secret_word: dataSelector.secret_word || "",
     },
   });
 
@@ -46,9 +49,11 @@ export const Step2 = ({ nextStep }: Step2Props) => {
   password.current = watch("password", "");
   // const isFormValid = Object.keys(errors).length === 0;
   const dataSekector = useAppSelector((state) => state.step1);
+  const dispatch = useAppDispatch();
 
   const onSubmit = (data: IDataUser) => {
     const dataUser = { ...dataSekector, ...data };
+    dispatch(set2FormData(data));
     fetch("api/dev/signup/", {
       method: "POST",
       headers: {
@@ -70,14 +75,15 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        width: "25vw",
+        width: "100%",
+        minWidth: "416px",
         marginBottom: "3rem",
-        padding: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5rem",
+
+        gap: "30px",
       }}
     >
       <p>Шаг 2/3</p>
