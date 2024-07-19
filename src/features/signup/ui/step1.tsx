@@ -6,16 +6,18 @@ import {
   FormControlLabel,
   IconButton,
   TextField,
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { DataRegisterUser, setFormData } from "@/app/redux/registerSlice";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
+
 import {
-  NameRules,
+  NameRulesReg,
   PatronymicRules,
-} from "@/shared/validationRules/NameValidation";
+} from "@/shared/validationRules/NameValidRulesRegistr";
 
 type Step1Props = {
   nextStep: () => void;
@@ -58,12 +60,14 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       onSubmit={handleSubmit(onSubmit)}
       sx={{
         width: "100%",
+        minWidth: "416px",
+        minHeight: "568px",
         marginBottom: "3rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-
+        textAlign: "center",
         gap: "30px",
       }}
     >
@@ -75,7 +79,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         sx={{ width: "80%" }}
         placeholder="Имя*"
         {...register("first_name", {
-          ...NameRules(),
+          ...NameRulesReg(),
         })}
         error={!!errors.first_name}
         helperText={errors.first_name?.message}
@@ -96,7 +100,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         sx={{ width: "80%" }}
         placeholder={"Фамилия*"}
         {...register("last_name", {
-          ...NameRules(),
+          ...NameRulesReg(),
         })}
         error={!!errors.last_name}
         helperText={errors.last_name?.message}
@@ -134,19 +138,21 @@ export const Step1 = ({ nextStep }: Step1Props) => {
           ),
         }}
       />
-      <FormControlLabel
-        sx={{ width: "80%" }}
-        control={
-          <Checkbox
-            required
-            size="small"
-            inputProps={{ "aria-label": "controlled" }}
-            onChange={handleCheckboxChange}
-            onClick={() => {}}
-          />
-        }
-        label={`Я согласен на обработку персональных данных`}
-      />
+      {/* <FormControlLabel
+        sx={{ width: "100%", color: "red", fontSize: "12px" }}
+        control={ */}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Checkbox
+          required
+          size="small"
+          inputProps={{ "aria-label": "controlled" }}
+          onChange={handleCheckboxChange}
+          onClick={() => {}}
+        />
+        <Typography sx={{ fontSize: "12px", margin: "0", padding: "0" }}>
+          Согласие на обработку персональных данных
+        </Typography>
+      </div>
       <Button
         disabled={!isChecked || !isValid}
         sx={{ width: "80%" }}

@@ -5,10 +5,11 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
-import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
-import { EmailRules } from "@/shared/validationRules/EmailValidation";
-import { NameRules } from "@/shared/validationRules/NameValidation";
 import { set2FormData } from "@/app/redux/register2Slice";
+import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
+import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
+
+import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
 
 type Step2Props = {
   nextStep: () => void;
@@ -77,6 +78,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       sx={{
         width: "100%",
         minWidth: "416px",
+        minHeight: "568px",
         marginBottom: "3rem",
         display: "flex",
         flexDirection: "column",
@@ -92,7 +94,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         sx={{ width: "80%" }}
         // type="email"
         placeholder={"Email*"}
-        {...register("email", { ...EmailRules() })}
+        {...register("email", { ...EmailRulesReg() })}
         error={!!errors.email}
         helperText={errors.email?.message}
         InputProps={{
@@ -112,7 +114,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         placeholder={"Пароль*"}
         type={vision ? "password" : "text"}
         {...register("password", {
-          ...PasswordRules(),
+          ...PasswordRulesReg(),
         })}
         error={!!errors.password}
         helperText={errors.password?.message}
@@ -141,7 +143,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
           validate: (value: string) => {
             return value === password.current || "Пароли не совпадают";
           },
-          ...PasswordRules(),
+          ...PasswordRulesReg(),
         })}
         type={vision ? "password" : "text"}
         error={!!errors.repeat_password}
@@ -168,7 +170,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         sx={{ width: "80%" }}
         placeholder={"Секретное слово*"}
         {...register("secret_word", {
-          ...NameRules(),
+          ...SecretWord(),
         })}
         error={!!errors.secret_word}
         helperText={errors.secret_word?.message}

@@ -1,5 +1,5 @@
-type NameRules = {
-  required: {
+type SecretWordRules = {
+  required?: {
     value: boolean;
     message: "Поле обязательно для заполнения";
   };
@@ -17,7 +17,7 @@ type NameRules = {
   };
 };
 
-export function NameRules(): NameRules {
+export function SecretWord(): SecretWordRules {
   return {
     required: {
       value: true,

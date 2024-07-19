@@ -22,15 +22,17 @@ export const RegisterModel = () => {
           <AuthFormHeader />
           <h1
             style={{
-              margin: "0 auto",
-              fontFamily: "Verdana",
+              textAlign: "center",
+              marginBottom: "40px",
+              fontWeight: "500",
+              fontSize: "22px",
+              color: "#c2c2c2",
             }}
           >
             Регистрация
           </h1>
         </>
       )}
-
       {step === 1 && <Step1 nextStep={nextStep} />}
       {step === 2 && <Step2 nextStep={nextStep} />}
       {step === 3 && <Step3 nextStep={nextStep} />}
