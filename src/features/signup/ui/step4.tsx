@@ -7,9 +7,13 @@ export const Step4 = () => {
     <>
       <Box
         sx={{
-          margin: "3rem",
-          textAlign: "center",
+          width: "100%",
+          minWidth: "416px",
+          minHeight: "586px",
           display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+          alignItems: "center",
           flexDirection: "column",
           gap: "2rem",
         }}
@@ -18,6 +22,7 @@ export const Step4 = () => {
         <Typography>Регистрация прошла успешно! </Typography>
         <Typography>Для уточнения данных перейдите в профиль</Typography>
         <Button
+          // sx={{ width: "80%" }}
           onClick={() => {
             navigate("/");
           }}

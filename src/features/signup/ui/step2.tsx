@@ -2,13 +2,16 @@ import { useForm } from "react-hook-form";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useAppSelector } from "@/app/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
 import { NameRules } from "@/shared/validationRules/NameValidation";
-import { useNavigate } from "react-router-dom";
+
+type Step2Props = {
+  nextStep: () => void;
+};
 
 interface IDataUser {
   email: string | "";
@@ -25,6 +28,8 @@ export const Step2 = () => {
     setVision((prev) => !prev);
   }, []);
 
+  const dataSelector = useAppSelector((store) => store.step2);
+
   const {
     register,
     handleSubmit,
@@ -34,10 +39,10 @@ export const Step2 = () => {
   } = useForm<IDataUser>({
     mode: "onBlur",
     defaultValues: {
-      email: "",
-      password: "",
-      repeat_password: "",
-      secret_word: "",
+      email: dataSelector.email || "",
+      password: dataSelector.password || "",
+      repeat_password: dataSelector.repeat_password || "",
+      secret_word: dataSelector.secret_word || "",
     },
   });
 
@@ -45,9 +50,11 @@ export const Step2 = () => {
   password.current = watch("password", "");
   // const isFormValid = Object.keys(errors).length === 0;
   const dataSekector = useAppSelector((state) => state.step1);
+  const dispatch = useAppDispatch();
 
   const onSubmit = (data: IDataUser) => {
     const dataUser = { ...dataSekector, ...data };
+    dispatch(set2FormData(data));
     fetch("api/dev/signup/", {
       method: "POST",
       headers: {
@@ -69,23 +76,22 @@ export const Step2 = () => {
       component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        width: "25vw",
+        width: "100%",
         marginBottom: "3rem",
-        padding: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5rem",
+
+        gap: "30px",
       }}
     >
-      <p>Шаг 2/3</p>
       <ProgressBar progress={66.66} />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         // type="email"
         placeholder={"Email*"}
-        {...register("email", { ...EmailRules() })}
+        {...register("email", { ...EmailRulesReg() })}
         error={!!errors.email}
         helperText={errors.email?.message}
         InputProps={{
@@ -101,11 +107,11 @@ export const Step2 = () => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Пароль*"}
         type={vision ? "password" : "text"}
         {...register("password", {
-          ...PasswordRules(),
+          ...PasswordRulesReg(),
         })}
         error={!!errors.password}
         helperText={errors.password?.message}
@@ -128,13 +134,13 @@ export const Step2 = () => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Повторите пароль*"}
         {...register("repeat_password", {
           validate: (value: string) => {
             return value === password.current || "Пароли не совпадают";
           },
-          ...PasswordRules(),
+          ...PasswordRulesReg(),
         })}
         type={vision ? "password" : "text"}
         error={!!errors.repeat_password}
@@ -158,10 +164,10 @@ export const Step2 = () => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Секретное слово*"}
         {...register("secret_word", {
-          ...NameRules(),
+          ...SecretWord(),
         })}
         error={!!errors.secret_word}
         helperText={errors.secret_word?.message}
@@ -178,7 +184,7 @@ export const Step2 = () => {
         }}
       />
       <Button
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         variant="contained"
         type="submit"
         disabled={!isValid}

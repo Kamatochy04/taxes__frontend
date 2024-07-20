@@ -40,17 +40,17 @@ export const Step3 = () => {
       component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        width: "25vw",
+        width: "100%",
+        minWidth: "416px",
         marginBottom: "3rem",
-        padding: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5rem",
+
+        gap: "30px",
       }}
     >
-      <p>Шаг 3/3</p>
       <ProgressBar progress={100} />
       <p>Введите код, отправленный на e-mail</p>
       <TextField

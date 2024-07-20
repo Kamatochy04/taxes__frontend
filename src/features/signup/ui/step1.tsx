@@ -3,20 +3,24 @@ import {
   Box,
   Button,
   Checkbox,
-  FormControlLabel,
   IconButton,
   TextField,
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { DataRegisterUser, setFormData } from "@/app/redux/registerSlice";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
+
 import {
-  NameRules,
+  NameRulesReg,
   PatronymicRules,
-} from "@/shared/validationRules/NameValidation";
-import { useNavigate } from "react-router-dom";
+} from "@/shared/validationRules/NameValidRulesRegistr";
+
+type Step1Props = {
+  nextStep: () => void;
+};
 
 export const Step1 = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -54,24 +58,24 @@ export const Step1 = () => {
       component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        width: "25vw",
+        width: "100%",
         marginBottom: "3rem",
-        padding: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5rem",
+
+        gap: "30px",
       }}
     >
-      <p>* - поля обязательные для ввода</p>
-      <p>Шаг 1/3</p>
+      {" "}
+      <div>* - поля обязательные для ввода</div>
       <ProgressBar progress={33.33} />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder="Имя*"
         {...register("first_name", {
-          ...NameRules(),
+          ...NameRulesReg(),
         })}
         error={!!errors.first_name}
         helperText={errors.first_name?.message}
@@ -89,10 +93,10 @@ export const Step1 = () => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Фамилия*"}
         {...register("last_name", {
-          ...NameRules(),
+          ...NameRulesReg(),
         })}
         error={!!errors.last_name}
         helperText={errors.last_name?.message}
@@ -110,7 +114,7 @@ export const Step1 = () => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Отчество"}
         {...register("patronymic", {
           ...PatronymicRules(),
@@ -130,22 +134,24 @@ export const Step1 = () => {
           ),
         }}
       />
-      <FormControlLabel
-        sx={{ width: "80%" }}
-        control={
-          <Checkbox
-            required
-            size="small"
-            inputProps={{ "aria-label": "controlled" }}
-            onChange={handleCheckboxChange}
-            onClick={() => {}}
-          />
-        }
-        label={`Я согласен на обработку персональных данных`}
-      />
+      {/* <FormControlLabel
+        sx={{ width: "100%", color: "red", fontSize: "12px" }}
+        control={ */}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Checkbox
+          required
+          size="small"
+          inputProps={{ "aria-label": "controlled" }}
+          onChange={handleCheckboxChange}
+          onClick={() => {}}
+        />
+        <Typography sx={{ fontSize: "12px", margin: "0", padding: "0" }}>
+          Согласие на обработку персональных данных
+        </Typography>
+      </div>
       <Button
         disabled={!isChecked || !isValid}
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         variant="contained"
         type="submit"
       >

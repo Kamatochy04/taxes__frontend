@@ -13,7 +13,7 @@ type EmailRules = {
   };
 };
 
-export function EmailRules(): EmailRules {
+export function EmailRulesReg(): EmailRules {
   return {
     required: {
       value: true,

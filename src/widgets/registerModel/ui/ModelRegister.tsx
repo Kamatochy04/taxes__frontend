@@ -17,6 +17,7 @@ export const RegisterModel = () => {
 
   return (
     <Dialog open={true} className={style.model}>
+<<<<<<< HEAD
       {step !== 4 && (
         <>
           {" "}
@@ -34,6 +35,16 @@ export const RegisterModel = () => {
       <Outlet />
       {step === 3 && <Step3 nextStep={nextStep} />}
       {step === 4 && <Step4 />}
+=======
+      <div className={style.model__window}>
+        {step !== 4 && <AuthFormHeader />}
+        <h1>Регистрация</h1>
+        {step === 1 && <Step1 nextStep={nextStep} />}
+        {step === 2 && <Step2 nextStep={nextStep} />}
+        {step === 3 && <Step3 nextStep={nextStep} />}
+        {step === 4 && <Step4 />}
+      </div>
+>>>>>>> 8d7fed6bc8897cc30be3c7c7dd29ef422d97fa61
     </Dialog>
   );
 };
