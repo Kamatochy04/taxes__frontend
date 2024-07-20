@@ -17,6 +17,7 @@ import {
   NameRulesReg,
   PatronymicRules,
 } from "@/shared/validationRules/NameValidRulesRegistr";
+import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 
 type Step1Props = {
   nextStep: () => void;
@@ -54,109 +55,113 @@ export const Step1 = ({ nextStep }: Step1Props) => {
   };
 
   return (
-    <Box
-      component={"form"}
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{
-        width: "100%",
-        marginBottom: "3rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-
-        gap: "30px",
-      }}
-    >
-      {" "}
-      <div>* - поля обязательные для ввода</div>
-      <ProgressBar progress={33.33} />
-      <TextField
-        sx={{ width: "100%" }}
-        placeholder="Имя*"
-        {...register("first_name", {
-          ...NameRulesReg(),
-        })}
-        error={!!errors.first_name}
-        helperText={errors.first_name?.message}
-        InputProps={{
-          endAdornment: (
-            <IconButton
-              onClick={() => {
-                resetField("first_name");
-                setValue("first_name", "");
-              }}
-            >
-              <ClearIcon />
-            </IconButton>
-          ),
-        }}
-      />
-      <TextField
-        sx={{ width: "100%" }}
-        placeholder={"Фамилия*"}
-        {...register("last_name", {
-          ...NameRulesReg(),
-        })}
-        error={!!errors.last_name}
-        helperText={errors.last_name?.message}
-        InputProps={{
-          endAdornment: (
-            <IconButton
-              onClick={() => {
-                resetField("last_name");
-                setValue("last_name", "");
-              }}
-            >
-              <ClearIcon />
-            </IconButton>
-          ),
-        }}
-      />
-      <TextField
-        sx={{ width: "100%" }}
-        placeholder={"Отчество"}
-        {...register("patronymic", {
-          ...PatronymicRules(),
-        })}
-        error={!!errors.patronymic}
-        helperText={errors.patronymic?.message}
-        InputProps={{
-          endAdornment: (
-            <IconButton
-              onClick={() => {
-                resetField("patronymic");
-                setValue("patronymic", "");
-              }}
-            >
-              <ClearIcon />
-            </IconButton>
-          ),
-        }}
-      />
-      {/* <FormControlLabel
+    <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
+      <>
+        <div>* - поля обязательные для ввода</div>
+        <ProgressBar progress={33.33} />
+        <TextField
+          sx={{ width: "100%" }}
+          placeholder="Имя*"
+          {...register("first_name", {
+            ...NameRulesReg(),
+          })}
+          error={!!errors.first_name}
+          helperText={errors.first_name?.message}
+          InputProps={{
+            endAdornment: (
+              <IconButton
+                onClick={() => {
+                  resetField("first_name");
+                  setValue("first_name", "");
+                }}
+              >
+                <ClearIcon />
+              </IconButton>
+            ),
+          }}
+        />
+        <TextField
+          sx={{ width: "100%" }}
+          placeholder={"Фамилия*"}
+          {...register("last_name", {
+            ...NameRulesReg(),
+          })}
+          error={!!errors.last_name}
+          helperText={errors.last_name?.message}
+          InputProps={{
+            endAdornment: (
+              <IconButton
+                onClick={() => {
+                  resetField("last_name");
+                  setValue("last_name", "");
+                }}
+              >
+                <ClearIcon />
+              </IconButton>
+            ),
+          }}
+        />
+        <TextField
+          sx={{ width: "100%" }}
+          placeholder={"Отчество"}
+          {...register("patronymic", {
+            ...PatronymicRules(),
+          })}
+          error={!!errors.patronymic}
+          helperText={errors.patronymic?.message}
+          InputProps={{
+            endAdornment: (
+              <IconButton
+                onClick={() => {
+                  resetField("patronymic");
+                  setValue("patronymic", "");
+                }}
+              >
+                <ClearIcon />
+              </IconButton>
+            ),
+          }}
+        />
+        {/* <FormControlLabel
         sx={{ width: "100%", color: "red", fontSize: "12px" }}
         control={ */}
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Checkbox
-          required
-          size="small"
-          inputProps={{ "aria-label": "controlled" }}
-          onChange={handleCheckboxChange}
-          onClick={() => {}}
-        />
-        <Typography sx={{ fontSize: "12px", margin: "0", padding: "0" }}>
-          Согласие на обработку персональных данных
-        </Typography>
-      </div>
-      <Button
-        disabled={!isChecked || !isValid}
-        sx={{ width: "100%" }}
-        variant="contained"
-        type="submit"
-      >
-        Далее
-      </Button>
-    </Box>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Checkbox
+            required
+            size="small"
+            inputProps={{ "aria-label": "controlled" }}
+            onChange={handleCheckboxChange}
+            onClick={() => {}}
+          />
+          <Typography sx={{ fontSize: "12px", margin: "0", padding: "0" }}>
+            Согласие на обработку персональных данных
+          </Typography>
+        </div>
+        <Button
+          disabled={!isChecked || !isValid}
+          sx={{ width: "100%" }}
+          variant="contained"
+          type="submit"
+        >
+          Далее
+        </Button>
+      </>
+    </AuthBoxForm>
+    // <Box
+    //   component={"form"}
+    //   onSubmit={handleSubmit(onSubmit)}
+    //   sx={{
+    //     width: "100%",
+    //     marginBottom: "3rem",
+    //     display: "flex",
+    //     flexDirection: "column",
+    //     justifyContent: "center",
+    //     alignItems: "center",
+
+    //     gap: "30px",
+    //   }}
+    // >
+
+    // </Box>
   );
 };

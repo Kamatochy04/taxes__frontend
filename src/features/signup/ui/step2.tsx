@@ -10,6 +10,7 @@ import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
 import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
 
 import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
+import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 
 type Step2Props = {
   nextStep: () => void;
@@ -72,125 +73,115 @@ export const Step2 = ({ nextStep }: Step2Props) => {
   };
 
   return (
-    <Box
-      component={"form"}
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{
-        width: "100%",
-        marginBottom: "3rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-
-        gap: "30px",
-      }}
-    >
-      <ProgressBar progress={66.66} />
-      <TextField
-        sx={{ width: "100%" }}
-        // type="email"
-        placeholder={"Email*"}
-        {...register("email", { ...EmailRulesReg() })}
-        error={!!errors.email}
-        helperText={errors.email?.message}
-        InputProps={{
-          endAdornment: (
-            <IconButton
-              onClick={() => {
-                resetField("email");
-              }}
-            >
-              <ClearIcon />
-            </IconButton>
-          ),
-        }}
-      />
-      <TextField
-        sx={{ width: "100%" }}
-        placeholder={"Пароль*"}
-        type={vision ? "password" : "text"}
-        {...register("password", {
-          ...PasswordRulesReg(),
-        })}
-        error={!!errors.password}
-        helperText={errors.password?.message}
-        InputProps={{
-          endAdornment: (
-            <>
-              {" "}
-              <IconButton onClick={passwordVision}>
-                {vision ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
+    <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
+      <>
+        {" "}
+        <ProgressBar progress={66.66} />
+        <TextField
+          sx={{ width: "100%" }}
+          // type="email"
+          placeholder={"Email*"}
+          {...register("email", { ...EmailRulesReg() })}
+          error={!!errors.email}
+          helperText={errors.email?.message}
+          InputProps={{
+            endAdornment: (
               <IconButton
                 onClick={() => {
-                  resetField("password");
+                  resetField("email");
                 }}
               >
                 <ClearIcon />
               </IconButton>
-            </>
-          ),
-        }}
-      />
-      <TextField
-        sx={{ width: "100%" }}
-        placeholder={"Повторите пароль*"}
-        {...register("repeat_password", {
-          validate: (value: string) => {
-            return value === password.current || "Пароли не совпадают";
-          },
-          ...PasswordRulesReg(),
-        })}
-        type={vision ? "password" : "text"}
-        error={!!errors.repeat_password}
-        helperText={errors.repeat_password?.message}
-        InputProps={{
-          endAdornment: (
-            <>
-              {" "}
-              <IconButton onClick={passwordVision}>
-                {vision ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
+            ),
+          }}
+        />
+        <TextField
+          sx={{ width: "100%" }}
+          placeholder={"Пароль*"}
+          type={vision ? "password" : "text"}
+          {...register("password", {
+            ...PasswordRulesReg(),
+          })}
+          error={!!errors.password}
+          helperText={errors.password?.message}
+          InputProps={{
+            endAdornment: (
+              <>
+                {" "}
+                <IconButton onClick={passwordVision}>
+                  {vision ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+                <IconButton
+                  onClick={() => {
+                    resetField("password");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </>
+            ),
+          }}
+        />
+        <TextField
+          sx={{ width: "100%" }}
+          placeholder={"Повторите пароль*"}
+          {...register("repeat_password", {
+            validate: (value: string) => {
+              return value === password.current || "Пароли не совпадают";
+            },
+            ...PasswordRulesReg(),
+          })}
+          type={vision ? "password" : "text"}
+          error={!!errors.repeat_password}
+          helperText={errors.repeat_password?.message}
+          InputProps={{
+            endAdornment: (
+              <>
+                {" "}
+                <IconButton onClick={passwordVision}>
+                  {vision ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+                <IconButton
+                  onClick={() => {
+                    resetField("repeat_password");
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </>
+            ),
+          }}
+        />
+        <TextField
+          sx={{ width: "100%" }}
+          placeholder={"Секретное слово*"}
+          {...register("secret_word", {
+            ...SecretWord(),
+          })}
+          error={!!errors.secret_word}
+          helperText={errors.secret_word?.message}
+          InputProps={{
+            endAdornment: (
               <IconButton
                 onClick={() => {
-                  resetField("repeat_password");
+                  resetField("secret_word");
                 }}
               >
                 <ClearIcon />
               </IconButton>
-            </>
-          ),
-        }}
-      />
-      <TextField
-        sx={{ width: "100%" }}
-        placeholder={"Секретное слово*"}
-        {...register("secret_word", {
-          ...SecretWord(),
-        })}
-        error={!!errors.secret_word}
-        helperText={errors.secret_word?.message}
-        InputProps={{
-          endAdornment: (
-            <IconButton
-              onClick={() => {
-                resetField("secret_word");
-              }}
-            >
-              <ClearIcon />
-            </IconButton>
-          ),
-        }}
-      />
-      <Button
-        sx={{ width: "100%" }}
-        variant="contained"
-        type="submit"
-        disabled={!isValid}
-      >
-        Далее
-      </Button>
-    </Box>
+            ),
+          }}
+        />
+        <Button
+          sx={{ width: "100%" }}
+          variant="contained"
+          type="submit"
+          disabled={!isValid}
+        >
+          Далее
+        </Button>
+      </>
+    </AuthBoxForm>
   );
 };
