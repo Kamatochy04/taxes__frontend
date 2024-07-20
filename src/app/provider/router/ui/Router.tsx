@@ -14,6 +14,10 @@ import { Suspense } from "react";
 
 import { Main } from "@/pages/Main";
 import { RegisterModel } from "@/widgets/registerModel/ui/ModelRegister";
+import { FirstStep } from "@/features/auth/ui/FirstStep";
+import { SecondStep } from "@/features/auth/ui/SecondStep";
+import { Step1, Step2, Step3 } from "@/features/signup";
+import { Step4 } from "@/features/signup/ui/step4";
 
 export const Router = () => {
   return (
@@ -27,22 +31,16 @@ export const Router = () => {
           <Route path="basket" element={<Basket />} />
           <Route path="purchases" element={<Purchases />} />
           <Route path="support" element={<Support />} />
-          <Route
-            path="auth"
-            element={
-              <Suspense fallback={<div>Загрузка...</div>}>
-                <AuthModel />
-              </Suspense>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <Suspense fallback={<div>Загрузка...</div>}>
-                <RegisterModel />
-              </Suspense>
-            }
-          />
+          <Route path="login" element={<AuthModel />}>
+            <Route index element={<FirstStep />} />
+            <Route path="status" element={<SecondStep />} />
+          </Route>
+          <Route path="register" element={<RegisterModel />}>
+            <Route index element={<Step1 />} />
+            <Route path="step-second" element={<Step2 />} />
+            <Route path="step-third" element={<Step3 />} />
+            <Route path="step-fourth" element={<Step4 />} />
+          </Route>
         </Route>
       </Routes>
     </div>

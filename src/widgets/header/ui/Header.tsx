@@ -52,7 +52,7 @@ export const Header = () => {
           />
           <div className={style.header__login}>
             <ShoppingCartIcon />
-            <div className={style.login} onClick={() => navigate("/auth")}>
+            <div className={style.login} onClick={() => navigate("/login")}>
               Вход
             </div>
           </div>

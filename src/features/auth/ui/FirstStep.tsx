@@ -6,6 +6,7 @@ import { Box, Button, IconButton, TextField } from "@mui/material";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
 import { useLoginMutation } from "../api/authApi";
 import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   email: string;
@@ -14,6 +15,7 @@ interface FormData {
 
 export const FirstStep = () => {
   const [login] = useLoginMutation();
+  const navigate = useNavigate();
   const {
     formState: { errors },
     handleSubmit,
@@ -27,7 +29,8 @@ export const FirstStep = () => {
   });
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    login(data).unwrap().then(console.log).catch(console.log);
+    // login(data).unwrap().then(console.log).catch(console.log);
+    navigate("/login/status");
   };
 
   return (

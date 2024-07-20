@@ -8,10 +8,7 @@ import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
 import { NameRules } from "@/shared/validationRules/NameValidation";
-
-type Step2Props = {
-  nextStep: () => void;
-};
+import { useNavigate } from "react-router-dom";
 
 interface IDataUser {
   email: string | "";
@@ -20,8 +17,10 @@ interface IDataUser {
   secret_word: string | "";
 }
 
-export const Step2 = ({ nextStep }: Step2Props) => {
+export const Step2 = () => {
   const [vision, setVision] = useState(true);
+  const navigate = useNavigate();
+
   const passwordVision = useCallback(() => {
     setVision((prev) => !prev);
   }, []);
@@ -58,11 +57,11 @@ export const Step2 = ({ nextStep }: Step2Props) => {
     })
       .then((response) => response.json())
       .then((date) => {
-        console.log;
         localStorage.setItem("dataUser", JSON.stringify(data));
         localStorage.setItem("confirm_code_id", date.confirm_code_id);
-        nextStep();
+        navigate("step-third");
       });
+    navigate("/step-third");
   };
 
   return (

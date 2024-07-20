@@ -1,12 +1,10 @@
 import { useForm } from "react-hook-form";
 import { TextField, Button, Box } from "@mui/material";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
+import { useNavigate } from "react-router-dom";
 
-type Step3Props = {
-  nextStep: () => void;
-};
-
-export const Step3 = ({ nextStep }: Step3Props) => {
+export const Step3 = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -33,8 +31,7 @@ export const Step3 = ({ nextStep }: Step3Props) => {
       .then((date) => {
         localStorage.removeItem("confirm_code_id");
         localStorage.removeItem("dataUser");
-        console.log(date);
-        nextStep();
+        navigate("step-fourth");
       });
   };
 

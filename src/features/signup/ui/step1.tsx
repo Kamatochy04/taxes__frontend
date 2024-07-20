@@ -16,15 +16,12 @@ import {
   NameRules,
   PatronymicRules,
 } from "@/shared/validationRules/NameValidation";
+import { useNavigate } from "react-router-dom";
 
-type Step1Props = {
-  nextStep: () => void;
-};
-
-export const Step1 = ({ nextStep }: Step1Props) => {
+export const Step1 = () => {
   const [isChecked, setIsChecked] = useState(false);
   const dataSelector = useAppSelector((state) => state.step1);
-
+  const navigate = useNavigate();
   const handleCheckboxChange = (e: {
     target: { checked: boolean | ((prevState: boolean) => boolean) };
   }) => {
@@ -49,7 +46,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
   const dispatch = useAppDispatch();
   const onSubmit = (data: DataRegisterUser) => {
     dispatch(setFormData(data));
-    nextStep();
+    navigate("step-second");
   };
 
   return (
@@ -67,7 +64,6 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         gap: "1.5rem",
       }}
     >
-      {" "}
       <p>* - поля обязательные для ввода</p>
       <p>Шаг 1/3</p>
       <ProgressBar progress={33.33} />

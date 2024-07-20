@@ -6,6 +6,7 @@ import { Dialog } from "@mui/material";
 import { Step4 } from "@/features/signup/ui/step4";
 import { AuthFormHeader } from "@/shared/components/authFormHeader/AuthFormHeader";
 import style from "./registerModel.module.scss";
+import { Outlet } from "react-router-dom";
 
 export const RegisterModel = () => {
   const [step, setStep] = useState(1);
@@ -30,9 +31,7 @@ export const RegisterModel = () => {
           </h1>
         </>
       )}
-
-      {step === 1 && <Step1 nextStep={nextStep} />}
-      {step === 2 && <Step2 nextStep={nextStep} />}
+      <Outlet />
       {step === 3 && <Step3 nextStep={nextStep} />}
       {step === 4 && <Step4 />}
     </Dialog>
