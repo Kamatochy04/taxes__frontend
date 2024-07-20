@@ -77,8 +77,6 @@ export const Step2 = ({ nextStep }: Step2Props) => {
       onSubmit={handleSubmit(onSubmit)}
       sx={{
         width: "100%",
-        minWidth: "416px",
-        minHeight: "568px",
         marginBottom: "3rem",
         display: "flex",
         flexDirection: "column",
@@ -88,10 +86,9 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         gap: "30px",
       }}
     >
-      <p>Шаг 2/3</p>
       <ProgressBar progress={66.66} />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         // type="email"
         placeholder={"Email*"}
         {...register("email", { ...EmailRulesReg() })}
@@ -110,7 +107,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Пароль*"}
         type={vision ? "password" : "text"}
         {...register("password", {
@@ -137,7 +134,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Повторите пароль*"}
         {...register("repeat_password", {
           validate: (value: string) => {
@@ -167,7 +164,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Секретное слово*"}
         {...register("secret_word", {
           ...SecretWord(),
@@ -187,7 +184,7 @@ export const Step2 = ({ nextStep }: Step2Props) => {
         }}
       />
       <Button
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         variant="contained"
         type="submit"
         disabled={!isValid}

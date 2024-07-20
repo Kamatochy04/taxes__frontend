@@ -54,7 +54,6 @@ export const Step3 = ({ nextStep }: Step3Props) => {
         gap: "30px",
       }}
     >
-      <p>Шаг 3/3</p>
       <ProgressBar progress={100} />
       <p>Введите код, отправленный на e-mail</p>
       <TextField

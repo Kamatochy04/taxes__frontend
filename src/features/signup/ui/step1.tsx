@@ -59,23 +59,20 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       onSubmit={handleSubmit(onSubmit)}
       sx={{
         width: "100%",
-        minWidth: "416px",
-        minHeight: "568px",
         marginBottom: "3rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        textAlign: "center",
+
         gap: "30px",
       }}
     >
       {" "}
-      <p>* - поля обязательные для ввода</p>
-      <p>Шаг 1/3</p>
+      <div>* - поля обязательные для ввода</div>
       <ProgressBar progress={33.33} />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder="Имя*"
         {...register("first_name", {
           ...NameRulesReg(),
@@ -96,7 +93,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Фамилия*"}
         {...register("last_name", {
           ...NameRulesReg(),
@@ -117,7 +114,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
         }}
       />
       <TextField
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         placeholder={"Отчество"}
         {...register("patronymic", {
           ...PatronymicRules(),
@@ -154,7 +151,7 @@ export const Step1 = ({ nextStep }: Step1Props) => {
       </div>
       <Button
         disabled={!isChecked || !isValid}
-        sx={{ width: "80%" }}
+        sx={{ width: "100%" }}
         variant="contained"
         type="submit"
       >
