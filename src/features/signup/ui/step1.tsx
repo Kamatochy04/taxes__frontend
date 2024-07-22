@@ -17,6 +17,7 @@ import {
   NameRulesReg,
   PatronymicRules,
 } from "@/shared/validationRules/NameValidRulesRegistr";
+import { useNavigate } from "react-router-dom";
 
 type Step1Props = {
   nextStep: () => void;

@@ -8,6 +8,11 @@ import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
 import { NameRules } from "@/shared/validationRules/NameValidation";
+import { useNavigate } from "react-router-dom";
+import { set2FormData } from "@/app/redux/register2Slice";
+import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
+import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
+import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
 
 type Step2Props = {
   nextStep: () => void;
