@@ -38,8 +38,11 @@ export const Router = () => {
           <Route path="register" element={<RegisterModel />}>
             <Route index element={<Step1 />} />
             <Route path="step-second" element={<Step2 />} />
-            <Route path="step-third" element={<Step3 />} />
-            <Route path="step-fourth" element={<Step4 />} />
+            <Route path="step-second/step-third" element={<Step3 />} />
+            <Route
+              path="step-second/step-third/step-fourth"
+              element={<Step4 />}
+            />
           </Route>
         </Route>
       </Routes>

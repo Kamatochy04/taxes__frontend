@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import {
-  Box,
   Button,
   Checkbox,
   IconButton,
@@ -19,10 +18,6 @@ import {
 } from "@/shared/validationRules/NameValidRulesRegistr";
 import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 import { useNavigate } from "react-router-dom";
-
-type Step1Props = {
-  nextStep: () => void;
-};
 
 export const Step1 = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -123,9 +118,6 @@ export const Step1 = () => {
             ),
           }}
         />
-        {/* <FormControlLabel
-        sx={{ width: "100%", color: "red", fontSize: "12px" }}
-        control={ */}
         <div style={{ display: "flex", alignItems: "center" }}>
           <Checkbox
             required
@@ -148,21 +140,5 @@ export const Step1 = () => {
         </Button>
       </>
     </AuthBoxForm>
-    // <Box
-    //   component={"form"}
-    //   onSubmit={handleSubmit(onSubmit)}
-    //   sx={{
-    //     width: "100%",
-    //     marginBottom: "3rem",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-
-    //     gap: "30px",
-    //   }}
-    // >
-
-    // </Box>
   );
 };
