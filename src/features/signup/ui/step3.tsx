@@ -33,6 +33,7 @@ export const Step3 = () => {
         localStorage.removeItem("dataUser");
         navigate("step-fourth");
       });
+    navigate("step-fourth");
   };
 
   return (

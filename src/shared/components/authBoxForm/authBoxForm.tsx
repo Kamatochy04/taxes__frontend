@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 
 interface IBoxFormProps {
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  onSubmit?: React.FormEventHandler<HTMLFormElement>;
   children: JSX.Element;
 }
 

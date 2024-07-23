@@ -1,35 +1,43 @@
-import { Box, Button, Typography } from "@mui/material";
+import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
+import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import logo from "../../../shared/assets/img/easyTaxLogo.png";
 
 export const Step4 = () => {
   const navigate = useNavigate();
   return (
-    <>
-      <Box
-        sx={{
-          width: "100%",
-          minWidth: "416px",
-          minHeight: "586px",
-          display: "flex",
-          textAlign: "center",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          gap: "2rem",
-        }}
-      >
-        <Typography>Cпасибо! </Typography>
-        <Typography>Регистрация прошла успешно! </Typography>
-        <Typography>Для уточнения данных перейдите в профиль</Typography>
+    <AuthBoxForm>
+      <>
+        <img style={{ marginTop: "124px" }} src={logo} />
+        <Typography
+          sx={{
+            fontWeight: "500",
+            fontSize: "20px",
+            color: "rgba(12, 16, 56, 1)",
+          }}
+        >
+          Регистрация выполнена успешно
+        </Typography>
+
+        <Typography
+          sx={{
+            fontWeight: "400",
+            fontSize: "18px",
+            color: "rgba(12, 16, 56, 1)",
+          }}
+        >
+          Для уточнения данных перейдите в профиль
+        </Typography>
         <Button
-          // sx={{ width: "80%" }}
+          sx={{ width: "100%" }}
           onClick={() => {
             navigate("/");
           }}
+          variant="contained"
         >
           Ок
         </Button>
-      </Box>
-    </>
+      </>
+    </AuthBoxForm>
   );
 };

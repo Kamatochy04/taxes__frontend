@@ -53,10 +53,11 @@ export const Step1 = () => {
   return (
     <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
       <>
-        <div>* - поля обязательные для ввода</div>
+        <p>Регистрация</p>
         <ProgressBar progress={33.33} />
+        <div>* - поля обязательные для ввода</div>
         <TextField
-          sx={{ width: "100%" }}
+          sx={{ width: "100%", borderColor: "rgba(12, 16, 56, 1)" }}
           placeholder="Имя*"
           {...register("first_name", {
             ...NameRulesReg(),
@@ -122,7 +123,7 @@ export const Step1 = () => {
           <Checkbox
             required
             size="small"
-            inputProps={{ "aria-label": "controlled" }}
+            // inputProps={{ "aria-label": "controlled" }}
             onChange={handleCheckboxChange}
             onClick={() => {}}
           />
