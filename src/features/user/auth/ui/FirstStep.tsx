@@ -16,7 +16,12 @@ export const FirstStep = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: FormData) => {
-    login(data).unwrap().then(console.log).catch(console.log);
+    login(data)
+      .unwrap()
+      .then(() => {
+        navigate("/login/status");
+      })
+      .catch(console.log);
     // navigate("/login/status");
   };
 

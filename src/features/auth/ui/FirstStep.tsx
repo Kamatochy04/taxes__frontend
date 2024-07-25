@@ -28,7 +28,7 @@ export const FirstStep = () => {
   });
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    // login(data).unwrap().then(console.log).catch(console.log);
+    login(data).unwrap().then(console.log).catch(console.log);
     navigate("step-third");
   };
 

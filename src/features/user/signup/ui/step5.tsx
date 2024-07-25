@@ -1,7 +1,7 @@
 import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../shared/assets/img/easyTaxLogo.png";
+import logo from "@/shared/assets/img/easyTaxLogo.png";
 
 export const Step5 = () => {
   const navigate = useNavigate();

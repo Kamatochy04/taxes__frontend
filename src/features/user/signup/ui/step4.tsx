@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { TextField, Button } from "@mui/material";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
@@ -18,12 +18,12 @@ export const Step4 = () => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      code: undefined,
+      code: undefined || "",
     },
   });
   // const isFormValid = Object.keys(errors).length === 0;
-  const onSubmit = (data: IConfirmCode) => {
-    signupCode(data).then((response) => {
+  const onSubmit: SubmitHandler<IConfirmCode> = (data) => {
+    signupCode({ code: data.code }).then((response) => {
       if (response.error) {
         // Object.defineProperty(errors.code, "message", {
         //   value: response.error.data.details,

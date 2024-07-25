@@ -6,7 +6,7 @@ export { AuthModel } from "./registerModel/index";
 export { SideBar } from "./sideBar/index";
 
 export { Offers } from "./offers/index";
-export { Finance } from "./finance/index";
+// export { Finance } from "./finance/index";
 export { Orders } from "./orders/index";
 export { PaymentMethods } from "./paymentMethods/index";
 export { Basket } from "./basket/index";
