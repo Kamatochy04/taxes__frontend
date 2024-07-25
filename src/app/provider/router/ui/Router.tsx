@@ -10,14 +10,12 @@ import {
   Purchases,
   Support,
 } from "@/widgets";
-import { Suspense } from "react";
-
 import { Main } from "@/pages/Main";
 import { RegisterModel } from "@/widgets/registerModel/ui/ModelRegister";
-import { FirstStep } from "@/features/auth/ui/FirstStep";
-import { SecondStep } from "@/features/auth/ui/SecondStep";
-import { Step1, Step2, Step3 } from "@/features/signup";
-import { Step4 } from "@/features/signup/ui/step4";
+import { FirstStep } from "@/features/user/auth/ui/FirstStep";
+import { SecondStep } from "@/features/user/auth/ui/SecondStep";
+import { Step1, Step2, Step3 } from "@/features/user/signup";
+import { Step4 } from "@/features/user/signup/ui/step4";
 
 export const Router = () => {
   return (
@@ -31,7 +29,7 @@ export const Router = () => {
           <Route path="basket" element={<Basket />} />
           <Route path="purchases" element={<Purchases />} />
           <Route path="support" element={<Support />} />
-          <Route path="login" element={<AuthModel />}>
+          <Route path="login" element={<RegisterModel />}>
             <Route index element={<FirstStep />} />
             <Route path="status" element={<SecondStep />} />
           </Route>

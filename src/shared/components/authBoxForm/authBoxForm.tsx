@@ -1,27 +1,15 @@
-import { Box } from "@mui/material";
+import { AuthFormHeader } from "../authFormHeader/AuthFormHeader";
+import style from "./authFormBox.module.scss";
 
 interface IBoxFormProps {
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
   children: JSX.Element;
 }
 
-export default function AuthBoxForm({ onSubmit, children }: IBoxFormProps) {
+export default function AuthBoxForm({ children }: IBoxFormProps) {
   return (
-    <Box
-      component={"form"}
-      onSubmit={onSubmit}
-      sx={{
-        width: "100%",
-        marginBottom: "3rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-
-        gap: "30px",
-      }}
-    >
+    <div className={style.box}>
+      <AuthFormHeader />
       {children}
-    </Box>
+    </div>
   );
 }

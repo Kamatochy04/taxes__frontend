@@ -1,22 +1,64 @@
+import { cva, VariantProps } from "class-variance-authority";
+import { ErrorMessage, Field } from "formik";
+import { ComponentProps, forwardRef } from "react";
+import cn from "classnames";
+import cnBind from "classnames/bind";
 import style from "./input.module.scss";
 
-type Props = {
-  placeholder: string;
-  type: string;
-  name?: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+const cx = cnBind.bind(style);
 
-export const Input = ({ placeholder, type, onChange, value, name }: Props) => {
-  return (
-    <input
-      className={style.input}
-      placeholder={placeholder}
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
-  );
-};
+const InputStyles = cva(["w-full"]);
+type InputProps = ComponentProps<"input"> &
+  VariantProps<typeof InputStyles> & {
+    label?: string;
+    name: string;
+    error?: boolean;
+    ok?: boolean;
+    errorMessage?: string;
+  };
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ label, name, type, disabled, error, errorMessage, ok, ...props }, ref) => {
+    // const [showPassword, setShowPassword] = useState(true);
+    // const [inputType, setInputType] = useState(type);
+
+    const className = cx("input", { err: error, ok: ok });
+
+    return (
+      <div className={style.container}>
+        <label htmlFor={name}>{label}</label>
+        <div className={style.wrapper}>
+          <Field
+            id={name}
+            name={name}
+            type={type}
+            className={cn(className)}
+            {...props}
+            ref={ref}
+            disabled={disabled}
+          />
+        </div>
+        <p className={style.errorMessage}>{errorMessage}</p>
+        <ErrorMessage
+          name={name}
+          component="p"
+          className={style.errorMessage}
+        />
+      </div>
+    );
+  }
+);
+
+// const handelClick = () => {
+//   setShowPassword(!showPassword);
+//   if (showPassword) {
+//     setInputType("text");
+//   } else {
+//     setInputType("password");
+//   }
+// };
+{
+  /* <span className={style.eye} onClick={handelClick}>
+            {eyeComponent}
+          </span> */
+}

@@ -10,7 +10,6 @@ export const Main = () => {
   return (
     <>
       <Header />
-
       <section className={style.main}>
         <SideBar />
         <Container>

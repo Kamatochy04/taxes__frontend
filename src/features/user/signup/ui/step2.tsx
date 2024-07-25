@@ -1,13 +1,11 @@
 import { useForm } from "react-hook-form";
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
-import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
-import { EmailRules } from "@/shared/validationRules/EmailValidation";
-import { NameRules } from "@/shared/validationRules/NameValidation";
+
 import { useNavigate } from "react-router-dom";
 import { set2FormData } from "@/app/redux/register2Slice";
 import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
@@ -80,7 +78,6 @@ export const Step2 = () => {
   return (
     <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
       <>
-        {" "}
         <ProgressBar progress={66.66} />
         <TextField
           sx={{ width: "100%" }}
