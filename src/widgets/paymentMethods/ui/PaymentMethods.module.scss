@@ -4,20 +4,27 @@
   gap: 40px;
 }
 
+.text {
+  color: #fff;
+  font-size: 22px;
+  padding-bottom: 13px;
+}
+
 .card {
-  width: 738px;
-  height: 327px;
-  background: #00000027;
+  width: 608px;
+  height: 174px;
+  background: #4D648D;
   border-radius: 20px;
   display: flex;
-  padding: 50px;
+  align-self: flex-start;
+  padding: 32px;
   &__img {
     background: #fff;
-    width: 224px;
-    height: 126px;
+    width: 186px;
+    height: 110px;
     border-radius: 20px;
   }
   &__wrapper {
-    margin-left: 20px;
+    margin-left: 38px;
   }
 }
