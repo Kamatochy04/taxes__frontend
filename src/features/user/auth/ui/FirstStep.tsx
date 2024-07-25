@@ -1,11 +1,14 @@
-import { useLoginMutation } from "../api/authApi";
 import { Link, useNavigate } from "react-router-dom";
-import { Input } from "@/shared/components/input/Input";
 import { Form, Formik } from "formik";
+
+import { Input } from "@/shared/components/input/Input";
 import { Button } from "@/shared/components/button/Button";
 import { Typography } from "@/shared/components/typography/Typography";
 
+import { useLoginMutation } from "../api/authApi";
+
 import style from "./auth.module.scss";
+
 interface FormData {
   email: string;
   password: string;
@@ -27,11 +30,7 @@ export const FirstStep = () => {
 
   return (
     <>
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        onSubmit={onSubmit}
-        // validationSchema={}
-      >
+      <Formik initialValues={{ email: "", password: "" }} onSubmit={onSubmit}>
         {() => (
           <Form className={style.form}>
             <Typography variant={"h3-register"} tag={"h3"}>

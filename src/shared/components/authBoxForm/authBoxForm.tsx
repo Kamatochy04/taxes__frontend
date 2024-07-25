@@ -2,7 +2,6 @@ import { AuthFormHeader } from "../authFormHeader/AuthFormHeader";
 import style from "./authFormBox.module.scss";
 
 interface IBoxFormProps {
-  onSubmit?: React.FormEventHandler<HTMLFormElement>;
   children: JSX.Element;
 }
 

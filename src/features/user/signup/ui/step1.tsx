@@ -46,108 +46,110 @@ export const Step1 = () => {
   });
 
   const onSubmit = (data: DataRegisterUser) => {
+    console.log("asdf");
     dispatch(setFormData(data));
     navigate("step-second");
   };
 
   return (
-    <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
-      <>
-        <p>Регистрация</p>
-        <ProgressBar progress={33.33} />
-        <div>* - поля обязательные для ввода</div>
-        <TextField
-          sx={{ width: "100%", borderColor: "rgba(12, 16, 56, 1)" }}
-          placeholder="Имя*"
-          {...register("first_name", {
-            ...NameRulesReg(),
-          })}
-          error={!!errors.first_name}
-          helperText={errors.first_name?.message}
-          InputProps={{
-            endAdornment: (
-              <IconButton
-                onClick={() => {
-                  resetField("first_name");
-                  setValue("first_name", "");
-                }}
-              >
-                <ClearIcon />
-              </IconButton>
-            ),
-          }}
+    // <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
+    <>
+      <p>Регистрация</p>
+      <ProgressBar progress={33.33} />
+      <div>* - поля обязательные для ввода</div>
+      <TextField
+        sx={{ width: "100%", borderColor: "rgba(12, 16, 56, 1)" }}
+        placeholder="Имя*"
+        {...register("first_name", {
+          ...NameRulesReg(),
+        })}
+        error={!!errors.first_name}
+        helperText={errors.first_name?.message}
+        InputProps={{
+          endAdornment: (
+            <IconButton
+              onClick={() => {
+                resetField("first_name");
+                setValue("first_name", "");
+              }}
+            >
+              <ClearIcon />
+            </IconButton>
+          ),
+        }}
+      />
+      <TextField
+        sx={{ width: "100%" }}
+        placeholder={"Фамилия*"}
+        {...register("last_name", {
+          ...NameRulesReg(),
+        })}
+        error={!!errors.last_name}
+        helperText={errors.last_name?.message}
+        InputProps={{
+          endAdornment: (
+            <IconButton
+              onClick={() => {
+                resetField("last_name");
+                setValue("last_name", "");
+              }}
+            >
+              <ClearIcon />
+            </IconButton>
+          ),
+        }}
+      />
+      <TextField
+        sx={{ width: "100%" }}
+        placeholder={"Отчество"}
+        {...register("patronymic", {
+          ...PatronymicRules(),
+        })}
+        error={!!errors.patronymic}
+        helperText={errors.patronymic?.message}
+        InputProps={{
+          endAdornment: (
+            <IconButton
+              onClick={() => {
+                resetField("patronymic");
+                setValue("patronymic", "");
+              }}
+            >
+              <ClearIcon />
+            </IconButton>
+          ),
+        }}
+      />
+      <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
+        <Checkbox
+          required
+          size="small"
+          // inputProps={{ "aria-label": "controlled" }}
+          onChange={handleCheckboxChange}
+          onClick={() => {}}
         />
-        <TextField
-          sx={{ width: "100%" }}
-          placeholder={"Фамилия*"}
-          {...register("last_name", {
-            ...NameRulesReg(),
-          })}
-          error={!!errors.last_name}
-          helperText={errors.last_name?.message}
-          InputProps={{
-            endAdornment: (
-              <IconButton
-                onClick={() => {
-                  resetField("last_name");
-                  setValue("last_name", "");
-                }}
-              >
-                <ClearIcon />
-              </IconButton>
-            ),
+        <Typography
+          sx={{
+            fontSize: "12px",
+            fontWeight: "400",
+            margin: "0",
+            padding: "0",
+            color: "rgba(12, 16, 56, 1)",
           }}
-        />
-        <TextField
-          sx={{ width: "100%" }}
-          placeholder={"Отчество"}
-          {...register("patronymic", {
-            ...PatronymicRules(),
-          })}
-          error={!!errors.patronymic}
-          helperText={errors.patronymic?.message}
-          InputProps={{
-            endAdornment: (
-              <IconButton
-                onClick={() => {
-                  resetField("patronymic");
-                  setValue("patronymic", "");
-                }}
-              >
-                <ClearIcon />
-              </IconButton>
-            ),
-          }}
-        />
-        <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
-          <Checkbox
-            required
-            size="small"
-            // inputProps={{ "aria-label": "controlled" }}
-            onChange={handleCheckboxChange}
-            onClick={() => {}}
-          />
-          <Typography
-            sx={{
-              fontSize: "12px",
-              fontWeight: "400",
-              margin: "0",
-              padding: "0",
-              color: "rgba(12, 16, 56, 1)",
-            }}
-          >
-            Согласие на обработку персональных данных
-          </Typography>
-        </div>
-        <Button
-          disabled={!isChecked || !isValid}
-          sx={{ width: "100%" }}
-          variant="contained"
-          type="submit"
         >
-          Далее
-        </Button>
-      </>
-    </AuthBoxForm>
+          Согласие на обработку персональных данных
+        </Typography>
+      </div>
+      <Button
+        disabled={!isChecked || !isValid}
+        sx={{ width: "100%" }}
+        variant="contained"
+        type="submit"
+        onClick={() => navigate("step-second")}
+      >
+        Далее
+      </Button>
+    </>
+    // </AuthBoxForm>
   );
 };
