@@ -1,9 +1,6 @@
 import { Dialog } from "@mui/material";
 import { AuthFormHeader } from "@/shared/components/authFormHeader/AuthFormHeader";
 import style from "./registerModel.module.scss";
-import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
-import { Dialog } from "@/shared/components/dialog/Dialog";
-
 import { Outlet } from "react-router-dom";
 
 export const RegisterModel = () => {

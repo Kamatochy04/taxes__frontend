@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { Button, IconButton, TextField } from "@mui/material";
-import { Button, IconButton, TextField } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
@@ -13,7 +12,7 @@ import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
 import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
 import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
 import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
-import { useSignupMutation } from "../api/signipHooks";
+import { useSignupMutation } from "@/features/signup/api/signipHooks";
 
 interface IDataForm2User {
   email: string | "";

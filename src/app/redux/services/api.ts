@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RootState } from "../store";
+// import { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://84.38.182.213:1337",

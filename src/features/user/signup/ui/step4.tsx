@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
-import { IConfirmCode, useSignupCodeMutation } from "../api/signipHooks";
 import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
+import {
+  IConfirmCode,
+  useSignupCodeMutation,
+} from "@/features/signup/api/signipHooks";
 
 export const Step4 = () => {
   const navigate = useNavigate();

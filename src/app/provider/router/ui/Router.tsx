@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
 import {
-  AuthModel,
   Basket,
   Finance,
   Offers,
@@ -12,15 +11,11 @@ import {
 } from "@/widgets";
 import { Main } from "@/pages/Main";
 import { RegisterModel } from "@/widgets/registerModel/ui/ModelRegister";
-import { FirstStep } from "@/features/auth/ui/FirstStep";
-import { SecondStep } from "@/features/auth/ui/SecondStep";
-import { Step1, Step2, Step3 } from "@/features/signup";
-import { Step4 } from "@/features/signup/ui/step4";
-import { Step5 } from "@/features/signup/ui/step5";
 import { FirstStep } from "@/features/user/auth/ui/FirstStep";
 import { SecondStep } from "@/features/user/auth/ui/SecondStep";
 import { Step1, Step2, Step3 } from "@/features/user/signup";
 import { Step4 } from "@/features/user/signup/ui/step4";
+import { Step5 } from "@/features/user/signup/ui/step5";
 
 export const Router = () => {
   return (

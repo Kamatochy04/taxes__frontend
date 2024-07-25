@@ -2,10 +2,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Button, IconButton, TextField } from "@mui/material";
 import { EmailRules } from "@/shared/validationRules/EmailValidation";
-import { useLoginMutation } from "../api/authApi";
 import { PasswordRules } from "@/shared/validationRules/PasswordValidation";
 import { useNavigate } from "react-router-dom";
 import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
+import { useLoginMutation } from "@/features/user/auth/api/authApi";
 
 interface FormData {
   email: string;
