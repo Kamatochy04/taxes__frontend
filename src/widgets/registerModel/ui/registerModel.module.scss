@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   &__window {
     position: relative;
     height: 800px;
@@ -42,6 +43,7 @@ h1 {
     color: #0c1038;
   }
 }
-
-.text {
+p {
+  font-size: 22px;
+  font-weight: 500;
 }

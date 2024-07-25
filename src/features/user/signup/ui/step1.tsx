@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import {
-  Box,
   Button,
   Checkbox,
   IconButton,
@@ -20,12 +19,9 @@ import {
 import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 import { useNavigate } from "react-router-dom";
 
-type Step1Props = {
-  nextStep: () => void;
-};
-
 export const Step1 = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const dispatch = useAppDispatch();
   const dataSelector = useAppSelector((state) => state.step1);
   const navigate = useNavigate();
   const handleCheckboxChange = (e: {
@@ -49,7 +45,6 @@ export const Step1 = () => {
     },
   });
 
-  const dispatch = useAppDispatch();
   const onSubmit = (data: DataRegisterUser) => {
     dispatch(setFormData(data));
     navigate("step-second");
@@ -58,10 +53,11 @@ export const Step1 = () => {
   return (
     <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
       <>
-        <div>* - поля обязательные для ввода</div>
+        <p>Регистрация</p>
         <ProgressBar progress={33.33} />
+        <div>* - поля обязательные для ввода</div>
         <TextField
-          sx={{ width: "100%" }}
+          sx={{ width: "100%", borderColor: "rgba(12, 16, 56, 1)" }}
           placeholder="Имя*"
           {...register("first_name", {
             ...NameRulesReg(),
@@ -123,18 +119,23 @@ export const Step1 = () => {
             ),
           }}
         />
-        {/* <FormControlLabel
-        sx={{ width: "100%", color: "red", fontSize: "12px" }}
-        control={ */}
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
           <Checkbox
             required
             size="small"
-            inputProps={{ "aria-label": "controlled" }}
+            // inputProps={{ "aria-label": "controlled" }}
             onChange={handleCheckboxChange}
             onClick={() => {}}
           />
-          <Typography sx={{ fontSize: "12px", margin: "0", padding: "0" }}>
+          <Typography
+            sx={{
+              fontSize: "12px",
+              fontWeight: "400",
+              margin: "0",
+              padding: "0",
+              color: "rgba(12, 16, 56, 1)",
+            }}
+          >
             Согласие на обработку персональных данных
           </Typography>
         </div>
@@ -148,21 +149,5 @@ export const Step1 = () => {
         </Button>
       </>
     </AuthBoxForm>
-    // <Box
-    //   component={"form"}
-    //   onSubmit={handleSubmit(onSubmit)}
-    //   sx={{
-    //     width: "100%",
-    //     marginBottom: "3rem",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-
-    //     gap: "30px",
-    //   }}
-    // >
-
-    // </Box>
   );
 };

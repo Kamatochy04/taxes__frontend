@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button, IconButton, TextField } from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
@@ -12,12 +13,9 @@ import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
 import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
 import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
 import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
+import { useSignupMutation } from "../api/signipHooks";
 
-type Step2Props = {
-  nextStep: () => void;
-};
-
-interface IDataUser {
+interface IDataForm2User {
   email: string | "";
   password: string | "";
   repeat_password: string | "";
@@ -27,7 +25,7 @@ interface IDataUser {
 export const Step2 = () => {
   const [vision, setVision] = useState(true);
   const navigate = useNavigate();
-
+  const [signup] = useSignupMutation();
   const passwordVision = useCallback(() => {
     setVision((prev) => !prev);
   }, []);
@@ -40,7 +38,7 @@ export const Step2 = () => {
     resetField,
     watch,
     formState: { errors, isValid },
-  } = useForm<IDataUser>({
+  } = useForm<IDataForm2User>({
     mode: "onBlur",
     defaultValues: {
       email: dataSelector.email || "",
@@ -56,33 +54,36 @@ export const Step2 = () => {
   const dataSekector = useAppSelector((state) => state.step1);
   const dispatch = useAppDispatch();
 
-  const onSubmit = (data: IDataUser) => {
-    const dataUser = { ...dataSekector, ...data };
-    dispatch(set2FormData(data));
-    fetch("api/dev/signup/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataUser),
-    })
-      .then((response) => response.json())
-      .then((date) => {
-        localStorage.setItem("dataUser", JSON.stringify(data));
-        localStorage.setItem("confirm_code_id", date.confirm_code_id);
-        navigate("step-third");
-      });
-    navigate("/step-third");
+  const onSubmit = (date: IDataForm2User) => {
+    const dataUser = { ...dataSekector, ...date };
+    dispatch(set2FormData(date));
+    signup(dataUser)
+      .then((response) => {
+        if (response.error) {
+          return console.log(response.error);
+        }
+
+        if (response.data) {
+          localStorage.setItem(
+            "confirm_code_id",
+            response.data.confirm_code_id
+          );
+          navigate("step-third");
+        } else {
+          alert("Пользватель с таким почтовым адресом уже зарегистрирован!");
+        }
+      })
+      .catch(console.log);
   };
 
   return (
     <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
       <>
+        <p>Регистрация</p>
         <ProgressBar progress={66.66} />
         <TextField
           sx={{ width: "100%" }}
-          // type="email"
-          placeholder={"Email*"}
+          placeholder={"Email"}
           {...register("email", { ...EmailRulesReg() })}
           error={!!errors.email}
           helperText={errors.email?.message}
@@ -90,7 +91,11 @@ export const Step2 = () => {
             endAdornment: (
               <IconButton
                 onClick={() => {
-                  resetField("email");
+                  if (dataSelector.email.length) {
+                    resetField("email");
+                    // register("email");
+                  }
+                  // resetField("email");
                 }}
               >
                 <ClearIcon />
@@ -100,7 +105,7 @@ export const Step2 = () => {
         />
         <TextField
           sx={{ width: "100%" }}
-          placeholder={"Пароль*"}
+          placeholder={"Пароль"}
           type={vision ? "password" : "text"}
           {...register("password", {
             ...PasswordRulesReg(),
@@ -114,20 +119,13 @@ export const Step2 = () => {
                 <IconButton onClick={passwordVision}>
                   {vision ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
-                <IconButton
-                  onClick={() => {
-                    resetField("password");
-                  }}
-                >
-                  <ClearIcon />
-                </IconButton>
               </>
             ),
           }}
         />
         <TextField
           sx={{ width: "100%" }}
-          placeholder={"Повторите пароль*"}
+          placeholder={"Повторите пароль"}
           {...register("repeat_password", {
             validate: (value: string) => {
               return value === password.current || "Пароли не совпадают";
@@ -144,20 +142,13 @@ export const Step2 = () => {
                 <IconButton onClick={passwordVision}>
                   {vision ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
-                <IconButton
-                  onClick={() => {
-                    resetField("repeat_password");
-                  }}
-                >
-                  <ClearIcon />
-                </IconButton>
               </>
             ),
           }}
         />
         <TextField
           sx={{ width: "100%" }}
-          placeholder={"Секретное слово*"}
+          placeholder={"Секретное слово"}
           {...register("secret_word", {
             ...SecretWord(),
           })}
