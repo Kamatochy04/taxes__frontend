@@ -18,6 +18,7 @@ import { FirstStep } from "@/features/auth/ui/FirstStep";
 import { SecondStep } from "@/features/auth/ui/SecondStep";
 import { Step1, Step2, Step3 } from "@/features/signup";
 import { Step4 } from "@/features/signup/ui/step4";
+import { Step5 } from "@/features/signup/ui/step5";
 
 export const Router = () => {
   return (
@@ -42,6 +43,10 @@ export const Router = () => {
             <Route
               path="step-second/step-third/step-fourth"
               element={<Step4 />}
+            />
+            <Route
+              path="step-second/step-third/step-fourth/step-five"
+              element={<Step5 />}
             />
           </Route>
         </Route>

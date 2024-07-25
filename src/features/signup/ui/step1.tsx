@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Step1 = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const dispatch = useAppDispatch();
   const dataSelector = useAppSelector((state) => state.step1);
   const navigate = useNavigate();
   const handleCheckboxChange = (e: {
@@ -44,7 +45,6 @@ export const Step1 = () => {
     },
   });
 
-  const dispatch = useAppDispatch();
   const onSubmit = (data: DataRegisterUser) => {
     dispatch(setFormData(data));
     navigate("step-second");
@@ -119,7 +119,7 @@ export const Step1 = () => {
             ),
           }}
         />
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
           <Checkbox
             required
             size="small"
@@ -127,7 +127,15 @@ export const Step1 = () => {
             onChange={handleCheckboxChange}
             onClick={() => {}}
           />
-          <Typography sx={{ fontSize: "12px", margin: "0", padding: "0" }}>
+          <Typography
+            sx={{
+              fontSize: "12px",
+              fontWeight: "400",
+              margin: "0",
+              padding: "0",
+              color: "rgba(12, 16, 56, 1)",
+            }}
+          >
             Согласие на обработку персональных данных
           </Typography>
         </div>
