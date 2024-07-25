@@ -1,12 +1,12 @@
-import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import logo from "@/shared/assets/img/easyTaxLogo.png";
+import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
 export const Step5 = () => {
   const navigate = useNavigate();
   return (
-    <AuthBoxForm>
+    <RegistrForm>
       <>
         <img style={{ marginTop: "124px" }} src={logo} />
         <Typography
@@ -38,6 +38,6 @@ export const Step5 = () => {
           Ок
         </Button>
       </>
-    </AuthBoxForm>
+    </RegistrForm>
   );
 };

@@ -2,11 +2,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { TextField, Button } from "@mui/material";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
-import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 import {
   IConfirmCode,
   useSignupCodeMutation,
 } from "@/features/signup/api/signipHooks";
+import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
 export const Step4 = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ export const Step4 = () => {
   };
 
   return (
-    <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
+    <RegistrForm onSubmit={handleSubmit(onSubmit)}>
       <>
         <p>Регистрация</p>
         <ProgressBar progress={100} />
@@ -63,6 +63,6 @@ export const Step4 = () => {
           Отправить
         </Button>
       </>
-    </AuthBoxForm>
+    </RegistrForm>
   );
 };

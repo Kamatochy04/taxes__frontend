@@ -5,14 +5,13 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
-
 import { useNavigate } from "react-router-dom";
 import { set2FormData } from "@/app/redux/register2Slice";
 import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
 import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
 import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
-import AuthBoxForm from "@/shared/components/authBoxForm/authBoxForm";
 import { useSignupMutation } from "@/features/signup/api/signipHooks";
+import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
 interface IDataForm2User {
   email: string | "";
@@ -76,7 +75,7 @@ export const Step2 = () => {
   };
 
   return (
-    <AuthBoxForm onSubmit={handleSubmit(onSubmit)}>
+    <RegistrForm onSubmit={handleSubmit(onSubmit)}>
       <>
         <p>Регистрация</p>
         <ProgressBar progress={66.66} />
@@ -174,6 +173,6 @@ export const Step2 = () => {
           Далее
         </Button>
       </>
-    </AuthBoxForm>
+    </RegistrForm>
   );
 };
