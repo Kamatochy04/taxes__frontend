@@ -147,7 +147,6 @@ export const Step1 = () => {
           sx={{ width: "100%" }}
           variant="contained"
           type="submit"
-          onClick={() => navigate("step-second")}
         >
           Далее
         </Button>

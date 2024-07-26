@@ -39,10 +39,10 @@ export const Step2 = () => {
   } = useForm<IDataForm2User>({
     mode: "onBlur",
     defaultValues: {
-      email: dataSelector.email || "",
-      password: dataSelector.password || "",
-      repeat_password: dataSelector.repeat_password || "",
-      secret_word: dataSelector.secret_word || "",
+      email: dataSelector.email,
+      password: dataSelector.password,
+      repeat_password: dataSelector.repeat_password,
+      secret_word: dataSelector.secret_word,
     },
   });
 
