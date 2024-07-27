@@ -2,8 +2,8 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import dataRegisterReducer from "./registerSlice";
 import SideBar from "./sideBarSlice";
 import { api } from "./services/api";
-import { listenerMiddleware } from "@/features/user/auth/midleware/auth";
 import dataRegister2Reducer from "./register2Slice";
+import { listenerMiddleware } from "@/features/user/midleware/auth";
 
 export const store = configureStore({
   reducer: {

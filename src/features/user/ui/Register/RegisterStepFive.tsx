@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "@/shared/assets/img/easyTaxLogo.png";
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
-export const Step5 = () => {
+export const RegisterStepFive = () => {
   const navigate = useNavigate();
   return (
     <RegistrForm>

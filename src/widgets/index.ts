@@ -2,7 +2,7 @@ export { Header } from "./header/index";
 export { Footer } from "./footer/index";
 export { Information } from "./information/index";
 export { Card } from "./card/index";
-export { AuthModel } from "./registerModel/index";
+export { MainModel } from "./mainModel/index";
 export { SideBar } from "./sideBar/index";
 
 export { Offers } from "./offers/index";

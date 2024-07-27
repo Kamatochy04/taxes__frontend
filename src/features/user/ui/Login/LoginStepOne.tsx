@@ -1,37 +1,25 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form, Formik } from "formik";
 
 import { Input } from "@/shared/components/input/Input";
 import { Button } from "@/shared/components/button/Button";
 import { Typography } from "@/shared/components/typography/Typography";
+import { LoginStepOneType } from "@/model";
 
-import { useLoginMutation } from "../api/authApi";
+import { useAuthUser } from "../../hook/useAuthUser";
 
 import style from "./auth.module.scss";
 
-interface FormData {
-  email: string;
-  password: string;
-}
-
-export const FirstStep = () => {
-  const [login] = useLoginMutation();
-  const navigate = useNavigate();
-
-  const onSubmit = async (data: FormData) => {
-    login(data)
-      .unwrap()
-      .then(() => {
-        navigate("/login/status");
-      })
-      .catch(console.log);
-    // navigate("/login/status");
-  };
+export const LoginStepOne = () => {
+  const { loginUser } = useAuthUser();
 
   return (
     <>
-      <Formik initialValues={{ email: "", password: "" }} onSubmit={onSubmit}>
-        {() => (
+      <Formik<LoginStepOneType>
+        initialValues={{ email: "", password: "" }}
+        onSubmit={loginUser}
+      >
+        {({ isValid }) => (
           <Form className={style.form}>
             <Typography variant={"h3-register"} tag={"h3"}>
               Авторизация
@@ -42,7 +30,7 @@ export const FirstStep = () => {
               type="password"
               placeholder="Введите пароль"
             />
-            <Button variant={"register"}>
+            <Button variant={"register"} disabled={!isValid}>
               <Typography variant="button-register" tag={"p"}>
                 Войти
               </Typography>
@@ -52,7 +40,7 @@ export const FirstStep = () => {
                 <Link to={"/register"}>Зарегистрироваться</Link>
               </Typography>
               <Typography variant="link-register" tag={"p"}>
-                Забыли пароль?
+                <Link to={"forget-password"}> Забыли пароль?</Link>
               </Typography>
             </div>
           </Form>

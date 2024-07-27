@@ -20,7 +20,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
-export const Step1 = () => {
+export const RegisterStepOne = () => {
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useAppDispatch();
   const dataSelector = useAppSelector((state) => state.step1);
