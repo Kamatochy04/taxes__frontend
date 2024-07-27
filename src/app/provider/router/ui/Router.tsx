@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import {
   Basket,
+  MainModel,
   Offers,
   Orders,
   PaymentMethods,
@@ -9,12 +10,16 @@ import {
   Support,
 } from "@/widgets";
 import { Main } from "@/pages/Main";
-import { RegisterModel } from "@/widgets/registerModel/ui/ModelRegister";
-import { FirstStep } from "@/features/user/auth/ui/FirstStep";
-import { SecondStep } from "@/features/user/auth/ui/SecondStep";
-import { Step1, Step2, Step3 } from "@/features/user/signup";
-import { Step4 } from "@/features/user/signup/ui/step4";
-import { Step5 } from "@/features/user/signup/ui/step5";
+import {
+  LoginStepOne,
+  LoginStepTwo,
+  RegisterStepFive,
+  RegisterStepFour,
+  RegisterStepOne,
+  RegisterStepThree,
+  RegisterStepTwo,
+} from "@/features";
+import { LoginForgetPassword } from "@/features/user/ui";
 
 export const Router = () => {
   return (
@@ -28,22 +33,17 @@ export const Router = () => {
           <Route path="basket" element={<Basket />} />
           <Route path="purchases" element={<Purchases />} />
           <Route path="support" element={<Support />} />
-          <Route path="login" element={<RegisterModel />}>
-            <Route index element={<FirstStep />} />
-            <Route path="status" element={<SecondStep />} />
+          <Route path="login" element={<MainModel />}>
+            <Route index element={<LoginStepOne />} />
+            <Route path="status" element={<LoginStepTwo />} />
+            <Route path="forget-password" element={<LoginForgetPassword />} />
           </Route>
-          <Route path="register" element={<RegisterModel />}>
-            <Route index element={<Step1 />} />
-            <Route path="step-second" element={<Step2 />} />
-            <Route path="step-second/step-third" element={<Step3 />} />
-            <Route
-              path="step-second/step-third/step-fourth"
-              element={<Step4 />}
-            />
-            <Route
-              path="step-second/step-third/step-fourth/step-five"
-              element={<Step5 />}
-            />
+          <Route path="register" element={<MainModel />}>
+            <Route index element={<RegisterStepOne />} />
+            <Route path="step-second" element={<RegisterStepTwo />} />
+            <Route path="step-third" element={<RegisterStepThree />} />
+            <Route path="step-fourth" element={<RegisterStepFour />} />
+            <Route path="step-five" element={<RegisterStepFive />} />
           </Route>
         </Route>
       </Routes>

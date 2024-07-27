@@ -10,8 +10,9 @@ import { set2FormData } from "@/app/redux/register2Slice";
 import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
 import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
 import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
-import { useSignupMutation } from "@/features/signup/api/signipHooks";
+
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
+import { useSignupMutation } from "../../api/userRegister";
 
 interface IDataForm2User {
   email: string | "";
@@ -20,7 +21,7 @@ interface IDataForm2User {
   secret_word: string | "";
 }
 
-export const Step2 = () => {
+export const RegisterStepTwo = () => {
   const [vision, setVision] = useState(true);
   const navigate = useNavigate();
   const [signup] = useSignupMutation();

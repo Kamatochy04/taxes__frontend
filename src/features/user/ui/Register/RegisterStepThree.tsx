@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
-export const Step3 = () => {
+export const RegisterStepThree = () => {
   const navigate = useNavigate();
 
   return (

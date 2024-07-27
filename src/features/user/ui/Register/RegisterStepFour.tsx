@@ -2,13 +2,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { TextField, Button } from "@mui/material";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
-import {
-  IConfirmCode,
-  useSignupCodeMutation,
-} from "@/features/signup/api/signipHooks";
-import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
-export const Step4 = () => {
+import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
+import { IConfirmCode, useSignupCodeMutation } from "../../api/userRegister";
+
+export const RegisterStepFour = () => {
   const navigate = useNavigate();
   const [signupCode] = useSignupCodeMutation();
   const {
