@@ -24,6 +24,15 @@ export const Step4 = () => {
   // const isFormValid = Object.keys(errors).length === 0;
   // const onSubmit: SubmitHandler<IConfirmCode> = (data: IConfirmCode) => {
   const onSubmit = (data: IConfirmCode) => {
+    const confirm_code_id = localStorage.getItem("confirm_code_id");
+    // const date = {
+    //   code: data.code,
+    //   id: confirm_code_id,
+    // };
+    if (confirm_code_id) {
+      data.confirm_code_id = confirm_code_id;
+    }
+
     signupCode(data).then((response) => {
       if (response.error) {
         // Object.defineProperty(errors.code, "message", {

@@ -34,6 +34,7 @@ export const {
 
 export interface IConfirmCode {
   code: string;
+  confirm_code_id?: string;
 }
 
 export interface IUser {
@@ -44,13 +45,11 @@ export interface IUser {
   patronymic: string;
 }
 
-const confirm_code_id = localStorage.getItem("confirm_code_id");
-
 export const signupCodeApi = api.injectEndpoints({
   endpoints: (builder) => ({
     signupCode: builder.mutation<IUser, IConfirmCode>({
       query: (data) => ({
-        url: `api/dev/confirm_code/${data.code}/${confirm_code_id}/`,
+        url: `api/dev/confirm_code/${data.code}/${data.confirm_code_id}/`,
         method: "POST",
       }),
     }),
