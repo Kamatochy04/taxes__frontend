@@ -50,7 +50,7 @@ export const signupCodeApi = api.injectEndpoints({
   endpoints: (builder) => ({
     signupCode: builder.mutation<IUser, IConfirmCode>({
       query: (data) => ({
-        url: `api/dev/confirm_code/${Number(data.code)}/${confirm_code_id}/`,
+        url: `api/dev/confirm_code/${data.code}/${confirm_code_id}/`,
         method: "POST",
       }),
     }),

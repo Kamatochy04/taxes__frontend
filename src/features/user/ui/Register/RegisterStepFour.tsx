@@ -20,7 +20,8 @@ export const RegisterStepFour = () => {
     },
   });
   // const isFormValid = Object.keys(errors).length === 0;
-  const onSubmit: SubmitHandler<IConfirmCode> = (data) => {
+  // const onSubmit: SubmitHandler<IConfirmCode> = (data: IConfirmCode) => {
+  const onSubmit = (data: IConfirmCode) => {
     signupCode(data).then((response) => {
       if (response.error) {
         // Object.defineProperty(errors.code, "message", {
