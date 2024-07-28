@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button, IconButton, TextField } from "@mui/material";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -37,7 +37,6 @@ export const RegisterStepTwo = () => {
     resetField,
     watch,
     setValue,
-
     formState: { errors, isValid, isDirty },
   } = useForm<IDataForm2User>({
     mode: "onBlur",
@@ -53,6 +52,18 @@ export const RegisterStepTwo = () => {
   password.current = watch("password", "");
   const dataSekector = useAppSelector((state) => state.step1);
   const dispatch = useAppDispatch();
+
+  const valuePassword = watch("password");
+  const valueRepeatPassword = watch("password");
+
+  useEffect(() => {
+    if (valuePassword.length > 30) {
+      setValue("password", valuePassword.substring(0, 30));
+    }
+    if (valueRepeatPassword.length > 30) {
+      setValue("repeat_password", valueRepeatPassword.substring(0, 30));
+    }
+  }, [valuePassword, valueRepeatPassword]);
 
   const onSubmit = (date: IDataForm2User) => {
     const dataUser = { ...dataSekector, ...date };
