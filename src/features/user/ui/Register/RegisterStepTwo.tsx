@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { set2FormData } from "@/app/redux/register2Slice";
 import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
 import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
-import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
+import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
 
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 import { useSignupMutation } from "../../api/userRegister";
@@ -36,7 +36,9 @@ export const RegisterStepTwo = () => {
     handleSubmit,
     resetField,
     watch,
-    formState: { errors, isValid },
+    setValue,
+
+    formState: { errors, isValid, isDirty },
   } = useForm<IDataForm2User>({
     mode: "onBlur",
     defaultValues: {
@@ -49,7 +51,6 @@ export const RegisterStepTwo = () => {
 
   const password = useRef({});
   password.current = watch("password", "");
-  // const isFormValid = Object.keys(errors).length === 0;
   const dataSekector = useAppSelector((state) => state.step1);
   const dispatch = useAppDispatch();
 
@@ -90,11 +91,8 @@ export const RegisterStepTwo = () => {
             endAdornment: (
               <IconButton
                 onClick={() => {
-                  if (dataSelector.email.length) {
-                    resetField("email");
-                    // register("email");
-                  }
-                  // resetField("email");
+                  resetField("email");
+                  setValue("email", "");
                 }}
               >
                 <ClearIcon />
@@ -149,7 +147,7 @@ export const RegisterStepTwo = () => {
           sx={{ width: "100%" }}
           placeholder={"Секретное слово"}
           {...register("secret_word", {
-            ...SecretWord(),
+            ...SecretWordRules(),
           })}
           error={!!errors.secret_word}
           helperText={errors.secret_word?.message}
@@ -158,6 +156,7 @@ export const RegisterStepTwo = () => {
               <IconButton
                 onClick={() => {
                   resetField("secret_word");
+                  setValue("secret_word", "");
                 }}
               >
                 <ClearIcon />
@@ -169,7 +168,7 @@ export const RegisterStepTwo = () => {
           sx={{ width: "100%" }}
           variant="contained"
           type="submit"
-          disabled={!isValid}
+          disabled={!isValid || !isDirty}
         >
           Далее
         </Button>
