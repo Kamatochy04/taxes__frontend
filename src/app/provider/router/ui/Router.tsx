@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import {
   Basket,
   MainModel,
+  Finance,
   Offers,
   Orders,
   PaymentMethods,
@@ -27,7 +28,7 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route path="offers" element={<Offers />} />
-          {/* <Route path="finance" element={<Finance />} /> */}
+          <Route path="finance" element={<Finance />} />
           <Route path="orders" element={<Orders />} />
           <Route path="payment-methods" element={<PaymentMethods />} />
           <Route path="basket" element={<Basket />} />

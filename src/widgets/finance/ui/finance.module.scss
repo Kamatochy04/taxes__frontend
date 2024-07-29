@@ -7,27 +7,36 @@
 
 .card {
   width: 608px;
-  height: 103px;
+  height: 245px;
+  border: 1px;
+  border-color: #592DD1;
   background: #4D648D;
   border-radius: 20px;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 32px;
+}
+
+.input {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
 }
 
 .finance__text {
+  font-size: 20px;
   color: #fff;
-  padding-left: 32px;
 }
 
 .field {
   width: 224px;
   display: flex;
   align-items: center;
+  gap: 32px;
 }
 
-input, output {
+input {
   width: 96px;
   height:39px;
   background: #fff;
