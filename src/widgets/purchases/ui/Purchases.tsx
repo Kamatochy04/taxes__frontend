@@ -1,9 +1,15 @@
 import style from "./purchases.module.scss";
+import { Card, Path } from "@/widgets";
 
 export const Purchases = () => {
   return (
-    <div className={style.purchases}>
-      <div className={style.card}>Карточка товара</div>
-    </div>
+    <>
+      <Path />
+      <section className={style.purchases}>
+        <Card />
+        <Card />
+        <Card />
+      </section>
+    </>
   );
 };

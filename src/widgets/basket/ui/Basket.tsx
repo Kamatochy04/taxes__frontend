@@ -1,9 +1,10 @@
-import { Card } from "@/widgets";
+import { Card, Path } from "@/widgets";
 import style from "./basket.module.scss";
 
 export const Basket = () => {
   return (
     <>
+      <Path />
       <section className={style.cards}>
         <Card />
         <Card />
@@ -11,12 +12,8 @@ export const Basket = () => {
       </section>
 
       <div className={style.blockButton}>
-        <button className={style.clear}>
-          Очистить
-        </button>
-        <button className={style.order}>
-          Заказать
-        </button>
+        <button className={style.clear}>Очистить</button>
+        <button className={style.order}>Заказать</button>
       </div>
     </>
   );
