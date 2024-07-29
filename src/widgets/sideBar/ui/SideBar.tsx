@@ -26,6 +26,7 @@ export const SideBar = () => {
           to={"offers"}
           className={style.bar__item}
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
+          state={{from: "Мои предложения"}}
         >
           <CardTravelIcon /> Мои предложения
         </NavLink>
@@ -33,6 +34,7 @@ export const SideBar = () => {
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
           to={"finance"}
           className={style.bar__item}
+          state={{from: "Мои финансы"}}
         >
           <CurrencyExchangeIcon />
           Мои финансы
@@ -41,6 +43,7 @@ export const SideBar = () => {
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
           to={"orders"}
           className={style.bar__item}
+          state={{from: "Текущие заказы"}}
         >
           <FactCheckOutlinedIcon />
           Текущие заказы
@@ -49,6 +52,7 @@ export const SideBar = () => {
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
           to={"payment-methods"}
           className={style.bar__item}
+          state={{from: "Способы оплаты"}}
         >
           <PaymentIcon />
           Способы оплаты
@@ -57,6 +61,7 @@ export const SideBar = () => {
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
           to={"basket"}
           className={style.bar__item}
+          state={{from: "Моя корзина"}}
         >
           <ShoppingCartOutlinedIcon />
           Моя корзина
@@ -65,6 +70,7 @@ export const SideBar = () => {
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
           to={"purchases"}
           className={style.bar__item}
+          state={{from: "Мои покупки"}}
         >
           <SavingsOutlinedIcon />
           Мои покупки
@@ -73,6 +79,7 @@ export const SideBar = () => {
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
           to={""}
           className={style.bar__item}
+          state={{from: "Моя учетная запись"}}
         >
           <AccountCircleOutlinedIcon />
           Моя учетная запись
@@ -81,6 +88,7 @@ export const SideBar = () => {
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
           to={"support"}
           className={style.bar__item}
+          state={{from: "Поддержка"}}
         >
           <ManageAccountsOutlinedIcon />
           Поддержка
