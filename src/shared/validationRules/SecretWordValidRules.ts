@@ -13,11 +13,11 @@ type SecretWordRules = {
   };
   pattern: {
     value: RegExp;
-    message: "Допускается вводить только русские буквы и символ '-'";
+    message: "Допускается вводить только русские буквы";
   };
 };
 
-export function SecretWord(): SecretWordRules {
+export function SecretWordRules(): SecretWordRules {
   return {
     required: {
       value: true,
@@ -32,8 +32,8 @@ export function SecretWord(): SecretWordRules {
       message: "Поле должно содержать от 1 до 30 символов",
     },
     pattern: {
-      value: /^[А-Яа-я](?!.*-.*-)(?!.*\s)(?!^-)(?!.*-$)[А-Яа-я-]*$/,
-      message: "Допускается вводить только русские буквы и символ '-'",
+      value: /^[А-Яа-я]*$/,
+      message: "Допускается вводить только русские буквы",
     },
   };
 }

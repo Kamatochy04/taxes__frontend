@@ -3,4 +3,11 @@
   border-radius: 8px;
   width: 100%;
   height: 56px;
+  color: #ffffff;
+  &:disabled {
+    background: none;
+    color: #000000;
+    opacity: 0.5;
+    border: 1px solid #000;
+  }
 }
