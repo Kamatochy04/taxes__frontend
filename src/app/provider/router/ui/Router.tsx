@@ -4,7 +4,6 @@ import {
   Basket,
   MainModel,
   Finance,
-  Finance,
   Offers,
   Orders,
   PaymentMethods,
