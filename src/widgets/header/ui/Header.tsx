@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import { TextField } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ViewHeadlineSharpIcon from "@mui/icons-material/ViewHeadlineSharp";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -11,6 +10,7 @@ import { Container } from "@/shared/components/container/Container";
 import style from "./header.module.scss";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { toggleSideBar } from "@/app/redux/sideBarSlice";
+import { CostomInput } from "@/shared/components/costomInput/CostomInput";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -30,26 +30,15 @@ export const Header = () => {
               <LocationOnOutlinedIcon />
               <p>Минск</p>
             </div>
-            <div
-              className={style.catalog}
+            <div className={style.catalog}>Каталог</div>
+            <ViewHeadlineSharpIcon
               onClick={() => {
-                console.log(state);
                 dispathc(toggleSideBar());
               }}
-            >
-              Каталог
-            </div>
-            <ViewHeadlineSharpIcon sx={{ color: "#fff" }} />
+              sx={{ color: "#fff", cursor: "pointer" }}
+            />
           </div>
-          <TextField
-            style={{
-              marginLeft: "112px",
-              width: "600px",
-              background: " #fff",
-              borderRadius: "50px",
-            }}
-            placeholder="Поиск"
-          />
+          <CostomInput variant="header" />
           <div className={style.header__login}>
             <ShoppingCartIcon />
             <div className={style.login} onClick={() => navigate("/login")}>

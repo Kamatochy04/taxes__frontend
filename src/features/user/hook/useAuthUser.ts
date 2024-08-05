@@ -11,7 +11,8 @@ export const useAuthUser = () => {
       .unwrap()
       .then(() => {
         navigate("/login/status");
-      });
+      })
+      .catch(console.log);
   };
 
   return {

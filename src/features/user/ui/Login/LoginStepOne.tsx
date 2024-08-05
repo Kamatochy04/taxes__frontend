@@ -10,6 +10,33 @@ import { useAuthUser } from "../../hook/useAuthUser";
 
 import style from "./auth.module.scss";
 
+import * as yup from "yup";
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Неверный формат email")
+    .required("Email обязателен"),
+  password: yup
+    .string()
+    .required("Пароль обязателен")
+    .min(8, "Пароль должен быть не менее 8 символов")
+    .max(30, "Пароль должен быть не больше 30 символов")
+    .test(
+      "no-repeating-chars",
+      "Пароль не может содержать один и тот же символ три раза подряд",
+      function (value) {
+        if (!value) return true;
+        for (let i = 0; i < value.length - 3; i++) {
+          if (value[i] === value[i + 1] && value[i] === value[i + 2]) {
+            return false;
+          }
+        }
+        return true;
+      }
+    ),
+});
+
 export const LoginStepOne = () => {
   const { loginUser } = useAuthUser();
 
@@ -18,19 +45,19 @@ export const LoginStepOne = () => {
       <Formik<LoginStepOneType>
         initialValues={{ email: "", password: "" }}
         onSubmit={loginUser}
+        validationSchema={validationSchema}
       >
-        {({ isValid }) => (
+        {({ isValid, dirty, isSubmitting }) => (
           <Form className={style.form}>
             <Typography variant={"h3-register"} tag={"h3"}>
               Авторизация
             </Typography>
-            <Input name={"email"} type="email" placeholder="Введите эл.почт" />
-            <Input
-              name={"password"}
-              type="password"
-              placeholder="Введите пароль"
-            />
-            <Button variant={"register"} disabled={!isValid}>
+            <Input name={"email"} type="email" placeholder="Email" />
+            <Input name={"password"} type="password" placeholder="Пароль" />
+            <Button
+              variant={"register"}
+              disabled={!isValid || !dirty || isSubmitting}
+            >
               <Typography variant="button-register" tag={"p"}>
                 Войти
               </Typography>

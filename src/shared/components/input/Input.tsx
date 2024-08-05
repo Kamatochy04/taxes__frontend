@@ -19,9 +19,6 @@ type InputProps = ComponentProps<"input"> &
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, name, type, disabled, error, errorMessage, ok, ...props }, ref) => {
-    // const [showPassword, setShowPassword] = useState(true);
-    // const [inputType, setInputType] = useState(type);
-
     const className = cx("input", { err: error, ok: ok });
 
     return (
