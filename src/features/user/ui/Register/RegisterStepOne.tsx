@@ -6,17 +6,15 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { DataRegisterUser, setFormData } from "@/app/redux/registerSlice";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
-
 import {
   NameRulesReg,
   PatronymicRules,
 } from "@/shared/validationRules/NameValidRulesRegistr";
-
 import { useNavigate } from "react-router-dom";
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 
@@ -35,16 +33,33 @@ export const RegisterStepOne = () => {
     register,
     handleSubmit,
     resetField,
+    watch,
     formState: { errors, isValid },
     setValue,
   } = useForm<DataRegisterUser>({
     mode: "onBlur",
     defaultValues: {
-      first_name: dataSelector.first_name || "",
-      last_name: dataSelector.last_name || "",
-      patronymic: dataSelector.patronymic || "",
+      first_name: dataSelector.first_name,
+      last_name: dataSelector.last_name,
+      patronymic: dataSelector.patronymic,
     },
   });
+
+  const valueFirstName = watch("first_name");
+  const valueLastName = watch("last_name");
+  const valuePatronymic = watch("patronymic");
+
+  useEffect(() => {
+    if (valueFirstName.length > 30) {
+      setValue("first_name", valueFirstName.substring(0, 30));
+    }
+    if (valueLastName.length > 30) {
+      setValue("last_name", valueLastName.substring(0, 30));
+    }
+    if (valuePatronymic.length > 30) {
+      setValue("patronymic", valuePatronymic.substring(0, 30));
+    }
+  }, [valueFirstName, valueLastName, valuePatronymic]);
 
   const onSubmit = (data: DataRegisterUser) => {
     console.log("asdf");
@@ -126,7 +141,6 @@ export const RegisterStepOne = () => {
           <Checkbox
             required
             size="small"
-            // inputProps={{ "aria-label": "controlled" }}
             onChange={handleCheckboxChange}
             onClick={() => {}}
           />

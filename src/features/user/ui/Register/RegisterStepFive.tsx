@@ -8,7 +8,17 @@ export const RegisterStepFive = () => {
   return (
     <RegistrForm>
       <>
-        <img style={{ marginTop: "124px" }} src={logo} />
+        <img style={{ marginTop: "48px" }} src={logo} />
+        <Typography
+          sx={{
+            marginTop: "36px",
+            fontWeight: "500",
+            fontSize: "20px",
+            color: "rgba(12, 16, 56, 1)",
+          }}
+        >
+          Спасибо!
+        </Typography>
         <Typography
           sx={{
             fontWeight: "500",
@@ -19,15 +29,16 @@ export const RegisterStepFive = () => {
           Регистрация выполнена успешно
         </Typography>
 
-        <Typography
-          sx={{
+        <p
+          style={{
             fontWeight: "400",
             fontSize: "18px",
             color: "rgba(12, 16, 56, 1)",
+            textAlign: "center",
           }}
         >
-          Для уточнения данных перейдите в профиль
-        </Typography>
+          Для уточнения личных данных <br /> перейдите в профиль
+        </p>
         <Button
           sx={{ width: "100%" }}
           onClick={() => {

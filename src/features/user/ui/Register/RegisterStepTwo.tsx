@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button, IconButton, TextField } from "@mui/material";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { set2FormData } from "@/app/redux/register2Slice";
 import { EmailRulesReg } from "@/shared/validationRules/EmailValidRulesRegistr";
 import { PasswordRulesReg } from "@/shared/validationRules/PaswordValidRulesRegistr";
-import { SecretWord } from "@/shared/validationRules/SecretWordValidRules";
+import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
 
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 import { useSignupMutation } from "../../api/userRegister";
@@ -36,7 +36,8 @@ export const RegisterStepTwo = () => {
     handleSubmit,
     resetField,
     watch,
-    formState: { errors, isValid },
+    setValue,
+    formState: { errors, isValid, isDirty },
   } = useForm<IDataForm2User>({
     mode: "onBlur",
     defaultValues: {
@@ -49,9 +50,20 @@ export const RegisterStepTwo = () => {
 
   const password = useRef({});
   password.current = watch("password", "");
-  // const isFormValid = Object.keys(errors).length === 0;
   const dataSekector = useAppSelector((state) => state.step1);
   const dispatch = useAppDispatch();
+
+  const valuePassword = watch("password");
+  const valueRepeatPassword = watch("password");
+
+  useEffect(() => {
+    if (valuePassword.length > 30) {
+      setValue("password", valuePassword.substring(0, 30));
+    }
+    if (valueRepeatPassword.length > 30) {
+      setValue("repeat_password", valueRepeatPassword.substring(0, 30));
+    }
+  }, [valuePassword, valueRepeatPassword]);
 
   const onSubmit = (date: IDataForm2User) => {
     const dataUser = { ...dataSekector, ...date };
@@ -90,11 +102,8 @@ export const RegisterStepTwo = () => {
             endAdornment: (
               <IconButton
                 onClick={() => {
-                  if (dataSelector.email.length) {
-                    resetField("email");
-                    // register("email");
-                  }
-                  // resetField("email");
+                  resetField("email");
+                  setValue("email", "");
                 }}
               >
                 <ClearIcon />
@@ -149,7 +158,7 @@ export const RegisterStepTwo = () => {
           sx={{ width: "100%" }}
           placeholder={"Секретное слово"}
           {...register("secret_word", {
-            ...SecretWord(),
+            ...SecretWordRules(),
           })}
           error={!!errors.secret_word}
           helperText={errors.secret_word?.message}
@@ -158,6 +167,7 @@ export const RegisterStepTwo = () => {
               <IconButton
                 onClick={() => {
                   resetField("secret_word");
+                  setValue("secret_word", "");
                 }}
               >
                 <ClearIcon />
@@ -169,7 +179,7 @@ export const RegisterStepTwo = () => {
           sx={{ width: "100%" }}
           variant="contained"
           type="submit"
-          disabled={!isValid}
+          disabled={!isValid || !isDirty}
         >
           Далее
         </Button>

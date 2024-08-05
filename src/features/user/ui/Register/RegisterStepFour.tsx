@@ -1,14 +1,17 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { TextField, Button } from "@mui/material";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
-
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 import { IConfirmCode, useSignupCodeMutation } from "../../api/userRegister";
+import Timer from "@/widgets/timer/Timer";
+import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
+import { ConfirmCodeValidRules } from "@/shared/validationRules/ConfirmCodeValidRules";
 
 export const RegisterStepFour = () => {
   const navigate = useNavigate();
   const [signupCode] = useSignupCodeMutation();
+
   const {
     register,
     handleSubmit,
@@ -19,16 +22,16 @@ export const RegisterStepFour = () => {
       code: undefined || "",
     },
   });
-  // const isFormValid = Object.keys(errors).length === 0;
-  // const onSubmit: SubmitHandler<IConfirmCode> = (data: IConfirmCode) => {
+
   const onSubmit = (data: IConfirmCode) => {
+    const confirm_code_id = localStorage.getItem("confirm_code_id");
+
+    if (confirm_code_id) {
+      data.confirm_code_id = confirm_code_id;
+    }
+
     signupCode(data).then((response) => {
       if (response.error) {
-        // Object.defineProperty(errors.code, "message", {
-        //   value: response.error.data.details,
-        // });
-
-        // errors.code = response.error.data.details;
         return console.log(response.error);
       }
       if (response.data) {
@@ -47,12 +50,13 @@ export const RegisterStepFour = () => {
         <p>Введите код, отправленный на e-mail</p>
         <TextField
           autoFocus
-          {...register("code", { required: "Поле обязательно для заполнения" })}
+          {...register("code", { ...ConfirmCodeValidRules() })}
           sx={{ width: "100%" }}
           placeholder="Введите код"
           error={!!errors.code}
           helperText={errors.code?.message}
         />
+
         <Button
           sx={{ width: "100%" }}
           variant="contained"
@@ -61,6 +65,7 @@ export const RegisterStepFour = () => {
         >
           Отправить
         </Button>
+        <Timer />
       </>
     </RegistrForm>
   );

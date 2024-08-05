@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 import { Footer, Header, SideBar } from "@/widgets";
 
-import { Container } from "@/shared/components/container/Container";
+import { ContainerField } from "@/shared/components/container/ContainerField";
 
 import style from "./main.module.scss";
 
@@ -12,9 +12,9 @@ export const Main = () => {
       <Header />
       <section className={style.main}>
         <SideBar />
-        <Container>
+        <ContainerField>
           <Outlet />
-        </Container>
+        </ContainerField>
       </section>
 
       <Footer />
