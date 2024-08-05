@@ -1,0 +1,33 @@
+.wrapper {
+  position: relative;
+}
+
+.header {
+  border-radius: 40px;
+  width: 608px;
+  height: 42px;
+  margin-left: 110px;
+
+  input {
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    padding: 5px 45px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+  }
+}
+
+.search {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  left: 15px;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -17,7 +17,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         disabled={disabled}
         ref={ref}
-        className={`${style[variant]} ${style.button}`}
+        className={`${style[variant]} ${style.button} ${
+          disabled && style.disabled
+        }`}
         {...props}
       >
         {children}

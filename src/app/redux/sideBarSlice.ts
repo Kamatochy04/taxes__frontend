@@ -4,7 +4,7 @@ type SideState = {
 };
 
 const initialState: SideState = {
-  isShow: true,
+  isShow: false,
 };
 
 export const SideBarSlice = createSlice({
