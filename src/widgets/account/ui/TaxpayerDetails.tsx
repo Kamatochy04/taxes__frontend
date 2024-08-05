@@ -51,9 +51,11 @@ export const TaxpayerDetails = () => {
                   name="сategory"
                   as="select"
                 >
-                  <option value="red">Red</option>
-                  <option value="green">Green</option>
-                  <option value="blue">Blue</option>
+                  <option value="red">Ремесленная деятельность</option>
+                  <option value="green">Видеосъемка событий</option>
+                  <option value="blue">Нанесение аквагрима</option>
+                  <option value="blue">Репетиторство</option>
+                  <option value="blue">Уход за взрослыми и детьми</option>
                 </Field>
                 <div className={style.card__Line}>
                   <Button type="submit" variant={"text"} disabled={!isValid}>

@@ -35,31 +35,31 @@ export const accountApi = api.injectEndpoints({
   endpoints: (builder) => ({
     Taxpayer: builder.mutation<ResponsData, TaxpayerData>({
       query: (body: TaxpayerData) => ({
-        url: "api/dev/",
-        method: "POST",
+        url: "api/dev/users/me/",
+        method: "PATCH",
         body,
       }),
     }),
 
     Passport: builder.mutation<ResponsData, PassportData>({
       query: (body: PassportData) => ({
-        url: "api/dev/",
-        method: "POST",
+        url: "api/dev/users/me/",
+        method: "PATCH",
         body,
       }),
     }),
 
     Personal: builder.mutation<ResponsData, PersonalData>({
       query: (body: PersonalData) => ({
-        url: "api/dev/",
-        method: "POST",
+        url: "api/dev/users/me/",
+        method: "PATCH",
         body,
       }),
     }),
 
     Secret: builder.mutation<ResponsData, Secret>({
       query: (_secret_word: Secret) => ({
-        url: "api/dev/",
+        url: "api/dev/users/me/",
         method: "DELETE",
       }),
     }),
