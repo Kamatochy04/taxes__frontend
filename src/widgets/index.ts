@@ -13,3 +13,4 @@ export { Basket } from "./basket/index";
 export { Purchases } from "./purchases/index";
 export { Support } from "./support/index";
 export { Path } from "./path/index";
+export { Account } from "./account/index";

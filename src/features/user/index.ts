@@ -9,3 +9,6 @@ export {
   RegisterStepFour,
   RegisterStepFive,
 } from "./ui/index";
+
+// login delete
+export { DeletUserStepOne, DeletUserStepTwo, DeletUserStepThree } from "./ui/index";

@@ -1,0 +1,75 @@
+.account {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.link_account_delete {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.card {
+  width: 608px;
+  height: 298px;
+  background: #4D648D;
+  border: 1px;
+  border-color: #592DD1;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    font-size: 22px;
+    color: #ffffff;
+  }
+
+  &__text {
+    font-size: 20px;
+    color: #0C1038;
+  }
+
+  &__input {
+    width: 224px;
+    height: 39px;
+    padding: 8px;
+    gap: 10px;
+    border-radius: 8px;
+    background: #FFF;
+    margin-right: 40px;
+    font-size: 20px;
+    &__min {
+      width: 96px;
+      margin-right: 32px;
+    }
+  }
+
+  &__Fild {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__Column{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__Line {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  &__delete {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 30px;
+  }
+}
+

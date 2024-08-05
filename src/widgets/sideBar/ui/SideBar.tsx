@@ -77,7 +77,7 @@ export const SideBar = () => {
         </NavLink>
         <NavLink
           style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
-          to={""}
+          to={"account"}
           className={style.bar__item}
           state={{from: "Моя учетная запись"}}
         >

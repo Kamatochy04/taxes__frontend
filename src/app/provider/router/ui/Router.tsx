@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import {
   Basket,
+  Account,
   MainModel,
   Finance,
   Offers,
@@ -12,6 +13,9 @@ import {
 } from "@/widgets";
 import { Main } from "@/pages/Main";
 import {
+  DeletUserStepOne,
+  DeletUserStepTwo,
+  DeletUserStepThree,
   LoginStepOne,
   LoginStepTwo,
   RegisterStepFive,
@@ -34,6 +38,12 @@ export const Router = () => {
           <Route path="basket" element={<Basket />} />
           <Route path="purchases" element={<Purchases />} />
           <Route path="support" element={<Support />} />
+          <Route path="account" element={<Account />} />
+          <Route path="delete-account" element={<MainModel />}>
+            <Route index element={<DeletUserStepOne />} />
+            <Route path="check-mail" element={<DeletUserStepTwo />} />
+            <Route path="status" element={<DeletUserStepThree />} />
+          </Route>
           <Route path="login" element={<MainModel />}>
             <Route index element={<LoginStepOne />} />
             <Route path="status" element={<LoginStepTwo />} />
