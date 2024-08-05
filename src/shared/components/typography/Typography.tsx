@@ -1,8 +1,12 @@
 import style from "./typography.module.scss";
 
 type TypographyVariant =
+  | "subscribe-input"
+  | "link-account"
   | "button-register"
   | "h3-register"
+  | "h3-login_delete"
+  | "h4-login_delete"
   | "link-register"
   | "subscribe-text"
   | "ghost-text"

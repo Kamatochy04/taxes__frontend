@@ -9,10 +9,39 @@
   color: #000000;
 }
 
+.h3-login_delete {
+  font-weight: 500;
+  font-size: 22px;
+  color: #0C1038;
+}
+
+.h4-login_delete {
+  font-weight: 400;
+  font-size: 20px;
+  color: #0C1038;
+  text-align: center;
+}
+
 .link-register {
   font-weight: 400;
   font-size: 12px;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #0c1038;
+}
+
+.link-account {
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #0c1038;
+}
+
+.subscribe-input {
+  padding: 8px 0;
+  width: 224px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 20px;
 }
