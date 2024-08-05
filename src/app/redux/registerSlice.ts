@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export type DataRegisterUser = {
   first_name: string;
   last_name: string;
-  patronymic?: string;
+  patronymic: string;
 };
 
 const initialState: DataRegisterUser = {

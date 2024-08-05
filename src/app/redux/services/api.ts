@@ -15,6 +15,6 @@ const baseQuery = fetchBaseQuery({
 export const api = createApi({
   reducerPath: "spitApi",
   baseQuery,
-  refetchOnMountOrArgChange: true,
+  refetchOnMountOrArgChange: true, //позволяет принудительно перезагружать запрос при монтировании
   endpoints: () => ({}),
 });
