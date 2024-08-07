@@ -31,8 +31,13 @@ type Secret = {
 
 //Вызов injectEndpoints внедрит конечные точки в исходный API,
 //но также вернет вам тот же API с правильными типами для этих конечных точек.
-export const accountApi = api.injectEndpoints({
+export const accountApi = api.injectEndpoints({  
   endpoints: (builder) => ({
+
+    AddDataUser: builder.query({
+      query: () => "api/dev/users/me/",
+    }),
+
     Taxpayer: builder.mutation<ResponsData, TaxpayerData>({
       query: (body: TaxpayerData) => ({
         url: "api/dev/users/me/",
@@ -67,7 +72,7 @@ export const accountApi = api.injectEndpoints({
   }),
 });
 
-export const { useTaxpayerMutation, usePassportMutation, usePersonalMutation, useSecretMutation } = accountApi;
+export const { useAddDataUserQuery, useTaxpayerMutation, usePassportMutation, usePersonalMutation, useSecretMutation } = accountApi;
 
 export const {
   endpoints: { Taxpayer, Passport, Personal, Secret },

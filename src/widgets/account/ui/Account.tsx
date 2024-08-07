@@ -3,8 +3,12 @@ import style from "./account.module.scss";
 import { TaxpayerDetails } from "./TaxpayerDetails";
 import { PassportDetails } from "./PassportDetails";
 import { PersonalDeta } from "./PersonalData";
+import { Typography } from "@/shared/components/typography/Typography";
+import { useAddDataUserQuery } from "@/features/user/api/AccountApi";
 
 export const Account = () => {
+
+  const {data = []} = useAddDataUserQuery('');
 
   return (
     <>
@@ -12,18 +16,24 @@ export const Account = () => {
 
       <div className={style.account}>
         <div className={style.card}>
-          <p className={style.card__title}>Личные данные</p>
-          <PersonalDeta/>          
+          <Typography variant="h3-account" tag={"h3"}>
+            Личные данные
+          </Typography>
+          <PersonalDeta />
         </div>
 
         <div className={style.card}>
-          <p className={style.card__title}>Данные налогоплательщика</p>
-          <TaxpayerDetails/>
+          <Typography variant="h3-account" tag={"h3"}>
+            Данные налогоплательщика
+          </Typography>
+          <TaxpayerDetails />
         </div>
 
         <div className={style.card}>
-          <p className={style.card__title}>Паспортные данные</p>
-          <PassportDetails/>
+          <Typography variant="h3-account" tag={"h3"}>
+            Паспортные данные
+          </Typography>
+          <PassportDetails />
         </div>
       </div>
     </>
