@@ -36,10 +36,12 @@ export const TaxpayerDetails = () => {
               </div>
 
               <div className={style.card__Column}>
-
-                <div className={style.card__item} data-title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, ea">
+                <div
+                  className={style.item}
+                  data-title="УНП девятизначный код (из цифр для организаций, из букв и цифр для частных лиц), который содержит идентификатор региона, серийный номер для региона и контрольную цифру"
+                >
                   <Field
-                    className={style.card__input}
+                    className={style.input}
                     name={"UNP"}
                     type="text"
                     placeholder="Введите УНП"

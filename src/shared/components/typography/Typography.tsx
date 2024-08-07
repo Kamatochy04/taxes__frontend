@@ -5,6 +5,7 @@ type TypographyVariant =
   | "link-account"
   | "button-register"
   | "h3-register"
+  | "h3-account"
   | "h3-login_delete"
   | "h4-login_delete"
   | "link-register"
