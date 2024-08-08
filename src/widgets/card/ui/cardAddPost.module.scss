@@ -1,0 +1,47 @@
+.card {
+    width: 492px;
+    height: 255px;
+    background: #fff;
+    border: 1px;
+    border-color: #592DD1;
+    border-radius: 20px;
+    padding: 32px 20px;
+
+    &__Line {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &__Button {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 100%;
+        height: 48%;
+    }
+
+    &__Column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 50%;
+    }
+
+}
+
+.pay {
+    height: 43px;
+    width: 223px;
+    border-radius: 8px;
+    transition: .2s linear;
+    background: linear-gradient(#212C9D, #0C0F37);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.pay:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #3C82F8;
+}

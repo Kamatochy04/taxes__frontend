@@ -1,19 +1,18 @@
 .card {
   border: 1px solid #fd7e14;
   border-radius: 20px;
-  width: 352px;
-  height: 528px;
+  width: 864px;
+  height: 168px;
   box-shadow: 4px 4px 5px 0 rgba(253, 126, 20, 0.4);
   background: linear-gradient(180deg, #222d9e 0%, #0c1038 100%);
-  padding: 16px;
+  padding: 24px;
   display: flex;
-  gap: 16px;
-  flex-direction: column;
+  gap: 40px;
 
   &__img {
     img {
-      width: 100%;
-      height: 100%;
+      width: 120px;
+      height: 120px;
     }
   }
 
@@ -21,10 +20,23 @@
     display: flex;
     gap: 25px;
   }
+
+  &__d {
+    display: grid;
+    gap: 16px;
+  }
+
   &__icon {
     display: flex;
-    color: #b5b5b5;
-    gap: 5px;
+    color: #C2C2C2;
+    gap: 16px;
+    align-items: center;
+    margin-right: 50px;
   }
-}
 
+  &__input {
+    width: 24px;
+    height: 24px;
+  }
+
+}
