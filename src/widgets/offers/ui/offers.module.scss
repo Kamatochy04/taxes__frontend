@@ -1,19 +1,11 @@
-.offers {
+.cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+  justify-content: center;
+  gap: 32px;
+  flex-direction: column;
 }
 
-.card {
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 5px;
-  &__img {
-    width: 224px;
-    height: 256px;
-    background: #0000002a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
+.fild {
+  display: flex;
+  gap: 36px;}
+
