@@ -11,7 +11,7 @@ export const Basket = () => {
           <CardBasket />
           <CardBasket />
         </section>
-        <CardAddPost />
+        <CardAddPost text={"Оплатить"} variant={"pay"}/>
       </div>
     </>
   );
