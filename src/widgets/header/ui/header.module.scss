@@ -28,6 +28,7 @@
     align-items: center;
     gap: 20px;
     color: #fff;
+    font-size: 16px;
   }
 }
 
@@ -42,9 +43,16 @@
 
 .login {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   color: #fff;
   cursor: pointer;
+}
+
+.name {
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  cursor: default;
 }
 
 .catalog {

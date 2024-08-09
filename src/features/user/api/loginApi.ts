@@ -1,8 +1,8 @@
 import { api } from "@/app/redux/services/api";
 
 type ResponsData = {
-  accessToken: string;
-  refreshToken: string;
+  access: string;
+  refresh: string;
 };
 
 type UserData = {

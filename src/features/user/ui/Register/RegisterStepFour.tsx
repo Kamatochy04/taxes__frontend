@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 import { IConfirmCode, useSignupCodeMutation } from "../../api/userRegister";
 import Timer from "@/widgets/timer/Timer";
-import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
+// import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
 import { ConfirmCodeValidRules } from "@/shared/validationRules/ConfirmCodeValidRules";
 
 export const RegisterStepFour = () => {

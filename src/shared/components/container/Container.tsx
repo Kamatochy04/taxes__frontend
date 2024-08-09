@@ -6,6 +6,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
       style={{
         width: "1500px",
         margin: "0 auto",
+        height: "100%",
       }}
     >
       {children}

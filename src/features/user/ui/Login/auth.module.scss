@@ -12,6 +12,15 @@
     gap: 8px;
     width: 100%;
   }
+  &_error {
+    font-size: 14px;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid red;
+    background: #ff252538;
+    border-radius: 5px;
+    color: red;
+  }
 }
 
 .box {
@@ -20,5 +29,4 @@
   align-items: center;
   gap: 64px;
   width: 100%;
-  margin-top: 50%;
 }

@@ -1,11 +1,15 @@
-.line {
-    border-bottom: 1px solid #C2C2C2;
-}
-
 .container {
-    margin: 0 64px 0 320px;
+  height: 100%;
+}
+.block {
+  //   margin: 0 64px 0 320px;
+  height: 100%;
+  border-top: 1px solid #c2c2c2;
+  border-bottom: 1px solid #c2c2c2;
+  height: 100%;
+  padding: 30px 0 0 0;
 }
 
-.block {
-    height: 800px;
-}
+// .block {
+//   height: 800px;
+// }
