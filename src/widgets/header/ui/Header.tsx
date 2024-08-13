@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ViewHeadlineSharpIcon from "@mui/icons-material/ViewHeadlineSharp";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 import logoImg from "@/shared/assets/img/Logo.png";
 import { Container } from "@/shared/components/container/Container";
@@ -13,6 +11,7 @@ import { toggleSideBar } from "@/app/redux/sideBarSlice";
 import { CostomInput } from "@/shared/components/costomInput/CostomInput";
 import { useGetUserInfQuery } from "@/features/user/api/user.api";
 import { Loader } from "@/shared/components/loader/Loader";
+import { useState } from "react";
 
 export const Header = () => {
   const { data, isLoading } = useGetUserInfQuery();
@@ -30,7 +29,6 @@ export const Header = () => {
 };
 
 const HeaderVariantOne = () => {
-  const dispathc = useAppDispatch();
   const navigate = useNavigate();
 
   return (
@@ -41,19 +39,9 @@ const HeaderVariantOne = () => {
             <img src={logoImg} alt="logo" />
           </div>
           <div className={style.header__wrapper}>
-            <div className={style.nav}>
-              <LocationOnOutlinedIcon />
-              <p>Минск</p>
-            </div>
-            <div className={style.catalog}>Каталог</div>
-            <ViewHeadlineSharpIcon
-              onClick={() => {
-                dispathc(toggleSideBar());
-              }}
-              sx={{ color: "#fff", cursor: "pointer" }}
-            />
+            <CostomInput variant="header" />
           </div>
-          <CostomInput variant="header" />
+
           <div className={style.header__login}>
             <ShoppingCartIcon />
             <div className={style.login} onClick={() => navigate("/login")}>
@@ -73,7 +61,17 @@ const HeaderVariantTwo = ({
   name: string;
   lastName: string;
 }) => {
+  const [activeClass, setActiveClass] = useState<string>("burger__active");
   const dispathc = useAppDispatch();
+
+  const toggleClass = () => {
+    if (activeClass === "burger__active") {
+      setActiveClass("");
+    } else {
+      setActiveClass("burger__active");
+    }
+    console.log(activeClass);
+  };
 
   return (
     <header className={style.header}>
@@ -83,19 +81,19 @@ const HeaderVariantTwo = ({
             <img src={logoImg} alt="logo" />
           </div>
           <div className={style.header__wrapper}>
-            <div className={style.nav}>
-              <LocationOnOutlinedIcon />
-              <p>Минск</p>
-            </div>
-            <div className={style.catalog}>Каталог</div>
-            <ViewHeadlineSharpIcon
+            <div
+              className={`${style.burger} ${style[`burger__active`]}`}
               onClick={() => {
                 dispathc(toggleSideBar());
+                toggleClass();
               }}
-              sx={{ color: "#fff", cursor: "pointer" }}
-            />
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <CostomInput variant="header" />
           </div>
-          <CostomInput variant="header" />
           <div className={style.header__login}>
             <ShoppingCartIcon />
             <div className={style.name}>

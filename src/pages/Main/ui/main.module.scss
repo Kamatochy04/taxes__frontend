@@ -9,8 +9,18 @@
 }
 
 .main {
-  // height: 400px;
-  flex-grow: 3;
+  overflow-y: scroll;
+  flex-grow: 1;
+  position: relative;
+  &::-webkit-scrollbar {
+    background: none;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #3351ff79;
+    width: 2px;
+    border-radius: 50px;
+  }
 }
 
 .footer {

@@ -2,7 +2,6 @@
   background: #0c1038;
   border-radius: 8px;
   width: 100%;
-  height: 56px;
   color: #ffffff;
   &:disabled {
     background: none;
@@ -20,4 +19,19 @@
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+}
+
+.button {
+  padding: 12px 55px;
+  width: auto;
+}
+
+.card {
+  width: 100%;
+  background: #fff;
+  color: #000000;
+  border-radius: 5px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 16px;
 }

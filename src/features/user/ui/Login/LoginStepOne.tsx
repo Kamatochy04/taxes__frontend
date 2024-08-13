@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
 import { Form, Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 
+import { LoginStepOneType } from "@/model";
 import { Input } from "@/shared/components/input/Input";
 import { Loader } from "@/shared/components/loader/Loader";
 import { Button } from "@/shared/components/button/Button";
 import { Typography } from "@/shared/components/typography/Typography";
-import { LoginStepOneType } from "@/model";
+import { FormVariant } from "@/shared/components/formVariant/FormVariant";
 
 import { useAuthUser } from "../../hook/useAuthUser";
 import { validationSchema } from "../../helpers/validationSheme/LoginStepOneSheme";
@@ -14,10 +15,11 @@ import style from "./auth.module.scss";
 
 export const LoginStepOne = () => {
   const { loginUser, errorMessage, isLoading } = useAuthUser();
-
+  const navigate = useNavigate();
   return (
     <>
       {isLoading && <Loader />}
+
       <Formik<LoginStepOneType>
         initialValues={{ email: "", password: "" }}
         onSubmit={loginUser}
@@ -28,22 +30,31 @@ export const LoginStepOne = () => {
             <Typography variant={"h3-register"} tag={"h3"}>
               Авторизация
             </Typography>
-            <Input name={"email"} type="email" placeholder="Email" />
-            <Input name={"password"} type="password" placeholder="Пароль" />
-            {errorMessage && <p className={style.form_error}>{errorMessage}</p>}
-            <Button variant={"register"} disabled={!isValid}>
-              <Typography variant="button-register" tag={"p"}>
-                Войти
-              </Typography>
-            </Button>
-            <div className={style.form__box}>
-              <Typography variant="link-register" tag={"p"}>
-                <Link to={"/register"}>Зарегистрироваться</Link>
-              </Typography>
-              <Typography variant="link-register" tag={"p"}>
-                <Link to={"forget-password"}> Забыли пароль?</Link>
-              </Typography>
+            <div className={style.form__layout}>
+              <Input name={"email"} type="email" placeholder="Email" />
+              <Input name={"password"} type="password" placeholder="Пароль" />
+              {errorMessage && (
+                <p className={style.form_error}>{errorMessage}</p>
+              )}
             </div>
+            <div className={style.form__wrapper}>
+              <Button
+                variant={"register"}
+                disabled={!isValid}
+                onClick={() => navigate(-1)}
+              >
+                <Typography variant="button-register" tag={"p"}>
+                  Назад
+                </Typography>
+              </Button>
+              <Button variant={"register"} disabled={!isValid}>
+                <Typography variant="button-register" tag={"p"}>
+                  Далее
+                </Typography>
+              </Button>
+            </div>
+
+            <FormVariant />
           </Form>
         )}
       </Formik>

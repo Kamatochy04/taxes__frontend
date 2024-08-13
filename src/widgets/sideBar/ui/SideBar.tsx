@@ -1,24 +1,38 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
-import accauntImg from "@/shared/assets/img/Accaunt_img.png";
-
+import { useAppSelector } from "@/app/redux/hook";
 import PaymentIcon from "@mui/icons-material/Payment";
-import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import CardTravelIcon from "@mui/icons-material/CardTravel";
 import OutputOutlinedIcon from "@mui/icons-material/OutputOutlined";
 import SavingsOutlinedIcon from "@mui/icons-material/SavingsOutlined";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 
+import accauntImg from "@/shared/assets/img/Accaunt_img.png";
+
 import style from "./sideBar.module.scss";
-import { useAppSelector } from "@/app/redux/hook";
-import { useEffect, useState } from "react";
 
 export const SideBar = () => {
   const isShow = useAppSelector((state) => state.SideBar.isShow);
   const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [token, setToken] = useState<string | null>();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const handleStorageChange = () => {
+      console.log("asdasfsafdsad");
+      setToken(localStorage.getItem("accessToken")); // Обновление состояния при изменении localStorage
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   useEffect(() => {
     const t = localStorage.getItem("accessToken");
@@ -29,6 +43,11 @@ export const SideBar = () => {
       setIsAuth(false);
     }
   }, [isAuth, isAuth]);
+
+  const exit = () => {
+    localStorage.removeItem("accessToken");
+    navigate("/");
+  };
 
   return isAuth ? (
     <>
@@ -106,13 +125,14 @@ export const SideBar = () => {
             <ManageAccountsOutlinedIcon />
             Поддержка
           </NavLink>
-          <NavLink
-            style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
-            to={""}
+          <p
             className={style.bar__item}
+            onClick={() => {
+              exit();
+            }}
           >
             <OutputOutlinedIcon /> Выход
-          </NavLink>
+          </p>
         </ul>
       </div>
     </>

@@ -1,24 +1,24 @@
 .button-register {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .h3-register {
-  font-weight: 500;
-  font-size: 22px;
-  color: #000000;
+  font-weight: 800;
+  font-size: 40px;
+  color: #0c1038;
 }
 
 .h3-login_delete {
   font-weight: 500;
   font-size: 22px;
-  color: #0C1038;
+  color: #0c1038;
 }
 
 .h4-login_delete {
   font-weight: 400;
   font-size: 20px;
-  color: #0C1038;
+  color: #0c1038;
   text-align: center;
 }
 
@@ -28,6 +28,9 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #0c1038;
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 150%;
 }
 
 .link-account {
@@ -44,4 +47,9 @@
   color: #fff;
   font-weight: 400;
   font-size: 20px;
+}
+
+.check-box {
+  font-size: 14px;
+  color: #0c1038;
 }

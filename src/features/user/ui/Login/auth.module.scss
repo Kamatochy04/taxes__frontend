@@ -1,15 +1,21 @@
 .form {
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
   width: 100%;
-  &__box {
+  margin: 0;
+  gap: 40px;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  &__layout {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    gap: 15px;
     width: 100%;
   }
   &_error {
@@ -21,12 +27,4 @@
     border-radius: 5px;
     color: red;
   }
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 64px;
-  width: 100%;
 }

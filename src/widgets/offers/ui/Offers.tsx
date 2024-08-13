@@ -1,97 +1,15 @@
-import { DefaultImg } from "@/shared/assets/icons/DefaultImg";
 import style from "./offers.module.scss";
-import { Path } from "@/widgets";
+import { Card } from "@/widgets";
+
+const cards = [1, 2, 3, , 4, 5, 6, 7, 8, 9, 10, 11, 12, 21, 13, 14];
 
 export const Offers = () => {
   return (
     <>
-      {/* <Path /> */}
       <div className={style.offers}>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
-        <div className={style.card}>
-          <div className={style.card__img}>
-            <DefaultImg />
-          </div>
-          <p>Дата: 09.02.2024</p>
-          <p>Подробнее</p>
-        </div>
+        {cards.map((_, id) => {
+          return <Card id={id} key={id} />;
+        })}
       </div>
     </>
   );

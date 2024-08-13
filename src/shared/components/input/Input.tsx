@@ -26,7 +26,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, name, type, disabled, error, errorMessage, ok, ...props }, ref) => {
     const className = cx("input", { err: error, ok: ok });
     const [inputType, setInputType] = useState(type);
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(true);
     const [eyeComponent, setEyeComponent] = useState<React.ReactElement>(
       <VisibilityOutlinedIcon />
     );
@@ -68,9 +68,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-
-{
-  /* <span className={style.eye} onClick={handelClick}>
-            {eyeComponent}
-          </span> */
-}

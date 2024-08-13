@@ -1,8 +1,70 @@
 .box {
   border-radius: 20px;
-  width: 480px;
-  height: auto;
+  width: 1000px;
+  min-height: 400px;
   position: relative;
-  background: #fff;
-  padding: 80px;
+  background: #141953;
+  -webkit-box-shadow: 1px 0px 95px 5px rgba(96, 186, 255, 0.2);
+  -moz-box-shadow: 1px 0px 95px 5px rgba(96, 186, 255, 0.2);
+  box-shadow: 1px 0px 95px 5px rgba(96, 186, 255, 0.2);
+  display: grid;
+  grid-template-columns: 43% 57%;
+  overflow: hidden;
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  &__form {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 80px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("./bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.clouse {
+  width: 40px;
+  height: 40px;
+  top: 5px;
+  padding: 15px;
+  right: 15px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background: #00000010;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: #888888;
+  }
+  &::after {
+    transform: rotate(45deg);
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+}
+
+.logo {
+  width: 250px;
+  height: auto;
 }

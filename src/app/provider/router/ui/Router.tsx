@@ -25,13 +25,15 @@ import {
   RegisterStepTwo,
 } from "@/features";
 import { LoginForgetPassword } from "@/features/user/ui";
+import { ProductCard } from "@/pages/ProductCard";
 
 export const Router = () => {
   return (
     <div className="app">
       <Routes>
         <Route path="/" element={<Main />}>
-          <Route path="offers" element={<Offers />} />
+          <Route index element={<Offers />} />
+          <Route path="/:id" element={<ProductCard />} />
           <Route path="finance" element={<Finance />} />
           <Route path="orders" element={<Orders />} />
           <Route path="payment-methods" element={<PaymentMethods />} />

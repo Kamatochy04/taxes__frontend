@@ -10,7 +10,8 @@ type TypographyVariant =
   | "link-register"
   | "subscribe-text"
   | "ghost-text"
-  | "button-text";
+  | "button-text"
+  | "check-box";
 type TypographyTag = "h1" | "h2" | "h3" | "h4" | "p" | "div" | "span" | "label";
 
 export type TypographyProps<Tag extends TypographyTag> =
@@ -24,8 +25,13 @@ export const Typography = <Tag extends TypographyTag = "div">({
   variant,
   tag = "div",
   children,
+  className,
 }: TypographyProps<Tag>) => {
   const Component = tag ?? "div";
 
-  return <Component className={style[variant]}>{children}</Component>;
+  return (
+    <Component className={`${style[variant]} ${className}`}>
+      {children}
+    </Component>
+  );
 };

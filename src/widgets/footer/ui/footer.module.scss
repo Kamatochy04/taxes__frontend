@@ -1,9 +1,12 @@
 .footer {
+  border-top: 1px solid #c2c2c2;
   background: none;
-  margin-top: 24px;
   width: 100%;
   bottom: 0;
   color: #fff;
+  padding: 20px;
+  z-index: 2101;
+  background: var(--main--color);
   &__container {
     display: flex;
     align-items: flex-start;

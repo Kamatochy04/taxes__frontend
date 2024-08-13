@@ -23,22 +23,26 @@ export const LoginForgetPassword = () => {
         onSubmit={() => {}}
         validationSchema={validationSchema}
       >
-        {({ isValid, dirty, isSubmitting }) => (
+        {({ isValid }) => (
           <>
-            <Form className={style.box}>
+            <Form className={style.form}>
               <Typography variant={"h3-register"} tag={"h3"}>
                 Восстановление пароля
               </Typography>
               <Input name={"email"} type="email" placeholder="Email" />
+              <div className={style.form__wrapper}>
+                <Button variant={"register"} disabled={!isValid}>
+                  <Typography variant="button-register" tag={"p"}>
+                    Назад
+                  </Typography>
+                </Button>
+                <Button variant={"register"} disabled={!isValid}>
+                  <Typography variant="button-register" tag={"p"}>
+                    Далее
+                  </Typography>
+                </Button>
+              </div>
             </Form>
-            <Button
-              variant={"register"}
-              disabled={!isValid || !dirty || isSubmitting}
-            >
-              <Typography variant="button-register" tag={"p"}>
-                Войти
-              </Typography>
-            </Button>
           </>
         )}
       </Formik>
