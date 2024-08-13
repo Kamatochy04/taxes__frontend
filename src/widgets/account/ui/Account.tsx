@@ -4,11 +4,11 @@ import { TaxpayerDetails } from "./TaxpayerDetails";
 import { PassportDetails } from "./PassportDetails";
 import { PersonalDeta } from "./PersonalData";
 import { Typography } from "@/shared/components/typography/Typography";
-import { useAddDataUserQuery } from "@/features/user/api/AccountApi";
+//import { useAddDataUserQuery } from "@/features/user/api/AccountApi";
 
 export const Account = () => {
 
-  const {data = []} = useAddDataUserQuery('');
+  //const {data = []} = useAddDataUserQuery('');
 
   return (
     <>

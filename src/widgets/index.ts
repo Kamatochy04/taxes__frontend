@@ -1,7 +1,7 @@
 export { Header } from "./header/index";
 export { Footer } from "./footer/index";
 export { Information } from "./information/index";
-export { Card, CardPurchases, CardBasket, CardAddPost } from "./card/index";
+export { Card, CardPurchases, CardBasket, CardAddPost, CardOffers, CardOffersAdd } from "./card/index";
 export { MainModel } from "./mainModel/index";
 export { SideBar } from "./sideBar/index";
 

@@ -1,0 +1,25 @@
+.card {
+    border: 1px solid #fd7e14;
+    border-radius: 20px;
+    width: 608px;
+    height: 168px;
+    box-shadow: 4px 4px 5px 0 rgba(253, 126, 20, 0.4);
+    background: linear-gradient(180deg, #222d9e 0%, #0c1038 100%);
+    padding: 24px;
+    display: flex;
+    gap: 40px;
+
+    &__img {
+        img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    &__d {
+        height: 60%;
+        display: grid;
+        gap: 24px;
+    }
+
+}

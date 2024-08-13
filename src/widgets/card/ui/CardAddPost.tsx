@@ -1,11 +1,12 @@
 import { Typography } from "@/shared/components/typography/Typography";
 import style from "./cardAddPost.module.scss";
 
-import { Button } from "@/shared/components/button/Button";
 
-type AppProps = { text: string, variant: string };
 
-export const CardAddPost = ({ text, variant }: AppProps) => {
+
+export const CardAddPost = () => {
+
+
   return (
     <>
       <div className={style.card}>
@@ -37,13 +38,7 @@ export const CardAddPost = ({ text, variant }: AppProps) => {
             </Typography>
           </div>
         </div>
-        <div className={style.card__Button}>
-          <Button variant={variant}>
-            <Typography variant="h3-account" tag={"h3"}>
-              {text}
-            </Typography>
-          </Button>
-        </div>
+
       </div>
     </>
   );
