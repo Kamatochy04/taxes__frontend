@@ -49,6 +49,16 @@
     }
   }
 
+  &__photo {
+    display: none;
+  }
+
+  &__ava {
+    height: 192px;
+    border-radius: 192px;
+    margin-right: 32px;
+  }
+
   &__delete {
     display: flex;
     width: 100%;

@@ -1,32 +1,9 @@
 import { api } from "@/app/redux/services/api";
+import { TaxpayerType, PassportType, PersonalType, EnterWord, PhotoType } from "@/model/AccountData/AccountType"
 
 type ResponsData = {
   accessToken: string;
   refreshToken: string;
-};
-
-type TaxpayerData = {
-  UNP: string;
-  сategory: string;
-};
-
-type PassportData = {
-  date: Date;
-  series: string;
-  number: string;
-  registration: string;
-};
-
-type PersonalData = {
-  first_name: string;
-  last_name: string;
-  patronymic: string;
-  email: string;
-  phone_number: string;
-};
-
-type Secret = {
-  secret_word: string;
 };
 
 //Вызов injectEndpoints внедрит конечные точки в исходный API,
@@ -38,32 +15,40 @@ export const accountApi = api.injectEndpoints({
       query: () => "api/dev/users/me/",
     }),
 
-    Taxpayer: builder.mutation<ResponsData, TaxpayerData>({
-      query: (body: TaxpayerData) => ({
+    Taxpayer: builder.mutation<ResponsData, TaxpayerType>({
+      query: (body: TaxpayerType) => ({
         url: "api/dev/users/me/",
         method: "PATCH",
         body,
       }),
     }),
 
-    Passport: builder.mutation<ResponsData, PassportData>({
-      query: (body: PassportData) => ({
+    Passport: builder.mutation<ResponsData, PassportType>({
+      query: (body: PassportType) => ({
         url: "api/dev/users/me/",
         method: "PATCH",
         body,
       }),
     }),
 
-    Personal: builder.mutation<ResponsData, PersonalData>({
-      query: (body: PersonalData) => ({
+    Personal: builder.mutation<ResponsData, PersonalType>({
+      query: (body: PersonalType) => ({
         url: "api/dev/users/me/",
         method: "PATCH",
         body,
       }),
     }),
 
-    Secret: builder.mutation<ResponsData, Secret>({
-      query: (_secret_word: Secret) => ({
+    Photo: builder.mutation<ResponsData, PhotoType>({
+      query: (body: PhotoType) => ({
+        url: "api/dev/users/me/avatar/",
+        method: "POST",
+        body,
+      }),
+    }),
+
+    Secret: builder.mutation<ResponsData, EnterWord>({
+      query: (_secret_word: EnterWord) => ({
         url: "api/dev/users/me/",
         method: "DELETE",
       }),
@@ -72,8 +57,8 @@ export const accountApi = api.injectEndpoints({
   }),
 });
 
-export const { useAddDataUserQuery, useTaxpayerMutation, usePassportMutation, usePersonalMutation, useSecretMutation } = accountApi;
+export const { useAddDataUserQuery, useTaxpayerMutation, usePassportMutation, usePersonalMutation, useSecretMutation, usePhotoMutation } = accountApi;
 
 export const {
-  endpoints: { Taxpayer, Passport, Personal, Secret },
+  endpoints: { Taxpayer, Passport, Personal, Secret,  },
 } = accountApi;

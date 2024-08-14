@@ -1,5 +1,6 @@
 import style from "./cardF.module.scss";
 import { Typography } from "@/shared/components/typography/Typography";
+import productImg from "@/shared/assets/img/Rectangle 803.png";
 import { ProductsData } from "@/model";
 import { FC } from "react";
 
@@ -11,7 +12,7 @@ export const CardOffersAdd: FC<ProductsItemProps> = ({ data }) => {
   return (
     <div className={style.card}>
       <div className={style.card__img}>
-        <img src={data.images[0]} alt="product" />
+        <img src={productImg} alt="product" />
       </div>
 
       <div className={style.card__d}>

@@ -11,6 +11,10 @@ export type TaxpayerType = {
   сategory: string;
 };
 
+export type PhotoType = {
+  photo: string;
+};
+
 export type PassportType = {
   date: Date;
   series: string;
