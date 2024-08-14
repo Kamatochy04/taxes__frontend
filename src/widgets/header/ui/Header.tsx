@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -5,13 +6,13 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logoImg from "@/shared/assets/img/Logo.png";
 import { Container } from "@/shared/components/container/Container";
 
-import style from "./header.module.scss";
 import { useAppDispatch } from "@/app/redux/hook";
 import { toggleSideBar } from "@/app/redux/sideBarSlice";
-import { CostomInput } from "@/shared/components/costomInput/CostomInput";
-import { useGetUserInfQuery } from "@/features/user/api/user.api";
 import { Loader } from "@/shared/components/loader/Loader";
-import { useState } from "react";
+import { useGetUserInfQuery } from "@/features/user/api/user.api";
+import { CostomInput } from "@/shared/components/costomInput/CostomInput";
+
+import style from "./header.module.scss";
 
 export const Header = () => {
   const { data, isLoading } = useGetUserInfQuery();

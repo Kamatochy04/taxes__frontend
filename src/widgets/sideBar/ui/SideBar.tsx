@@ -21,6 +21,7 @@ export const SideBar = () => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>();
   const navigate = useNavigate();
+
   useEffect(() => {
     const handleStorageChange = () => {
       console.log("asdasfsafdsad");

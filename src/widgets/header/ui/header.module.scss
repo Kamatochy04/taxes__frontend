@@ -3,8 +3,8 @@
   width: 100%;
   padding: 20px 0;
   &__container {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
   }
   &__box {
     display: flex;
@@ -12,11 +12,12 @@
     gap: 20px;
   }
   &__wrapper {
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
+    width: 70%;
   }
   &__login {
     margin-left: auto;
