@@ -26,18 +26,18 @@ export const LoginForgetPassword = () => {
         {({ isValid }) => (
           <>
             <Form className={style.form}>
-              <Typography variant={"h3-register"} tag={"h3"}>
+              <Typography variant={"h3"} tag={"h3"}>
                 Восстановление пароля
               </Typography>
               <Input name={"email"} type="email" placeholder="Email" />
               <div className={style.form__wrapper}>
                 <Button variant={"register"} disabled={!isValid}>
-                  <Typography variant="button-register" tag={"p"}>
+                  <Typography variant="button" tag={"p"}>
                     Назад
                   </Typography>
                 </Button>
                 <Button variant={"register"} disabled={!isValid}>
-                  <Typography variant="button-register" tag={"p"}>
+                  <Typography variant="button" tag={"p"}>
                     Далее
                   </Typography>
                 </Button>

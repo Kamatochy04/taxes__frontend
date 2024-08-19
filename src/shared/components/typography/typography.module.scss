@@ -1,12 +1,31 @@
-.button-register {
-  font-weight: 400;
+.button {
+  font-weight: 600;
   font-size: 16px;
 }
 
-.h3-register {
+.h3 {
   font-weight: 800;
   font-size: 40px;
   color: #0c1038;
+  line-height: 95%;
+  &_center {
+    font-weight: 800;
+    font-size: 25px;
+    color: #0c1038;
+    line-height: 100%;
+    text-align: center;
+  }
+}
+
+.price {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--second--color);
+}
+
+.default {
+  font-size: 16px;
+  color: #fff;
 }
 
 .h3-login_delete {

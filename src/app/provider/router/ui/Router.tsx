@@ -54,18 +54,9 @@ export const Router = () => {
           <Route path="register" element={<MainModel />}>
             <Route index element={<RegisterStepOne />} />
             <Route path="step-second" element={<RegisterStepTwo />} />
-            <Route
-              path="step-second/step-third"
-              element={<RegisterStepThree />}
-            />
-            <Route
-              path="step-second/step-third/step-fourth"
-              element={<RegisterStepFour />}
-            />
-            <Route
-              path="step-second/step-third/step-fourth/step-five"
-              element={<RegisterStepFive />}
-            />
+            <Route path="step-third" element={<RegisterStepThree />} />
+            <Route path="step-fourth" element={<RegisterStepFour />} />
+            <Route path="step-five" element={<RegisterStepFive />} />
           </Route>
         </Route>
       </Routes>

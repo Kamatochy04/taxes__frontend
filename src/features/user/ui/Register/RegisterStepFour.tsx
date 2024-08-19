@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { TextField, Button } from "@mui/material";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
@@ -7,21 +6,27 @@ import { IConfirmCode, useSignupCodeMutation } from "../../api/userRegister";
 import Timer from "@/widgets/timer/Timer";
 // import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
 import { ConfirmCodeValidRules } from "@/shared/validationRules/ConfirmCodeValidRules";
+import { Form, Formik } from "formik";
+
+import style from "../Login/auth.module.scss";
+import { Typography } from "@/shared/components/typography/Typography";
+import { Input } from "@/shared/components/input/Input";
+import { Button } from "@/shared/components/button/Button";
 
 export const RegisterStepFour = () => {
   const navigate = useNavigate();
   const [signupCode] = useSignupCodeMutation();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm({
-    mode: "onBlur",
-    defaultValues: {
-      code: undefined || "",
-    },
-  });
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors, isValid },
+  // } = useForm({
+  //   mode: "onBlur",
+  //   defaultValues: {
+  //     code: undefined || "",
+  //   },
+  // });
 
   const onSubmit = (data: IConfirmCode) => {
     const confirm_code_id = localStorage.getItem("confirm_code_id");
@@ -43,30 +48,70 @@ export const RegisterStepFour = () => {
   };
 
   return (
-    <RegistrForm onSubmit={handleSubmit(onSubmit)}>
-      <>
-        <p>Регистрация</p>
-        <ProgressBar progress={100} />
-        <p>Введите код, отправленный на e-mail</p>
-        <TextField
-          autoFocus
-          {...register("code", { ...ConfirmCodeValidRules() })}
-          sx={{ width: "100%" }}
-          placeholder="Введите код"
-          error={!!errors.code}
-          helperText={errors.code?.message}
-        />
+    <Formik<IConfirmCode>
+      initialValues={{ code: "", confirm_code_id: "" }}
+      onSubmit={onSubmit}
+      // validationSchema={validationSchema}
+    >
+      {() => (
+        <Form className={style.form}>
+          <Typography variant={"h3"} tag={"h3"} className={style.form__title}>
+            Регистрация
+          </Typography>
 
-        <Button
-          sx={{ width: "100%" }}
-          variant="contained"
-          type="submit"
-          disabled={!isValid}
-        >
-          Отправить
-        </Button>
-        <Timer />
-      </>
-    </RegistrForm>
+          <ProgressBar progress={100} />
+
+          <div className={style.form__layout}>
+            <Input name={"code"} type="text" placeholder="Введите код" />
+          </div>
+
+          <div className={style.form__wrapper}>
+            <Button
+              variant={"register"}
+              className={style.form__btn}
+              onClick={() => navigate(-1)}
+            >
+              <Typography variant="button" tag={"p"}>
+                Назад
+              </Typography>
+            </Button>
+            <Button
+              variant={"register"}
+              className={style.form__btn}
+              type="submit"
+            >
+              <Typography variant="button" tag={"p"}>
+                Далее
+              </Typography>
+            </Button>
+          </div>
+        </Form>
+      )}
+    </Formik>
+    // <RegistrForm onSubmit={handleSubmit(onSubmit)}>
+    //   <>
+    //     <p>Регистрация</p>
+    //     <ProgressBar progress={100} />
+    //     <p>Введите код, отправленный на e-mail</p>
+    //     <TextField
+    //       autoFocus
+    //       {...register("code", { ...ConfirmCodeValidRules() })}
+    //       sx={{ width: "100%" }}
+    //       placeholder="Введите код"
+    //       error={!!errors.code}
+    //       helperText={errors.code?.message}
+    //     />
+
+    //     <Button
+    //       sx={{ width: "100%" }}
+    //       variant="contained"
+    //       type="submit"
+    //       disabled={!isValid}
+    //     >
+    //       Отправить
+    //     </Button>
+    //     <Timer />
+    //   </>
+    // </RegistrForm>
   );
 };

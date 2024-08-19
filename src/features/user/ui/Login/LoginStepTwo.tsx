@@ -10,11 +10,11 @@ export const LoginStepTwo = () => {
   return (
     <>
       <div className={style.box}>
-        <Typography variant={"h3-register"} tag={"h3"}>
+        <Typography variant={"h3"} tag={"h3"}>
           Вход выполнен успешно!
         </Typography>
         <Button variant={"register"} onClick={() => navigate("/")}>
-          <Typography variant="button-register" tag={"p"}>
+          <Typography variant="button" tag={"p"}>
             Далее
           </Typography>
         </Button>
