@@ -44,7 +44,7 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
                 name={"first_name"}
                 type="text"
                 placeholder="имя"
-                //value={data.first_name}
+                value={data.first_name}
               />
               <Field
                 className={style.card__input}
@@ -58,7 +58,7 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
                 name={"last_name"}
                 type="text"
                 placeholder="фамилия"
-                //value={data.last_name}
+                value={data.last_name}
               />
               <Field
                 className={style.card__input}
@@ -66,7 +66,7 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
                 autocomplete="off"
                 type="email"
                 placeholder="Email"
-                //value={data.email}
+                value={data.email}
               />
               <Field
                 className={style.card__input}
@@ -74,7 +74,7 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
                 autocomplete="off"
                 type="text"
                 placeholder="отчество"
-                //value={data.patronymic}
+                value={data.patronymic}
               />
             </div>
             <div className={style.card__delete}>
