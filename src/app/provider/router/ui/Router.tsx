@@ -5,6 +5,8 @@ import {
   Account,
   MainModel,
   Finance,
+  MySuggestions,
+  Details,
   Offers,
   Orders,
   PaymentMethods,
@@ -34,6 +36,8 @@ export const Router = () => {
         <Route path="/" element={<Main />}>
           <Route index element={<Offers />} />
           <Route path="/:id" element={<ProductCard />} />
+          <Route path="mySuggestions" element={<MySuggestions />} />
+          <Route path="details" element={<Details />} />
           <Route path="finance" element={<Finance />} />
           <Route path="orders" element={<Orders />} />
           <Route path="payment-methods" element={<PaymentMethods />} />

@@ -1,10 +1,10 @@
 export { Header } from "./header/index";
 export { Footer } from "./footer/index";
 export { Information } from "./information/index";
-export { Card } from "./card/index";
+export { Card, CardPurchases, CardBasket, CardAddPost, CardOffers, CardOffersAdd } from "./card/index";
 export { MainModel } from "./mainModel/index";
 export { SideBar } from "./sideBar/index";
-
+export { MySuggestions, Details } from "./mySuggestions/index";
 export { Offers } from "./offers/index";
 export { Finance } from "./finance/index";
 export { Orders } from "./orders/index";
@@ -14,3 +14,4 @@ export { Purchases } from "./purchases/index";
 export { Support } from "./support/index";
 export { Path } from "./path/index";
 export { Account } from "./account/index";
+export { Agreement } from "./agreement/index";

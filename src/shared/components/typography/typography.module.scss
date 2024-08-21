@@ -17,16 +17,31 @@
   }
 }
 
+.check-box {
+  font-size: 14px;
+  color: #0c1038;
+}
+
 .price {
   font-weight: 700;
-  font-size: 20px;
-  color: var(--second--color);
+  font-size: 40px;
+  color: #FD7E14;
+  &_card {
+    font-weight: 500;
+    font-size: 22px;
+    color: #FD7E14;
+  }
 }
 
 .default {
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 20px;
   color: #fff;
 }
+
+
+
+
 
 .h3-login_delete {
   font-weight: 500;
@@ -68,7 +83,3 @@
   font-size: 20px;
 }
 
-.check-box {
-  font-size: 14px;
-  color: #0c1038;
-}

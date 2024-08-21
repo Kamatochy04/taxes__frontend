@@ -5,20 +5,27 @@ import style from "./card.module.scss";
 import { Button } from "@/shared/components/button/Button";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@/shared/components/typography/Typography";
+import { ProductsResults } from "@/model";
+import { FC } from "react";
 
-export const Card = ({ id }: { id: number }) => {
+interface ProductsItemProps {
+  results: ProductsResults;
+}
+
+export const Card: FC<ProductsItemProps> = ({ results }) => {
+  
   const navigate = useNavigate();
   return (
-    <div className={style.card} onClick={() => navigate(`/${id}`)}>
+    <div className={style.card} onClick={() => navigate(`/${results.id}`)}>
       <div className={style.card__img}>
         <img src={productImg} alt="product" />
       </div>
 
       <Typography variant={"price"} tag={"p"}>
-        25 BYN
+        {results.price}
       </Typography>
 
-      <Typography tag={"p"}>Велосипед, Kerambit горный...</Typography>
+      <Typography tag={"p"}>{results.name}</Typography>
 
       <div className={style.card__descr}>
         <div className={style.card__icon}>
@@ -38,3 +45,6 @@ export const Card = ({ id }: { id: number }) => {
     </div>
   );
 };
+
+
+//<img src={results.images[0].photo} alt="product" />

@@ -56,7 +56,7 @@ export const SideBar = () => {
         <img src={accauntImg} alt="accaunt-img" className={style.bar__img} />
         <ul className={style.bar__list}>
           <NavLink
-            to={"offers"}
+            to={"mySuggestions"}
             className={style.bar__item}
             style={({ isActive }) => (isActive ? { color: "#fff" } : undefined)}
             state={{ from: "Мои предложения" }}

@@ -22,6 +22,50 @@
 }
 
 .button {
+ // padding: 12px 55px;
+  width: auto;
+}
+
+.card {
+  width: 100%;
+  background: #fff;
+  color: #000000;
+  border-radius: 5px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.pay {
+  height: 43px;
+  width: 223px;
+  border-radius: 8px;
+  transition: .2s linear;
+  background: linear-gradient(#212C9D, #0C0F37);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  &:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #3C82F8;
+  }
+}
+
+.addSentence {
+  height: 56px;
+  width: 320px;
+  border-radius: 8px;
+  transition: .2s linear;
+  background: linear-gradient(#222D9E, #0C1038);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  &:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #3C82F8;
+  }
+}
+.button {
   padding: 12px 55px;
   width: auto;
 }

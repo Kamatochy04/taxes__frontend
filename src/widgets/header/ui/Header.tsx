@@ -93,6 +93,7 @@ const HeaderVariantTwo = ({
               <span></span>
               <span></span>
             </div>
+            
             <CostomInput variant="header" />
           </div>
           <div className={style.header__login}>

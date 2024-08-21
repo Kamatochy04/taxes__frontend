@@ -1,13 +1,10 @@
 import StarIcon from "@mui/icons-material/Star";
-
 import style from "./product.module.scss";
-
 export const ProductCard = () => {
   return (
     <div className={style.card}>
       <div className={style.card__imgs}>
         <img src="" alt="" className={style.card__imgs_main} />
-
         <div className={style.card__imgs_wrapper}>
           <div className={style.a}></div>
           <div className={style.a}></div>
@@ -15,7 +12,6 @@ export const ProductCard = () => {
           <div className={style.a}></div>
         </div>
       </div>
-
       <div className={style.card__inf}>
         <h3 className={style.card__inf_title}>Игровая гарнитура ASUS</h3>
         <h4 className={style.card__art}>Артикул №102581</h4>
@@ -28,12 +24,12 @@ export const ProductCard = () => {
             ROG Delta - первая в мире игровая гарнитура с ведущим в отрасли
             четырехъядерным ЦАП hi-fi ESS 9218, обеспечивающим безупречно чистый
             и детализированный звук, который дает серьезным геймерам
-            преимущество, необходимое для победы. 
+            преимущество, необходимое для победы.
           </p>
           <p>
             ROG Delta оснащена разъемом USB-C и поставляется с адаптером
             USB-C-USB 2.0, позволяющим играть на ПК, консоли и мобильном
-            устройстве без замены гарнитуры. Уникальный в своем роде круговой
+            устройстве без замены гарнитуры. Уникальный в своем роде круговой
             эффект радужной RGB-подсветки придает стильный вид, выделяющий вас
             на поле боя.
           </p>

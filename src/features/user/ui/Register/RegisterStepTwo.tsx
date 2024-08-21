@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
+//import { useForm } from "react-hook-form";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 
 import { useNavigate } from "react-router-dom";
-import { set2FormData } from "@/app/redux/register2Slice";
+//import { set2FormData } from "@/app/redux/register2Slice";
 
 import { useSignupMutation } from "../../api/userRegister";
 import { Form, Formik } from "formik";

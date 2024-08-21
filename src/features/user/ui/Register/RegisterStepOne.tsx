@@ -42,7 +42,7 @@ export const RegisterStepOne = () => {
             <div style={{ display: "flex", alignItems: "center" }}>
               <Input required name={"checkbox"} type="checkbox" />
               <Typography tag={"p"} style={{ color: "#000" }}>
-                Согласие на обработку персональных данных
+              <a href="http://84.38.182.213:1437/Agreement" target="_blank">Согласие на обработку персональных данных</a>                
               </Typography>
             </div>
           </div>

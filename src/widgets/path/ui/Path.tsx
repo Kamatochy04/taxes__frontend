@@ -7,8 +7,11 @@ export const Path = () => {
   return (
     <>
       <p className={style.link}>
-        <NavLink to={"/"}>Главная страница/</NavLink>  {state.from}/
+        <NavLink to={"/"}>Главная страница/</NavLink> {state.from}/
       </p>
     </>
   );
 };
+
+
+//<NavLink to={"/"}>Главная страница/</NavLink>  {state.from}/

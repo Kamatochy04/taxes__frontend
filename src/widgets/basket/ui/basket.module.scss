@@ -2,32 +2,11 @@
   display: flex;
   justify-content: center;
   gap: 32px;
+  flex-direction: column;
 }
 
-.blockButton {
+.fild {
   display: flex;
-  justify-content: center;
-  gap: 32px;
-  padding-top: 48px;
-}
-
-.clear, .order {
-  height: 43px;
-  width: 223px;
-  border-radius: 8px;
-  transition: .2s linear;
-  background: #fff;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-}
-
-.clear:hover {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px #3C82F8;
-}
-
-.order:hover {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px #3C82F8;
+  gap: 36px;
 }
 

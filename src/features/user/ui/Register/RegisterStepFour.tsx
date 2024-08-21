@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
+//import { useForm } from "react-hook-form";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
-import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
+//import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
 import { IConfirmCode, useSignupCodeMutation } from "../../api/userRegister";
-import Timer from "@/widgets/timer/Timer";
+//import Timer from "@/widgets/timer/Timer";
 // import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
-import { ConfirmCodeValidRules } from "@/shared/validationRules/ConfirmCodeValidRules";
+//import { ConfirmCodeValidRules } from "@/shared/validationRules/ConfirmCodeValidRules";
 import { Form, Formik } from "formik";
 
 import style from "../Login/auth.module.scss";

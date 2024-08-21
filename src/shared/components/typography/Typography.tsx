@@ -6,6 +6,7 @@ type TypographyVariant =
   | "h3_center"
   | "check-box"
   | "price"
+  | "price_card"
   | "default";
 
 type TypographyTag = "h1" | "h2" | "h3" | "h4" | "p" | "div" | "span" | "label";
