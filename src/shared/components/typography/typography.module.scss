@@ -1,48 +1,58 @@
-.button-register {
-  font-weight: 400;
-  font-size: 20px;
+.button {
+  font-weight: 600;
+  font-size: 16px;
 }
 
-.p-card-name {
+.h3 {
+  font-weight: 800;
+  font-size: 40px;
+  color: #0c1038;
+  line-height: 95%;
+  &_center {
+    font-weight: 800;
+    font-size: 25px;
+    color: #0c1038;
+    line-height: 100%;
+    text-align: center;
+  }
+}
+
+.check-box {
+  font-size: 14px;
+  color: #0c1038;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 40px;
+  color: #FD7E14;
+  &_card {
+    font-weight: 500;
+    font-size: 22px;
+    color: #FD7E14;
+  }
+}
+
+.default {
   font-weight: 400;
   font-size: 20px;
   color: #fff;
 }
 
-.p-card-date {
-  font-weight: 400;
-  font-size: 20px;
-  color: #C2C2C2;
-}
 
-.h3-price {
-  font-weight: 500;
-  font-size: 22px;
-  color: #FD7E14;
-}
 
-.h3-register {
-  font-weight: 500;
-  font-size: 22px;
-  color: #000000;
-}
 
-.h3-account {
-  font-weight: 500;
-  font-size: 22px;
-  color: #0C1038;
-}
 
 .h3-login_delete {
   font-weight: 500;
   font-size: 22px;
-  color: #0C1038;
+  color: #0c1038;
 }
 
 .h4-login_delete {
   font-weight: 400;
   font-size: 20px;
-  color: #0C1038;
+  color: #0c1038;
   text-align: center;
 }
 
@@ -52,6 +62,9 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #0c1038;
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 150%;
 }
 
 .link-account {
@@ -69,3 +82,4 @@
   font-weight: 400;
   font-size: 20px;
 }
+

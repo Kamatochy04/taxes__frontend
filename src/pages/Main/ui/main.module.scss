@@ -1,4 +1,4 @@
-.prev {
+/*.prev {
   background: #b7b7b79c;
   border: 1px solid #000;
   width: 100%;
@@ -6,9 +6,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}*/
+
+
+.main {
+  overflow-y: scroll;
+  flex-grow: 1;
+  position: relative;
+  &::-webkit-scrollbar {
+    background: none;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #3351ff79;
+    width: 2px;
+    border-radius: 50px;
+  }
 }
 
-.cards {
+/*.cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 34px;
@@ -65,9 +81,9 @@
     justify-content: center;
     background: #b7b7b79c;
   }
-}
+}*/
 
-.footer {
+/*.footer {
   min-height: 120px;
   background: #000;
 }
@@ -81,9 +97,5 @@
     margin-top: 20px;
     width: 1500px;
   }
-}
+}*/
 
-.main {
-  position: relative;
-  height: 80vh;
-}

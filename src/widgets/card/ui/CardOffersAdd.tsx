@@ -1,14 +1,14 @@
 import style from "./cardF.module.scss";
 import { Typography } from "@/shared/components/typography/Typography";
 import productImg from "@/shared/assets/img/Rectangle 803.png";
-import { ProductsData } from "@/model";
+import { ProductsResults } from "@/model";
 import { FC } from "react";
 
 interface ProductsItemProps {
-  data: ProductsData;
+  results: ProductsResults;
 }
 
-export const CardOffersAdd: FC<ProductsItemProps> = ({ data }) => {
+export const CardOffersAdd: FC<ProductsItemProps> = ({ results }) => {
   return (
     <div className={style.card}>
       <div className={style.card__img}>
@@ -16,11 +16,11 @@ export const CardOffersAdd: FC<ProductsItemProps> = ({ data }) => {
       </div>
 
       <div className={style.card__d}>
-        <Typography variant="p-card-name" tag={"p"}>
-          {data.name}
+        <Typography variant="default" tag={"p"}>
+          {results.name}
         </Typography>
-        <Typography variant="h3-price" tag={"h3"}>
-          {data.count}
+        <Typography variant="price_card" tag={"h3"}>
+          {results.price} BYN
         </Typography>
       </div>
     </div>

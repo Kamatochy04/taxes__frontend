@@ -1,5 +1,5 @@
 import { api } from "@/app/redux/services/api";
-import { TaxpayerType, PassportType, PersonalType, EnterWord, PhotoType } from "@/model/AccountData/AccountType"
+import { TaxpayerType, PassportType, PersonalType, EnterWord, PhotoType, AccountData } from "@/model/AccountData/AccountType"
 
 type ResponsData = {
   accessToken: string;
@@ -11,7 +11,7 @@ type ResponsData = {
 export const accountApi = api.injectEndpoints({  
   endpoints: (builder) => ({
 
-    AddDataUser: builder.query({
+    AddDataUser: builder.query<AccountData, string>({
       query: () => "api/dev/users/me/",
     }),
 

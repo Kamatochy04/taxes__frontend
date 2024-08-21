@@ -1,29 +1,41 @@
 import { Field, Form, Formik } from "formik";
 import { Typography } from "@/shared/components/typography/Typography";
-import { TaxpayerType } from "@/model";
+import { ProductsResults } from "@/model";
 import { Button } from "@/shared/components/button/Button";
 
 import style from "./details.module.scss";
 import { useState } from "react";
-import { useTaxpayerMutation } from "@/features/user/api/AccountApi";
+import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
+import { useNewProductMutation } from "@/features/user/api/productsApi";
 
 export const Details = () => {
-  const [addTaxpayer] = useState<TaxpayerType>({
-    UNP: "",
-    сategory: "",
+  const [addProductsResults] = useState<ProductsResults>({
+    id: "",
+    name: "",
+    description: "",
+    price: "",
+    count: "",
+    category: "",
+    seller: "",
+    images: [],
   });
 
-  const [addTaxpayerData] = useTaxpayerMutation();
+  const text = `Информация по добавлению инфы
+  - символы
+  - количество`;
+
+  const [addProductsResultsData] = useNewProductMutation();
 
   return (
     <div className={style.card}>
-      <Typography variant="h3-account" tag={"h3"}>
-        Добавить новый товар/услугу
+      <Typography variant="default" tag={"h3"}>
+        Новое предложение
       </Typography>
-      <Formik<TaxpayerType>
-        initialValues={addTaxpayer}
+      
+      <Formik<ProductsResults>
+        initialValues={addProductsResults}
         onSubmit={(values) => {
-          addTaxpayerData(values);
+          addProductsResultsData(values);
         }}
       >
         {() => (
@@ -31,20 +43,23 @@ export const Details = () => {
             <div className={style.card__Line}>
               <div className={style.card__Column}>
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Наименование
+                  <Typography variant="default" tag={"p"}>
+                  Название товара/услуги *
                   </Typography>
-                  <Field
-                    className={style.card__input}
-                    name={"UNP"}
-                    type="text"
-                    placeholder="Введите наименование товара"
-                  />
+
+                  <HintCloud text={text}>
+                    <Field
+                      className={style.card__input}
+                      name={"name"}
+                      type="text"
+                      placeholder="Введите название товара/услуги"
+                    />
+                  </HintCloud>
                 </div>
 
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Категория
+                  <Typography variant="default" tag={"p"}>
+                    Категория*
                   </Typography>
                   <Field
                     className={style.card__input}
@@ -55,8 +70,8 @@ export const Details = () => {
                 </div>
 
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Описание
+                  <Typography variant="default" tag={"p"}>
+                    Описание*
                   </Typography>
                   <Field
                     className={style.card__input__description}
@@ -67,38 +82,44 @@ export const Details = () => {
                 </div>
 
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Местонахождение товара
+                  <Typography variant="default" tag={"p"}>
+                    Местонахождение товара*
                   </Typography>
-                  <Field
-                    className={style.card__input}
-                    name={"UNP"}
-                    type="text"
-                    placeholder="Введите местонахождение товара"
-                  />
+
+                  <HintCloud text={text}>
+                    <Field
+                      className={style.card__input}
+                      name={"UNP"}
+                      type="text"
+                      placeholder="Введите местонахождение товара"
+                    />
+                  </HintCloud>
                 </div>
 
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Контактная информация
+                  <Typography variant="default" tag={"p"}>
+                    Контактная информация*
                   </Typography>
+                  <HintCloud text={text}>
+                    <Field
+                      className={style.card__input}
+                      name={"UNP"}
+                      type="text"
+                      placeholder="Введите номер телефона"
+                    />
+                  
                   <Field
                     className={style.card__input}
                     name={"UNP"}
                     type="text"
-                    placeholder="Введите номер телефона для связи"
+                    placeholder="Введите e-mail"
                   />
-                  <Field
-                    className={style.card__input}
-                    name={"UNP"}
-                    type="text"
-                    placeholder="Введите email для связи"
-                  />
+                  </HintCloud>
                 </div>
 
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Условия оплаты
+                  <Typography variant="default" tag={"p"}>
+                    Условия оплаты*
                   </Typography>
                   <Field
                     className={style.card__input}
@@ -109,7 +130,7 @@ export const Details = () => {
                 </div>
 
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
+                  <Typography variant="default" tag={"p"}>
                     Условия доставки
                   </Typography>
                   <Field
@@ -121,8 +142,8 @@ export const Details = () => {
                 </div>
 
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Цена, BYN
+                  <Typography variant="default" tag={"p"}>
+                    Цена, BYN*
                   </Typography>
                   <Field
                     className={style.card__input}
@@ -134,7 +155,7 @@ export const Details = () => {
 
                 <div className={style.card__Button}>
                   <Button variant="addSentence">
-                    <Typography variant="h3-account" tag={"h3"}>
+                    <Typography variant="default" tag={"h3"}>
                       Добавить предложение
                     </Typography>
                   </Button>
@@ -143,8 +164,8 @@ export const Details = () => {
 
               <div className={style.card__Column}>
                 <div>
-                  <Typography variant="subscribe-input" tag={"p"}>
-                    Фото товара/услуги
+                  <Typography variant="default" tag={"p"}>
+                    Фото товара/услуги*
                   </Typography>
                   <Field
                     className={style.card__input__photo__big}

@@ -5,10 +5,10 @@ import { PassportDetails } from "./PassportDetails";
 import { PersonalDeta } from "./PersonalData";
 import { Typography } from "@/shared/components/typography/Typography";
 import { ProfilePhoto } from "./ProfilePhoto";
-//import { useAddDataUserQuery } from "@/features/user/api/AccountApi";
+import { useAddDataUserQuery } from "@/features/user/api/AccountApi";
 
 export const Account = () => {
-  //const {data = []} = useAddDataUserQuery('');
+  const {data} = useAddDataUserQuery('');
 
   return (
     <>
@@ -19,7 +19,10 @@ export const Account = () => {
           <Typography variant="h3-account" tag={"h3"}>
             Личные данные
           </Typography>
-          <PersonalDeta />
+
+          {data != undefined
+          ? <PersonalDeta data={data} />           
+          : "ERROR"}
         </div>
 
         <div className={style.card}>

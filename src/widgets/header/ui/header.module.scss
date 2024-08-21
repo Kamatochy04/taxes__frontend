@@ -1,9 +1,10 @@
 .header {
+  border-bottom: 1px solid #c2c2c2;
   width: 100%;
   padding: 20px 0;
   &__container {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
   }
   &__box {
     display: flex;
@@ -11,16 +12,12 @@
     gap: 20px;
   }
   &__wrapper {
-    gap: 33px;
+    width: 100%;
     display: flex;
     align-items: center;
-    margin-left: 44px;
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      color: #fff;
-    }
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 70%;
   }
   &__login {
     margin-left: auto;
@@ -28,6 +25,7 @@
     align-items: center;
     gap: 20px;
     color: #fff;
+    font-size: 16px;
   }
 }
 
@@ -42,12 +40,32 @@
 
 .login {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   color: #fff;
   cursor: pointer;
 }
 
-.catalog {
+.name {
+  font-weight: 400;
+  font-size: 16px;
   color: #fff;
+  cursor: default;
+}
+
+.burger {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   cursor: pointer;
+  &__acive {
+    background: red;
+  }
+
+  span {
+    width: 100%;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 100px;
+  }
 }

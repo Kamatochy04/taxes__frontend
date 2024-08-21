@@ -1,3 +1,19 @@
+export type AccountData = {
+  email: string;
+  first_name: string;
+  last_name: string;
+  patronymic: string;
+  UNP: string;
+  registration_address: string;
+  residential_address: string;
+  date_of_birth: Date;
+  passport_num: string;
+  phone_number: string;
+  avatar: any;
+};
+
+
+
 export type PersonalType = {
   first_name: string;
   last_name: string;
@@ -16,10 +32,10 @@ export type PhotoType = {
 };
 
 export type PassportType = {
-  date: Date;
+  date_of_birth: Date;
   series: string;
   number: string;
-  registration: string;
+  registration_address: string;
 };
 
 export type EnterWord = {

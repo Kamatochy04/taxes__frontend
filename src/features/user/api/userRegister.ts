@@ -1,6 +1,6 @@
 import { api } from "@/app/redux/services/api";
 
-interface IDataUser {
+export interface IDataUser {
   first_name: string;
   last_name: string;
   patronymic?: string;

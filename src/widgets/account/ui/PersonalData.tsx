@@ -1,15 +1,21 @@
 import { Field, Form, Formik } from "formik";
 import { Button } from "@/shared/components/button/Button";
 import { Typography } from "@/shared/components/typography/Typography";
-import { PersonalType } from "@/model";
+import { AccountData, PersonalType } from "@/model";
 import style from "./account.module.scss";
 
-import { useState } from "react";
+import { FC, useState } from "react";
 import { usePersonalMutation } from "@/features/user/api/AccountApi";
 import { useNavigate } from "react-router-dom";
 
-export const PersonalDeta = () => {
+interface PersonalDetaProps {
+  data: AccountData;
+}
+
+export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
   const navigate = useNavigate();
+
+  console.log(data);
 
   const [addPassport] = useState<PersonalType>({
     first_name: "",
@@ -38,18 +44,21 @@ export const PersonalDeta = () => {
                 name={"first_name"}
                 type="text"
                 placeholder="имя"
+                //value={data.first_name}
               />
               <Field
                 className={style.card__input}
                 name={"phone_number"}
                 type="text"
                 placeholder="телефон"
+                //value={data.phone_number}
               />
               <Field
                 className={style.card__input}
                 name={"last_name"}
                 type="text"
                 placeholder="фамилия"
+                //value={data.last_name}
               />
               <Field
                 className={style.card__input}
@@ -57,6 +66,7 @@ export const PersonalDeta = () => {
                 autocomplete="off"
                 type="email"
                 placeholder="Email"
+                //value={data.email}
               />
               <Field
                 className={style.card__input}
@@ -64,6 +74,7 @@ export const PersonalDeta = () => {
                 autocomplete="off"
                 type="text"
                 placeholder="отчество"
+                //value={data.patronymic}
               />
             </div>
             <div className={style.card__delete}>

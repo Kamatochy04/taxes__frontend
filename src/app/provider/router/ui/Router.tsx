@@ -5,6 +5,8 @@ import {
   Account,
   MainModel,
   Finance,
+  MySuggestions,
+  Details,
   Offers,
   Orders,
   PaymentMethods,
@@ -25,13 +27,17 @@ import {
   RegisterStepTwo,
 } from "@/features";
 import { LoginForgetPassword } from "@/features/user/ui";
+import { ProductCard } from "@/pages/ProductCard";
 
 export const Router = () => {
   return (
     <div className="app">
       <Routes>
         <Route path="/" element={<Main />}>
-          <Route path="offers" element={<Offers />} />
+          <Route index element={<Offers />} />
+          <Route path="/:id" element={<ProductCard />} />
+          <Route path="mySuggestions" element={<MySuggestions />} />
+          <Route path="details" element={<Details />} />
           <Route path="finance" element={<Finance />} />
           <Route path="orders" element={<Orders />} />
           <Route path="payment-methods" element={<PaymentMethods />} />
@@ -52,18 +58,9 @@ export const Router = () => {
           <Route path="register" element={<MainModel />}>
             <Route index element={<RegisterStepOne />} />
             <Route path="step-second" element={<RegisterStepTwo />} />
-            <Route
-              path="step-second/step-third"
-              element={<RegisterStepThree />}
-            />
-            <Route
-              path="step-second/step-third/step-fourth"
-              element={<RegisterStepFour />}
-            />
-            <Route
-              path="step-second/step-third/step-fourth/step-five"
-              element={<RegisterStepFive />}
-            />
+            <Route path="step-third" element={<RegisterStepThree />} />
+            <Route path="step-fourth" element={<RegisterStepFour />} />
+            <Route path="step-five" element={<RegisterStepFive />} />
           </Route>
         </Route>
       </Routes>
