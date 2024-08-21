@@ -14,7 +14,3 @@ export const { useGetUserInfQuery } = userApi;
 export const {
   endpoints: { getUserInf },
 } = userApi;
-
-export const {
-  endpoints: { getUserInf },
-} = userApi;
