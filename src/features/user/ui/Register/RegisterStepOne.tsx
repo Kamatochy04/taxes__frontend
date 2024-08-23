@@ -9,7 +9,17 @@ import { Input } from "@/shared/components/input/Input";
 import { Button } from "@/shared/components/button/Button";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 
+import { Checkbox } from "@/shared/components/checkbox/Checkbox";
+
 import style from "../Login/auth.module.scss";
+
+import * as yup from "yup";
+
+export const validationSchema = yup.object().shape({
+  first_name: yup.string().required("Обязательное поле"),
+  last_name: yup.string().required("Обязательное поле"),
+  patronymic: yup.string().required("Обязательное поле"),
+});
 
 export const RegisterStepOne = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +35,7 @@ export const RegisterStepOne = () => {
     <Formik<DataRegisterUser>
       initialValues={{ first_name: "", last_name: "", patronymic: "" }}
       onSubmit={onSubmit}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
     >
       {() => (
         <Form className={style.form}>
@@ -39,12 +49,17 @@ export const RegisterStepOne = () => {
             <Input name={"first_name"} type="text" placeholder="Имя*" />
             <Input name={"last_name"} type="text" placeholder="Фамилия*" />
             <Input name={"patronymic"} type="text" placeholder="Отчество" />
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Input required name={"checkbox"} type="checkbox" />
-              <Typography tag={"p"} style={{ color: "#000" }}>
-              <a href="http://84.38.182.213:1437/Agreement" target="_blank">Согласие на обработку персональных данных</a>                
+            <Checkbox required={true}>
+              <Typography tag={"p"}>
+                <a
+                  href="http://84.38.182.213:1437/Agreement"
+                  target="_blank"
+                  style={{ color: "#000", fontSize: "13px" }}
+                >
+                  Согласие на обработку персональных данных
+                </a>
               </Typography>
-            </div>
+            </Checkbox>
           </div>
 
           <div className={style.form__wrapper}>

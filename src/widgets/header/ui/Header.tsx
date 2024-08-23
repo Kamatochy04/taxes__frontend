@@ -35,11 +35,11 @@ const HeaderVariantOne = () => {
   return (
     <header className={style.header}>
       <Container>
-        <div className={style.header__container}>
+        <div className={style.header__container_sec}>
           <div className={style.logo}>
             <img src={logoImg} alt="logo" />
           </div>
-          <div className={style.header__wrapper}>
+          <div className={style.header__wrapper_sec}>
             <CostomInput variant="header" />
           </div>
 
@@ -81,19 +81,18 @@ const HeaderVariantTwo = ({
           <div className={style.logo}>
             <img src={logoImg} alt="logo" />
           </div>
+          <div
+            className={`${style.burger} ${style[`burger__active`]}`}
+            onClick={() => {
+              dispathc(toggleSideBar());
+              toggleClass();
+            }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <div className={style.header__wrapper}>
-            <div
-              className={`${style.burger} ${style[`burger__active`]}`}
-              onClick={() => {
-                dispathc(toggleSideBar());
-                toggleClass();
-              }}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            
             <CostomInput variant="header" />
           </div>
           <div className={style.header__login}>

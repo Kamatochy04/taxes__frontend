@@ -1,11 +1,8 @@
-//import { useForm } from "react-hook-form";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { useNavigate } from "react-router-dom";
-//import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
+
 import { IConfirmCode, useSignupCodeMutation } from "../../api/userRegister";
-//import Timer from "@/widgets/timer/Timer";
-// import { SecretWordRules } from "@/shared/validationRules/SecretWordValidRules";
-//import { ConfirmCodeValidRules } from "@/shared/validationRules/ConfirmCodeValidRules";
+
 import { Form, Formik } from "formik";
 
 import style from "../Login/auth.module.scss";
@@ -88,30 +85,5 @@ export const RegisterStepFour = () => {
         </Form>
       )}
     </Formik>
-    // <RegistrForm onSubmit={handleSubmit(onSubmit)}>
-    //   <>
-    //     <p>Регистрация</p>
-    //     <ProgressBar progress={100} />
-    //     <p>Введите код, отправленный на e-mail</p>
-    //     <TextField
-    //       autoFocus
-    //       {...register("code", { ...ConfirmCodeValidRules() })}
-    //       sx={{ width: "100%" }}
-    //       placeholder="Введите код"
-    //       error={!!errors.code}
-    //       helperText={errors.code?.message}
-    //     />
-
-    //     <Button
-    //       sx={{ width: "100%" }}
-    //       variant="contained"
-    //       type="submit"
-    //       disabled={!isValid}
-    //     >
-    //       Отправить
-    //     </Button>
-    //     <Timer />
-    //   </>
-    // </RegistrForm>
   );
 };

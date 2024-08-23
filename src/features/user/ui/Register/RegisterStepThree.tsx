@@ -14,7 +14,7 @@ export const RegisterStepThree = () => {
       </Typography>
       <Button
         onClick={() => {
-          navigate("step-fourth");
+          navigate("/register/step-fourth");
         }}
         variant="contained"
       >

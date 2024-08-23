@@ -12,6 +12,3 @@ export const Path = () => {
     </>
   );
 };
-
-
-//<NavLink to={"/"}>Главная страница/</NavLink>  {state.from}/

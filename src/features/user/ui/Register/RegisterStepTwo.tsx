@@ -1,11 +1,11 @@
-//import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 
 import { useNavigate } from "react-router-dom";
-//import { set2FormData } from "@/app/redux/register2Slice";
+import { set2FormData } from "@/app/redux/register2Slice";
 
 import { useSignupMutation } from "../../api/userRegister";
 import { Form, Formik } from "formik";
@@ -16,6 +16,7 @@ import { Typography } from "@/shared/components/typography/Typography";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
 import { Input } from "@/shared/components/input/Input";
 import { Button } from "@/shared/components/button/Button";
+import { validationSchema } from "../../helpers/validationSheme/LoginStepOneSheme";
 
 interface IDataForm2User {
   email: string | "";
@@ -34,60 +35,60 @@ export const RegisterStepTwo = () => {
 
   const dataSelector = useAppSelector((store) => store.step2);
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   resetField,
-  //   watch,
-  //   setValue,
-  //   formState: { errors, isValid, isDirty },
-  // } = useForm<IDataForm2User>({
-  //   mode: "onBlur",
-  //   defaultValues: {
-  //     email: dataSelector.email,
-  //     password: dataSelector.password,
-  //     repeat_password: dataSelector.repeat_password,
-  //     secret_word: dataSelector.secret_word,
-  //   },
-  // });
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    watch,
+    setValue,
+    formState: { errors, isValid, isDirty },
+  } = useForm<IDataForm2User>({
+    mode: "onBlur",
+    defaultValues: {
+      email: dataSelector.email,
+      password: dataSelector.password,
+      repeat_password: dataSelector.repeat_password,
+      secret_word: dataSelector.secret_word,
+    },
+  });
 
-  // const password = useRef({});
-  // password.current = watch("password", "");
-  // const dataSekector = useAppSelector((state) => state.step1);
-  // const dispatch = useAppDispatch();
+  const password = useRef({});
+  password.current = watch("password", "");
+  const dataSekector = useAppSelector((state) => state.step1);
+  const dispatch = useAppDispatch();
 
-  // const valuePassword = watch("password");
-  // const valueRepeatPassword = watch("password");
+  const valuePassword = watch("password");
+  const valueRepeatPassword = watch("password");
 
-  // useEffect(() => {
-  //   if (valuePassword.length > 30) {
-  //     setValue("password", valuePassword.substring(0, 30));
-  //   }
-  //   if (valueRepeatPassword.length > 30) {
-  //     setValue("repeat_password", valueRepeatPassword.substring(0, 30));
-  //   }
-  // }, [valuePassword, valueRepeatPassword]);
+  useEffect(() => {
+    if (valuePassword.length > 30) {
+      setValue("password", valuePassword.substring(0, 30));
+    }
+    if (valueRepeatPassword.length > 30) {
+      setValue("repeat_password", valueRepeatPassword.substring(0, 30));
+    }
+  }, [valuePassword, valueRepeatPassword]);
 
   const onSubmit = (date: IDataForm2User) => {
-    // const dataUser = { ...dataSekector, ...date };
-    // dispatch(set2FormData(date));
-    // signup(dataUser)
-    //   .then((response) => {
-    //     if (response.error) {
-    //       return console.log(response.error);
-    //     }
-    //     if (response.data) {
-    //       localStorage.setItem(
-    //         "confirm_code_id",
-    //         response.data.confirm_code_id
-    //       );
-    //       navigate("step-third");
-    //     } else {
-    //       alert("Пользватель с таким почтовым адресом уже зарегистрирован!");
-    //     }
-    //   })
-    //   .catch(console.log);
-    navigate("step-third");
+    const dataUser = { ...dataSekector, ...date };
+    dispatch(set2FormData(date));
+    signup(dataUser)
+      .then((response) => {
+        if (response.error) {
+          return console.log(response.error);
+        }
+        if (response.data) {
+          localStorage.setItem(
+            "confirm_code_id",
+            response.data.confirm_code_id
+          );
+          navigate("step-third");
+        } else {
+          alert("Пользватель с таким почтовым адресом уже зарегистрирован!");
+        }
+      })
+      .catch(console.log);
+    navigate("/register/step-third");
   };
 
   return (
@@ -99,7 +100,7 @@ export const RegisterStepTwo = () => {
         secret_word: "",
       }}
       onSubmit={onSubmit}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
     >
       {() => (
         <Form className={style.form}>
