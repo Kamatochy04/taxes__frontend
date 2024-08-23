@@ -31,7 +31,7 @@ export const Details = () => {
       <Typography variant="default" tag={"h3"}>
         Новое предложение
       </Typography>
-      
+
       <Formik<ProductsResults>
         initialValues={addProductsResults}
         onSubmit={(values) => {
@@ -42,13 +42,14 @@ export const Details = () => {
           <Form>
             <div className={style.card__Line}>
               <div className={style.card__Column}>
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
-                  Название товара/услуги *
+                    Название товара/услуги *
                   </Typography>
 
                   <HintCloud text={text}>
                     <Field
+                      required
                       className={style.card__input}
                       name={"name"}
                       type="text"
@@ -57,97 +58,103 @@ export const Details = () => {
                   </HintCloud>
                 </div>
 
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Категория*
                   </Typography>
                   <Field
+                    required
                     className={style.card__input}
-                    name={"UNP"}
+                    name={"category"}
                     type="text"
                     placeholder="Введите категорию товара"
                   />
                 </div>
 
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Описание*
                   </Typography>
-                  <Field
+                  <textarea
+                    required
                     className={style.card__input__description}
-                    name={"UNP"}
-                    type="text"
+                    name={"description"}
                     placeholder="Введите описание товара"
                   />
                 </div>
 
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Местонахождение товара*
                   </Typography>
 
                   <HintCloud text={text}>
                     <Field
+                      required
                       className={style.card__input}
-                      name={"UNP"}
+                      name={"location"}
                       type="text"
                       placeholder="Введите местонахождение товара"
                     />
                   </HintCloud>
                 </div>
 
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Контактная информация*
                   </Typography>
                   <HintCloud text={text}>
                     <Field
+                      required
                       className={style.card__input}
-                      name={"UNP"}
+                      name={"phone_number"}
                       type="text"
                       placeholder="Введите номер телефона"
                     />
-                  
-                  <Field
-                    className={style.card__input}
-                    name={"UNP"}
-                    type="text"
-                    placeholder="Введите e-mail"
-                  />
+
+                    <Field
+                      required
+                      className={style.card__input}
+                      name={"e-mail"}
+                      type="text"
+                      placeholder="Введите e-mail"
+                    />
                   </HintCloud>
                 </div>
 
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Условия оплаты*
                   </Typography>
                   <Field
+                    required
                     className={style.card__input}
-                    name={"UNP"}
+                    name={"payment_terms"}
                     type="text"
                     placeholder="Введите условия оплаты"
                   />
                 </div>
 
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Условия доставки
                   </Typography>
                   <Field
                     className={style.card__input}
-                    name={"UNP"}
+                    name={"delivery_terms"}
                     type="text"
                     placeholder="Введите условия доставки"
                   />
                 </div>
 
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Цена, BYN*
                   </Typography>
                   <Field
+                    required
                     className={style.card__input}
-                    name={"UNP"}
+                    name={"price"}
                     type="text"
                     placeholder="Введите цену"
                   />
@@ -163,11 +170,12 @@ export const Details = () => {
               </div>
 
               <div className={style.card__Column}>
-                <div>
+                <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Фото товара/услуги*
                   </Typography>
                   <Field
+                    required
                     className={style.card__input__photo__big}
                     name="img"
                     accept="image/jpeg,image/png,image/gif"
@@ -176,7 +184,7 @@ export const Details = () => {
                   />
                 </div>
 
-                <div>
+                <div className={style.card__input__Indent_photo}>
                   <Field
                     className={style.card__input__photo}
                     name="img"

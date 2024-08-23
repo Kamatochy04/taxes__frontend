@@ -10,6 +10,12 @@
   flex-direction: column;
   gap: 20px;
 
+  &__Indent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   &__Line {
     display: flex;
     justify-content: flex-start;
@@ -44,13 +50,24 @@
       height: 164px;
     }
 
+    &__Indent_photo {
+      display: flex;
+      gap: 26px;
+    }
+
     &__description {
+      font-size: 20px;
+      border-radius: 8px;
       width: 100%;
       height: 188px;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
     }
 
     &__description::placeholder {
-      text-align:start;
+      text-align: start;
     }
   }
 
