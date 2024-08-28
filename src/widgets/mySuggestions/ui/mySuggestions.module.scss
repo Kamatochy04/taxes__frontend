@@ -3,12 +3,6 @@
   justify-content: flex-start;
   gap: 32px;
   flex-wrap: wrap;
-
-  &__Button {
-    width: 100%;
-    height: 56px;
-    margin: 40px 155px;
-  }
 }
 
 .card {
@@ -34,21 +28,4 @@
     -ms-border-radius: 16px;
     -o-border-radius: 16px;
   }
-
-  &__button {
-    width: 320px;
-    height: 56px;
-    padding: 16px 0;
-    font-size: 20px;
-    font-weight: 400;
-    color: #ffffff;
-    border-radius: 8px;
-    background: linear-gradient(#222D9E, #0C1038);
-    box-shadow: 0 0 8px #ffffff;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-  }
-
 }

@@ -7,18 +7,35 @@ import style from "./details.module.scss";
 import { useState } from "react";
 import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
 import { useNewProductMutation } from "@/features/user/api/productsApi";
+import { useLocation } from "react-router-dom";
 
 export const Details = () => {
-  const [addProductsResults] = useState<ProductsResults>({
-    id: "",
-    name: "",
-    description: "",
-    price: "",
-    count: "",
-    category: "",
-    seller: "",
-    images: [],
-  });
+  const location = useLocation();
+  const { state } = location;
+
+  let [addProductsResults] = useState<ProductsResults>(
+    state !== null
+      ? {
+          id: "",
+          name: `${state.from.results.name}`,
+          description: `${state.from.results.description}`,
+          price: `${state.from.results.price}`,
+          count: "",
+          category: `${state.from.results.category}`,
+          seller: "",
+          images: [],
+        }
+      : {
+          id: "",
+          name: "",
+          description: "",
+          price: "",
+          count: "",
+          category: "",
+          seller: "",
+          images: [],
+        }
+  );
 
   const text = `Информация по добавлению инфы
   - символы
@@ -160,13 +177,23 @@ export const Details = () => {
                   />
                 </div>
 
-                <div className={style.card__Button}>
-                  <Button variant="addSentence">
-                    <Typography variant="default" tag={"h3"}>
-                      Добавить предложение
-                    </Typography>
-                  </Button>
-                </div>
+                {state === null ? (
+                  <div className={style.card__Button}>
+                    <Button variant="bigBlue">
+                        Добавить предложение
+                    </Button>
+                  </div>
+                ) : (
+                  <div className={style.card__Button}>
+                    <Button variant="normalBlue">
+                        Сохранить
+                    </Button>
+                    <Button variant="normalWhite">
+                        Удалить
+                    </Button>
+                  </div>
+                )}
+
               </div>
 
               <div className={style.card__Column}>

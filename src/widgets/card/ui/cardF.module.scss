@@ -16,6 +16,17 @@
         }
     }
 
+    &__imgVector {
+        flex-grow: 1;
+        align-self: flex-end;
+        text-align: right;
+        
+        img {
+            width: 20px;
+            height: 18px;
+        }
+    }
+
     &__d {
         height: 60%;
         display: grid;
