@@ -12,7 +12,7 @@ export const productsApi = api.injectEndpoints({
 
     NewProduct: builder.mutation<ProductsData, ProductsResults>({
       query: (body) => ({
-        url: "api/dev/users/me/avatar/",
+        url: "api/dev/products/",
         method: "POST",
         body,
       }),

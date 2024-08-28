@@ -179,21 +179,14 @@ export const Details = () => {
 
                 {state === null ? (
                   <div className={style.card__Button}>
-                    <Button variant="bigBlue">
-                        Добавить предложение
-                    </Button>
+                    <Button variant="bigBlue">Добавить предложение</Button>
                   </div>
                 ) : (
                   <div className={style.card__Button}>
-                    <Button variant="normalBlue">
-                        Сохранить
-                    </Button>
-                    <Button variant="normalWhite">
-                        Удалить
-                    </Button>
+                    <Button variant="normalBlue">Сохранить</Button>
+                    <Button variant="normalWhite">Удалить</Button>
                   </div>
                 )}
-
               </div>
 
               <div className={style.card__Column}>
