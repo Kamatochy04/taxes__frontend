@@ -1,6 +1,7 @@
 import { Path } from "@/widgets";
 import style from "./finance.module.scss";
 import { useState } from "react";
+import { Button } from "@/shared/components/button/Button";
 
 export const Finance = () => {
   const [percent, setPercent] = useState<string>("");
@@ -18,9 +19,7 @@ export const Finance = () => {
     <>
       <Path />
       <div className={style.finance}>
-
         <div className={style.card}>
-
           <div className={style.input}>
             <p className={style.finance__text}>Процентная ставка, %</p>
             <div className={style.field}>
@@ -50,16 +49,18 @@ export const Finance = () => {
           <div className={style.input}>
             <p className={style.finance__text}>Налог за месяц составляет</p>
             <div className={style.field}>
-              <span>{((parseInt(revenue) / 100) * parseInt(percent)).toFixed(2)}</span>
+              <span>
+                {((parseInt(revenue) / 100) * parseInt(percent)).toFixed(2)}
+              </span>
               <p className={style.finance__text}>BYN</p>
             </div>
           </div>
+
+          <div className={style.button}>
+            <Button variant="smallOrange">Оплатить</Button>
+          </div>
         </div>
       </div>
-
-      <button className={style.button} type="submit">
-        Оплатить
-      </button>
     </>
   );
 };

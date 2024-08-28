@@ -7,7 +7,6 @@
 
 .card {
   width: 608px;
-  height: 245px;
   border: 1px;
   border-color: #592DD1;
   background: #4D648D;
@@ -16,6 +15,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 40px 32px;
+  gap: 32px;
 }
 
 .input {
@@ -50,15 +50,7 @@ input {
 }
 
 .button {
-  margin-top: 64px;
-  margin-left: 144px;
-  width: 320px;
-  height: 56px;
-  background: #fff;
-  border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-  gap: 10px;
+  margin-top: 40px;
+  text-align: center;
+
 }
