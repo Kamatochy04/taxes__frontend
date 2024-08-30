@@ -27,7 +27,7 @@ export const RegisterStepFour = () => {
 
   const onSubmit = (data: IConfirmCode) => {
     const confirm_code_id = localStorage.getItem("confirm_code_id");
-
+    console.log(confirm_code_id);
     if (confirm_code_id) {
       data.confirm_code_id = confirm_code_id;
     }

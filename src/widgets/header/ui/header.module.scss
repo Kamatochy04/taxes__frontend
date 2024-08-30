@@ -79,3 +79,24 @@
     border-radius: 100px;
   }
 }
+
+@media (max-width: 860px) {
+  .header__wrapper {
+    display: none;
+    &_sec {
+      display: none;
+    }
+  }
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &_sec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+}

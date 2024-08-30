@@ -3,7 +3,6 @@ import { Card } from "@/widgets";
 
 import { useGetProductsDataQuery } from "@/features/user/api/productsApi";
 import { ProductsResults } from "@/model";
-import { useCallback } from "react";
 
 export const Offers = () => {
   const { data } = useGetProductsDataQuery("");
@@ -12,7 +11,9 @@ export const Offers = () => {
     <>
       <div className={style.offers}>
         {data != undefined
-          ? data.results.map((item: ProductsResults) => <Card results={item} />)
+          ? data.results.map((item: ProductsResults, id) => (
+              <Card key={id} results={item} />
+            ))
           : "ERROR"}
       </div>
     </>
