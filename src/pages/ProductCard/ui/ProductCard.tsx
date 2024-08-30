@@ -1,5 +1,6 @@
 import StarIcon from "@mui/icons-material/Star";
 import style from "./product.module.scss";
+import { Button } from "@/shared/components/button/Button";
 export const ProductCard = () => {
   return (
     <div className={style.card}>
@@ -37,8 +38,8 @@ export const ProductCard = () => {
       </div>
       <div className={style.card__price}>
         <h3 className={style.card__price_title}>317 BYN</h3>
-        <button className={style.card__button}>Добавить в корзину</button>
-        <button className={style.card__button_2}>Купить</button>
+        <Button variant={"smallBlue"}>Добавить в корзину</Button>
+        <Button variant={"smallOrange"}>Заказать</Button>
       </div>
     </div>
   );

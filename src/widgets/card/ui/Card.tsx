@@ -41,11 +41,7 @@ export const Card: FC<ProductsItemProps> = ({ results }) => {
           <p>58</p>
         </div>
       </div>
-      <Button variant={"card"}>
-        <Typography variant={"button"} tag={"p"}>
-          Заказать
-        </Typography>
-      </Button>
+      <Button variant={"smallOrange"}>Заказать</Button>
     </div>
   );
 };

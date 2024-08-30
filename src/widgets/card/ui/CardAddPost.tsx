@@ -1,5 +1,6 @@
 import { Typography } from "@/shared/components/typography/Typography";
 import style from "./cardAddPost.module.scss";
+import { Button } from "@/shared/components/button/Button";
 
 
 
@@ -36,10 +37,16 @@ export const CardAddPost = () => {
             <Typography variant="button-register" tag={"p"}>
               До пункта выдачи
             </Typography>
+            
           </div>
+          
+        </div>
+        <div className={style.card__Button}>
+          <Button variant={"smallOrange"}>Заказать</Button>
         </div>
 
       </div>
+
     </>
   );
 };
