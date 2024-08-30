@@ -44,7 +44,11 @@
     margin-right: 40px;
     font-size: 20px;
 
-    &__photo__big {
+    &__file {
+      display: none;
+    }
+
+    &__photo__big img {
       width: 544px;
       height: 544px;
     }
