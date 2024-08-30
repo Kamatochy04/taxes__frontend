@@ -36,10 +36,8 @@ export const DeletUserStepOne = () => {
               type="text"
               placeholder="Секретное слово"
             />
-            <Button variant={"register"} disabled={!isValid}>
-              <Typography variant="button-register" tag={"p"}>
+            <Button variant={"bigWhite"} disabled={!isValid}>
                 Далее
-              </Typography>
             </Button>
           </Form>
         )}

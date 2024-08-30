@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .bigBlue {
   font-family: Roboto, sans-serif;
   font-size: 20px;
@@ -154,10 +155,19 @@
   }
 }
 
+=======
+.bigBlue,
+.bigWhite,
+.normalBlue,
+.normalWhite,
+.smallBlue,
+.smallWhite,
+>>>>>>> 6f601aa157c6290e03c76dbe57d0cfbed5252399
 .smallOrange {
   font-family: Roboto, sans-serif;
   font-size: 20px;
   font-weight: 400;
+<<<<<<< HEAD
   color: #0c1038;
   height: 48px;
   width: 224px;
@@ -166,13 +176,21 @@
   border-color: #0c1038;
   transition: 0.2s linear;
   background: linear-gradient(#ffffff, #fd7e14);
+=======
+  transition: .2s linear;
+  border-radius: 8px;
+>>>>>>> 6f601aa157c6290e03c76dbe57d0cfbed5252399
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+<<<<<<< HEAD
   &:hover {
     box-shadow: 0 0 0 6px #0c1038;
   }
+=======
+
+>>>>>>> 6f601aa157c6290e03c76dbe57d0cfbed5252399
   &:disabled {
     background: none;
     color: #c2c2c2;
@@ -182,6 +200,114 @@
   }
 }
 
+<<<<<<< HEAD
+=======
+.bigBlue {
+  color: #FFFFFF;
+  height: 56px;
+  width: 320px;
+  background: linear-gradient(#222D9E, #0C1038);
+
+  &:hover {
+    box-shadow: 0 0 0 6px #C2C2C2;
+  }
+}
+
+.bigWhite {
+  color: #0C1038;
+  height: 56px;
+  width: 320px;
+  background: linear-gradient(#FFFFFF, #999999);
+
+  &:hover {
+    box-shadow: 0 0 0 6px #0C1038;
+  }
+}
+
+.normalBlue {
+  color: #FFFFFF;
+  height: 56px;
+  width: 240px;
+  background: linear-gradient(#222D9E, #0C1038);
+
+  &:hover {
+    box-shadow: 0 0 0 6px #C2C2C2;
+  }
+}
+
+.normalWhite {
+  color: #0C1038;
+  height: 56px;
+  width: 240px;
+  background: linear-gradient(#FFFFFF, #999999);
+
+  &:hover {
+    box-shadow: 0 0 0 6px #0C1038;
+  }
+}
+
+.smallBlue {
+  color: #FFFFFF;
+  height: 48px;
+  width: 224px;
+  background: linear-gradient(#212C9D, #0C0F37);
+
+  &:hover {
+    box-shadow: 0 0 0 6px #C2C2C2;
+  }
+}
+
+.smallWhite {
+  color: #0C1038;
+  height: 48px;
+  width: 224px;
+  background: linear-gradient(#FFFFFF, #999999);
+
+  &:hover {
+    box-shadow: 0 0 0 6px #0C1038;
+  }
+}
+
+.smallOrange {
+  color: #0C1038;
+  height: 48px;
+  width: 224px;
+  border: 0.5px;
+  border-color: #0C1038;
+  background: linear-gradient(#FFFFFF, #FD7E14);
+
+  &:hover {
+    box-shadow: 0 0 0 6px #0C1038;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 6f601aa157c6290e03c76dbe57d0cfbed5252399
 .save {
   height: 56px;
   width: 240px;
@@ -192,6 +318,7 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+
   &:hover {
     box-shadow: 0 0 0 6px #c2c2c2;
   }
@@ -207,6 +334,7 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+
   &:hover {
     box-shadow: 0 0 0 6px rgba(12, 16, 56, 0.25);
   }
@@ -222,9 +350,11 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+
   &:hover {
     box-shadow: 0 0 0 6px #c2c2c2;
   }
+
   &:disabled {
     background: none;
     color: #000000;
@@ -240,6 +370,7 @@
   width: 160px;
   padding: 15px 0;
   color: #ffffff;
+
   &:disabled {
     background: none;
     color: #000000;
@@ -278,6 +409,7 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+
   &:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px #3c82f8;
   }

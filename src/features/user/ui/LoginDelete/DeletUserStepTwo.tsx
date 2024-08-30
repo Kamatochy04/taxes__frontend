@@ -20,12 +20,10 @@ export const DeletUserStepTwo = () => {
           Проверьте email
         </Typography>
         <Button
-          variant={"register"}
+          variant={"bigBlue"}
           onClick={() => navigate("/delete-account/status")}
         >
-          <Typography variant="button-register" tag={"p"}>
-            Далее
-          </Typography>
+          Далее
         </Button>
       </div>
     </>

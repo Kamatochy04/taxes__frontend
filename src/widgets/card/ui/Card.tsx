@@ -5,7 +5,7 @@ import style from "./card.module.scss";
 import { Button } from "@/shared/components/button/Button";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@/shared/components/typography/Typography";
-import { ProductsResults } from "@/model";
+import { ProductsImages, ProductsResults } from "@/model";
 import { FC } from "react";
 
 interface ProductsItemProps {
@@ -13,12 +13,16 @@ interface ProductsItemProps {
 }
 
 export const Card: FC<ProductsItemProps> = ({ results }) => {
-  
+  let photo = results.images.map((item: ProductsImages) => item.photo);
+
   const navigate = useNavigate();
   return (
     <div className={style.card} onClick={() => navigate(`/${results.id}`)}>
       <div className={style.card__img}>
-        <img src={productImg} alt="product" />
+        <img
+          src={photo[0] != undefined ? photo[0] : productImg}
+          alt="product"
+        />
       </div>
 
       <Typography variant={"price"} tag={"p"}>
@@ -37,14 +41,7 @@ export const Card: FC<ProductsItemProps> = ({ results }) => {
           <p>58</p>
         </div>
       </div>
-      <Button variant={"card"}>
-        <Typography variant={"button"} tag={"p"}>
-          Заказать
-        </Typography>
-      </Button>
+      <Button variant={"smallOrange"}>Заказать</Button>
     </div>
   );
 };
-
-
-//<img src={results.images[0].photo} alt="product" />

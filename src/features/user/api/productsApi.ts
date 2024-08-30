@@ -18,6 +18,13 @@ export const productsApi = api.injectEndpoints({
       }),
     }),
 
+    DeleteProduct: builder.mutation<ProductsData, ProductsResults>({
+      query: (id) => ({
+        url: `api/dev/products/${id}`,
+        method: "DELETE",
+      }),
+    }),
+
   }),
 });
 

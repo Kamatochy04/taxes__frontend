@@ -21,7 +21,7 @@ export const MySuggestions = () => {
 
         {data != undefined
           ? data.results.map((item: ProductsResults) => (
-              <CardOffersAdd results={item} />
+              <CardOffersAdd results={item} key={item.id}/>
             ))
           : "ERROR"}
       </section>

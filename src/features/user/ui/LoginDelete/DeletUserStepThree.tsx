@@ -13,10 +13,8 @@ export const DeletUserStepThree = () => {
         <Typography variant={"h3-register"} tag={"h3"}>
           Аккаунт успешно удалён
         </Typography>
-        <Button variant={"register"} onClick={() => navigate("/")}>
-          <Typography variant="button-register" tag={"p"}>
+        <Button variant={"bigBlue"} onClick={() => navigate("/")}>
             Далее
-          </Typography>
         </Button>
       </div>
     </>

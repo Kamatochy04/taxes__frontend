@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from "formik";
 import { Typography } from "@/shared/components/typography/Typography";
-import { ProductsResults } from "@/model";
+import { ProductsImages, ProductsResults } from "@/model";
 import { Button } from "@/shared/components/button/Button";
 
 import style from "./details.module.scss";
@@ -12,6 +12,8 @@ import { useLocation } from "react-router-dom";
 export const Details = () => {
   const location = useLocation();
   const { state } = location;
+
+  let photo = state !== null ? (state.from.results.images.map((item: ProductsImages) => (item.photo))): ["Добавить фото", "Добавить фото", "Добавить фото", "Добавить фото"];
 
   let [addProductsResults] = useState<ProductsResults>(
     state !== null
@@ -194,9 +196,12 @@ export const Details = () => {
                   <Typography variant="default" tag={"p"}>
                     Фото товара/услуги*
                   </Typography>
+                  
+                <label htmlFor="ava" className={style.card__input__photo__big}><img src={photo[0]} /></label>
                   <Field
                     required
-                    className={style.card__input__photo__big}
+                    className={style.card__input__file}
+                    id="ava"
                     name="img"
                     accept="image/jpeg,image/png,image/gif"
                     type="file"
