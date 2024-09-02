@@ -22,13 +22,13 @@ export const productsApi = api.injectEndpoints({
       query: (id) => ({
         url: `api/dev/products/${id}`,
         method: "DELETE",
-      }),
+      }),      
     }),
 
   }),
 });
 
-export const { useGetProductsDataQuery, useNewProductMutation } = productsApi;
+export const { useGetProductsDataQuery, useNewProductMutation, useDeleteProductMutation } = productsApi;
 
 export const {
   endpoints: { NewProduct, },
