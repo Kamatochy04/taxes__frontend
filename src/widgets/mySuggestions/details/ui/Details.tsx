@@ -2,7 +2,7 @@ import { Field, Form, Formik } from "formik";
 import { Typography } from "@/shared/components/typography/Typography";
 import { ProductsImages, ProductsResults } from "@/model";
 import { Button } from "@/shared/components/button/Button";
-
+import productImg from "@/shared/assets/img/no_photo.jpg";
 import style from "./details.module.scss";
 import { useState } from "react";
 import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
@@ -10,11 +10,55 @@ import { useNewProductMutation } from "@/features/user/api/productsApi";
 import { useLocation } from "react-router-dom";
 
 export const Details = () => {
+
+
+  //image--------------------
+
+  const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>();
+  const fileReader = new FileReader();
+  fileReader.onloadend = () => {
+    setImageURL(fileReader.result);
+  };
+  const handleOnChange = (event: {
+    preventDefault: () => void;
+    target: { files: string | any[] };
+  }) => {
+    event.preventDefault();
+    if (event.target.files && event.target.files.length) {
+      const file = event.target.files[0];
+      fileReader.readAsDataURL(file);
+    }
+  };
+
+  const handleDrop = (event: {
+    dataTransfer: any;
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.dataTransfer.files && event.dataTransfer.files.length) {
+      fileReader.readAsDataURL(event.dataTransfer.files[0]);
+    }
+  };
+
+  const handleDragEmpty = (event: {
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+  //-----------------
+
   const location = useLocation();
   const { state } = location;
 
-  let photo = state !== null ? (state.from.results.images.map((item: ProductsImages) => (item.photo))): ["Добавить фото", "Добавить фото", "Добавить фото", "Добавить фото"];
-
+  let photo =
+    state !== null
+      ? state.from.results.images.map((item: ProductsImages) => item.photo)
+      : [];
+      
   let [addProductsResults] = useState<ProductsResults>(
     state !== null
       ? {
@@ -44,6 +88,12 @@ export const Details = () => {
   - количество`;
 
   const [addProductsResultsData] = useNewProductMutation();
+
+  /*const [DeleteProduct] = useDeleteProductMutation();*/
+
+  /*const handleDeleteProduct = async (id) => {
+    await DeleteProduct(id).unwrap();
+  }*/
 
   return (
     <div className={style.card}>
@@ -196,12 +246,30 @@ export const Details = () => {
                   <Typography variant="default" tag={"p"}>
                     Фото товара/услуги*
                   </Typography>
-                  
-                <label htmlFor="ava" className={style.card__input__photo__big}><img src={photo[0]} /></label>
+
+                  <label
+                    htmlFor="ava"
+                    className={style.card__input__photo__big}
+                  >
+                    <img
+                      src={
+                        photo[0] != undefined
+                          ? photo[0]
+                          : imageURL
+                          ? imageURL
+                          : productImg
+                      }
+                      alt="product"
+                      onDrop={handleDrop}
+                      onDragEnter={handleDragEmpty}
+                      onDragOver={handleDragEmpty}
+                    />
+                  </label>
                   <Field
                     required
                     className={style.card__input__file}
                     id="ava"
+                    onChange={handleOnChange}
                     name="img"
                     accept="image/jpeg,image/png,image/gif"
                     type="file"
@@ -210,22 +278,27 @@ export const Details = () => {
                 </div>
 
                 <div className={style.card__input__Indent_photo}>
+                  <label htmlFor="ava1" className={style.card__input__photo}>
+                    <img
+                      src={photo[1] != undefined ? photo[1] : productImg}
+                      alt="product"
+                    />
+                  </label>
+                  <label htmlFor="ava1" className={style.card__input__photo}>
+                    <img
+                      src={photo[2] != undefined ? photo[2] : productImg}
+                      alt="product"
+                    />
+                  </label>
+                  <label htmlFor="ava1" className={style.card__input__photo}>
+                    <img
+                      src={photo[3] != undefined ? photo[3] : productImg}
+                      alt="product"
+                    />
+                  </label>
                   <Field
-                    className={style.card__input__photo}
-                    name="img"
-                    accept="image/jpeg,image/png,image/gif"
-                    type="file"
-                    placeholder="Добавить фото"
-                  />
-                  <Field
-                    className={style.card__input__photo}
-                    name="img"
-                    accept="image/jpeg,image/png,image/gif"
-                    type="file"
-                    placeholder="Добавить фото"
-                  />
-                  <Field
-                    className={style.card__input__photo}
+                    className={style.card__input__file}
+                    id="ava1"
                     name="img"
                     accept="image/jpeg,image/png,image/gif"
                     type="file"
