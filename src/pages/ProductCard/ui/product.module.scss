@@ -1,75 +1,153 @@
 .card {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-between;
-    align-items: start;
-    width: 100%;
-    gap: 40px;
-    &__imgs {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      &_main {
-        border-radius: 10px;
-        width: 100%;
-        height: 400px;
-        background: #ffffff;
-      }
-      &_wrapper {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-      }
+  display: grid;
+  grid-template-columns: 500px 1fr 1fr;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  gap: 40px;
+  &__imgs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &_main {
+      border-radius: 10px;
+      height: 400px;
+      aspect-ratio: 1;
+      background: #ffffff;
     }
-    &__inf {
+    &_wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+  &__inf {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &_title {
+      font-size: 25px;
+      font-weight: 700;
+    }
+    &_t {
       color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      display: none;
+    }
+    &_text {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      &_title {
-        font-size: 25px;
-        font-weight: 700;
-      }
-      &_text {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-    &__box {
-      display: flex;
       gap: 10px;
     }
-    &__price {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-      &_title {
-        font-size: 25px;
-        font-weight: 800;
-        color: orangered;
-      }
-    }
-    &__button,
-    &__button_2 {
-      width: 300px;
-      padding: 13px 0;
-      font-size: 16px;
-      font-weight: 700;
-      color: #ffffff;
-      border-radius: 5px;
-    }
-    &__button {
-      background: rgb(29, 76, 204);
-      &_2 {
-        background: orangered;
-      }
+  }
+  &__box {
+    display: flex;
+    gap: 10px;
+  }
+  &__price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &_title {
+      font-size: 25px;
+      font-weight: 800;
+      color: orangered;
     }
   }
-  
-  .a {
-    border-radius: 10px;
-    height: 100px;
-    background: #e2e2e2;
+  &__button,
+  &__button_2 {
+    width: 300px;
+    padding: 13px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    border-radius: 5px;
   }
+  &__button {
+    background: rgb(29, 76, 204);
+    &_2 {
+      background: orangered;
+    }
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  &__price {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.a {
+  border-radius: 10px;
+  height: 100px;
+  background: #e2e2e2;
+}
+
+@media (max-width: 1317px) {
+  .card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .card {
+    grid-template-columns: 400px;
+    align-items: center;
+    justify-content: center;
+    &__inf {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 445px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .card__imgs {
+    width: 100%;
+  }
+  .card__imgs_main {
+    height: 300px;
+    width: 100%;
+  }
+  .card__imgs_wrapper {
+    div:nth-child(1) {
+      display: none;
+    }
+  }
+  .card__inf_t {
+    display: block;
+  }
+  .card__imgs_wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .card__button,
+  .card__button_2 {
+    width: 160px;
+    font-size: 12px;
+    padding: 10px 20px;
+  }
+  .card__price {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

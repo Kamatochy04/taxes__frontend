@@ -14,9 +14,9 @@ import style from "../Login/auth.module.scss";
 
 import { Typography } from "@/shared/components/typography/Typography";
 import { ProgressBar } from "@/shared/components/progressbar/Progressbar";
-import { Input } from "@/shared/components/input/Input";
 import { Button } from "@/shared/components/button/Button";
 import { validationSchema } from "../../helpers/validationSheme/LoginStepOneSheme";
+import { Input } from "@/shared/components/input/Input";
 
 interface IDataForm2User {
   email: string | "";
@@ -112,10 +112,10 @@ export const RegisterStepTwo = () => {
 
           <div className={style.form__layout}>
             <Input name={"email"} type="text" placeholder="Почта*" />
-            <Input name={"password"} type="text" placeholder="Пароль*" />
+            <Input name={"password"} type="password" placeholder="Пароль*" />
             <Input
               name={"repeat_password"}
-              type="text"
+              type="password"
               placeholder="Повторите пароль*"
             />
             <Input
@@ -148,102 +148,102 @@ export const RegisterStepTwo = () => {
         </Form>
       )}
     </Formik>
-    // <RegistrForm onSubmit={handleSubmit(onSubmit)}>
-    //   <>
-    //     <p>Регистрация</p>
-    //     <ProgressBar progress={66.66} />
-    //     <TextField
-    //       sx={{ width: "100%" }}
-    //       placeholder={"Email"}
-    //       {...register("email", { ...EmailRulesReg() })}
-    //       error={!!errors.email}
-    //       helperText={errors.email?.message}
-    //       InputProps={{
-    //         endAdornment: (
-    //           <IconButton
-    //             onClick={() => {
-    //               resetField("email");
-    //               setValue("email", "");
-    //             }}
-    //           >
-    //             <ClearIcon />
-    //           </IconButton>
-    //         ),
-    //       }}
-    //     />
-    //     <TextField
-    //       sx={{ width: "100%" }}
-    //       placeholder={"Пароль"}
-    //       type={vision ? "password" : "text"}
-    //       {...register("password", {
-    //         ...PasswordRulesReg(),
-    //       })}
-    //       error={!!errors.password}
-    //       helperText={errors.password?.message}
-    //       InputProps={{
-    //         endAdornment: (
-    //           <>
-    //             {" "}
-    //             <IconButton onClick={passwordVision}>
-    //               {vision ? <Visibility /> : <VisibilityOff />}
-    //             </IconButton>
-    //           </>
-    //         ),
-    //       }}
-    //     />
-    //     <TextField
-    //       sx={{ width: "100%" }}
-    //       placeholder={"Повторите пароль"}
-    //       {...register("repeat_password", {
-    //         validate: (value: string) => {
-    //           return value === password.current || "Пароли не совпадают";
-    //         },
-    //         ...PasswordRulesReg(),
-    //       })}
-    //       type={vision ? "password" : "text"}
-    //       error={!!errors.repeat_password}
-    //       helperText={errors.repeat_password?.message}
-    //       InputProps={{
-    //         endAdornment: (
-    //           <>
-    //             {" "}
-    //             <IconButton onClick={passwordVision}>
-    //               {vision ? <Visibility /> : <VisibilityOff />}
-    //             </IconButton>
-    //           </>
-    //         ),
-    //       }}
-    //     />
-    //     <TextField
-    //       sx={{ width: "100%" }}
-    //       placeholder={"Секретное слово"}
-    //       {...register("secret_word", {
-    //         ...SecretWordRules(),
-    //       })}
-    //       error={!!errors.secret_word}
-    //       helperText={errors.secret_word?.message}
-    //       InputProps={{
-    //         endAdornment: (
-    //           <IconButton
-    //             onClick={() => {
-    //               resetField("secret_word");
-    //               setValue("secret_word", "");
-    //             }}
-    //           >
-    //             <ClearIcon />
-    //           </IconButton>
-    //         ),
-    //       }}
-    //     />
-    //     <Button
-    //       sx={{ width: "100%" }}
-    //       variant="contained"
-    //       type="submit"
-    //       disabled={!isValid || !isDirty}
-    //     >
-    //       Далее
-    //     </Button>
-    //   </>
-    // </RegistrForm>
   );
 };
+// <RegistrForm onSubmit={handleSubmit(onSubmit)}>
+//   <>
+//     <p>Регистрация</p>
+//     <ProgressBar progress={66.66} />
+//     <TextField
+//       sx={{ width: "100%" }}
+//       placeholder={"Email"}
+//       {...register("email", { ...EmailRulesReg() })}
+//       error={!!errors.email}
+//       helperText={errors.email?.message}
+//       InputProps={{
+//         endAdornment: (
+//           <IconButton
+//             onClick={() => {
+//               resetField("email");
+//               setValue("email", "");
+//             }}
+//           >
+//             <ClearIcon />
+//           </IconButton>
+//         ),
+//       }}
+//     />
+//     <TextField
+//       sx={{ width: "100%" }}
+//       placeholder={"Пароль"}
+//       type={vision ? "password" : "text"}
+//       {...register("password", {
+//         ...PasswordRulesReg(),
+//       })}
+//       error={!!errors.password}
+//       helperText={errors.password?.message}
+//       InputProps={{
+//         endAdornment: (
+//           <>
+//             {" "}
+//             <IconButton onClick={passwordVision}>
+//               {vision ? <Visibility /> : <VisibilityOff />}
+//             </IconButton>
+//           </>
+//         ),
+//       }}
+//     />
+//     <TextField
+//       sx={{ width: "100%" }}
+//       placeholder={"Повторите пароль"}
+//       {...register("repeat_password", {
+//         validate: (value: string) => {
+//           return value === password.current || "Пароли не совпадают";
+//         },
+//         ...PasswordRulesReg(),
+//       })}
+//       type={vision ? "password" : "text"}
+//       error={!!errors.repeat_password}
+//       helperText={errors.repeat_password?.message}
+//       InputProps={{
+//         endAdornment: (
+//           <>
+//             {" "}
+//             <IconButton onClick={passwordVision}>
+//               {vision ? <Visibility /> : <VisibilityOff />}
+//             </IconButton>
+//           </>
+//         ),
+//       }}
+//     />
+//     <TextField
+//       sx={{ width: "100%" }}
+//       placeholder={"Секретное слово"}
+//       {...register("secret_word", {
+//         ...SecretWordRules(),
+//       })}
+//       error={!!errors.secret_word}
+//       helperText={errors.secret_word?.message}
+//       InputProps={{
+//         endAdornment: (
+//           <IconButton
+//             onClick={() => {
+//               resetField("secret_word");
+//               setValue("secret_word", "");
+//             }}
+//           >
+//             <ClearIcon />
+//           </IconButton>
+//         ),
+//       }}
+//     />
+//     <Button
+//       sx={{ width: "100%" }}
+//       variant="contained"
+//       type="submit"
+//       disabled={!isValid || !isDirty}
+//     >
+//       Далее
+//     </Button>
+//   </>
+// </RegistrForm>

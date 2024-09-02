@@ -8,7 +8,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
         width: "100%",
         margin: "0 auto",
         height: "100%",
-        padding: "0 20px",
+        padding: "0 10px",
       }}
     >
       {children}
