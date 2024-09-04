@@ -6,7 +6,7 @@ import productImg from "@/shared/assets/img/no_photo.jpg";
 import style from "./details.module.scss";
 import { useState } from "react";
 import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
-import { useNewProductMutation, usePatchProductMutation } from "@/features/user/api/productsApi";
+import { useDeleteProductMutation, useNewProductMutation, usePatchProductMutation } from "@/features/user/api/productsApi";
 import { useLocation } from "react-router-dom";
 
 export const Details = () => {
@@ -62,7 +62,7 @@ export const Details = () => {
   let [addProductsResults] = useState<ProductsResults>(
     state !== null
       ? {
-          id: "",
+          id: `${state.from.results.id}`,
           name: `${state.from.results.name}`,
           description: `${state.from.results.description}`,
           price: `${state.from.results.price}`,
@@ -89,12 +89,12 @@ export const Details = () => {
 
   const [addProductsResultsData] = useNewProductMutation();
   const [patchProductsResultsData] = usePatchProductMutation();
+  const [DeleteProduct] = useDeleteProductMutation();
 
-  /*const [DeleteProduct] = useDeleteProductMutation();*/
-
-  /*const handleDeleteProduct = async (id) => {
-    await DeleteProduct(id).unwrap();
-  }*/
+  const handleRemove = (event: React.MouseEvent) => {
+    event.stopPropagation()
+    DeleteProduct(state.from.results.id)
+  }
 
   return (
     <div className={style.card}>
@@ -237,7 +237,7 @@ export const Details = () => {
                 ) : (
                   <div className={style.card__Button}>
                     <Button variant="normalBlue">Сохранить</Button>
-                    <Button variant="normalWhite">Удалить</Button>
+                    <Button variant="normalWhite" onClick={handleRemove}>Удалить</Button>
                   </div>
                 )}
               </div>
