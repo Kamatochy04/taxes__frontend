@@ -6,7 +6,7 @@ import productImg from "@/shared/assets/img/no_photo.jpg";
 import style from "./details.module.scss";
 import { useState } from "react";
 import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
-import { useNewProductMutation } from "@/features/user/api/productsApi";
+import { useNewProductMutation, usePatchProductMutation } from "@/features/user/api/productsApi";
 import { useLocation } from "react-router-dom";
 
 export const Details = () => {
@@ -88,6 +88,7 @@ export const Details = () => {
   - количество`;
 
   const [addProductsResultsData] = useNewProductMutation();
+  const [patchProductsResultsData] = usePatchProductMutation();
 
   /*const [DeleteProduct] = useDeleteProductMutation();*/
 
@@ -103,7 +104,7 @@ export const Details = () => {
 
       <Formik<ProductsResults>
         initialValues={addProductsResults}
-        onSubmit={(values) => {
+        onSubmit={(values) => { state !== null ? patchProductsResultsData(values) :
           addProductsResultsData(values);
         }}
       >

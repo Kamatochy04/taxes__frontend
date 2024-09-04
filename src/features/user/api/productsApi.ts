@@ -19,15 +19,16 @@ export const productsApi = api.injectEndpoints({
     }),
 
     PatchProduct: builder.mutation<ProductsData, ProductsResults>({
-      query: (id) => ({
-        url: `api/dev/products/${id}`,
+      query: (body) => ({
+        url: `api/dev/products/${body.id}`,
         method: "PATCH",
+        body,
       }),
     }),
 
     DeleteProduct: builder.mutation<ProductsData, ProductsResults>({
-      query: (id) => ({
-        url: `api/dev/products/${id}`,
+      query: (body) => ({
+        url: `api/dev/products/${body.id}`,
         method: "DELETE",
       }),      
     }),
@@ -38,5 +39,5 @@ export const productsApi = api.injectEndpoints({
 export const { useGetProductsDataQuery, useNewProductMutation, useDeleteProductMutation, usePatchProductMutation } = productsApi;
 
 export const {
-  endpoints: { NewProduct, },
+  endpoints: { NewProduct, PatchProduct, },
 } = productsApi;
