@@ -11,25 +11,23 @@ interface ProductsItemProps {
 }
 
 export const CardOffersAdd: FC<ProductsItemProps> = ({ results }) => {
-  
-  let photo = results.images.map((item: ProductsImages) => (item.photo));
+  let photo = results.images.map((item: ProductsImages) => item.photo);
   return (
     <div className={style.card}>
       <div className={style.card__img}>
-        <img src={photo[0] != undefined ? photo[0] : productImg} alt="product" />
+        <img
+          src={photo[0] != undefined ? photo[0] : productImg}
+          alt="product"
+        />
       </div>
 
       <div className={style.card__d}>
-        <Typography variant="default" tag={"p"}>
-          {results.name}
-        </Typography>
-        <Typography variant="price_card" tag={"h3"}>
-          {results.price} BYN
-        </Typography>
+        <h3 className={style.default}>{results.name}</h3>
+        <h3 className={style.price}>{results.price} BYN</h3>
       </div>
 
       <div className={style.card__imgVector}>
-        <NavLink to={"/details"} state={{ from: {results} }}>
+        <NavLink to={"/details"} state={{ from: { results } }}>
           <img src={vectorImg} alt="vector" />
         </NavLink>
       </div>

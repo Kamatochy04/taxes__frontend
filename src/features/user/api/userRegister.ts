@@ -14,23 +14,23 @@ interface IResponsDataUser {
   confirm_code_id: string;
 }
 
-export const signupApi = api.injectEndpoints({
-  endpoints: (builder) => ({
-    signup: builder.mutation<IResponsDataUser, IDataUser>({
-      query: (userData) => ({
-        url: "api/dev/signup/",
-        method: "POST",
-        body: userData,
-      }),
-    }),
-  }),
-});
+// export const signupApi = api.injectEndpoints({
+//   endpoints: (builder) => ({
+//     signup: builder.mutation<IResponsDataUser, IDataUser>({
+//       // query: (userData) => ({
+//       //   url: "api/dev/signup",
+//       //   method: "POST",
+//       //   body: userData,
+//       // }),
+//     }),
+//   }),
+// });
 
-export const { useSignupMutation } = signupApi;
+// export const { useSignupMutation } = signupApi;
 
-export const {
-  endpoints: { signup },
-} = signupApi;
+// export const {
+//   endpoints: { signup },
+// } = signupApi;
 
 export interface IConfirmCode {
   code: string;
@@ -49,7 +49,7 @@ export const signupCodeApi = api.injectEndpoints({
   endpoints: (builder) => ({
     signupCode: builder.mutation<IUser, IConfirmCode>({
       query: (data) => ({
-        url: `api/dev/confirm_code/${data.code}/${data.confirm_code_id}`,
+        url: `api/dev/confirm_code/${data.code}/${data.confirm_code_id}/`,
         method: "POST",
       }),
     }),

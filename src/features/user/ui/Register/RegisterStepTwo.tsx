@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { useNavigate } from "react-router-dom";
 import { set2FormData } from "@/app/redux/register2Slice";
 
-import { useSignupMutation } from "../../api/userRegister";
+// import { useSignupMutation } from "../../api/userRegister";
 import { Form, Formik } from "formik";
 
 import style from "../Login/auth.module.scss";
@@ -28,67 +28,73 @@ interface IDataForm2User {
 export const RegisterStepTwo = () => {
   const [vision, setVision] = useState(true);
   const navigate = useNavigate();
-  const [signup] = useSignupMutation();
-  const passwordVision = useCallback(() => {
-    setVision((prev) => !prev);
-  }, []);
+  // const [signup] = useSignupMutation();
+  // const passwordVision = useCallback(() => {
+  //   setVision((prev) => !prev);
+  // }, []);
 
   const dataSelector = useAppSelector((store) => store.step2);
 
-  const {
-    register,
-    handleSubmit,
-    resetField,
-    watch,
-    setValue,
-    formState: { errors, isValid, isDirty },
-  } = useForm<IDataForm2User>({
-    mode: "onBlur",
-    defaultValues: {
-      email: dataSelector.email,
-      password: dataSelector.password,
-      repeat_password: dataSelector.repeat_password,
-      secret_word: dataSelector.secret_word,
-    },
-  });
+  // const {
+  //   watch,
+  //   setValue,
+  //   formState: {},
+  // } = useForm<IDataForm2User>({
+  //   mode: "onBlur",
+  //   defaultValues: {
+  //     email: dataSelector.email,
+  //     password: dataSelector.password,
+  //     repeat_password: dataSelector.repeat_password,
+  //     secret_word: dataSelector.secret_word,
+  //   },
+  // });
 
-  const password = useRef({});
-  password.current = watch("password", "");
+  // const password = useRef({});
+  // password.current = watch("password", "");
   const dataSekector = useAppSelector((state) => state.step1);
   const dispatch = useAppDispatch();
 
-  const valuePassword = watch("password");
-  const valueRepeatPassword = watch("password");
+  // const valuePassword = watch("password");
+  // const valueRepeatPassword = watch("password");
 
-  useEffect(() => {
-    if (valuePassword.length > 30) {
-      setValue("password", valuePassword.substring(0, 30));
-    }
-    if (valueRepeatPassword.length > 30) {
-      setValue("repeat_password", valueRepeatPassword.substring(0, 30));
-    }
-  }, [valuePassword, valueRepeatPassword]);
+  // useEffect(() => {
+  //   if (valuePassword.length > 30) {
+  //     setValue("password", valuePassword.substring(0, 30));
+  //   }
+  //   if (valueRepeatPassword.length > 30) {
+  //     setValue("repeat_password", valueRepeatPassword.substring(0, 30));
+  //   }
+  // }, [valuePassword, valueRepeatPassword]);
 
-  const onSubmit = (date: IDataForm2User) => {
+  const onSubmit = async (date: IDataForm2User) => {
     const dataUser = { ...dataSekector, ...date };
+    console.log(dataUser);
     dispatch(set2FormData(date));
-    signup(dataUser)
-      .then((response) => {
-        if (response.error) {
-          return console.log(response.error);
+
+    try {
+      const response = await fetch(
+        "http://84.38.182.213:1337/api/dev/signup/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: dataUser.email,
+            password: dataUser.password,
+            first_name: dataUser.first_name,
+            last_name: dataUser.last_name,
+            patronymic: dataUser.patronymic,
+            secret_word: dataUser.secret_word,
+          }),
         }
-        if (response.data) {
-          localStorage.setItem(
-            "confirm_code_id",
-            response.data.confirm_code_id
-          );
-          navigate("step-third");
-        } else {
-          alert("Пользватель с таким почтовым адресом уже зарегистрирован!");
-        }
-      })
-      .catch(console.log);
-    navigate("/register/step-third");
+      );
+      console.log();
+      response.json().then((p) => {
+        localStorage.setItem("confirm_code_id", JSON.stringify(p));
+        navigate("/register/step-third");
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -150,100 +156,3 @@ export const RegisterStepTwo = () => {
     </Formik>
   );
 };
-// <RegistrForm onSubmit={handleSubmit(onSubmit)}>
-//   <>
-//     <p>Регистрация</p>
-//     <ProgressBar progress={66.66} />
-//     <TextField
-//       sx={{ width: "100%" }}
-//       placeholder={"Email"}
-//       {...register("email", { ...EmailRulesReg() })}
-//       error={!!errors.email}
-//       helperText={errors.email?.message}
-//       InputProps={{
-//         endAdornment: (
-//           <IconButton
-//             onClick={() => {
-//               resetField("email");
-//               setValue("email", "");
-//             }}
-//           >
-//             <ClearIcon />
-//           </IconButton>
-//         ),
-//       }}
-//     />
-//     <TextField
-//       sx={{ width: "100%" }}
-//       placeholder={"Пароль"}
-//       type={vision ? "password" : "text"}
-//       {...register("password", {
-//         ...PasswordRulesReg(),
-//       })}
-//       error={!!errors.password}
-//       helperText={errors.password?.message}
-//       InputProps={{
-//         endAdornment: (
-//           <>
-//             {" "}
-//             <IconButton onClick={passwordVision}>
-//               {vision ? <Visibility /> : <VisibilityOff />}
-//             </IconButton>
-//           </>
-//         ),
-//       }}
-//     />
-//     <TextField
-//       sx={{ width: "100%" }}
-//       placeholder={"Повторите пароль"}
-//       {...register("repeat_password", {
-//         validate: (value: string) => {
-//           return value === password.current || "Пароли не совпадают";
-//         },
-//         ...PasswordRulesReg(),
-//       })}
-//       type={vision ? "password" : "text"}
-//       error={!!errors.repeat_password}
-//       helperText={errors.repeat_password?.message}
-//       InputProps={{
-//         endAdornment: (
-//           <>
-//             {" "}
-//             <IconButton onClick={passwordVision}>
-//               {vision ? <Visibility /> : <VisibilityOff />}
-//             </IconButton>
-//           </>
-//         ),
-//       }}
-//     />
-//     <TextField
-//       sx={{ width: "100%" }}
-//       placeholder={"Секретное слово"}
-//       {...register("secret_word", {
-//         ...SecretWordRules(),
-//       })}
-//       error={!!errors.secret_word}
-//       helperText={errors.secret_word?.message}
-//       InputProps={{
-//         endAdornment: (
-//           <IconButton
-//             onClick={() => {
-//               resetField("secret_word");
-//               setValue("secret_word", "");
-//             }}
-//           >
-//             <ClearIcon />
-//           </IconButton>
-//         ),
-//       }}
-//     />
-//     <Button
-//       sx={{ width: "100%" }}
-//       variant="contained"
-//       type="submit"
-//       disabled={!isValid || !isDirty}
-//     >
-//       Далее
-//     </Button>
-//   </>
-// </RegistrForm>

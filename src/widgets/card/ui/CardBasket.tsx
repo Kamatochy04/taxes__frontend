@@ -28,24 +28,16 @@ export const CardBasket = () => {
         </div>
 
         <div className={style.card__d}>
-          <Typography variant="p-card-name" tag={"p"}>
-            Велосипед, Kerambit горный...
-          </Typography>
+          <p className={style.card__name}>Велосипед, Kerambit горный...</p>
 
           <div className={style.card__descr}>
             <div className={style.card__icon}>
-              <button onClick={minus}>
-                <Typography variant="p-card-date" tag={"p"}>
-                  -
-                </Typography>
+              <button onClick={minus} className={style.card__button}>
+                -
               </button>
-              <Typography variant="p-card-date" tag={"p"}>
-                {count}
-              </Typography>
-              <button onClick={plus}>
-                <Typography variant="p-card-date" tag={"p"}>
-                  +
-                </Typography>
+              <p className={style.count}>{count}</p>
+              <button onClick={plus} className={style.card__button}>
+                +
               </button>
             </div>
 
@@ -54,22 +46,20 @@ export const CardBasket = () => {
               <DeleteForeverIcon />
             </div>
           </div>
-          <Typography variant="p-card-date" tag={"p"}>
-            Доставка 5-7 дней до пункта выдачи
-          </Typography>
+          <p className={style.footer}>Доставка 5-7 дней до пункта выдачи</p>
+        </div>
+        <div className={style.a}>
+          <p className={style.a__title}>Заказ №98512</p>
+          <p className={style.a__price}>725 BYN</p>
+          <p className={style.a__descr}>Велосипед Kerambit</p>
+          <p className={style.a__descr}>Артикул №2563</p>
         </div>
       </div>
 
       <div className={style.card__descr}>
-        <Typography variant="h3-price" tag={"h3"}>
-          725 BYN
-        </Typography>
-
-        <div className={style.squaredFour}>
-          <input type="checkbox" id={uniqueID} />
-          <label className={style.squaredFour__L} htmlFor={uniqueID}></label>
-        </div>
+        <h3 className={style.price}>725 BYN</h3>
       </div>
+      <input type="checkbox" className={style.checkbox} />
     </div>
   );
 };

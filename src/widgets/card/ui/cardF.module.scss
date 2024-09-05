@@ -1,36 +1,58 @@
 .card {
-    border: 1px solid #fd7e14;
-    border-radius: 20px;
-    width: 608px;
-    height: 168px;
-    box-shadow: 4px 4px 5px 0 rgba(253, 126, 20, 0.4);
-    background: linear-gradient(180deg, #222d9e 0%, #0c1038 100%);
-    padding: 24px;
-    display: flex;
-    gap: 40px;
-
-    &__img {
-        img {
-            width: 120px;
-            height: 120px;
-        }
+  border: 1px solid #fd7e14;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: 2px 2px 2px 0 rgba(253, 126, 20, 0.4);
+  background: linear-gradient(180deg, #222d9e 0%, #0c1038 100%);
+  padding: 24px;
+  display: flex;
+  gap: 40px;
+  position: relative;
+  &__img {
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 5px;
     }
+  }
 
-    &__imgVector {
-        flex-grow: 1;
-        align-self: flex-end;
-        text-align: right;
-        
-        img {
-            width: 20px;
-            height: 18px;
-        }
+  &__imgVector {
+    position: absolute;
+    flex-grow: 1;
+    align-self: flex-end;
+    text-align: right;
+    right: 20px;
+    img {
+      width: 20px;
+      height: 18px;
     }
+  }
 
-    &__d {
-        height: 60%;
-        display: grid;
-        gap: 24px;
-    }
+  // &__d {
+  //   height: 60%;
+  //   display: grid;
+  //   gap: 24px;
+  // }
+}
 
+.price {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fd7e14;
+}
+
+.default {
+  font-size: 20px;
+  color: #fff;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+@media (max-width: 990px) {
+  .card {
+    padding: 10px;
+  }
 }

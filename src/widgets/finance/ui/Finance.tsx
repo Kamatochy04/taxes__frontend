@@ -60,6 +60,21 @@ export const Finance = () => {
             <Button variant="smallOrange">Оплатить</Button>
           </div>
         </div>
+        <div className={style.header}>
+          <div className={style.header__item}>
+            <span>Процентная ставка</span> <p> 10 %</p>
+          </div>
+          <div className={style.header__item}>
+            <span>Выручка за месяц</span>
+            <p>1400,00 BYN</p>
+          </div>
+        </div>
+
+        <p className={style.price}>
+          <p>150,00 BYN</p>
+          <span>налог за месяц</span>
+        </p>
+        <button className={style.button__price}>Оплатить</button>
       </div>
     </>
   );
