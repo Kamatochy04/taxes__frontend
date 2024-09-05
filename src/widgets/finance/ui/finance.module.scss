@@ -3,13 +3,14 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 32px;
+  position: relative;
 }
 
 .card {
   width: 608px;
   border: 1px;
-  border-color: #592DD1;
-  background: #4D648D;
+  border-color: #592dd1;
+  background: #4d648d;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -38,7 +39,7 @@
 
 input {
   width: 96px;
-  height:39px;
+  height: 39px;
   background: #fff;
   border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -52,5 +53,78 @@ input {
 .button {
   margin-top: 40px;
   text-align: center;
+}
 
+.header {
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  &__item {
+    background: #131958;
+    // background: #6d75ce;
+    padding: 16px;
+    width: 160px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    span {
+      font-size: 13px;
+      color: #ffffff9a;
+    }
+    p {
+      margin-top: 5px;
+    }
+  }
+}
+
+.price {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  margin: 80px auto 0 auto;
+  p {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600;
+  }
+  span {
+    color: #ffffff98;
+    font-size: 14px;
+  }
+}
+
+.button__price {
+  width: 320px;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 14px;
+  position: fixed;
+  bottom: 60px;
+  background: linear-gradient(180deg, #fff 0%, #fd7e14 85%);
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+  border-radius: 10px;
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .card {
+    display: none;
+  }
+  .header {
+    display: flex;
+  }
+  .button__price {
+    display: block;
+  }
+  .price {
+    display: flex;
+  }
 }

@@ -1,13 +1,12 @@
 .card {
   border: 1px solid #fd7e14;
   border-radius: 20px;
-  width: 864px;
-  height: 168px;
-  box-shadow: 4px 4px 5px 0 rgba(253, 126, 20, 0.4);
+  box-shadow: 2px 2px 2px 0 rgba(253, 126, 20, 0.4);
   background: linear-gradient(180deg, #222d9e 0%, #0c1038 100%);
-  padding: 24px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   &__img {
     img {
@@ -28,16 +27,63 @@
 
   &__icon {
     display: flex;
-    color: #C2C2C2;
+    color: #c2c2c2;
     gap: 16px;
     align-items: center;
     margin-right: 50px;
   }
+  &__name {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+  }
+  &__button {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+  }
+}
 
+.a {
+  display: none;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+  &__price {
+    color: #fd7e14;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  &__descr {
+    font-size: 16px;
+    color: #ffffffc5;
+  }
+}
+
+.price {
+  color: #fd7e14;
+}
+
+.footer {
+  color: #ffffff8f;
+}
+
+.count {
+  color: #fff;
 }
 
 .squaredFour {
+  position: absolute;
+  right: 20px;
+  // top: 10px;
+}
 
+.squaredFour {
   position: relative;
 
   label {
@@ -47,11 +93,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #FFF;
+    background: #fff;
     margin-left: 80%;
 
     &::after {
-      content: '';
+      content: "";
       width: 12px;
       height: 9.4px;
       position: absolute;
@@ -64,13 +110,64 @@
       opacity: 0;
       transform: rotate(-45deg);
     }
-
   }
 
-  input[type=checkbox] {
+  input[type="checkbox"] {
     visibility: hidden;
     &:checked + label::after {
       opacity: 1;
     }
-  }    
+  }
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 725px) {
+  .card__icon {
+    display: none;
+  }
+  .card__name {
+    display: none;
+  }
+  .a {
+    display: flex;
+  }
+  .price {
+    display: none;
+  }
+  .footer {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    padding: 10px;
+    border-radius: 5px;
+    &__img {
+      width: 96px;
+      height: 96px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__descr {
+      gap: 10px;
+    }
+  }
+  .a {
+    &__title {
+      font-size: 16px;
+    }
+    &__price {
+      font-size: 16px;
+    }
+    &__descr {
+      font-size: 14px;
+    }
+  }
 }

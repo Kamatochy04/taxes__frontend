@@ -26,10 +26,10 @@ export const Card: FC<ProductsItemProps> = ({ results }) => {
       </div>
 
       <Typography variant={"price"} tag={"p"}>
-        {results.price}
+        {results.price} BYN
       </Typography>
 
-      <Typography tag={"p"}>{results.name}</Typography>
+      <p className={style.p}>{results.name} </p>
 
       <div className={style.card__descr}>
         <div className={style.card__icon}>

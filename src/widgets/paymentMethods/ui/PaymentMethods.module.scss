@@ -11,20 +11,77 @@
 }
 
 .card {
+  overflow: hidden;
   width: 608px;
   height: 174px;
-  background: #4D648D;
+  background: #4d648d;
   border-radius: 20px;
   display: flex;
   align-self: flex-start;
   padding: 32px;
+  position: relative;
   &__img {
     background: #fff;
     width: 186px;
     height: 110px;
     border-radius: 20px;
+    background-image: url("./Rectangle\ 805.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   &__wrapper {
     margin-left: 38px;
+  }
+}
+
+.basket {
+  height: 100%;
+  background: rgb(235, 30, 30);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  padding: 0 17px;
+  right: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 680px) {
+  .card {
+    padding: 8px;
+    background: none;
+    height: auto;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+    &__img {
+      width: 66px;
+      height: 40px;
+      border-radius: 5px;
+    }
+  }
+
+  .basket {
+    display: flex;
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    &__wrapper {
+      margin-left: 18px;
+    }
+  }
+
+  .basket {
+    padding: 0 12px;
   }
 }

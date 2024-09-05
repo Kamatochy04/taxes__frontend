@@ -6,7 +6,17 @@
 }
 
 .fild {
-  display: flex;
-  gap: 36px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
 }
 
+@media (max-width: 971px) {
+  .fild {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .cards {
+    gap: 10px;
+  }
+}

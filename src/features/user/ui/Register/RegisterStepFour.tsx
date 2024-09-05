@@ -5,32 +5,34 @@ import { IConfirmCode, useSignupCodeMutation } from "../../api/userRegister";
 
 import { Form, Formik } from "formik";
 
-import style from "../Login/auth.module.scss";
 import { Typography } from "@/shared/components/typography/Typography";
 import { Input } from "@/shared/components/input/Input";
 import { Button } from "@/shared/components/button/Button";
+
+import style from "../Login/auth.module.scss";
 
 export const RegisterStepFour = () => {
   const navigate = useNavigate();
   const [signupCode] = useSignupCodeMutation();
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors, isValid },
-  // } = useForm({
-  //   mode: "onBlur",
-  //   defaultValues: {
-  //     code: undefined || "",
-  //   },
-  // });
+  const onSubmit = async (data: IConfirmCode) => {
+    const Confirm_code_id = JSON.parse(
+      localStorage.getItem("confirm_code_id")!
+    );
 
-  const onSubmit = (data: IConfirmCode) => {
-    const confirm_code_id = localStorage.getItem("confirm_code_id");
-    console.log(confirm_code_id);
-    if (confirm_code_id) {
-      data.confirm_code_id = confirm_code_id;
-    }
+    data.confirm_code_id = Confirm_code_id.confirm_code_id;
+    console.log(Confirm_code_id);
+    // console.log(data.confirm_code_id);
+    // signupCode(data).then((e) => console.log(e));
+    // try {
+    //   const response = await fetch(
+    //     `http://84.38.182.213:1337/api/dev/confirm_code/${data.code}/${data.confirm_code_id}/`,
+    //     {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //     }
+    //   );
+    // } catch (error) {}
 
     signupCode(data).then((response) => {
       if (response.error) {
@@ -39,7 +41,7 @@ export const RegisterStepFour = () => {
       if (response.data) {
         localStorage.removeItem("confirm_code_id");
         localStorage.setItem("User", JSON.stringify(response.data));
-        navigate("step-five");
+        navigate("register/step-five");
       }
     });
   };
