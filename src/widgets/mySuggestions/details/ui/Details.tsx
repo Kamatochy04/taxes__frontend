@@ -6,12 +6,15 @@ import productImg from "@/shared/assets/img/no_photo.jpg";
 import style from "./details.module.scss";
 import { useState } from "react";
 import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
-import { useDeleteProductMutation, useNewProductMutation, usePatchProductMutation } from "@/features/user/api/productsApi";
+import {
+  useDeleteProductMutation,
+  useNewProductMutation,
+  usePatchProductMutation,
+} from "@/features/user/api/productsApi";
 import { useLocation } from "react-router-dom";
+import { useDeleteImagesMutation } from "@/features/user/api/imagesApi";
 
 export const Details = () => {
-
-
   //image--------------------
 
   const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>();
@@ -54,11 +57,16 @@ export const Details = () => {
   const location = useLocation();
   const { state } = location;
 
+  let photoID =
+    state !== null
+      ? state.from.results.images.map((item: ProductsImages) => item.id)
+      : [];
+
   let photo =
     state !== null
       ? state.from.results.images.map((item: ProductsImages) => item.photo)
       : [];
-      
+
   let [addProductsResults] = useState<ProductsResults>(
     state !== null
       ? {
@@ -90,11 +98,16 @@ export const Details = () => {
   const [addProductsResultsData] = useNewProductMutation();
   const [patchProductsResultsData] = usePatchProductMutation();
   const [DeleteProduct] = useDeleteProductMutation();
+  const [DeleteImages] = useDeleteImagesMutation();
 
   const handleRemove = (event: React.MouseEvent) => {
-    event.stopPropagation()
-    DeleteProduct(state.from.results.id)
-  }
+    event.stopPropagation();
+    DeleteProduct(state.from.results.id);
+  };
+
+  const deleteImage = (a: string) => {
+    DeleteImages(a);
+  };
 
   return (
     <div className={style.card}>
@@ -104,8 +117,10 @@ export const Details = () => {
 
       <Formik<ProductsResults>
         initialValues={addProductsResults}
-        onSubmit={(values) => { state !== null ? patchProductsResultsData(values) :
-          addProductsResultsData(values);
+        onSubmit={(values) => {
+          state !== null
+            ? patchProductsResultsData(values)
+            : addProductsResultsData(values);
         }}
       >
         {() => (
@@ -237,7 +252,9 @@ export const Details = () => {
                 ) : (
                   <div className={style.card__Button}>
                     <Button variant="normalBlue">Сохранить</Button>
-                    <Button variant="normalWhite" onClick={handleRemove}>Удалить</Button>
+                    <Button variant="normalWhite" onClick={handleRemove}>
+                      Удалить
+                    </Button>
                   </div>
                 )}
               </div>
@@ -265,7 +282,15 @@ export const Details = () => {
                       onDragEnter={handleDragEmpty}
                       onDragOver={handleDragEmpty}
                     />
+                    <button
+                      onClick={() => {
+                        deleteImage(photoID[0]);
+                      }}
+                    >
+                      Удалить фото
+                    </button>
                   </label>
+
                   <Field
                     required
                     className={style.card__input__file}
