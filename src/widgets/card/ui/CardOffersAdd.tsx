@@ -1,6 +1,6 @@
 import style from "./cardF.module.scss";
 import { Typography } from "@/shared/components/typography/Typography";
-import productImg from "@/shared/assets/img/Rectangle 803.png";
+import productImg from "@/shared/assets/img/no_photo.jpg";
 import vectorImg from "@/shared/assets/img/Vector.png";
 import { ProductsImages, ProductsResults } from "@/model";
 import { FC } from "react";

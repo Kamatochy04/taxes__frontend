@@ -13,7 +13,7 @@ export const Offers = () => {
       <div className={style.offers}>
         {data != undefined
           ? data.results.map((item: ProductsResults, id) => (
-              <Card key={id} results={item} />
+              <Card key={id} results={item}/>
             ))
           : "ERROR"}
       </div>
