@@ -1,7 +1,6 @@
 .card {
   border: 1px solid #fd7e14;
   border-radius: 10px;
-  // width: 270px;
   box-shadow: 4px 4px 5px 0 rgba(228, 117, 27, 0.055);
   background: linear-gradient(180deg, #222d9e 0%, #0c1038 100%);
   padding: 16px;
@@ -9,13 +8,15 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
-  height: 420px;
+  // height: 420px;
+  // width: 250px;
   cursor: pointer;
   &__img {
-    background: #000;
-    height: 200px;
+    // height: 250px;
     width: 100%;
+    height: 220px;
     img {
+      object-fit: contain;
       width: 100%;
       height: 100%;
     }
@@ -56,4 +57,36 @@
 
 .button {
   background: #000;
+}
+
+@media (max-width: 1500px) {
+  .card {
+    &__img {
+      height: 280px;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 932px) {
+  .card {
+    padding: 5px;
+    &__img {
+      height: 250px;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .card {
+    padding: 5px;
+    &__img {
+      height: 180px;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
 }

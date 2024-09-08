@@ -87,8 +87,9 @@ export const RegisterStepTwo = () => {
           }),
         }
       );
-      console.log();
+
       response.json().then((p) => {
+        console.log(p);
         localStorage.setItem("confirm_code_id", JSON.stringify(p));
         navigate("/register/step-third");
       });

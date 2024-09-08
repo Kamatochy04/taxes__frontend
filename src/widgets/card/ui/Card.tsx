@@ -16,8 +16,12 @@ export const Card: FC<ProductsItemProps> = ({ results }) => {
   let photo = results.images.map((item: ProductsImages) => item.photo);
 
   const navigate = useNavigate();
+
   return (
-    <div className={style.card} onClick={() => navigate(`/${results.id}`)}>
+    <div
+      className={style.card}
+      onClick={() => navigate(`/${results.id}`, { state: results })}
+    >
       <div className={style.card__img}>
         <img
           src={photo[0] != undefined ? photo[0] : productImg}

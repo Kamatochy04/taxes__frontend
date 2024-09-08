@@ -21,18 +21,6 @@ export const RegisterStepFour = () => {
     );
 
     data.confirm_code_id = Confirm_code_id.confirm_code_id;
-    console.log(Confirm_code_id);
-    // console.log(data.confirm_code_id);
-    // signupCode(data).then((e) => console.log(e));
-    // try {
-    //   const response = await fetch(
-    //     `http://84.38.182.213:1337/api/dev/confirm_code/${data.code}/${data.confirm_code_id}/`,
-    //     {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //     }
-    //   );
-    // } catch (error) {}
 
     signupCode(data).then((response) => {
       if (response.error) {
@@ -41,7 +29,7 @@ export const RegisterStepFour = () => {
       if (response.data) {
         localStorage.removeItem("confirm_code_id");
         localStorage.setItem("User", JSON.stringify(response.data));
-        navigate("register/step-five");
+        navigate("/register/step-five");
       }
     });
   };

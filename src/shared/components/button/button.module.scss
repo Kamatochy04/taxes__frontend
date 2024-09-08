@@ -159,8 +159,7 @@
 .normalBlue,
 .normalWhite,
 .smallBlue,
-.smallWhite,
-.smallOrange {
+.smallWhite {
   font-family: Roboto, sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -260,14 +259,17 @@
 
 .smallOrange {
   color: #0c1038;
-  height: 48px;
-  width: 224px;
+  padding: 10px 0;
+  width: 100%;
   border: 0.5px;
   border-color: #0c1038;
   background: linear-gradient(#ffffff, #fd7e14);
-
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.5s;
+  border-radius: 6px;
   &:hover {
-    box-shadow: 0 0 0 6px #0c1038;
+    box-shadow: 0 0 5px 6px #1925aa;
   }
 }
 

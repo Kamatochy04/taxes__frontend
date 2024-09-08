@@ -9,11 +9,15 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    img {
+      object-fit: contain;
+      border-radius: 5px;
+    }
     &_main {
       border-radius: 10px;
       height: 400px;
       aspect-ratio: 1;
-      background: #ffffff;
+      // background: #ffffff;
     }
     &_wrapper {
       display: grid;
@@ -80,6 +84,15 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+}
+
+.btn {
+  width: 224px;
+  button {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
   }
 }
 
