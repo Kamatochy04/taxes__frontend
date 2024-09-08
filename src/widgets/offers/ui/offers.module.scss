@@ -1,25 +1,26 @@
 .offers {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-between;
+  gap: 30px;
 }
 
-@media (max-width: 1200px) {
-    .offers {
-        grid-template-columns: repeat(4, 1fr);
-    }
+@media (max-width: 1500px) {
+  .offers {
+    grid-template-columns: repeat(4, 1fr);
+    grid-area: 50px;
+  }
 }
 
-@media (max-width: 1000px) {
-    .offers {
-        grid-template-columns: repeat(3, 1fr);
-    }
+@media (max-width: 1150px) {
+  .offers {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-@media (max-width: 750px) {
-    .offers {
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media (max-width: 855px) {
+  .offers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }

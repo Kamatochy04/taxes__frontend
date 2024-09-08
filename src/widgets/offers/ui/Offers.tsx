@@ -1,8 +1,9 @@
-import style from "./offers.module.scss";
-import { Card } from "@/widgets";
-
 import { useGetProductsDataQuery } from "@/features/user/api/productsApi";
 import { ProductsResults } from "@/model";
+
+import { Card } from "@/widgets";
+
+import style from "./offers.module.scss";
 
 export const Offers = () => {
   const { data } = useGetProductsDataQuery("");
