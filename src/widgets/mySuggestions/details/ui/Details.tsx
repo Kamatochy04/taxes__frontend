@@ -105,8 +105,10 @@ export const Details = () => {
     DeleteProduct(state.from.results.id);
   };
 
-  const deleteImage = (a: string) => {
-    DeleteImages(a);
+  const deleteImage0 = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    DeleteImages(photoID[0]);
   };
 
   return (
@@ -283,10 +285,7 @@ export const Details = () => {
                       onDragOver={handleDragEmpty}
                     />
                     <button
-                      onClick={() => {
-                        deleteImage(photoID[0]);
-                      }}
-                    >
+                      onClick={deleteImage0}>
                       Удалить фото
                     </button>
                   </label>
@@ -297,7 +296,7 @@ export const Details = () => {
                     id="ava"
                     onChange={handleOnChange}
                     name="img"
-                    accept="image/jpeg,image/png,image/gif"
+                    accept="image/jpeg,image/jpg,image/png"
                     type="file"
                     placeholder="Добавить фото"
                   />
@@ -308,25 +307,50 @@ export const Details = () => {
                     <img
                       src={photo[1] != undefined ? photo[1] : productImg}
                       alt="product"
-                    />
-                  </label>
-                  <label htmlFor="ava1" className={style.card__input__photo}>
-                    <img
-                      src={photo[2] != undefined ? photo[2] : productImg}
-                      alt="product"
-                    />
-                  </label>
-                  <label htmlFor="ava1" className={style.card__input__photo}>
-                    <img
-                      src={photo[3] != undefined ? photo[3] : productImg}
-                      alt="product"
+                      onDrop={handleDrop}
+                      onDragEnter={handleDragEmpty}
+                      onDragOver={handleDragEmpty}
                     />
                   </label>
                   <Field
                     className={style.card__input__file}
                     id="ava1"
-                    name="img"
-                    accept="image/jpeg,image/png,image/gif"
+                    name="img1"
+                    accept="image/jpeg,image/jpg,image/png"
+                    type="file"
+                    placeholder="Добавить фото"
+                  />
+                  <label htmlFor="ava2" className={style.card__input__photo}>
+                    <img
+                      src={photo[2] != undefined ? photo[2] : productImg}
+                      alt="product"
+                      onDrop={handleDrop}
+                      onDragEnter={handleDragEmpty}
+                      onDragOver={handleDragEmpty}
+                    />
+                  </label>
+                  <Field
+                    className={style.card__input__file}
+                    id="ava2"
+                    name="img2"
+                    accept="image/jpeg,image/jpg,image/png"
+                    type="file"
+                    placeholder="Добавить фото"
+                  />
+                  <label htmlFor="ava3" className={style.card__input__photo}>
+                    <img
+                      src={photo[3] != undefined ? photo[3] : productImg}
+                      alt="product"
+                      onDrop={handleDrop}
+                      onDragEnter={handleDragEmpty}
+                      onDragOver={handleDragEmpty}
+                    />
+                  </label>
+                  <Field
+                    className={style.card__input__file}
+                    id="ava3"
+                    name="img3"
+                    accept="image/jpeg,image/jpg,image/png"
                     type="file"
                     placeholder="Добавить фото"
                   />
