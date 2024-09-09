@@ -53,19 +53,22 @@
       height: 544px;
     }
 
-    &__photo__big button {
+    &__photo__big .card__photoDelete {
       opacity: 0;
-      position: absolute;
-      width: 200px;
+      //position: absolute;
+      position: relative;
+      max-width: 200px;
       height: 40px;
-      top: 400px;
-      left: calc(65% - 100px);
+      //top: 400px;
+      bottom: 300px;
+      //left: calc(65% - 100px);
+      right: 320px;
       color: #fff;
       //color: #0C1038;
       transition: opacity .3s;
     }
 
-    &__photo__big:hover button {
+    &__photo__big:hover .card__photoDelete {
       opacity: 1;
       transition: opacity .3s;
     }
@@ -74,9 +77,59 @@
       opacity: 0.2;
     }
 
-    &__photo img {
+    &__photo
+    img {
+      display: flex;
+      gap: 32px;
       width: 164px;
       height: 164px;
+      object-fit: contain;
+    }
+
+    &__photo .card__photo1Delete{
+      opacity: 0;
+      position: relative;
+      max-width: 164px;
+      height: 40px;
+      color: #fff;
+      transition: opacity .3s;
+    }
+
+    &__photo:hover .card__photo1Delete{
+      opacity: 1;
+      transition: opacity .3s;
+    }
+
+    &__photo .card__photo2Delete{
+      opacity: 0;
+      position: relative;
+      width: 164px;
+      height: 40px;
+      color: #fff;
+      transition: opacity .3s;
+    }
+
+    &__photo:hover .card__photo2Delete{
+      opacity: 1;
+      transition: opacity .3s;
+    }
+
+    &__photo .card__photo3Delete{
+      opacity: 0;
+      position: relative;
+      width: 164px;
+      height: 40px;
+      color: #fff;
+      transition: opacity .3s;
+    }
+
+    &__photo:hover .card__photo3Delete{
+      opacity: 1;
+      transition: opacity .3s;
+    }
+
+    &__photo:hover>img {
+      opacity: 0.2;
     }
 
     &__Indent_photo {
@@ -98,6 +151,10 @@
     &__description::placeholder {
       text-align: start;
     }
+  }
+
+  &__photo1Delete, &__photo2Delete, &__photo3Delete {
+    bottom: 110px;
   }
 
 }
