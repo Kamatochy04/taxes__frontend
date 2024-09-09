@@ -7,7 +7,8 @@ type TypographyVariant =
   | "check-box"
   | "price"
   | "price_card"
-  | "default";
+  | "default"
+  | "h3-account";
 
 type TypographyTag = "h1" | "h2" | "h3" | "h4" | "p" | "div" | "span" | "label";
 

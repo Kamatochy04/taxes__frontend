@@ -4,8 +4,9 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import style from "./cardB.module.scss";
 import { Typography } from "@/shared/components/typography/Typography";
 import { useState } from "react";
+import { ProductsResults } from "@/model";
 
-export const CardBasket = () => {
+export const CardBasket = ({ item }: { item: ProductsResults }) => {
   const [count, setCount] = useState(1);
 
   const minus = () => {
@@ -24,11 +25,11 @@ export const CardBasket = () => {
     <div className={style.card}>
       <div className={style.card__descr}>
         <div className={style.card__img}>
-          <img src={productImg} alt="product" />
+          <img src={item.images[0].photo} alt="product" />
         </div>
 
         <div className={style.card__d}>
-          <p className={style.card__name}>Велосипед, Kerambit горный...</p>
+          <p className={style.card__name}>{item.name}</p>
 
           <div className={style.card__descr}>
             <div className={style.card__icon}>
@@ -50,14 +51,14 @@ export const CardBasket = () => {
         </div>
         <div className={style.a}>
           <p className={style.a__title}>Заказ №98512</p>
-          <p className={style.a__price}>725 BYN</p>
-          <p className={style.a__descr}>Велосипед Kerambit</p>
+          <p className={style.a__price}>{item.price}</p>
+          <p className={style.a__descr}>{item.name}</p>
           <p className={style.a__descr}>Артикул №2563</p>
         </div>
       </div>
 
       <div className={style.card__descr}>
-        <h3 className={style.price}>725 BYN</h3>
+        <h3 className={style.price}>{item.price}</h3>
       </div>
       <input type="checkbox" className={style.checkbox} />
     </div>

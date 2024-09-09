@@ -27,6 +27,7 @@ export const RegisterStepOne = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data: DataRegisterUser) => {
+    console.log(data);
     dispatch(setFormData(data));
     navigate("step-second");
   };

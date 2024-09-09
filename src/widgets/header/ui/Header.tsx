@@ -13,23 +13,31 @@ import { useGetUserInfQuery } from "@/features/user/api/user.api";
 import { CostomInput } from "@/shared/components/costomInput/CostomInput";
 
 import style from "./header.module.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
 
 export const Header = () => {
   const { data, isLoading } = useGetUserInfQuery();
+
+  const count = useSelector((state: RootState) => state.counter.value);
 
   return (
     <>
       {isLoading && <Loader />}
       {data ? (
-        <HeaderVariantTwo name={data.first_name} lastName={data.last_name} />
+        <HeaderVariantTwo
+          count={count}
+          name={data.first_name}
+          lastName={data.last_name}
+        />
       ) : (
-        <HeaderVariantOne />
+        <HeaderVariantOne count={count} />
       )}
     </>
   );
 };
 
-const HeaderVariantOne = () => {
+const HeaderVariantOne = ({ count }: { count: number }) => {
   const navigate = useNavigate();
 
   return (
@@ -44,7 +52,11 @@ const HeaderVariantOne = () => {
           </div>
 
           <div className={style.header__login}>
-            <ShoppingCartIcon />
+            <div className={style.box} onClick={() => navigate("/basket")}>
+              {count > 0 ? <div className={style.price}>{count}</div> : null}
+              <ShoppingCartIcon />
+            </div>
+
             <div className={style.login} onClick={() => navigate("/login")}>
               Вход
             </div>
@@ -58,9 +70,11 @@ const HeaderVariantOne = () => {
 const HeaderVariantTwo = ({
   name,
   lastName,
+  count,
 }: {
   name: string;
   lastName: string;
+  count: number;
 }) => {
   const [activeClass, setActiveClass] = useState<string>("burger__active");
   const dispathc = useAppDispatch();
@@ -96,6 +110,8 @@ const HeaderVariantTwo = ({
             <CostomInput variant="header" />
           </div>
           <div className={style.header__login}>
+            {count > 0 ? <div className={style.price}>{count}</div> : null}
+
             <ShoppingCartIcon />
             <div className={style.name}>
               {name} {lastName}
