@@ -228,7 +228,7 @@ export const Details = () => {
                   <textarea
                     required
                     className={style.card__input__description}
-                    name={"description"}
+                    name="description"
                     placeholder="Введите описание товара"
                   />
                 </div>
