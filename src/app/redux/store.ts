@@ -4,6 +4,8 @@ import SideBar from "./sideBarSlice";
 import { api } from "./services/api";
 import dataRegister2Reducer from "./register2Slice";
 import { listenerMiddleware } from "@/features/user/midleware/auth";
+import counterReducer from "@/widgets/header/api/ProductCounter";
+import productReducer from "@/pages/ProductCard/api/ProductCard";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +13,8 @@ export const store = configureStore({
     step1: dataRegisterReducer,
     SideBar,
     step2: dataRegister2Reducer,
+    counter: counterReducer,
+    product: productReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

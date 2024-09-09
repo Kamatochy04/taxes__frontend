@@ -2,15 +2,20 @@ import StarIcon from "@mui/icons-material/Star";
 
 import { Button } from "@/shared/components/button/Button";
 
-import style from "./product.module.scss";
 import { useLocation } from "react-router-dom";
 import { ProductsResults } from "@/model";
+import { useDispatch } from "react-redux";
+import { increment } from "@/widgets/header/api/ProductCounter";
+
+import style from "./product.module.scss";
+import { addProduct } from "../api/ProductCard";
 
 export const ProductCard = () => {
   const location = useLocation();
 
   const cardData = location.state as ProductsResults;
-  //Артикул №102581
+  const dispatch = useDispatch();
+
   return (
     <div className={style.card}>
       <div className={style.card__imgs}>
@@ -19,12 +24,6 @@ export const ProductCard = () => {
           alt=""
           className={style.card__imgs_main}
         />
-        {/* <div className={style.card__imgs_wrapper}>
-          <div className={style.a}></div>
-          <div className={style.a}></div>
-          <div className={style.a}></div>
-          <div className={style.a}></div>
-        </div> */}
       </div>
       <div className={style.card__inf}>
         <h3 className={style.card__inf_title}>{cardData.name}</h3>
@@ -41,7 +40,15 @@ export const ProductCard = () => {
         <h3 className={style.card__price_title}>{cardData.price} BYN</h3>
         <h3 className={style.card__inf_t}>{cardData.name}</h3>
         <h4 className={style.card__inf_t}>Артикул № {cardData.id}</h4>
-        <Button variant={"smallBlue"}>Добавить в корзину</Button>
+        <Button
+          variant={"smallBlue"}
+          onClick={() => {
+            dispatch(increment());
+            dispatch(addProduct(cardData));
+          }}
+        >
+          Добавить в корзину
+        </Button>
         <div className={style.btn}>
           <Button variant={"smallOrange"}>Заказать</Button>
         </div>

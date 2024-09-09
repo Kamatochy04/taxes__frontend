@@ -1,7 +1,13 @@
 import style from "./cardAddPost.module.scss";
 import { Button } from "@/shared/components/button/Button";
 
-export const CardAddPost = () => {
+export const CardAddPost = ({
+  coutn,
+  price,
+}: {
+  coutn: number;
+  price: number;
+}) => {
   return (
     <>
       <div className={style.card}>
@@ -14,9 +20,9 @@ export const CardAddPost = () => {
           </div>
 
           <div className={style.card__Column}>
-            <h3 className={style.button_register}>3 625 BYN</h3>
+            <h3 className={style.button_register}>{price} BYN</h3>
 
-            <p className={style.button_register}>5 шт</p>
+            <p className={style.button_register}>{coutn} шт</p>
 
             <p className={style.button_register}>До пункта выдачи</p>
           </div>

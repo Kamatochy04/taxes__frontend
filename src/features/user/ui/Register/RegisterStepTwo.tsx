@@ -28,47 +28,14 @@ interface IDataForm2User {
 export const RegisterStepTwo = () => {
   const [vision, setVision] = useState(true);
   const navigate = useNavigate();
-  // const [signup] = useSignupMutation();
-  // const passwordVision = useCallback(() => {
-  //   setVision((prev) => !prev);
-  // }, []);
 
   const dataSelector = useAppSelector((store) => store.step2);
 
-  // const {
-  //   watch,
-  //   setValue,
-  //   formState: {},
-  // } = useForm<IDataForm2User>({
-  //   mode: "onBlur",
-  //   defaultValues: {
-  //     email: dataSelector.email,
-  //     password: dataSelector.password,
-  //     repeat_password: dataSelector.repeat_password,
-  //     secret_word: dataSelector.secret_word,
-  //   },
-  // });
-
-  // const password = useRef({});
-  // password.current = watch("password", "");
   const dataSekector = useAppSelector((state) => state.step1);
   const dispatch = useAppDispatch();
 
-  // const valuePassword = watch("password");
-  // const valueRepeatPassword = watch("password");
-
-  // useEffect(() => {
-  //   if (valuePassword.length > 30) {
-  //     setValue("password", valuePassword.substring(0, 30));
-  //   }
-  //   if (valueRepeatPassword.length > 30) {
-  //     setValue("repeat_password", valueRepeatPassword.substring(0, 30));
-  //   }
-  // }, [valuePassword, valueRepeatPassword]);
-
   const onSubmit = async (date: IDataForm2User) => {
     const dataUser = { ...dataSekector, ...date };
-    console.log(dataUser);
     dispatch(set2FormData(date));
 
     try {
