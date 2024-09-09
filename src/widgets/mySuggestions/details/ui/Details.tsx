@@ -17,11 +17,17 @@ import { useDeleteImagesMutation } from "@/features/user/api/imagesApi";
 export const Details = () => {
   //image--------------------
 
-  const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>();
+  /*const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>();
+  const [imageURL1, setImageURL1] = useState<string | ArrayBuffer | null>();
+  const [imageURL2, setImageURL2] = useState<string | ArrayBuffer | null>();
+  const [imageURL3, setImageURL3] = useState<string | ArrayBuffer | null>();
+
   const fileReader = new FileReader();
+
   fileReader.onloadend = () => {
     setImageURL(fileReader.result);
   };
+
   const handleOnChange = (event: {
     preventDefault: () => void;
     target: { files: string | any[] };
@@ -51,7 +57,7 @@ export const Details = () => {
   }) => {
     event.preventDefault();
     event.stopPropagation();
-  };
+  };*/
   //-----------------
 
   const location = useLocation();
@@ -275,14 +281,12 @@ export const Details = () => {
                       src={
                         photo[0] != undefined
                           ? photo[0]
-                          : imageURL
-                          ? imageURL
                           : productImg
                       }
                       alt="product"
-                      onDrop={handleDrop}
+                      /*onDrop={handleDrop}
                       onDragEnter={handleDragEmpty}
-                      onDragOver={handleDragEmpty}
+                      onDragOver={handleDragEmpty}*/
                     />
                     <button
                       onClick={deleteImage0}>
@@ -294,7 +298,7 @@ export const Details = () => {
                     required
                     className={style.card__input__file}
                     id="ava"
-                    onChange={handleOnChange}
+                    //onChange={handleOnChange}
                     name="img"
                     accept="image/jpeg,image/jpg,image/png"
                     type="file"
@@ -307,9 +311,6 @@ export const Details = () => {
                     <img
                       src={photo[1] != undefined ? photo[1] : productImg}
                       alt="product"
-                      onDrop={handleDrop}
-                      onDragEnter={handleDragEmpty}
-                      onDragOver={handleDragEmpty}
                     />
                   </label>
                   <Field
@@ -324,9 +325,6 @@ export const Details = () => {
                     <img
                       src={photo[2] != undefined ? photo[2] : productImg}
                       alt="product"
-                      onDrop={handleDrop}
-                      onDragEnter={handleDragEmpty}
-                      onDragOver={handleDragEmpty}
                     />
                   </label>
                   <Field
@@ -341,9 +339,6 @@ export const Details = () => {
                     <img
                       src={photo[3] != undefined ? photo[3] : productImg}
                       alt="product"
-                      onDrop={handleDrop}
-                      onDragEnter={handleDragEmpty}
-                      onDragOver={handleDragEmpty}
                     />
                   </label>
                   <Field
