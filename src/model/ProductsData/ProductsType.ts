@@ -17,7 +17,7 @@ export type ProductsResults = {
 };
 
 export type ProductsImages = {
-  id: string;
-  photo: string;
-  product: string;
+  id?: string ;
+  photo: string | ArrayBuffer | null;
+  product: string | undefined;
 }

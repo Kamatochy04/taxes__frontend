@@ -1,9 +1,10 @@
 export type AccountData = {
+  id: string;
   email: string;
   first_name: string;
   last_name: string;
   patronymic: string;
-  UNP: string;
+  unp: string;
   registration_address: string;
   residential_address: string;
   date_of_birth: Date;
@@ -11,8 +12,6 @@ export type AccountData = {
   phone_number: string;
   avatar: any;
 };
-
-
 
 export type PersonalType = {
   first_name: string;
@@ -23,7 +22,7 @@ export type PersonalType = {
 };
 
 export type TaxpayerType = {
-  UNP: string;
+  unp: string;
   сategory: string;
 };
 

@@ -5,10 +5,10 @@ import { PassportDetails } from "./PassportDetails";
 import { PersonalDeta } from "./PersonalData";
 import { Typography } from "@/shared/components/typography/Typography";
 import { ProfilePhoto } from "./ProfilePhoto";
-import { useAddDataUserQuery } from "@/features/user/api/AccountApi";
+import { useGetDataUserQuery } from "@/features/user/api/AccountApi";
 
 export const Account = () => {
-  const {data} = useAddDataUserQuery('');
+  const {data} = useGetDataUserQuery('');
 
   return (
     <>

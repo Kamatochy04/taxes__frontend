@@ -11,8 +11,8 @@ type ResponsData = {
 export const accountApi = api.injectEndpoints({  
   endpoints: (builder) => ({
 
-    AddDataUser: builder.query<AccountData, string>({
-      query: () => "api/dev/users/me/",
+    GetDataUser: builder.query<AccountData, string>({
+      query: () => "api/dev/users/me",
     }),
 
     Taxpayer: builder.mutation<ResponsData, TaxpayerType>({
@@ -57,7 +57,7 @@ export const accountApi = api.injectEndpoints({
   }),
 });
 
-export const { useAddDataUserQuery, useTaxpayerMutation, usePassportMutation, usePersonalMutation, useSecretMutation, usePhotoMutation } = accountApi;
+export const { useGetDataUserQuery, useTaxpayerMutation, usePassportMutation, usePersonalMutation, useSecretMutation, usePhotoMutation } = accountApi;
 
 export const {
   endpoints: { Taxpayer, Passport, Personal, Secret,  },

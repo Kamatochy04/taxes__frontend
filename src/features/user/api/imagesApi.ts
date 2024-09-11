@@ -1,5 +1,5 @@
 import { api } from "@/app/redux/services/api";
-import { ProductsImages, ProductsResults } from "@/model";
+import { ProductsImages } from "@/model";
 
 //Вызов injectEndpoints внедрит конечные точки в исходный API,
 //но также вернет вам тот же API с правильными типами для этих конечных точек.
@@ -10,7 +10,7 @@ export const imagesApi = api.injectEndpoints({
       query: () => "api/dev/products/images/",
     }),
 
-    NewImages: builder.mutation<ProductsImages, ProductsResults>({
+    NewImages: builder.mutation<ProductsImages, ProductsImages[]>({
       query: (body) => ({
         url: "api/dev/products/images/",
         method: "POST",

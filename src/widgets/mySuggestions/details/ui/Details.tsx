@@ -1,18 +1,28 @@
 import { Field, Form, Formik } from "formik";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import style from "./details.module.scss";
+
+import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
 import { Typography } from "@/shared/components/typography/Typography";
-import { ProductsImages, ProductsResults } from "@/model";
 import { Button } from "@/shared/components/button/Button";
 import productImg from "@/shared/assets/img/no_photo.jpg";
-import style from "./details.module.scss";
-import { useState } from "react";
-import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
+
+import { ProductsImages, ProductsResults } from "@/model";
+import { CategoriesType } from "@/model/CategoriesData/CategoriesType";
+
 import {
   useDeleteProductMutation,
   useNewProductMutation,
   usePatchProductMutation,
 } from "@/features/user/api/productsApi";
-import { useLocation } from "react-router-dom";
-import { useDeleteImagesMutation } from "@/features/user/api/imagesApi";
+import {
+  useDeleteImagesMutation,
+  useNewImagesMutation,
+} from "@/features/user/api/imagesApi";
+import { useGetDataUserQuery } from "@/features/user/api/AccountApi";
+import { useGetCategoriesQuery } from "@/features/user/api/categoriesApi";
 
 export const Details = () => {
   //image--------------------
@@ -20,9 +30,15 @@ export const Details = () => {
   const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>(
     productImg
   );
-  const [imageURL1, setImageURL1] = useState<string | ArrayBuffer | null>(productImg);
-  const [imageURL2, setImageURL2] = useState<string | ArrayBuffer | null>(productImg);
-  const [imageURL3, setImageURL3] = useState<string | ArrayBuffer | null>(productImg);
+  const [imageURL1, setImageURL1] = useState<string | ArrayBuffer | null>(
+    productImg
+  );
+  const [imageURL2, setImageURL2] = useState<string | ArrayBuffer | null>(
+    productImg
+  );
+  const [imageURL3, setImageURL3] = useState<string | ArrayBuffer | null>(
+    productImg
+  );
 
   const handleOnChange = (event: {
     preventDefault: () => void;
@@ -94,6 +110,24 @@ export const Details = () => {
 
   //-----------------
 
+  const navigate = useNavigate();
+
+  const [NewImages] = useNewImagesMutation();
+  const [addProductsResultsData] = useNewProductMutation();
+  const [patchProductsResultsData] = usePatchProductMutation();
+  const [DeleteProduct] = useDeleteProductMutation();
+  const [DeleteImages] = useDeleteImagesMutation();
+  const { data } = useGetCategoriesQuery("");
+
+  let producsId: string | undefined;
+
+  let userId: string;
+
+  (function () {
+    const { data } = useGetDataUserQuery("");
+    return (userId = data != undefined ? data.id : "error");
+  })();
+
   const location = useLocation();
   const { state } = location;
 
@@ -124,7 +158,7 @@ export const Details = () => {
           name: "",
           description: "",
           price: "",
-          count: "",
+          count: "10",
           category: "",
           seller: "",
           images: [],
@@ -135,14 +169,10 @@ export const Details = () => {
   - символы
   - количество`;
 
-  const [addProductsResultsData] = useNewProductMutation();
-  const [patchProductsResultsData] = usePatchProductMutation();
-  const [DeleteProduct] = useDeleteProductMutation();
-  const [DeleteImages] = useDeleteImagesMutation();
-
   const handleRemove = (event: React.MouseEvent) => {
     event.stopPropagation();
     DeleteProduct(state.from.results.id);
+    navigate("/mySuggestions");
   };
 
   const deleteImage0 = (event: React.MouseEvent) => {
@@ -182,10 +212,29 @@ export const Details = () => {
       <Formik<ProductsResults>
         initialValues={addProductsResults}
         onSubmit={(values) => {
+          values.seller = userId;
           console.log(values);
           state !== null
             ? patchProductsResultsData(values)
-            : addProductsResultsData(values);
+            : addProductsResultsData(values).then((data) => {
+                producsId = data.data?.id;
+                console.log(producsId);
+                if (imageURL != productImg) {
+                  values.images.push({ product: producsId, photo: imageURL });
+                }
+                if (imageURL1 != productImg) {
+                  values.images.push({ product: producsId, photo: imageURL1 });
+                }
+                if (imageURL2 != productImg) {
+                  values.images.push({ product: producsId, photo: imageURL2 });
+                }
+                if (imageURL3 != productImg) {
+                  values.images.push({ product: producsId, photo: imageURL3 });
+                }
+                console.log(values.images);
+                NewImages(values.images);
+              });
+          navigate("/mySuggestions");
         }}
       >
         {() => (
@@ -213,19 +262,29 @@ export const Details = () => {
                     Категория*
                   </Typography>
                   <Field
+                    as="select"
                     required
                     className={style.card__input}
                     name={"category"}
                     type="text"
                     placeholder="Введите категорию товара"
-                  />
+                  >
+                    {data != undefined
+                      ? data.results.map((item: CategoriesType) => (
+                          <option value={item.id} key={item.id}>
+                            {item.name}
+                          </option>
+                        ))
+                      : "ERROR"}
+                  </Field>
                 </div>
 
                 <div className={style.card__Indent}>
                   <Typography variant="default" tag={"p"}>
                     Описание*
                   </Typography>
-                  <textarea
+                  <Field
+                    as="textarea"
                     required
                     className={style.card__input__description}
                     name="description"
@@ -241,7 +300,7 @@ export const Details = () => {
                   <HintCloud text={text}>
                     <Field
                       className={style.card__input}
-                      name={"location"}
+                      name="location"
                       type="text"
                       placeholder="Введите местонахождение товара"
                     />
@@ -255,14 +314,14 @@ export const Details = () => {
                   <HintCloud text={text}>
                     <Field
                       className={style.card__input}
-                      name={"phone_number"}
+                      name="phone_number"
                       type="text"
                       placeholder="Введите номер телефона"
                     />
 
                     <Field
                       className={style.card__input}
-                      name={"e-mail"}
+                      name="e-mail"
                       type="text"
                       placeholder="Введите e-mail"
                     />
@@ -275,7 +334,7 @@ export const Details = () => {
                   </Typography>
                   <Field
                     className={style.card__input}
-                    name={"payment_terms"}
+                    name="payment_terms"
                     type="text"
                     placeholder="Введите условия оплаты"
                   />
@@ -287,7 +346,7 @@ export const Details = () => {
                   </Typography>
                   <Field
                     className={style.card__input}
-                    name={"delivery_terms"}
+                    name="delivery_terms"
                     type="text"
                     placeholder="Введите условия доставки"
                   />
@@ -308,11 +367,15 @@ export const Details = () => {
 
                 {state === null ? (
                   <div className={style.card__Button}>
-                    <Button type="submit" variant="bigBlue">Добавить предложение</Button>
+                    <Button type="submit" variant="bigBlue">
+                      Добавить предложение
+                    </Button>
                   </div>
                 ) : (
                   <div className={style.card__Button}>
-                    <Button type="submit" variant="normalBlue">Сохранить</Button>
+                    <Button type="submit" variant="normalBlue">
+                      Сохранить
+                    </Button>
                     <Button variant="normalWhite" onClick={handleRemove}>
                       Удалить
                     </Button>
@@ -334,7 +397,12 @@ export const Details = () => {
                       src={photo[0] != undefined ? photo[0] : imageURL}
                       alt="product"
                     />
-                    <button className={style.card__photoDelete} onClick={deleteImage0}>Удалить фото</button>
+                    <button
+                      className={style.card__photoDelete}
+                      onClick={deleteImage0}
+                    >
+                      Удалить фото
+                    </button>
                   </label>
 
                   <Field
@@ -351,14 +419,15 @@ export const Details = () => {
                 <div className={style.card__input__Indent_photo}>
                   <label htmlFor="ava1" className={style.card__input__photo}>
                     <img
-                      src={
-                        photo[1] != undefined
-                          ? photo[1]
-                          : imageURL1
-                      }
+                      src={photo[1] != undefined ? photo[1] : imageURL1}
                       alt="product"
                     />
-                    <button className={style.card__photo1Delete} onClick={deleteImage1}>Удалить фото</button>
+                    <button
+                      className={style.card__photo1Delete}
+                      onClick={deleteImage1}
+                    >
+                      Удалить фото
+                    </button>
                   </label>
                   <Field
                     className={style.card__input__file}
@@ -374,7 +443,12 @@ export const Details = () => {
                       src={photo[2] != undefined ? photo[2] : imageURL2}
                       alt="product"
                     />
-                    <button className={style.card__photo2Delete} onClick={deleteImage2}>Удалить фото</button>
+                    <button
+                      className={style.card__photo2Delete}
+                      onClick={deleteImage2}
+                    >
+                      Удалить фото
+                    </button>
                   </label>
                   <Field
                     className={style.card__input__file}
@@ -390,7 +464,12 @@ export const Details = () => {
                       src={photo[3] != undefined ? photo[3] : imageURL3}
                       alt="product"
                     />
-                    <button className={style.card__photo3Delete} onClick={deleteImage3}>Удалить фото</button>
+                    <button
+                      className={style.card__photo3Delete}
+                      onClick={deleteImage3}
+                    >
+                      Удалить фото
+                    </button>
                   </label>
                   <Field
                     className={style.card__input__file}
