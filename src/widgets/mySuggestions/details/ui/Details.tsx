@@ -140,6 +140,8 @@ export const Details = () => {
     state !== null
       ? state.from.results.images.map((item: ProductsImages) => item.photo)
       : [];
+      
+  //console.log(state.from.results);
 
   let [addProductsResults] = useState<ProductsResults>(
     state !== null
@@ -151,7 +153,7 @@ export const Details = () => {
           count: `${state.from.results.count}`,
           category: `${state.from.results.category}`,
           seller: `${state.from.results.seller}`,
-          images: [],
+          images: {photo: '', product: ''},
         }
       : {
           id: "",
@@ -161,7 +163,7 @@ export const Details = () => {
           count: "10",
           category: "",
           seller: "",
-          images: [],
+          images: {photo: '', product: ''},
         }
   );
 
@@ -219,7 +221,7 @@ export const Details = () => {
             : addProductsResultsData(values).then((data) => {
                 producsId = data.data?.id;
                 console.log(producsId);
-                if (imageURL != productImg) {
+                /*if (imageURL != productImg) {
                   values.images.push({ product: producsId, photo: imageURL });
                 }
                 if (imageURL1 != productImg) {
@@ -230,7 +232,8 @@ export const Details = () => {
                 }
                 if (imageURL3 != productImg) {
                   values.images.push({ product: producsId, photo: imageURL3 });
-                }
+                }*/
+                values.images = { photo: imageURL, product: producsId };
                 console.log(values.images);
                 NewImages(values.images);
               });

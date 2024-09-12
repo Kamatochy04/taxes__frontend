@@ -10,7 +10,7 @@ export const imagesApi = api.injectEndpoints({
       query: () => "api/dev/products/images/",
     }),
 
-    NewImages: builder.mutation<ProductsImages, ProductsImages[]>({
+    NewImages: builder.mutation<ProductsImages, ProductsImages>({
       query: (body) => ({
         url: "api/dev/products/images/",
         method: "POST",
