@@ -29,21 +29,30 @@ export const Account = () => {
           <Typography variant="h3-account" tag={"h3"}>
             Данные налогоплательщика
           </Typography>
-          <TaxpayerDetails />
+
+          {data != undefined
+          ? <TaxpayerDetails dataUser={data} />           
+          : "ERROR"}
         </div>
 
         <div className={style.card}>
           <Typography variant="h3-account" tag={"h3"}>
             Паспортные данные
           </Typography>
-          <PassportDetails />
+
+          {data != undefined
+          ? <PassportDetails data={data} />           
+          : "ERROR"}
         </div>
 
         <div className={style.card}>
           <Typography variant="h3-account" tag={"h3"}>
             Фото профиля
           </Typography>
-          <ProfilePhoto />
+
+          {data != undefined
+          ? <ProfilePhoto Avatar={data.avatar != undefined ? data.avatar : 'Error'} />           
+          : "ERROR"}
         </div>
       </div>
     </>

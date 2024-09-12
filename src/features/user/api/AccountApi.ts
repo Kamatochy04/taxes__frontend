@@ -1,5 +1,5 @@
 import { api } from "@/app/redux/services/api";
-import { TaxpayerType, PassportType, PersonalType, EnterWord, PhotoType, AccountData } from "@/model/AccountData/AccountType"
+import { EnterWord, AccountData, AvatarType } from "@/model/AccountData/AccountType"
 
 type ResponsData = {
   accessToken: string;
@@ -15,32 +15,16 @@ export const accountApi = api.injectEndpoints({
       query: () => "api/dev/users/me",
     }),
 
-    Taxpayer: builder.mutation<ResponsData, TaxpayerType>({
-      query: (body: TaxpayerType) => ({
+    PatchDataUser: builder.mutation<AccountData, AccountData>({
+      query: (body) => ({
         url: "api/dev/users/me/",
         method: "PATCH",
         body,
       }),
     }),
 
-    Passport: builder.mutation<ResponsData, PassportType>({
-      query: (body: PassportType) => ({
-        url: "api/dev/users/me/",
-        method: "PATCH",
-        body,
-      }),
-    }),
-
-    Personal: builder.mutation<ResponsData, PersonalType>({
-      query: (body: PersonalType) => ({
-        url: "api/dev/users/me/",
-        method: "PATCH",
-        body,
-      }),
-    }),
-
-    Photo: builder.mutation<ResponsData, PhotoType>({
-      query: (body: PhotoType) => ({
+    AddAvatar: builder.mutation<AvatarType, AvatarType>({
+      query: (body) => ({
         url: "api/dev/users/me/avatar/",
         method: "POST",
         body,
@@ -57,8 +41,8 @@ export const accountApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetDataUserQuery, useTaxpayerMutation, usePassportMutation, usePersonalMutation, useSecretMutation, usePhotoMutation } = accountApi;
+export const { useGetDataUserQuery, usePatchDataUserMutation, useSecretMutation, useAddAvatarMutation } = accountApi;
 
 export const {
-  endpoints: { Taxpayer, Passport, Personal, Secret,  },
+  endpoints: { PatchDataUser, Secret, },
 } = accountApi;

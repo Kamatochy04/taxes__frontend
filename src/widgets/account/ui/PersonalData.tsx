@@ -1,11 +1,11 @@
 import { Field, Form, Formik } from "formik";
 import { Button } from "@/shared/components/button/Button";
 import { Typography } from "@/shared/components/typography/Typography";
-import { AccountData, PersonalType } from "@/model";
+import { AccountData } from "@/model";
 import style from "./account.module.scss";
 
 import { FC, useState } from "react";
-import { usePersonalMutation } from "@/features/user/api/AccountApi";
+import { usePatchDataUserMutation } from "@/features/user/api/AccountApi";
 import { useNavigate } from "react-router-dom";
 
 interface PersonalDetaProps {
@@ -17,22 +17,30 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
 
   console.log(data);
 
-  const [addPassport] = useState<PersonalType>({
-    first_name: "",
-    last_name: "",
-    patronymic: "",
-    email: "",
-    phone_number: "",
+  const [personalData] = useState<AccountData>({
+    id: `${data.id !== null ? data.id : ''}`,
+    email: `${data.email !== null ? data.email : ''}`,
+    first_name: `${data.first_name !==null ? data.first_name : ''}`,
+    last_name: `${data.last_name !== null ? data.last_name : ''}`,
+    patronymic: `${data.patronymic !== null ? data.patronymic : ''}`,
+
+    unp: `${data.unp !== null ? data.unp : ''}`,
+    registration_address: `${data.registration_address !== null ? data.registration_address : ''}`,
+    residential_address: `${data.residential_address !== null ? data.residential_address : ''}`,    
+    date_of_birth: data.date_of_birth !== null ? data.date_of_birth : new Date,
+    passport_num: `${data.passport_num !== null ? data.passport_num : ''}`,
+    phone_number: `${data.phone_number !== null ? data.phone_number : ''}`,
   });
 
-  const [addPersonalData] = usePersonalMutation();
+  const [updatingUserData] = usePatchDataUserMutation();
 
   return (
     <>
-      <Formik<PersonalType>
-        initialValues={addPassport}
+      <Formik<AccountData>
+        initialValues={personalData}
         onSubmit={(values) => {
-          addPersonalData(values);
+          console.log(values);
+          updatingUserData(values);
         }}
       >
         {({ isValid }) => (
@@ -40,46 +48,42 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
             <div className={style.card__Fild}>
               <Field
                 className={style.card__input}
-                autocomplete="off"
+                autoComplete="off"
                 name={"first_name"}
                 type="text"
                 placeholder="имя"
-                value={data.first_name}
               />
               <Field
                 className={style.card__input}
                 name={"phone_number"}
+                autoComplete="off"
                 type="text"
                 placeholder="телефон"
-                //value={data.phone_number}
               />
               <Field
                 className={style.card__input}
                 name={"last_name"}
                 type="text"
                 placeholder="фамилия"
-                value={data.last_name}
               />
               <Field
                 className={style.card__input}
                 name={"email"}
-                autocomplete="off"
+                autoComplete="off"
                 type="email"
                 placeholder="Email"
-                value={data.email}
               />
               <Field
                 className={style.card__input}
                 name={"patronymic"}
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 placeholder="отчество"
-                value={data.patronymic}
               />
             </div>
             <div className={style.card__delete}>
               <Button type="submit" variant={"text"} disabled={!isValid}>
-                <Typography variant="link-account" tag={"p"}>
+                <Typography variant="default" tag={"p"}>
                   Изменить
                 </Typography>
               </Button>

@@ -1,38 +1,52 @@
 import { Field, Form, Formik } from "formik";
 import { Button } from "@/shared/components/button/Button";
 import { Typography } from "@/shared/components/typography/Typography";
-import { PassportType } from "@/model";
+import { AccountData } from "@/model";
 
 import style from "./account.module.scss";
-import { useState } from "react";
-import { usePassportMutation } from "@/features/user/api/AccountApi";
+import { FC, useState } from "react";
+import { usePatchDataUserMutation } from "@/features/user/api/AccountApi";
 
-export const PassportDetails = () => {
-  const [addPassport] = useState<PassportType>({
-    date: new Date(),
-    series: "",
-    number: "",
-    registration: "",
+interface PersonalDetaProps {
+  data: AccountData;
+}
+
+export const PassportDetails: FC<PersonalDetaProps> = ({ data }) =>{
+
+  const [addPassport] = useState<AccountData>({
+    id: `${data.id !== null ? data.id : ''}`,
+    email: `${data.email !== null ? data.email : ''}`,
+    first_name: `${data.first_name !==null ? data.first_name : ''}`,
+    last_name: `${data.last_name !== null ? data.last_name : ''}`,
+    patronymic: `${data.patronymic !== null ? data.patronymic : ''}`,
+    unp: `${data.unp !== null ? data.unp : ''}`,
+    registration_address: `${data.registration_address !== null ? data.registration_address : ''}`,
+    residential_address: `${data.residential_address !== null ? data.residential_address : ''}`,    
+    date_of_birth: data.date_of_birth !== null ? data.date_of_birth : new Date,
+    passport_num: `${data.passport_num !== null ? data.passport_num : ''}`,
+    phone_number: `${data.phone_number !== null ? data.phone_number : ''}`,
+    //date_of_birth: '2024-09-11',
   });
 
-  const [addPassportData] = usePassportMutation();
+  const [updatingUserData] = usePatchDataUserMutation();
 
   return (
     <>
-      <Formik<PassportType>
+      <Formik<AccountData>
         initialValues={addPassport}
         onSubmit={(values) => {
-          addPassportData(values);
+          console.log(values);
+          updatingUserData(values);
         }}
       >
         {({ isValid }) => (
           <Form>
             <div className={style.card__Line}>
               <div className={style.card__Column}>
-                <Typography variant="subscribe-input" tag={"p"}>
+                <Typography variant="default" tag={"p"}>
                   Дата рождения
                 </Typography>
-                <Typography variant="subscribe-input" tag={"p"}>
+                <Typography variant="default" tag={"p"}>
                   Паспорт
                 </Typography>
               </div>
@@ -40,27 +54,23 @@ export const PassportDetails = () => {
               <div className={style.card__Column}>
                 <Field
                   className={style.card__input}
-                  name={"date"}
+                  name={"date_of_birth"}
                   type="date"
+                  autoComplete="off"
                   placeholder="дата"
                 />
                 <div className={style.card__Line}>
                   <Field
-                    className={style.card__input__min}
-                    name={"series"}
+                    className={style.card__input}
+                    name={"passport_num"}
                     type="text"
-                    placeholder="серия"
-                  />
-                  <Field
-                    className={style.card__input__min}
-                    name={"number"}
-                    type="text"
-                    placeholder="номер"
+                    autoComplete="off"
+                    placeholder="серия и номер"
                   />
                 </div>
                 <div className={style.card__Line}>
                   <Button type="submit" variant={"text"} disabled={!isValid}>
-                    <Typography variant="link-account" tag={"p"}>
+                    <Typography variant="default" tag={"p"}>
                       Изменить
                     </Typography>
                   </Button>
@@ -68,15 +78,16 @@ export const PassportDetails = () => {
               </div>
             </div>
             <div className={style.card__Line}>
-              <Typography variant="subscribe-input" tag={"p"}>
+              <Typography variant="default" tag={"p"}>
                 Адрес регистрации
               </Typography>
 
               <Field
                 className={style.card__input}
-                name={"registration"}
+                name={"registration_address"}
                 type="text"
-                placeholder="прописка"
+                autoComplete="off"
+                placeholder="регистрация"
               />
             </div>
           </Form>
