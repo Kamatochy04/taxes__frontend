@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
@@ -45,7 +45,7 @@ const HeaderVariantOne = ({ count }: { count: number }) => {
       <Container>
         <div className={style.header__container_sec}>
           <div className={style.logo}>
-            <img src={logoImg} alt="logo" />
+          <NavLink to={"/"}><img src={logoImg} alt="logo" /></NavLink>            
           </div>
           <div className={style.header__wrapper_sec}>
             <CostomInput variant="header" />
@@ -93,7 +93,7 @@ const HeaderVariantTwo = ({
       <Container>
         <div className={style.header__container}>
           <div className={style.logo}>
-            <img src={logoImg} alt="logo" />
+          <NavLink to={"/"}><img src={logoImg} alt="logo" /></NavLink>
           </div>
           <div
             className={`${style.burger} ${style[`burger__active`]}`}
