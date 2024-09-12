@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Button } from "@/shared/components/button/Button";
 
 export const Finance = () => {
-  const [percent, setPercent] = useState<string>("");
-  const [revenue, setRevenue] = useState<string>("");
+  const [percent, setPercent] = useState<string>("10");
+  const [revenue, setRevenue] = useState<string>("153298");
 
   const handlePercentEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPercent(e.target.value);
@@ -13,6 +13,11 @@ export const Finance = () => {
 
   const handleRevenueEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRevenue(e.target.value);
+  };
+
+  const handlePay = () => {
+    let question = confirm("Вы согласны оплатить налог?");
+    alert(question == true ? "Спасибо" : "До скорой встречи");
   };
 
   return (
@@ -24,6 +29,7 @@ export const Finance = () => {
             <p className={style.finance__text}>Процентная ставка, %</p>
             <div className={style.field}>
               <input
+                disabled
                 value={percent}
                 onChange={handlePercentEvent}
                 type="text"
@@ -38,6 +44,7 @@ export const Finance = () => {
             <p className={style.finance__text}>Выручка за месяц составляет</p>
             <div className={style.field}>
               <input
+                disabled
                 value={revenue}
                 onChange={handleRevenueEvent}
                 type="text"
@@ -57,7 +64,7 @@ export const Finance = () => {
           </div>
 
           <div className={style.button}>
-            <Button variant="smallOrange">Оплатить</Button>
+            <Button variant="smallOrange" onClick={handlePay} >Оплатить</Button>
           </div>
         </div>
         <div className={style.header}>
