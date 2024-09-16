@@ -1,4 +1,3 @@
-import { Field, Form, Formik } from "formik";
 import { FC, useState } from "react";
 
 import { Button } from "@/shared/components/button/Button";
@@ -7,8 +6,12 @@ import productImg from "@/shared/assets/img/no_photo.jpg";
 
 import style from "./account.module.scss";
 
-import { useAddAvatarMutation } from "@/features/user/api/AccountApi";
-import { AvatarType } from "@/model";
+import {
+  useAddAvatarMutation,
+  useDeleteAvatarMutation,
+} from "@/features/user/api/AccountApi";
+
+// http://84.38.182.213:1337
 
 interface Type {
   Avatar: string;
@@ -16,23 +19,24 @@ interface Type {
 
 export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
 
-  const [imageURL, setImageURL] = useState<any>(
-    productImg
-  );
+  let av = 'http://84.38.182.213:1337' + `${Avatar}`;
+
+  const [imageURL, setImageURL] = useState<any>(Avatar !== null ? av : productImg);
+  const [image, setImage] = useState<any>('');
+
+  
+  console.log(av);
+
 
   console.log(Avatar);
   console.log(imageURL);
 
-  const [addPhoto] = useState<AvatarType>({
-    avatar: Avatar,
-  });
-
   const [AddAvatar] = useAddAvatarMutation();
+  const [deleteAvatar] = useDeleteAvatarMutation();
 
-  const handleOnChange = (event: {
-    preventDefault: () => void;
-    target: { files: string | any[] };
-  }) => {
+  const handleOnChange = (event: any) => {
+    setImage(event.target.files[0]);
+
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
@@ -46,49 +50,47 @@ export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
     }
   };
 
+  const handleUploud = () => {
+    if (image == productImg) {
+      alert("добавте фото");
+      return;
+    }
+
+    deleteAvatar(imageURL);
+    const formData = new FormData();
+    formData.append("avatar", image);
+    AddAvatar(formData);
+  };
+
   return (
     <>
-      <Formik<AvatarType>
-        initialValues={addPhoto}
-        onSubmit={(values) => {          
-          values.avatar = imageURL;
-          console.log(values);
-          AddAvatar(values);
-        }}
-      >
-        {() => (
-          <Form style={{ gap: "16px" }}>
-            <div className={style.card__Line}>
+      <div className={style.card__Line}>
+        <label htmlFor="ava">
+          <img src={imageURL} alt="product" className={style.card__ava} />
+        </label>
 
-              <label htmlFor="ava" >
-              <img src={ imageURL } alt="product" className={style.card__ava}/>
-              </label>
+        <input
+          className={style.card__photo}
+          id="ava"
+          onChange={handleOnChange}
+          name="avatar"
+          accept="image/jpeg,image/jpg,image/png"
+          type="file"
+          placeholder="Добавить фото"
+        />
 
-                <Field
-                  className={style.card__photo}
-                  id="ava"
-                  onChange={handleOnChange}
-                  name="avatar"
-                  accept="image/jpeg,image/jpg,image/png"
-                  type="file"
-                  placeholder="Добавить фото"
-                />             
-
-              <div className={style.card__Fild}>
-                <Typography variant="default" tag={"p"}>
-                  Создайте автопортрет при помощи веб камеры или найдите фото на
-                  своём компьютере
-                </Typography>
-                <Button type="submit" variant={"text"}>
-                  <Typography variant="default" tag={"p"}>
-                    Изменить
-                  </Typography>
-                </Button>
-              </div>
-            </div>
-          </Form>
-        )}
-      </Formik>
+        <div className={style.card__Fild}>
+          <Typography variant="default" tag={"p"}>
+            Создайте автопортрет при помощи веб камеры или найдите фото на своём
+            компьютере
+          </Typography>
+          <Button onClick={handleUploud} variant={"text"}>
+            <Typography variant="default" tag={"p"}>
+              Изменить
+            </Typography>
+          </Button>
+        </div>
+      </div>
     </>
   );
 };

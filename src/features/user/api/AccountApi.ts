@@ -23,11 +23,18 @@ export const accountApi = api.injectEndpoints({
       }),
     }),
 
-    AddAvatar: builder.mutation<AvatarType, AvatarType>({
+    AddAvatar: builder.mutation<any, any>({
       query: (body) => ({
         url: "api/dev/users/me/avatar/",
         method: "POST",
         body,
+      }),
+    }),
+
+    deleteAvatar: builder.mutation({
+      query: () => ({
+        url: "api/dev/users/me/avatar/",
+        method: "DELETE",
       }),
     }),
 
@@ -41,7 +48,7 @@ export const accountApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetDataUserQuery, usePatchDataUserMutation, useSecretMutation, useAddAvatarMutation } = accountApi;
+export const { useGetDataUserQuery, usePatchDataUserMutation, useSecretMutation, useAddAvatarMutation, useDeleteAvatarMutation } = accountApi;
 
 export const {
   endpoints: { PatchDataUser, Secret, },
