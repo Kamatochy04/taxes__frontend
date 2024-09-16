@@ -13,7 +13,7 @@ export type ProductsResults = {
   count: string;
   category: string;
   seller: string;
-  images: ProductsImages;
+  images?: ProductsImages;
   //images: ProductsImages[];
 };
 

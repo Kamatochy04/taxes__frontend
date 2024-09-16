@@ -10,11 +10,19 @@ export const imagesApi = api.injectEndpoints({
       query: () => "api/dev/products/images/",
     }),
 
-    NewImages: builder.mutation<ProductsImages, ProductsImages>({
+    NewImages: builder.mutation<any, any>({
       query: (body) => ({
         url: "api/dev/products/images/",
         method: "POST",
         body,
+      }),
+    }),
+
+    PatchImages: builder.mutation<any, any>({
+      query: (body) => ({
+        url: `api/dev/products/images/${body[0]}`,
+        method: "PATCH",
+        body: body[1],
       }),
     }),
 
@@ -28,7 +36,7 @@ export const imagesApi = api.injectEndpoints({
   }),
 });
 
-export const { useDeleteImagesMutation, useGetImagesQuery, useNewImagesMutation } = imagesApi;
+export const { useDeleteImagesMutation, useGetImagesQuery, useNewImagesMutation, usePatchImagesMutation } = imagesApi;
 
 export const {
   endpoints: { NewImages, },

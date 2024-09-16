@@ -20,30 +20,52 @@ import {
 import {
   useDeleteImagesMutation,
   useNewImagesMutation,
+  usePatchImagesMutation,
 } from "@/features/user/api/imagesApi";
 import { useGetDataUserQuery } from "@/features/user/api/AccountApi";
 import { useGetCategoriesQuery } from "@/features/user/api/categoriesApi";
 
 export const Details = () => {
+
+  const location = useLocation();
+  const { state } = location;
+
+  let photoID =
+    state !== null
+      ? state.from.results.images.map((item: ProductsImages) => item.id)
+      : [];
+
+  let photo =
+    state !== null
+      ? state.from.results.images.map((item: ProductsImages) => item.photo)
+      : [];
+
   //image--------------------
 
-  const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>(
-    productImg
-  );
-  const [imageURL1, setImageURL1] = useState<string | ArrayBuffer | null>(
-    productImg
-  );
-  const [imageURL2, setImageURL2] = useState<string | ArrayBuffer | null>(
-    productImg
-  );
-  const [imageURL3, setImageURL3] = useState<string | ArrayBuffer | null>(
-    productImg
-  );
+  const [imageURL, setImageURL] = useState<any>( photo[0] !== undefined ? photo[0] :  productImg );
+  const [image, setImage] = useState<any>('');
 
-  const handleOnChange = (event: {
-    preventDefault: () => void;
-    target: { files: string | any[] };
-  }) => {
+
+  const [imageURL1, setImageURL1] = useState<any>(
+    productImg
+  );
+  const [image1, setImage1] = useState<any>('');
+
+  const [imageURL2, setImageURL2] = useState<any>(
+    productImg
+  );
+  const [image2, setImage2] = useState<any>('');
+
+  const [imageURL3, setImageURL3] = useState<any>(
+    productImg
+  );
+  const [image3, setImage3] = useState<any>('');
+
+
+  const handleOnChange = (event: any) => {
+
+    setImage(event.target.files[0]);
+
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
@@ -57,10 +79,10 @@ export const Details = () => {
     }
   };
 
-  const handleOnChange1 = (event: {
-    preventDefault: () => void;
-    target: { files: string | any[] };
-  }) => {
+  const handleOnChange1 = (event: any) => {
+
+    setImage1(event.target.files[0]);
+
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
@@ -74,10 +96,10 @@ export const Details = () => {
     }
   };
 
-  const handleOnChange2 = (event: {
-    preventDefault: () => void;
-    target: { files: string | any[] };
-  }) => {
+  const handleOnChange2 = (event: any) => {
+
+    setImage2(event.target.files[0]);
+
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
@@ -91,10 +113,10 @@ export const Details = () => {
     }
   };
 
-  const handleOnChange3 = (event: {
-    preventDefault: () => void;
-    target: { files: string | any[] };
-  }) => {
+  const handleOnChange3 = (event: any) => {
+
+    setImage3(event.target.files[0]);
+
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
@@ -117,9 +139,10 @@ export const Details = () => {
   const [patchProductsResultsData] = usePatchProductMutation();
   const [DeleteProduct] = useDeleteProductMutation();
   const [DeleteImages] = useDeleteImagesMutation();
+  const [PatchImages] = usePatchImagesMutation();
   const { data } = useGetCategoriesQuery("");
 
-  let producsId: string | undefined;
+  let producsId: any;
 
   let userId: string;
 
@@ -128,20 +151,9 @@ export const Details = () => {
     return (userId = data != undefined ? data.id : "error");
   })();
 
-  const location = useLocation();
-  const { state } = location;
 
-  let photoID =
-    state !== null
-      ? state.from.results.images.map((item: ProductsImages) => item.id)
-      : [];
-
-  let photo =
-    state !== null
-      ? state.from.results.images.map((item: ProductsImages) => item.photo)
-      : [];
       
-  //console.log(state.from.results);
+ // console.log(state.from.results);
 
   let [addProductsResults] = useState<ProductsResults>(
     state !== null
@@ -153,7 +165,6 @@ export const Details = () => {
           count: `${state.from.results.count}`,
           category: `${state.from.results.category}`,
           seller: `${state.from.results.seller}`,
-          images: {photo: '', product: ''},
         }
       : {
           id: "",
@@ -163,7 +174,6 @@ export const Details = () => {
           count: "10",
           category: "",
           seller: "",
-          images: {photo: '', product: ''},
         }
   );
 
@@ -217,25 +227,39 @@ export const Details = () => {
           values.seller = userId;
           console.log(values);
           state !== null
-            ? patchProductsResultsData(values)
+            ? patchProductsResultsData(values).then((data) => {
+              //DeleteImages(photoID[0]);
+              const formData = new FormData();
+              formData.append("id", photoID[0]);
+              formData.append("product", values.id);
+              formData.append("photo", image);
+              const body = [photoID[0], formData];
+              console.log(body);
+              PatchImages(body);
+            })
             : addProductsResultsData(values).then((data) => {
                 producsId = data.data?.id;
-                console.log(producsId);
-                /*if (imageURL != productImg) {
-                  values.images.push({ product: producsId, photo: imageURL });
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image);
+                NewImages(formData);
+                
+                /*if (imageURL !== productImg) {
+                  formData.append("photo", image);
+                  NewImages(formData);
                 }
-                if (imageURL1 != productImg) {
-                  values.images.push({ product: producsId, photo: imageURL1 });
+                if (imageURL1 !== productImg) {
+                  formData.append("photo", image1);
+                  NewImages(formData);
                 }
-                if (imageURL2 != productImg) {
-                  values.images.push({ product: producsId, photo: imageURL2 });
+                if (imageURL2 !== productImg) {
+                  formData.append("photo", image2);
+                  NewImages(formData);
                 }
-                if (imageURL3 != productImg) {
-                  values.images.push({ product: producsId, photo: imageURL3 });
+                if (imageURL3 !== productImg) {
+                  formData.append("photo", image3);
+                  NewImages(formData);
                 }*/
-                values.images = { photo: imageURL, product: producsId };
-                console.log(values.images);
-                NewImages(values.images);
               });
           navigate("/mySuggestions");
         }}
@@ -397,7 +421,7 @@ export const Details = () => {
                     className={style.card__input__photo__big}
                   >
                     <img
-                      src={photo[0] != undefined ? photo[0] : imageURL}
+                      src={imageURL}
                       alt="product"
                     />
                     <button
