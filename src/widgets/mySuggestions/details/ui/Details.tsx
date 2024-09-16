@@ -42,24 +42,17 @@ export const Details = () => {
 
   //image--------------------
 
-  const [imageURL, setImageURL] = useState<any>( photo[0] !== undefined ? photo[0] :  productImg );
-  const [image, setImage] = useState<any>('');
+  const [imageURL, setImageURL] = useState<any>( photo[0] !== undefined ? photo[0] : productImg );
+  const [image, setImage] = useState<any>(null);
 
+  const [imageURL1, setImageURL1] = useState<any>( photo[1] !== undefined ? photo[1] : productImg );
+  const [image1, setImage1] = useState<any>(null);
 
-  const [imageURL1, setImageURL1] = useState<any>(
-    productImg
-  );
-  const [image1, setImage1] = useState<any>('');
+  const [imageURL2, setImageURL2] = useState<any>( photo[2] !== undefined ? photo[2] : productImg );
+  const [image2, setImage2] = useState<any>(null);
 
-  const [imageURL2, setImageURL2] = useState<any>(
-    productImg
-  );
-  const [image2, setImage2] = useState<any>('');
-
-  const [imageURL3, setImageURL3] = useState<any>(
-    productImg
-  );
-  const [image3, setImage3] = useState<any>('');
+  const [imageURL3, setImageURL3] = useState<any>( photo[3] !== undefined ? photo[3] : productImg );
+  const [image3, setImage3] = useState<any>(null);
 
 
   const handleOnChange = (event: any) => {
@@ -238,11 +231,39 @@ export const Details = () => {
               PatchImages(body);
             })
             : addProductsResultsData(values).then((data) => {
+
+              if (image !== null) {
                 producsId = data.data?.id;
                 const formData = new FormData();
                 formData.append("product", producsId);
                 formData.append("photo", image);
                 NewImages(formData);
+              };
+
+              if (image1 !== null) {
+                producsId = data.data?.id;
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image1);
+                NewImages(formData);
+              };
+
+              if (image2 !== null) {
+                producsId = data.data?.id;
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image2);
+                NewImages(formData);
+              };
+
+              if (image3 !== null) {
+                producsId = data.data?.id;
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image3);
+                NewImages(formData);
+              };
+                
                 
                 /*if (imageURL !== productImg) {
                   formData.append("photo", image);
@@ -446,7 +467,7 @@ export const Details = () => {
                 <div className={style.card__input__Indent_photo}>
                   <label htmlFor="ava1" className={style.card__input__photo}>
                     <img
-                      src={photo[1] != undefined ? photo[1] : imageURL1}
+                      src={imageURL1}
                       alt="product"
                     />
                     <button
@@ -467,7 +488,7 @@ export const Details = () => {
                   />
                   <label htmlFor="ava2" className={style.card__input__photo}>
                     <img
-                      src={photo[2] != undefined ? photo[2] : imageURL2}
+                      src={imageURL2}
                       alt="product"
                     />
                     <button
@@ -488,7 +509,7 @@ export const Details = () => {
                   />
                   <label htmlFor="ava3" className={style.card__input__photo}>
                     <img
-                      src={photo[3] != undefined ? photo[3] : imageURL3}
+                      src={imageURL3}
                       alt="product"
                     />
                     <button
