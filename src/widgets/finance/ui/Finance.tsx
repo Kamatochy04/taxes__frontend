@@ -2,22 +2,30 @@ import { Path } from "@/widgets";
 import style from "./finance.module.scss";
 import { useState } from "react";
 import { Button } from "@/shared/components/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
+import { reset } from "@/widgets/finance/api/ProductPrice";
 
 export const Finance = () => {
+  const dispatch = useDispatch();
+  const revenue = useSelector((state: RootState) => state.price.value);
   const [percent, setPercent] = useState<string>("10");
-  const [revenue, setRevenue] = useState<string>("153298");
+  //const [revenue, setRevenue] = useState<string>("153298");
 
   const handlePercentEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPercent(e.target.value);
   };
 
-  const handleRevenueEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /*const handleRevenueEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRevenue(e.target.value);
-  };
+  };*/
 
   const handlePay = () => {
     let question = confirm("Вы согласны оплатить налог?");
     alert(question == true ? "Спасибо" : "До скорой встречи");
+    if ( question == true ) {
+      dispatch(reset());
+    };
   };
 
   return (
@@ -46,7 +54,7 @@ export const Finance = () => {
               <input
                 disabled
                 value={revenue}
-                onChange={handleRevenueEvent}
+                //onChange={handleRevenueEvent}
                 type="text"
                 name="revenue"
               />
@@ -57,7 +65,7 @@ export const Finance = () => {
             <p className={style.finance__text}>Налог за месяц составляет</p>
             <div className={style.field}>
               <span>
-                {((parseInt(revenue) / 100) * parseInt(percent)).toFixed(2)}
+                {((revenue / 100) * parseInt(percent)).toFixed(2)}
               </span>
               <p className={style.finance__text}>BYN</p>
             </div>

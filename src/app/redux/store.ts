@@ -5,6 +5,7 @@ import { api } from "./services/api";
 import dataRegister2Reducer from "./register2Slice";
 import { listenerMiddleware } from "@/features/user/midleware/auth";
 import counterReducer from "@/widgets/header/api/ProductCounter";
+import priceReducer from "@/widgets/finance/api/ProductPrice";
 import productReducer from "@/pages/ProductCard/api/ProductCard";
 import userReducer from "@/features/user/userData/userDataSlice";
 
@@ -15,6 +16,7 @@ export const store = configureStore({
     SideBar,
     step2: dataRegister2Reducer,
     counter: counterReducer,
+    price: priceReducer,
     product: productReducer,
     user: userReducer,
   },

@@ -60,7 +60,7 @@ export const CardBasket = ({ item }: { item: ProductsResults }) => {
       <div className={style.card__descr}>
         <h3 className={style.price}>{item.price}</h3>
       </div>
-      <input type="checkbox" className={style.checkbox} />
+      <input type="checkbox"  className={style.checkbox} />
     </div>
   );
 };
