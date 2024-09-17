@@ -144,10 +144,6 @@ export const Details = () => {
     return (userId = data != undefined ? data.id : "error");
   })();
 
-
-      
- // console.log(state.from.results);
-
   let [addProductsResults] = useState<ProductsResults>(
     state !== null
       ? {
@@ -221,14 +217,66 @@ export const Details = () => {
           console.log(values);
           state !== null
             ? patchProductsResultsData(values).then((data) => {
-              //DeleteImages(photoID[0]);
-              const formData = new FormData();
-              formData.append("id", photoID[0]);
-              formData.append("product", values.id);
-              formData.append("photo", image);
-              const body = [photoID[0], formData];
-              console.log(body);
-              PatchImages(body);
+
+              if (imageURL !== null && photoID[0] !== undefined) {
+                const formData = new FormData();
+                formData.append("id", photoID[0]);
+                formData.append("product", values.id);
+                formData.append("photo", image);
+                const body = [photoID[0], formData];
+                PatchImages(body);
+              } else if ( photoID[0] == undefined ) {
+                producsId = data.data?.id;
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image);
+                NewImages(formData);
+              };
+
+              if (imageURL1 !== null && photoID[1] !== undefined) {
+                const formData = new FormData();
+                formData.append("id", photoID[1]);
+                formData.append("product", values.id);
+                formData.append("photo", image1);
+                const body = [photoID[1], formData];
+                PatchImages(body);
+              } else if ( photoID[1] == undefined ) {
+                producsId = data.data?.id;
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image1);
+                NewImages(formData);
+              };
+
+              if (imageURL2 !== null && photoID[2] !== undefined) {
+                const formData = new FormData();
+                formData.append("id", photoID[2]);
+                formData.append("product", values.id);
+                formData.append("photo", image2);
+                const body = [photoID[2], formData];
+                PatchImages(body);
+              } else if ( photoID[2] == undefined ) {
+                producsId = data.data?.id;
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image2);
+                NewImages(formData);
+              };
+
+              if (image3 !== null && photoID[3] !== undefined) {
+                const formData = new FormData();
+                formData.append("id", photoID[3]);
+                formData.append("product", values.id);
+                formData.append("photo", image);
+                const body = [photoID[3], formData];
+                PatchImages(body);
+              } else if ( photoID[3] == undefined ) {
+                producsId = data.data?.id;
+                const formData = new FormData();
+                formData.append("product", producsId);
+                formData.append("photo", image3);
+                NewImages(formData);
+              };
             })
             : addProductsResultsData(values).then((data) => {
 
@@ -263,24 +311,6 @@ export const Details = () => {
                 formData.append("photo", image3);
                 NewImages(formData);
               };
-                
-                
-                /*if (imageURL !== productImg) {
-                  formData.append("photo", image);
-                  NewImages(formData);
-                }
-                if (imageURL1 !== productImg) {
-                  formData.append("photo", image1);
-                  NewImages(formData);
-                }
-                if (imageURL2 !== productImg) {
-                  formData.append("photo", image2);
-                  NewImages(formData);
-                }
-                if (imageURL3 !== productImg) {
-                  formData.append("photo", image3);
-                  NewImages(formData);
-                }*/
               });
           navigate("/mySuggestions");
         }}
