@@ -5,7 +5,7 @@ import { Path } from "@/widgets";
 export const Orders = () => {
   return (
     <>
-      <Path />
+      <Path path="Заказы" />
       <div className={style.orders}>
         <div className={style.card}>
           <div className={style.card__title}>

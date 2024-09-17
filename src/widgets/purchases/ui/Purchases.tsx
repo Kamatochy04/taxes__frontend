@@ -4,7 +4,7 @@ import { CardPurchases, Path } from "@/widgets";
 export const Purchases = () => {
   return (
     <>
-      <Path />
+      <Path path="Мои покупки" />
       <section className={style.purchases}>
         <CardPurchases />
         <CardPurchases />

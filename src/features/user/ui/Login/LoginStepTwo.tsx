@@ -4,16 +4,35 @@ import { Typography } from "@/shared/components/typography/Typography";
 import { Button } from "@/shared/components/button/Button";
 
 import style from "./auth.module.scss";
+import { useGetUserInfQuery } from "../../api/user.api";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../userData/userDataSlice";
 
 export const LoginStepTwo = () => {
   const navigate = useNavigate();
+  const { data } = useGetUserInfQuery();
+  const dispath = useDispatch();
+
+  useEffect(() => {
+    if (data) {
+      dispath(setUserData(data));
+    }
+  });
+
   return (
     <>
       <div className={style.box}>
         <Typography variant={"h3"} tag={"h3"}>
           Вход выполнен успешно!
         </Typography>
-        <Button variant={"register"} onClick={() => navigate("/")}>
+        <Button
+          variant={"register"}
+          onClick={() => {
+            // window.location.reload();
+            navigate("/");
+          }}
+        >
           <Typography variant="button" tag={"p"}>
             Далее
           </Typography>

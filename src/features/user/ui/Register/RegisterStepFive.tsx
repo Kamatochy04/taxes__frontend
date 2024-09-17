@@ -2,13 +2,26 @@ import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import logo from "@/shared/assets/img/easyTaxLogo.png";
 import RegistrForm from "@/shared/components/RegistrForm/RegistrForm";
+import { useGetUserInfQuery } from "../../api/user.api";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../userData/userDataSlice";
+import { useEffect } from "react";
 
 export const RegisterStepFive = () => {
   const navigate = useNavigate();
+  const { data } = useGetUserInfQuery();
+  const dispath = useDispatch();
+
+  useEffect(() => {
+    if (data) {
+      console.log("step-five" + data);
+      dispath(setUserData(data));
+    }
+  });
   return (
     <RegistrForm>
       <>
-        <img style={{ marginTop: "48px" }} src={logo} />
+        <img src={logo} />
         <Typography
           sx={{
             marginTop: "36px",
@@ -42,6 +55,9 @@ export const RegisterStepFive = () => {
         <Button
           sx={{ width: "100%" }}
           onClick={() => {
+            if (data) {
+              dispath(setUserData(data));
+            }
             navigate("/");
           }}
           variant="contained"

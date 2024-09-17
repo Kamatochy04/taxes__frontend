@@ -22,7 +22,7 @@ export const Finance = () => {
 
   return (
     <>
-      <Path />
+      <Path path="Мои финансы" />
       <div className={style.finance}>
         <div className={style.card}>
           <div className={style.input}>
@@ -64,7 +64,9 @@ export const Finance = () => {
           </div>
 
           <div className={style.button}>
-            <Button variant="smallOrange" onClick={handlePay} >Оплатить</Button>
+            <Button variant="smallOrange" onClick={handlePay}>
+              Оплатить
+            </Button>
           </div>
         </div>
         <div className={style.header}>

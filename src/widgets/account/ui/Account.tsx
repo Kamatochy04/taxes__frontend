@@ -8,11 +8,11 @@ import { ProfilePhoto } from "./ProfilePhoto";
 import { useGetDataUserQuery } from "@/features/user/api/AccountApi";
 
 export const Account = () => {
-  const {data} = useGetDataUserQuery('');
+  const { data } = useGetDataUserQuery("");
 
   return (
     <>
-      <Path />
+      <Path path="Моя учетная запись" />
 
       <div className={style.account}>
         <div className={style.card}>
@@ -20,9 +20,7 @@ export const Account = () => {
             Личные данные
           </Typography>
 
-          {data != undefined
-          ? <PersonalDeta data={data} />           
-          : "ERROR"}
+          {data != undefined ? <PersonalDeta data={data} /> : "ERROR"}
         </div>
 
         <div className={style.card}>
@@ -30,9 +28,7 @@ export const Account = () => {
             Данные налогоплательщика
           </Typography>
 
-          {data != undefined
-          ? <TaxpayerDetails dataUser={data} />           
-          : "ERROR"}
+          {data != undefined ? <TaxpayerDetails dataUser={data} /> : "ERROR"}
         </div>
 
         <div className={style.card}>
@@ -40,9 +36,7 @@ export const Account = () => {
             Паспортные данные
           </Typography>
 
-          {data != undefined
-          ? <PassportDetails data={data} />           
-          : "ERROR"}
+          {data != undefined ? <PassportDetails data={data} /> : "ERROR"}
         </div>
 
         <div className={style.card}>
@@ -50,9 +44,13 @@ export const Account = () => {
             Фото профиля
           </Typography>
 
-          {data != undefined
-          ? <ProfilePhoto Avatar={data.avatar != undefined ? data.avatar : 'Error'} />           
-          : "ERROR"}
+          {data != undefined ? (
+            <ProfilePhoto
+              Avatar={data.avatar != undefined ? data.avatar : "Error"}
+            />
+          ) : (
+            "ERROR"
+          )}
         </div>
       </div>
     </>

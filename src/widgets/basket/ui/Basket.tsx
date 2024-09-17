@@ -1,8 +1,9 @@
 import { CardBasket, Path, CardAddPost } from "@/widgets";
-import style from "./basket.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 import { useEffect, useState } from "react";
+
+import style from "./basket.module.scss";
 
 export const Basket = () => {
   const product = useSelector((state: RootState) => state.product.value);
@@ -20,7 +21,7 @@ export const Basket = () => {
 
   return (
     <>
-      <Path />
+      <Path path="Корзина" />
       <div className={style.fild}>
         <section className={style.cards}>
           {product.map((item, id) => (

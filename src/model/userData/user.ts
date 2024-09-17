@@ -1,12 +1,12 @@
 export type UserData = {
-    id: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    patronymic: string;
-    unp: string;
-    registration_address: string;
-    residential_address: string;
-    date_of_birth: string;
-    avatar: string;
-  };
+  id: string | null;
+  email: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  patronymic: string | null;
+  unp: string | null;
+  registration_address: string | null;
+  residential_address: string | null;
+  date_of_birth: string | null;
+  avatar: string | null;
+};

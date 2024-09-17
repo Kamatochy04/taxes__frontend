@@ -5,7 +5,7 @@ import style from "./PaymentMethods.module.scss";
 export const PaymentMethods = () => {
   return (
     <>
-      <Path />
+      <Path path="Способ оплаты" />
       <div className={style.payment}>
         <div className={style.card}>
           <div className={style.card__img}></div>

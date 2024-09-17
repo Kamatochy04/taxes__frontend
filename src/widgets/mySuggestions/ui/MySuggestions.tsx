@@ -10,7 +10,7 @@ export const MySuggestions = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Path />
+      <Path path="Мои предложения" />
 
       <section className={style.section}>
         <div className={style.card}>

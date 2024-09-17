@@ -10,10 +10,13 @@ import { Input } from "@/shared/components/input/Input";
 import { Button } from "@/shared/components/button/Button";
 
 import style from "../Login/auth.module.scss";
+import { useDispatch } from "react-redux";
+import { setUserName } from "../../userData/userDataSlice";
 
 export const RegisterStepFour = () => {
   const navigate = useNavigate();
   const [signupCode] = useSignupCodeMutation();
+  const dispath = useDispatch();
 
   const onSubmit = async (data: IConfirmCode) => {
     const Confirm_code_id = JSON.parse(
@@ -23,12 +26,14 @@ export const RegisterStepFour = () => {
     data.confirm_code_id = Confirm_code_id.confirm_code_id;
 
     signupCode(data).then((response) => {
+      console.log(response);
       if (response.error) {
         return console.log(response.error);
       }
       if (response.data) {
+        dispath(setUserName(response.data));
         localStorage.removeItem("confirm_code_id");
-        localStorage.setItem("User", JSON.stringify(response.data));
+        localStorage.setItem("User", JSON.stringify(response.data.first_name));
         navigate("/register/step-five");
       }
     });

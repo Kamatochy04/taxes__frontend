@@ -1,15 +1,12 @@
 import style from "./path.module.scss";
-import { useLocation, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-export const Path = () => {
-  const location = useLocation();
-  const { state } = location;
+export const Path = ({ path }: { path?: string }) => {
   return (
     <>
       <p className={style.link}>
-        <NavLink to={"/"}>Главная страница/</NavLink> /
+        <NavLink to={"/"}>Главная страница/</NavLink> {path}
       </p>
     </>
   );
 };
-//{state.from}
