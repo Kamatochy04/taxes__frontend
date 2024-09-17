@@ -18,7 +18,7 @@ export const productsApi = api.injectEndpoints({
       }),
     }),
 
-    PatchProduct: builder.mutation<ProductsData, ProductsResults>({
+    PatchProduct: builder.mutation<ProductsResults, ProductsResults>({
       query: (body) => ({
         url: `api/dev/products/${body.id}`,
         method: "PATCH",
