@@ -1,4 +1,4 @@
-import style from "./cardAddPost.module.scss";
+import style from "./cardOrders.module.scss";
 import { DefaultImg } from "@/shared/assets/icons/DefaultImg";
 
 
@@ -7,13 +7,13 @@ export const CardOrders = ({ results }: any) => {
     <>
         <div className={style.card}>
           <div className={style.card__title}>
-            <h2>Заказ №102558</h2>
+            <h2>Заказ №{results.id}</h2>
             <input className={style.card__input} type="checkbox" />
           </div>
 
           <div className={style.card__field}>
             <div className={style.card__img}>
-              <DefaultImg />
+              <img src={results.product.images[0].photo} className={style.card__img} alt="" />            
             </div>
 
             <div className={style.card__descr}>
