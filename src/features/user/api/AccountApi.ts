@@ -12,7 +12,19 @@ export const accountApi = api.injectEndpoints({
   endpoints: (builder) => ({
 
     GetDataUser: builder.query<AccountData, string>({
-      query: () => "api/dev/users/me",
+      query: () => "api/dev/users/me/",
+    }),
+
+    GetUserMeProducts: builder.query<any, any>({
+      query: () => "api/dev/users/me/products/",
+    }),
+
+    GetUserMeOrders: builder.query<any, any>({
+      query: () => "api/dev/users/me/orders/",
+    }),
+
+    GetUserMeOrdersSum: builder.query<any, any>({
+      query: () => "api/dev/users/me/orders/sum/",
     }),
 
     PatchDataUser: builder.mutation<AccountData, AccountData>({
@@ -48,7 +60,7 @@ export const accountApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetDataUserQuery, usePatchDataUserMutation, useSecretMutation, useAddAvatarMutation, useDeleteAvatarMutation } = accountApi;
+export const { useGetDataUserQuery, usePatchDataUserMutation, useSecretMutation, useAddAvatarMutation, useDeleteAvatarMutation, useGetUserMeProductsQuery, useGetUserMeOrdersQuery, useGetUserMeOrdersSumQuery } = accountApi;
 
 export const {
   endpoints: { PatchDataUser, Secret, },

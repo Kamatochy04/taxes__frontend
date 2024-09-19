@@ -1,12 +1,12 @@
 import style from "./mySuggestions.module.scss";
 import { Path, CardOffersAdd } from "@/widgets";
-import { useGetProductsDataQuery } from "@/features/user/api/productsApi";
 import { ProductsResults } from "@/model";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/shared/components/button/Button";
+import { useGetUserMeProductsQuery } from "@/features/user/api/AccountApi";
 
 export const MySuggestions = () => {
-  const { data } = useGetProductsDataQuery("");
+  const { data } = useGetUserMeProductsQuery('')
   const navigate = useNavigate();
   return (
     <>

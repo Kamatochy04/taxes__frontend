@@ -1,0 +1,52 @@
+.card {
+    width: 992px;
+    height: 314px;
+    border-radius: 20px;
+    background: #4D648D;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  
+    &__title{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    &__input {
+      height: 18px;
+      width: 18px;
+    }
+  
+    &__field {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      height: 192px;
+      gap: 32px;
+    }
+  
+    &__fieldName {
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+  
+    &__fieldValues {
+      font-size: 20px;
+      color: #0C1038;
+      margin-bottom: 16px;
+    }
+  
+    &__img {
+      height: 192px;
+      width: 192px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+  
+  }

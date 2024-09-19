@@ -19,12 +19,13 @@ export const PassportDetails: FC<PersonalDetaProps> = ({ data }) =>{
     first_name: `${data.first_name !==null ? data.first_name : ''}`,
     last_name: `${data.last_name !== null ? data.last_name : ''}`,
     patronymic: `${data.patronymic !== null ? data.patronymic : ''}`,
-    unp: `${data.unp !== null ? data.unp : ''}`,
+
+    //unp: `${data.unp !== null ? data.unp : ''}`,
     registration_address: `${data.registration_address !== null ? data.registration_address : ''}`,
-    residential_address: `${data.residential_address !== null ? data.residential_address : ''}`,    
+    //residential_address: `${data.residential_address !== null ? data.residential_address : ''}`,    
     date_of_birth: data.date_of_birth !== null ? data.date_of_birth : new Date,
     passport_num: `${data.passport_num !== null ? data.passport_num : ''}`,
-    phone_number: `${data.phone_number !== null ? data.phone_number : ''}`,
+    //phone_number: `${data.phone_number !== null ? data.phone_number : ''}`,
     //date_of_birth: '2024-09-11',
   });
 

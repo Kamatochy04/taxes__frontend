@@ -1,12 +1,26 @@
 import { DefaultImg } from "@/shared/assets/icons/DefaultImg";
 import style from "./orders.module.scss";
 import { Path } from "@/widgets";
+import { useGetUserMeOrdersQuery } from "@/features/user/api/AccountApi";
+import { CardOrders } from "@/widgets/card/ui/CardOrders";
 
 export const Orders = () => {
+
+  const { data } = useGetUserMeOrdersQuery('')
+  console.log(data);
+
+
   return (
     <>
       <Path path="Заказы" />
       <div className={style.orders}>
+
+      {data !== undefined
+          ? data.results.map((item: any) => (
+              <CardOrders results={item} key={item.id} />
+            ))
+          : "ERROR"}
+
         <div className={style.card}>
           <div className={style.card__title}>
             <h2>Заказ №102558</h2>

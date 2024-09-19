@@ -10,12 +10,34 @@ import { increment } from "@/widgets/header/api/ProductCounter";
 import style from "./product.module.scss";
 import { addProduct } from "../api/ProductCard";
 import { Path } from "@/widgets";
+import { usePostOrdersMutation } from "@/features/user/api/ordersApi";
+import { useGetUserInfQuery } from "@/features/user/api/user.api";
+import { addOrders } from "@/widgets/basket/api/ordersBasket";
 
-export const ProductCard = () => {
+export const ProductCard = () => {  
+
+  const {data} = useGetUserInfQuery();
+
+  const userID = data?.id;
+
+  const [PostOrders] = usePostOrdersMutation();
   const location = useLocation();
 
   const cardData = location.state as ProductsResults;
   const dispatch = useDispatch();
+
+  console.log(userID);
+
+  const dataOrders = {
+    product: cardData.id,
+    count: cardData.count,
+    seller: cardData.seller,
+    buyer: userID,
+  };
+
+  const handleUploudOrders = () => {
+    PostOrders(dataOrders);
+  };
 
   return (
     <>
@@ -48,12 +70,13 @@ export const ProductCard = () => {
             onClick={() => {
               dispatch(increment());
               dispatch(addProduct(cardData));
+              dispatch(addOrders(dataOrders));
             }}
           >
             Добавить в корзину
           </Button>
           <div className={style.btn}>
-            <Button variant={"smallOrange"}>Заказать</Button>
+            <Button variant={"smallOrange"} onClick={handleUploudOrders}>Заказать</Button>
           </div>
         </div>
       </div>

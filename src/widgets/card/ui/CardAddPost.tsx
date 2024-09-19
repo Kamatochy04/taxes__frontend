@@ -1,13 +1,28 @@
+import { OrdersData } from "@/model";
 import style from "./cardAddPost.module.scss";
 import { Button } from "@/shared/components/button/Button";
+import { usePostOrdersMutation } from "@/features/user/api/ordersApi";
 
 export const CardAddPost = ({
   coutn,
   price,
+  orders,
 }: {
   coutn: number;
   price: number;
+  orders: OrdersData[];
 }) => {
+
+  console.log(orders);
+
+  const [PostOrders] = usePostOrdersMutation();
+
+  const handleUploudOrders = () => {
+    orders.map((item) => {
+      PostOrders(item)
+    });     
+  };
+
   return (
     <>
       <div className={style.card}>
@@ -28,10 +43,10 @@ export const CardAddPost = ({
           </div>
         </div>
         <div className={style.card__Button}>
-          <Button variant={"smallOrange"}>Заказать</Button>
+          <Button variant={"smallOrange"} onClick={handleUploudOrders}>Заказать</Button>
         </div>
       </div>
-      <button className={style.button}>Оплатить</button>
+      <button className={style.button} >Оплатить</button>
     </>
   );
 };

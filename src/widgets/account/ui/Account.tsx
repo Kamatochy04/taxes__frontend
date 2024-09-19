@@ -44,9 +44,9 @@ export const Account = () => {
             Фото профиля
           </Typography>
 
-          {data != undefined ? (
+          {data !== undefined ? (
             <ProfilePhoto
-              Avatar={data.avatar != undefined ? data.avatar : "Error"}
+              Avatar={data.avatar !== undefined ? data.avatar : "Error"}
             />
           ) : (
             "ERROR"

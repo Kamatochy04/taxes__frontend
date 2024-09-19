@@ -475,12 +475,7 @@ export const Details = () => {
                       src={imageURL}
                       alt="product"
                     />
-                    <button
-                      className={style.card__photoDelete}
-                      onClick={deleteImage0}
-                    >
-                      Удалить фото
-                    </button>
+                    { imageURL !== productImg ? <button className={style.card__photoDelete} onClick={deleteImage0}>Удалить фото</button> : ''}
                   </label>
 
                   <Field
@@ -500,12 +495,7 @@ export const Details = () => {
                       src={imageURL1}
                       alt="product"
                     />
-                    <button
-                      className={style.card__photo1Delete}
-                      onClick={deleteImage1}
-                    >
-                      Удалить фото
-                    </button>
+                    { imageURL1 !== productImg ? <button className={style.card__photo1Delete} onClick={deleteImage1}>Удалить фото</button> : ''}
                   </label>
                   <Field
                     className={style.card__input__file}
@@ -521,12 +511,8 @@ export const Details = () => {
                       src={imageURL2}
                       alt="product"
                     />
-                    <button
-                      className={style.card__photo2Delete}
-                      onClick={deleteImage2}
-                    >
-                      Удалить фото
-                    </button>
+                    { imageURL2 !== productImg ? <button className={style.card__photo2Delete} onClick={deleteImage2}>Удалить фото</button> : ''}
+
                   </label>
                   <Field
                     className={style.card__input__file}
@@ -542,12 +528,8 @@ export const Details = () => {
                       src={imageURL3}
                       alt="product"
                     />
-                    <button
-                      className={style.card__photo3Delete}
-                      onClick={deleteImage3}
-                    >
-                      Удалить фото
-                    </button>
+                    { imageURL3 !== productImg ? <button className={style.card__photo3Delete} onClick={deleteImage3}>Удалить фото</button> : ''}
+
                   </label>
                   <Field
                     className={style.card__input__file}
