@@ -17,7 +17,7 @@ export const Finance = () => {
     };
  }, [data]);
 
-
+ 
   
   
   const handlePercentEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +70,7 @@ export const Finance = () => {
             <p className={style.finance__text}>Налог за месяц составляет</p>
             <div className={style.field}>
               <span>
-                {((parseInt(revenue) / 100) * parseInt(percent)).toFixed(2)}
+                {((parseInt(revenue) / 1000) * parseInt(percent)).toFixed(2)}
               </span>
               <p className={style.finance__text}>BYN</p>
             </div>
