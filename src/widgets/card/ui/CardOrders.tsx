@@ -1,14 +1,36 @@
+import { useState } from "react";
 import style from "./cardOrders.module.scss";
 import { DefaultImg } from "@/shared/assets/icons/DefaultImg";
+import Modal from "@/shared/components/modal/modal";
 
 
 export const CardOrders = ({ results }: any) => {
+
+  const [checked, setChecked] = useState(false);
+  const [isModalActive, setModalActive] = useState(false);
+
+  const handleModalOpen = () => {
+    setChecked(!checked);
+    if (checked !== true) {
+      setModalActive(true);
+    };    
+  };
+
+  const handleModalClose = () => {
+    setModalActive(false);
+  };
+
   return (
     <>
         <div className={style.card}>
           <div className={style.card__title}>
             <h2>Заказ №{results.id}</h2>
-            <input className={style.card__input} type="checkbox" />
+            <input className={style.card__input} type="checkbox" checked={checked} onChange={handleModalOpen}/>
+            {isModalActive && (
+              <Modal title="" onClose={handleModalClose}>
+                Заказ принят
+              </Modal>
+            )}
           </div>
 
           <div className={style.card__field}>

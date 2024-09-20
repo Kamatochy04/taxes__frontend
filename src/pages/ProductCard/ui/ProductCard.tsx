@@ -30,7 +30,7 @@ export const ProductCard = () => {
 
   const dataOrders = {
     product: cardData.id,
-    count: cardData.count,
+    count: '1',
     seller: cardData.seller,
     buyer: userID,
   };

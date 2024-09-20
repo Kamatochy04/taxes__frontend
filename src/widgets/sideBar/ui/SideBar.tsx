@@ -15,9 +15,15 @@ import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlin
 import accauntImg from "@/shared/assets/img/Accaunt_img.png";
 
 import style from "./sideBar.module.scss";
+import { RootState } from "@/app/redux/store";
 
 export const SideBar = () => {
   const isShow = useAppSelector((state) => state.SideBar.isShow);
+  
+  const ava = useAppSelector((state: RootState) => state.user.avatar);
+  console.log(ava);
+  let avatar = 'http://84.38.182.213:1337' + `${ava}`;
+  console.log(avatar);
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>();
   const navigate = useNavigate();
@@ -53,7 +59,7 @@ export const SideBar = () => {
   return isAuth ? (
     <>
       <div className={`${style.bar} ${isShow ? style.show : null}`}>
-        <img src={accauntImg} alt="accaunt-img" className={style.bar__img} />
+        <img src={ava !== null ? avatar : accauntImg} alt="accaunt-img" className={style.bar__img} />
         <ul className={style.bar__list}>
           <NavLink
             to={"mySuggestions"}

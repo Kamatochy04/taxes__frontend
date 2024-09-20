@@ -2,6 +2,8 @@ import { OrdersData } from "@/model";
 import style from "./cardAddPost.module.scss";
 import { Button } from "@/shared/components/button/Button";
 import { usePostOrdersMutation } from "@/features/user/api/ordersApi";
+import Modal from "@/shared/components/modal/modal";
+import { useState } from "react";
 
 export const CardAddPost = ({
   coutn,
@@ -16,11 +18,17 @@ export const CardAddPost = ({
   console.log(orders);
 
   const [PostOrders] = usePostOrdersMutation();
-
+  const [isModalActive, setModalActive] = useState(false);
+  
   const handleUploudOrders = () => {
     orders.map((item) => {
       PostOrders(item)
-    });     
+    });
+    setModalActive(true);     
+  };
+
+  const handleModalClose = () => {
+    setModalActive(false);
   };
 
   return (
@@ -45,6 +53,13 @@ export const CardAddPost = ({
         <div className={style.card__Button}>
           <Button variant={"smallOrange"} onClick={handleUploudOrders}>Заказать</Button>
         </div>
+        <div>
+            {isModalActive && (
+              <Modal title="" onClose={handleModalClose}>
+                Оплата принята
+              </Modal>
+            )}
+          </div>
       </div>
       <button className={style.button} >Оплатить</button>
     </>

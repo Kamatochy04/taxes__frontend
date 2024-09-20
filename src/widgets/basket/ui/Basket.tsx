@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 import { useEffect, useState } from "react";
 
-
 import style from "./basket.module.scss";
 
 export const Basket = () => {

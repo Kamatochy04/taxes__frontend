@@ -3,34 +3,39 @@ import style from "./finance.module.scss";
 import { useEffect, useState } from "react";
 import { Button } from "@/shared/components/button/Button";
 import { useGetUserMeOrdersSumQuery } from "@/features/user/api/AccountApi";
+import Modal from "@/shared/components/modal/modal";
 
 export const Finance = () => {
-
-  const { data } = useGetUserMeOrdersSumQuery('');
-  console.log(data);
+  const { data } = useGetUserMeOrdersSumQuery("");
   const [percent, setPercent] = useState<string>("10");
   const [revenue, setRevenue] = useState<string>("153298");
 
   useEffect(() => {
     if (data !== undefined) {
       setRevenue(data.sum);
-    };
- }, [data]);
+    }
+  }, [data]);
 
- 
-  
-  
   const handlePercentEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPercent(e.target.value);
   };
 
   /*const handleRevenueEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRevenue(e.target.value);
-  };*/
+  };
 
   const handlePay = () => {
     let question = confirm("Вы согласны оплатить налог?");
     alert(question == true ? "Спасибо" : "До скорой встречи");
+  };*/
+
+  const [isModalActive, setModalActive] = useState(false);
+
+  const handleModalOpen = () => {
+    setModalActive(true);
+  };
+  const handleModalClose = () => {
+    setModalActive(false);
   };
 
   return (
@@ -70,17 +75,26 @@ export const Finance = () => {
             <p className={style.finance__text}>Налог за месяц составляет</p>
             <div className={style.field}>
               <span>
-                {((parseInt(revenue) / 1000) * parseInt(percent)).toFixed(2)}
+                {((parseInt(revenue) / 100) * parseInt(percent)).toFixed(2)}
               </span>
               <p className={style.finance__text}>BYN</p>
             </div>
           </div>
 
           <div className={style.button}>
-            <Button variant="smallOrange" onClick={handlePay}>
+            <Button variant="smallOrange" onClick={handleModalOpen}>
               Оплатить
             </Button>
           </div>
+
+          <div>
+            {isModalActive && (
+              <Modal title="" onClose={handleModalClose}>
+                Налог оплачен
+              </Modal>
+            )}
+          </div>
+          
         </div>
         <div className={style.header}>
           <div className={style.header__item}>
