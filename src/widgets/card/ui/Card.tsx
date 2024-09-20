@@ -1,4 +1,4 @@
-import productImg from "@/shared/assets/img/Rectangle 803.png";
+import productImg from "@/shared/assets/img/easyTaxLogo.png"
 import StarIcon from "@mui/icons-material/Star";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import style from "./card.module.scss";

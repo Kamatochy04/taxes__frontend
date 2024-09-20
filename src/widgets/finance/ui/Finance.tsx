@@ -96,6 +96,14 @@ export const Finance = () => {
           </div>
           
         </div>
+
+      </div>
+    </>
+  );
+};
+
+
+/*
         <div className={style.header}>
           <div className={style.header__item}>
             <span>Процентная ставка</span> <p> 10 %</p>
@@ -111,7 +119,4 @@ export const Finance = () => {
           <span>налог за месяц</span>
         </p>
         <button className={style.button__price}>Оплатить</button>
-      </div>
-    </>
-  );
-};
+        */

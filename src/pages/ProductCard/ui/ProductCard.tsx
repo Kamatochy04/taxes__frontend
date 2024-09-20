@@ -14,6 +14,8 @@ import { usePostOrdersMutation } from "@/features/user/api/ordersApi";
 import { useGetUserInfQuery } from "@/features/user/api/user.api";
 import { addOrders } from "@/widgets/basket/api/ordersBasket";
 
+import productImg from "@/shared/assets/img/easyTaxLogo.png"
+
 export const ProductCard = () => {  
 
   const {data} = useGetUserInfQuery();
@@ -45,7 +47,7 @@ export const ProductCard = () => {
       <div className={style.card}>
         <div className={style.card__imgs}>
           <img
-            src={cardData?.images[0]?.photo}
+            src={cardData?.images[0]?.photo != undefined ? cardData?.images[0]?.photo : productImg}
             alt=""
             className={style.card__imgs_main}
           />
