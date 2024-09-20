@@ -16,14 +16,25 @@ import accauntImg from "@/shared/assets/img/Accaunt_img.png";
 
 import style from "./sideBar.module.scss";
 import { RootState } from "@/app/redux/store";
+import { useGetUserInfQuery } from "@/features/user/api/user.api";
+import { useDispatch } from "react-redux";
+import { setUserData } from "@/features/user/userData/userDataSlice";
 
 export const SideBar = () => {
   const isShow = useAppSelector((state) => state.SideBar.isShow);
+
+  const { data } = useGetUserInfQuery();
+  const dispath = useDispatch();
+  if (data !== undefined) {
+    dispath(setUserData(data));
+  };
+  
   
   const ava = useAppSelector((state: RootState) => state.user.avatar);
   console.log(ava);
   let avatar = 'http://84.38.182.213:1337' + `${ava}`;
   console.log(avatar);
+
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>();
   const navigate = useNavigate();

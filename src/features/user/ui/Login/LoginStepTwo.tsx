@@ -11,14 +11,15 @@ import { setUserData } from "../../userData/userDataSlice";
 
 export const LoginStepTwo = () => {
   const navigate = useNavigate();
-  const { data } = useGetUserInfQuery();
-  const dispath = useDispatch();
+  //const { data } = useGetUserInfQuery();
+  //console.log(data);
+  //const dispath = useDispatch();
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (data) {
       dispath(setUserData(data));
     }
-  });
+  },[data]);*/
 
   return (
     <>
@@ -29,7 +30,9 @@ export const LoginStepTwo = () => {
         <Button
           variant={"register"}
           onClick={() => {
-            // window.location.reload();
+            //{data !== undefined ? dispath(setUserData(data)) : ''};
+            
+            //window.location.reload();
             navigate("/");
           }}
         >
