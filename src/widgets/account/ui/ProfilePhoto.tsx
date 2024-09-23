@@ -24,15 +24,9 @@ export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
   const [imageURL, setImageURL] = useState<any>(Avatar !== null ? av : productImg);
   const [image, setImage] = useState<any>('');
 
-  
-  console.log(av);
-
-
-  console.log(Avatar);
-  console.log(imageURL);
-
   const [AddAvatar] = useAddAvatarMutation();
   const [deleteAvatar] = useDeleteAvatarMutation();
+
 
   const handleOnChange = (event: any) => {
     setImage(event.target.files[0]);
@@ -62,11 +56,19 @@ export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
     AddAvatar(formData);
   };
 
+  const deleteImage = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    deleteAvatar(imageURL);
+    setImageURL(productImg);
+  };
+
   return (
     <>
       <div className={style.card__Line}>
-        <label htmlFor="ava">
-          <img src={imageURL} alt="product" className={style.card__ava} />
+        <label htmlFor="ava" className={style.card__photoX}>
+          <img src={imageURL} alt="product" />
+          { imageURL !== productImg ? <button className={style.card__photoDelete} onClick={deleteImage}>Удалить фото</button> : ''}
         </label>
 
         <input
