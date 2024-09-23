@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import { FC, useState } from "react";
 
-import { HintCloud } from "@/shared/components/hintCloud/HintCloud";
+import { HintCloudX } from "@/shared/components/hintCloud/HintCloudX";
 import { Button } from "@/shared/components/button/Button";
 import { Typography } from "@/shared/components/typography/Typography";
 
@@ -54,13 +54,15 @@ export const TaxpayerDetails: FC<PersonalDetaProps> = ({ dataUser }) => {
               <div className={style.card__LineX}>
                 <p className={style.card__text}>УНП</p>
 
-                <Field
-                  className={style.card__input}
-                  autoComplete="off"
-                  name={"unp"}
-                  type="text"
-                  placeholder="Введите УНП"
-                />
+                <HintCloudX variant="UNP" tag={"div"} text={text}>
+                  <Field
+                    className={style.card__input}
+                    autoComplete="off"
+                    name={"unp"}
+                    type="text"
+                    placeholder="Введите УНП"
+                  />
+                </HintCloudX>
               </div>
 
               <div className={style.card__LineX}>
