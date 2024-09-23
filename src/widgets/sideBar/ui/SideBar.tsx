@@ -31,9 +31,7 @@ export const SideBar = () => {
   
   
   const ava = useAppSelector((state: RootState) => state.user.avatar);
-  console.log(ava);
   let avatar = 'http://84.38.182.213:1337' + `${ava}`;
-  console.log(avatar);
 
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>();

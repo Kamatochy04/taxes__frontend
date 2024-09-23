@@ -6,7 +6,7 @@ import { Button } from "@/shared/components/button/Button";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@/shared/components/typography/Typography";
 import { ProductsImages, ProductsResults } from "@/model";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface ProductsItemProps {
   results: ProductsResults;
@@ -17,10 +17,22 @@ export const Card: FC<ProductsItemProps> = ({ results }) => {
 
   const navigate = useNavigate();
 
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+
+  useEffect(() => {
+    const t = localStorage.getItem("accessToken");
+
+    if (t) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+  }, [isAuth, isAuth]);
+
   return (
     <div
       className={style.card}
-      onClick={() => navigate(`/${results.id}`, { state: results })}
+      onClick={() => isAuth ? navigate(`/${results.id}`, { state: results }):''}
     >
       <div className={style.card__img}>
         <img
@@ -45,7 +57,7 @@ export const Card: FC<ProductsItemProps> = ({ results }) => {
           <p>58</p>
         </div>
       </div>
-      <Button variant={"smallOrange"}>Заказать</Button>
+      {isAuth ? <Button variant={"smallOrange"}>Заказать</Button> : ''}      
     </div>
   );
 };
