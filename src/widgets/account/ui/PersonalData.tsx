@@ -18,18 +18,18 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
   console.log(data);
 
   const [personalData] = useState<AccountData>({
-    id: `${data.id !== null ? data.id : ''}`,
-    email: `${data.email !== null ? data.email : ''}`,
-    first_name: `${data.first_name !==null ? data.first_name : ''}`,
-    last_name: `${data.last_name !== null ? data.last_name : ''}`,
-    patronymic: `${data.patronymic !== null ? data.patronymic : ''}`,
+    id: `${data.id !== null ? data.id : ""}`,
+    email: `${data.email !== null ? data.email : ""}`,
+    first_name: `${data.first_name !== null ? data.first_name : ""}`,
+    last_name: `${data.last_name !== null ? data.last_name : ""}`,
+    patronymic: `${data.patronymic !== null ? data.patronymic : ""}`,
 
     //unp: `${data.unp !== null ? data.unp : ''}`,
     //registration_address: `${data.registration_address !== null ? data.registration_address : ''}`,
-    //residential_address: `${data.residential_address !== null ? data.residential_address : ''}`,    
+    //residential_address: `${data.residential_address !== null ? data.residential_address : ''}`,
     //date_of_birth: data.date_of_birth !== null ? data.date_of_birth : new Date,
     //passport_num: `${data.passport_num !== null ? data.passport_num : ''}`,
-    phone_number: `${data.phone_number !== null ? data.phone_number : ''}`,
+    phone_number: `${data.phone_number !== null ? data.phone_number : ""}`,
   });
 
   const [updatingUserData] = usePatchDataUserMutation();
@@ -82,17 +82,17 @@ export const PersonalDeta: FC<PersonalDetaProps> = ({ data }) => {
               />
             </div>
             <div className={style.card__delete}>
-              <Button type="submit" variant={"text"} disabled={!isValid}>
-                <Typography variant="default" tag={"p"}>
-                  Изменить
-                </Typography>
-              </Button>
               <div
                 className={style.link_account_delete}
                 onClick={() => navigate("/delete-account")}
               >
                 Удалить аккаунт
               </div>
+              <Button type="submit" variant={"smallBlue"} disabled={!isValid}>
+                <Typography variant="default" tag={"p"}>
+                  Изменить
+                </Typography>
+              </Button>
             </div>
           </Form>
         )}

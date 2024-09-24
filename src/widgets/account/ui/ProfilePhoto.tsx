@@ -86,7 +86,7 @@ export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
             Создайте автопортрет при помощи веб камеры или найдите фото на своём
             компьютере
           </Typography>
-          <Button onClick={handleUploud} variant={"text"}>
+          <Button onClick={handleUploud} variant={"smallBlue"}>
             <Typography variant="default" tag={"p"}>
               Изменить
             </Typography>

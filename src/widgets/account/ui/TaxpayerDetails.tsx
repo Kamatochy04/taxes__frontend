@@ -45,6 +45,7 @@ export const TaxpayerDetails: FC<PersonalDetaProps> = ({ dataUser }) => {
       <Formik<AccountData>
         initialValues={addTaxpayer}
         onSubmit={(values) => {
+          console.log(values);
           updatingUserData(values);
         }}
       >
@@ -73,6 +74,7 @@ export const TaxpayerDetails: FC<PersonalDetaProps> = ({ dataUser }) => {
                   placeholder="категорию"
                   as="select"
                 >
+                  <option value="none" key="0">Выберите категорию</option>
                   {data != undefined
                     ? data.results.map((item: CategoriesType) => (
                         <option value={item.id} key={item.id}>
@@ -85,7 +87,7 @@ export const TaxpayerDetails: FC<PersonalDetaProps> = ({ dataUser }) => {
 
               <div className={style.card__LineX}>
                 <p className={style.card__text}></p>
-                <Button type="submit" variant={"text"} disabled={!isValid}>
+                <Button type="submit" variant={"smallBlue"} disabled={!isValid}>
                   <Typography variant="default" tag={"p"}>
                     Изменить
                   </Typography>

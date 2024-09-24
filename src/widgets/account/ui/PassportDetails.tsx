@@ -80,7 +80,7 @@ export const PassportDetails: FC<PersonalDetaProps> = ({ data }) => {
 
               <div className={style.card__LineX}>
                 <p className={style.card__text}></p>
-                <Button type="submit" variant={"text"} disabled={!isValid}>
+                <Button type="submit" variant={"smallBlue"} disabled={!isValid}>
                   <Typography variant="default" tag={"p"}>
                     Изменить
                   </Typography>
