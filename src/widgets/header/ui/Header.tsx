@@ -45,6 +45,18 @@ export const Header = () => {
 const HeaderVariantOne = ({ count }: { count: number }) => {
   const navigate = useNavigate();
 
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+
+  useEffect(() => {
+    const t = localStorage.getItem("accessToken");
+
+    if (t) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+  }, [isAuth, isAuth]);
+
   return (
     <header className={style.header}>
       <Container>
@@ -59,7 +71,7 @@ const HeaderVariantOne = ({ count }: { count: number }) => {
           </div>
 
           <div className={style.header__login}>
-            <div className={style.box} onClick={() => navigate("/basket")}>
+            <div className={style.box} onClick={() => isAuth ? navigate("/basket") : ''}>
               {count > 0 ? <div className={style.price}>{count}</div> : null}
               <ShoppingCartIcon />
             </div>
