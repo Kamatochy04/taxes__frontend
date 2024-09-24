@@ -6,16 +6,18 @@ import { Typography } from "@/shared/components/typography/Typography";
 import { useState } from "react";
 import { ProductsResults } from "@/model";
 
-export const CardBasket = ({ item }: { item: ProductsResults }) => {
-  const [count, setCount] = useState(1);
+export const CardBasket = ({ item, plus, minus, count }: { item: any, plus:any, minus:any, count:any }) => {
+  //const [count, setCount] = useState(1);
 
-  const minus = () => {
-    setCount(count - 1);
-  };
+ /* const minus = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    };    
+  };*/
 
-  const plus = () => {
+ /*const plus = () => {
     setCount(count + 1);
-  };
+  };*/
 
   const uniqueID = `id-${Date.now().toString(36)}-${Math.random()
     .toString(36)
@@ -33,11 +35,11 @@ export const CardBasket = ({ item }: { item: ProductsResults }) => {
 
           <div className={style.card__descr}>
             <div className={style.card__icon}>
-              <button onClick={minus} className={style.card__button}>
+              <button onClick={() => minus(item.id)} className={style.card__button}>
                 -
               </button>
               <p className={style.count}>{count}</p>
-              <button onClick={plus} className={style.card__button}>
+              <button onClick={() => plus(item.id)} className={style.card__button}>
                 +
               </button>
             </div>
