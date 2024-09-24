@@ -8,6 +8,7 @@ import style from "./basket.module.scss";
 export const Basket = () => {
   const product: any = useSelector((state: RootState) => state.product.value);
   const orders = useSelector((state: RootState) => state.orders.value);
+  const [count, setCount] = useState(1);
 
   const [prods, setProds] = useState(product);
 

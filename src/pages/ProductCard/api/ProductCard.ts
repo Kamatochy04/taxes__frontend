@@ -18,12 +18,15 @@ const productSlice = createSlice({
         ...action.payload,
       });
     },
+    clearProduct: (state) => {
+       state.value = [];
+    },
     removeProduct: (state, action: PayloadAction<number>) => {
       //   state.value -= 1;
     },
   },
 });
 
-export const { addProduct, removeProduct } = productSlice.actions;
+export const { addProduct, removeProduct, clearProduct} = productSlice.actions;
 
 export default productSlice.reducer;

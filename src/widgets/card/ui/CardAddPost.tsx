@@ -4,6 +4,8 @@ import { Button } from "@/shared/components/button/Button";
 import { usePostOrdersMutation } from "@/features/user/api/ordersApi";
 import Modal from "@/shared/components/modal/modal";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { clearProduct } from "@/pages/ProductCard/api/ProductCard";
 
 export const CardAddPost = ({
   coutn,
@@ -15,7 +17,7 @@ export const CardAddPost = ({
   orders: OrdersData[];
 }) => {
 
-  console.log(orders);
+  const dispatch = useDispatch();
 
   const [PostOrders] = usePostOrdersMutation();
   const [isModalActive, setModalActive] = useState(false);
@@ -24,7 +26,8 @@ export const CardAddPost = ({
     orders.map((item) => {
       PostOrders(item)
     });
-    setModalActive(true);     
+    setModalActive(true);
+    dispatch(clearProduct());     
   };
 
   const handleModalClose = () => {

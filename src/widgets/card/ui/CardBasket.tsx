@@ -2,22 +2,8 @@ import productImg from "@/shared/assets/img/Rectangle 803.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import style from "./cardB.module.scss";
-import { Typography } from "@/shared/components/typography/Typography";
-import { useState } from "react";
-import { ProductsResults } from "@/model";
 
 export const CardBasket = ({ item, plus, minus, count }: { item: any, plus:any, minus:any, count:any }) => {
-  //const [count, setCount] = useState(1);
-
- /* const minus = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    };    
-  };*/
-
- /*const plus = () => {
-    setCount(count + 1);
-  };*/
 
   const uniqueID = `id-${Date.now().toString(36)}-${Math.random()
     .toString(36)
