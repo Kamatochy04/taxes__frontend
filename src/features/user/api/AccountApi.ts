@@ -1,5 +1,5 @@
 import { api } from "@/app/redux/services/api";
-import { EnterWord, AccountData, AvatarType } from "@/model/AccountData/AccountType"
+import { EnterWord, AccountData } from "@/model/AccountData/AccountType";
 
 type ResponsData = {
   accessToken: string;
@@ -8,9 +8,8 @@ type ResponsData = {
 
 //Вызов injectEndpoints внедрит конечные точки в исходный API,
 //но также вернет вам тот же API с правильными типами для этих конечных точек.
-export const accountApi = api.injectEndpoints({  
+export const accountApi = api.injectEndpoints({
   endpoints: (builder) => ({
-
     GetDataUser: builder.query<AccountData, string>({
       query: () => "api/dev/users/me/",
     }),
@@ -25,6 +24,10 @@ export const accountApi = api.injectEndpoints({
 
     GetUserMeOrdersSum: builder.query<any, any>({
       query: () => "api/dev/users/me/orders/sum/",
+    }),
+
+    GetUserMeOrders_to_buy: builder.query<any, any>({
+      query: () => "api/dev/users/me/orders_to_buy/",
     }),
 
     PatchDataUser: builder.mutation<AccountData, AccountData>({
@@ -56,12 +59,21 @@ export const accountApi = api.injectEndpoints({
         method: "DELETE",
       }),
     }),
-
   }),
 });
 
-export const { useGetDataUserQuery, usePatchDataUserMutation, useSecretMutation, useAddAvatarMutation, useDeleteAvatarMutation, useGetUserMeProductsQuery, useGetUserMeOrdersQuery, useGetUserMeOrdersSumQuery } = accountApi;
+export const {
+  useGetDataUserQuery,
+  usePatchDataUserMutation,
+  useSecretMutation,
+  useAddAvatarMutation,
+  useDeleteAvatarMutation,
+  useGetUserMeProductsQuery,
+  useGetUserMeOrdersQuery,
+  useGetUserMeOrdersSumQuery,
+  useGetUserMeOrders_to_buyQuery,
+} = accountApi;
 
 export const {
-  endpoints: { PatchDataUser, Secret, },
+  endpoints: { PatchDataUser, Secret },
 } = accountApi;

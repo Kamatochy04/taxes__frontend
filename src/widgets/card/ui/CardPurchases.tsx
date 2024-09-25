@@ -1,20 +1,20 @@
 import productImg from "@/shared/assets/img/Rectangle 803.png";
 import StarIcon from "@mui/icons-material/Star";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
-import style from "./card.module.scss";
+import style from "./CardPurchases.module.scss";
 import { Typography } from "@/shared/components/typography/Typography";
 
-export const CardPurchases = () => {
+export const CardPurchases = ({ name, price, images }: { name: any, price:any, images:any }) => {
   return (
     <div className={style.card}>
       <div className={style.card__img}>
-        <img src={productImg} alt="product" />
+        <img src={images} alt="product" />
       </div>
-      <Typography variant="h3-price" tag={"h3"}>
-        725 BYN
+      <Typography variant="price" tag={"h3"}>
+      {price} BYN
       </Typography>
-      <Typography variant="p-card-name" tag={"p"}>
-        Велосипед, Kerambit горный...
+      <Typography variant="default" tag={"p"}>
+        {name}
       </Typography>
       <div className={style.card__descr}>
         <div className={style.card__icon}>
@@ -26,7 +26,7 @@ export const CardPurchases = () => {
           <p>58</p>
         </div>
       </div>
-      <Typography variant="p-card-date" tag={"p"}>
+      <Typography variant="default" tag={"p"}>
         Дата покупки: 24.02.2024
       </Typography>
     </div>
