@@ -11,14 +11,14 @@ export const Purchases = () => {
     <>
       <Path path="Мои покупки" />
       <section className={style.purchases}>
-      {data.results.map((item:any) => (
+      {data != undefined ? data.results.map((item:any) => (
             <CardPurchases
               key={item.id}
               name={item.product.name}
               price={item.product.price}
               images={item.product.images[0].photo}
             />
-          ))}
+          )):''}
       </section>
     </>
   );
