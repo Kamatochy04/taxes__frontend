@@ -8,7 +8,7 @@ import Modal from "@/shared/components/modal/modal";
 export const Finance = () => {
   const { data } = useGetUserMeOrdersSumQuery("");
   const [percent, setPercent] = useState<string>("10");
-  const [revenue, setRevenue] = useState<string>("153298");
+  const [revenue, setRevenue] = useState<string>("0");
 
   useEffect(() => {
     if (data !== undefined) {
@@ -20,15 +20,6 @@ export const Finance = () => {
     setPercent(e.target.value);
   };
 
-  /*const handleRevenueEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRevenue(e.target.value);
-  };
-
-  const handlePay = () => {
-    let question = confirm("Вы согласны оплатить налог?");
-    alert(question == true ? "Спасибо" : "До скорой встречи");
-  };*/
-
   const [isModalActive, setModalActive] = useState(false);
 
   const handleModalOpen = () => {
@@ -36,6 +27,7 @@ export const Finance = () => {
   };
   const handleModalClose = () => {
     setModalActive(false);
+    setRevenue("0");
   };
 
   return (
