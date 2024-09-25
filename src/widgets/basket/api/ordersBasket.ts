@@ -10,7 +10,7 @@ const initialState: ProductState = {
 };
 
 const ordersSlice = createSlice({
-  name: "counter",
+  name: "orders",
   initialState,
   reducers: {
     addOrders: (state, action: PayloadAction<OrdersData>) => {

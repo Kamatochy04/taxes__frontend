@@ -11,10 +11,12 @@ export const CardAddPost = ({
   coutn,
   price,
   orders,
+  clear,
 }: {
   coutn: number;
   price: number;
   orders: OrdersData[];
+  clear: any;
 }) => {
 
   const dispatch = useDispatch();
@@ -27,11 +29,13 @@ export const CardAddPost = ({
       PostOrders(item)
     });
     setModalActive(true);
-    dispatch(clearProduct());     
+    dispatch(clearProduct());
+    //location. reload();     
   };
 
   const handleModalClose = () => {
     setModalActive(false);
+    clear();
   };
 
   return (
