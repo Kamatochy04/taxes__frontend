@@ -1,4 +1,4 @@
-import productImg from "@/shared/assets/img/Rectangle 803.png";
+import productImg from "@/shared/assets/img/easyTaxLogo.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import style from "./cardB.module.scss";
@@ -13,7 +13,7 @@ export const CardBasket = ({ item, plus, minus, count }: { item: any, plus:any, 
     <div className={style.card}>
       <div className={style.card__descr}>
         <div className={style.card__img}>
-          <img src={item.images[0].photo} alt="product" />
+          <img src={item.images[0].photo !== undefined ? item.images[0].photo : productImg} alt="product" />
         </div>
 
         <div className={style.card__d}>
