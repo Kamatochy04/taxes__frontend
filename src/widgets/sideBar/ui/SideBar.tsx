@@ -27,11 +27,10 @@ export const SideBar = () => {
   const dispath = useDispatch();
   if (data !== undefined) {
     dispath(setUserData(data));
-  };
-  
-  
+  }
+
   const ava = useAppSelector((state: RootState) => state.user.avatar);
-  let avatar = 'http://84.38.182.213:1337' + `${ava}`;
+  let avatar = "http://84.38.182.213:1337" + `${ava}`;
 
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>();
@@ -65,10 +64,14 @@ export const SideBar = () => {
     navigate("/");
   };
 
-  return isAuth ? (
+  return isAuth || isShow ? (
     <>
       <div className={`${style.bar} ${isShow ? style.show : null}`}>
-        <img src={ava !== null ? avatar : accauntImg} alt="accaunt-img" className={style.bar__img} />
+        <img
+          src={ava !== null ? avatar : accauntImg}
+          alt="accaunt-img"
+          className={style.bar__img}
+        />
         <ul className={style.bar__list}>
           <NavLink
             to={"mySuggestions"}

@@ -7,12 +7,15 @@
 }
 
 .input {
-  border: 1px solid #0c1038;
+  border: 1px solid #44444441;
   border-radius: 8px;
-  padding: 12px 50px 12px 15px;
+  padding: 10px 50px 10px 15px;
   width: 100%;
   height: 100%;
-  font-size: 16px;
+  font-size: 14px;
+  &:focus {
+    border: 1px solid #0569ffa9;
+  }
 }
 
 .wrapper {
@@ -42,6 +45,10 @@
   margin-left: 8px;
   color: red;
   transition: all 0.3s;
+  position: absolute;
+  bottom: -23px;
+  animation: show;
+  animation-duration: 1s;
 }
 
 label {
@@ -52,10 +59,19 @@ label {
 .eye {
   position: absolute;
   right: 20px;
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
   svg {
     cursor: pointer;
+    width: 22px;
+    height: 22px;
+    fill: #000000c9;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

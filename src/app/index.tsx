@@ -12,15 +12,11 @@ const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: teal[500], // Основной цвет
+      main: teal[500],
     },
     secondary: {
-      main: blueGrey[500], // Вторичный цвет
+      main: blueGrey[500],
     },
-
-    // Для изменения цвета иконок
-
-    // Другие настройки палитры...
   },
 });
 

@@ -6,10 +6,10 @@ type CheckboxProps = ComponentProps<"input"> &
     children?: React.ReactNode;
   };
 
-export const Checkbox: FC<CheckboxProps> = ({ children }) => {
+export const Checkbox: FC<CheckboxProps> = ({ children, ...props }) => {
   return (
     <label className={styles.label}>
-      <input type="checkbox" className={styles.checkbox} />
+      <input type="checkbox" className={styles.checkbox} {...props} />
       <span className={styles.checkbox__custom}></span>
       {children}
     </label>

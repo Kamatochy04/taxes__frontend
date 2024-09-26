@@ -1,5 +1,5 @@
-//import { AuthFormHeader } from "../authFormHeader/AuthFormHeader";
 import { useNavigate } from "react-router-dom";
+
 import style from "./authFormBox.module.scss";
 
 import logo from "./logo-big.png";

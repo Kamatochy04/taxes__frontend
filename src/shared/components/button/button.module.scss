@@ -304,7 +304,6 @@
     box-shadow: 0 0 0 6px rgba(12, 16, 56, 0.25);
   }
 }
-
 .addSentence {
   height: 56px;
   width: 320px;
@@ -332,10 +331,12 @@
 .register {
   background: #0c1038;
   border-radius: 8px;
-  width: 160px;
-  padding: 15px 0;
+  width: 140px;
+  padding: 10px 0;
   color: #ffffff;
-
+  &:hover {
+    background: #12196b;
+  }
   &:disabled {
     background: none;
     color: #000000;
