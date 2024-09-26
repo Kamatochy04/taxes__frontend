@@ -26,7 +26,6 @@ import { useGetDataUserQuery } from "@/features/user/api/AccountApi";
 import { useGetCategoriesQuery } from "@/features/user/api/categoriesApi";
 
 export const Details = () => {
-
   const location = useLocation();
   const { state } = location;
 
@@ -42,21 +41,27 @@ export const Details = () => {
 
   //image--------------------
 
-  const [imageURL, setImageURL] = useState<any>( photo[0] !== undefined ? photo[0] : productImg );
+  const [imageURL, setImageURL] = useState<any>(
+    photo[0] !== undefined ? photo[0] : productImg
+  );
   const [image, setImage] = useState<any>(null);
 
-  const [imageURL1, setImageURL1] = useState<any>( photo[1] !== undefined ? photo[1] : productImg );
+  const [imageURL1, setImageURL1] = useState<any>(
+    photo[1] !== undefined ? photo[1] : productImg
+  );
   const [image1, setImage1] = useState<any>(null);
 
-  const [imageURL2, setImageURL2] = useState<any>( photo[2] !== undefined ? photo[2] : productImg );
+  const [imageURL2, setImageURL2] = useState<any>(
+    photo[2] !== undefined ? photo[2] : productImg
+  );
   const [image2, setImage2] = useState<any>(null);
 
-  const [imageURL3, setImageURL3] = useState<any>( photo[3] !== undefined ? photo[3] : productImg );
+  const [imageURL3, setImageURL3] = useState<any>(
+    photo[3] !== undefined ? photo[3] : productImg
+  );
   const [image3, setImage3] = useState<any>(null);
 
-
   const handleOnChange = (event: any) => {
-
     setImage(event.target.files[0]);
 
     const fileReader = new FileReader();
@@ -73,7 +78,6 @@ export const Details = () => {
   };
 
   const handleOnChange1 = (event: any) => {
-
     setImage1(event.target.files[0]);
 
     const fileReader = new FileReader();
@@ -90,7 +94,6 @@ export const Details = () => {
   };
 
   const handleOnChange2 = (event: any) => {
-
     setImage2(event.target.files[0]);
 
     const fileReader = new FileReader();
@@ -107,7 +110,6 @@ export const Details = () => {
   };
 
   const handleOnChange3 = (event: any) => {
-
     setImage3(event.target.files[0]);
 
     const fileReader = new FileReader();
@@ -217,100 +219,98 @@ export const Details = () => {
           console.log(values);
           state !== null
             ? patchProductsResultsData(values).then((data) => {
+                if (imageURL !== null && photoID[0] !== undefined) {
+                  const formData = new FormData();
+                  formData.append("id", photoID[0]);
+                  formData.append("product", values.id);
+                  formData.append("photo", image);
+                  const body = [photoID[0], formData];
+                  PatchImages(body);
+                } else if (photoID[0] == undefined) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image);
+                  NewImages(formData);
+                }
 
-              if (imageURL !== null && photoID[0] !== undefined) {
-                const formData = new FormData();
-                formData.append("id", photoID[0]);
-                formData.append("product", values.id);
-                formData.append("photo", image);
-                const body = [photoID[0], formData];
-                PatchImages(body);
-              } else if ( photoID[0] == undefined ) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image);
-                NewImages(formData);
-              };
+                if (imageURL1 !== null && photoID[1] !== undefined) {
+                  const formData = new FormData();
+                  formData.append("id", photoID[1]);
+                  formData.append("product", values.id);
+                  formData.append("photo", image1);
+                  const body = [photoID[1], formData];
+                  PatchImages(body);
+                } else if (photoID[1] == undefined) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image1);
+                  NewImages(formData);
+                }
 
-              if (imageURL1 !== null && photoID[1] !== undefined) {
-                const formData = new FormData();
-                formData.append("id", photoID[1]);
-                formData.append("product", values.id);
-                formData.append("photo", image1);
-                const body = [photoID[1], formData];
-                PatchImages(body);
-              } else if ( photoID[1] == undefined ) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image1);
-                NewImages(formData);
-              };
+                if (imageURL2 !== null && photoID[2] !== undefined) {
+                  const formData = new FormData();
+                  formData.append("id", photoID[2]);
+                  formData.append("product", values.id);
+                  formData.append("photo", image2);
+                  const body = [photoID[2], formData];
+                  PatchImages(body);
+                } else if (photoID[2] == undefined) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image2);
+                  NewImages(formData);
+                }
 
-              if (imageURL2 !== null && photoID[2] !== undefined) {
-                const formData = new FormData();
-                formData.append("id", photoID[2]);
-                formData.append("product", values.id);
-                formData.append("photo", image2);
-                const body = [photoID[2], formData];
-                PatchImages(body);
-              } else if ( photoID[2] == undefined ) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image2);
-                NewImages(formData);
-              };
-
-              if (image3 !== null && photoID[3] !== undefined) {
-                const formData = new FormData();
-                formData.append("id", photoID[3]);
-                formData.append("product", values.id);
-                formData.append("photo", image);
-                const body = [photoID[3], formData];
-                PatchImages(body);
-              } else if ( photoID[3] == undefined ) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image3);
-                NewImages(formData);
-              };
-            })
+                if (image3 !== null && photoID[3] !== undefined) {
+                  const formData = new FormData();
+                  formData.append("id", photoID[3]);
+                  formData.append("product", values.id);
+                  formData.append("photo", image);
+                  const body = [photoID[3], formData];
+                  PatchImages(body);
+                } else if (photoID[3] == undefined) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image3);
+                  NewImages(formData);
+                }
+              })
             : addProductsResultsData(values).then((data) => {
+                if (image !== null) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image);
+                  NewImages(formData);
+                }
 
-              if (image !== null) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image);
-                NewImages(formData);
-              };
+                if (image1 !== null) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image1);
+                  NewImages(formData);
+                }
 
-              if (image1 !== null) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image1);
-                NewImages(formData);
-              };
+                if (image2 !== null) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image2);
+                  NewImages(formData);
+                }
 
-              if (image2 !== null) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image2);
-                NewImages(formData);
-              };
-
-              if (image3 !== null) {
-                producsId = data.data?.id;
-                const formData = new FormData();
-                formData.append("product", producsId);
-                formData.append("photo", image3);
-                NewImages(formData);
-              };
+                if (image3 !== null) {
+                  producsId = data.data?.id;
+                  const formData = new FormData();
+                  formData.append("product", producsId);
+                  formData.append("photo", image3);
+                  NewImages(formData);
+                }
               });
           navigate("/mySuggestions");
         }}
@@ -346,7 +346,11 @@ export const Details = () => {
                     name={"category"}
                     type="text"
                   >
-                    {state == null ? <option disabled={true} value='' key="0">Выберите категорию</option> : null}
+                    {state == null ? (
+                      <option disabled={true} value="" key="0">
+                        Выберите категорию
+                      </option>
+                    ) : null}
                     {data != undefined
                       ? data.results.map((item: CategoriesType) => (
                           <option value={item.id} key={item.id}>
@@ -397,12 +401,14 @@ export const Details = () => {
                       placeholder="Введите номер телефона"
                     />
 
-                    <Field
-                      className={style.card__input}
-                      name="e-mail"
-                      type="text"
-                      placeholder="Введите e-mail"
-                    />
+                    <div className={style.m_t }>
+                      <Field
+                        className={style.card__input}
+                        name="e-mail"
+                        type="text"
+                        placeholder="Введите e-mail"
+                      />
+                    </div>
                   </HintCloud>
                 </div>
 
@@ -471,11 +477,17 @@ export const Details = () => {
                     htmlFor="ava"
                     className={style.card__input__photo__big}
                   >
-                    <img
-                      src={imageURL}
-                      alt="product"
-                    />
-                    { imageURL !== productImg ? <button className={style.card__photoDelete} onClick={deleteImage0}>Удалить фото</button> : ''}
+                    <img src={imageURL} alt="product" />
+                    {imageURL !== productImg ? (
+                      <button
+                        className={style.card__photoDelete}
+                        onClick={deleteImage0}
+                      >
+                        Удалить фото
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </label>
 
                   <Field
@@ -491,11 +503,17 @@ export const Details = () => {
 
                 <div className={style.card__input__Indent_photo}>
                   <label htmlFor="ava1" className={style.card__input__photo}>
-                    <img
-                      src={imageURL1}
-                      alt="product"
-                    />
-                    { imageURL1 !== productImg ? <button className={style.card__photo1Delete} onClick={deleteImage1}>Удалить фото</button> : ''}
+                    <img src={imageURL1} alt="product" />
+                    {imageURL1 !== productImg ? (
+                      <button
+                        className={style.card__photo1Delete}
+                        onClick={deleteImage1}
+                      >
+                        Удалить фото
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </label>
                   <Field
                     className={style.card__input__file}
@@ -507,12 +525,17 @@ export const Details = () => {
                     placeholder="Добавить фото"
                   />
                   <label htmlFor="ava2" className={style.card__input__photo}>
-                    <img
-                      src={imageURL2}
-                      alt="product"
-                    />
-                    { imageURL2 !== productImg ? <button className={style.card__photo2Delete} onClick={deleteImage2}>Удалить фото</button> : ''}
-
+                    <img src={imageURL2} alt="product" />
+                    {imageURL2 !== productImg ? (
+                      <button
+                        className={style.card__photo2Delete}
+                        onClick={deleteImage2}
+                      >
+                        Удалить фото
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </label>
                   <Field
                     className={style.card__input__file}
@@ -524,12 +547,17 @@ export const Details = () => {
                     placeholder="Добавить фото"
                   />
                   <label htmlFor="ava3" className={style.card__input__photo}>
-                    <img
-                      src={imageURL3}
-                      alt="product"
-                    />
-                    { imageURL3 !== productImg ? <button className={style.card__photo3Delete} onClick={deleteImage3}>Удалить фото</button> : ''}
-
+                    <img src={imageURL3} alt="product" />
+                    {imageURL3 !== productImg ? (
+                      <button
+                        className={style.card__photo3Delete}
+                        onClick={deleteImage3}
+                      >
+                        Удалить фото
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </label>
                   <Field
                     className={style.card__input__file}
