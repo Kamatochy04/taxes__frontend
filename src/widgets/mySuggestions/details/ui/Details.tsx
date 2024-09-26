@@ -161,7 +161,7 @@ export const Details = () => {
           description: "",
           price: "",
           count: "1",
-          category: "Выберите категорию",
+          category: "",
           seller: "",
         }
   );
@@ -345,9 +345,8 @@ export const Details = () => {
                     className={style.card__input}
                     name={"category"}
                     type="text"
-                    placeholder="Введите категорию товара"
                   >
-                    {state == null ? <option value="none" key="0">Выберите категорию</option> : null}
+                    {state == null ? <option disabled={true} value='' key="0">Выберите категорию</option> : null}
                     {data != undefined
                       ? data.results.map((item: CategoriesType) => (
                           <option value={item.id} key={item.id}>
