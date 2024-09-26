@@ -1,4 +1,4 @@
-import productImg from "@/shared/assets/img/Rectangle 803.png";
+import productImg from "@/shared/assets/img/easyTaxLogo.png";
 import StarIcon from "@mui/icons-material/Star";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import style from "./CardPurchases.module.scss";
@@ -8,7 +8,7 @@ export const CardPurchases = ({ name, price, images }: { name: any, price:any, i
   return (
     <div className={style.card}>
       <div className={style.card__img}>
-        <img src={images} alt="product" />
+        <img src={images !== undefined ? images : productImg} alt="product" />
       </div>
       <Typography variant="price" tag={"h3"}>
       {price} BYN
@@ -27,7 +27,7 @@ export const CardPurchases = ({ name, price, images }: { name: any, price:any, i
         </div>
       </div>
       <Typography variant="default" tag={"p"}>
-        Дата покупки: 24.02.2024
+        Дата покупки: 28.09.2024
       </Typography>
     </div>
   );
