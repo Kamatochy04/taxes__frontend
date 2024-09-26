@@ -19,7 +19,7 @@ export const CostomInput = forwardRef<HTMLInputElement, inputType>(
             <SerachIcon />
           </div>
         ) : null}
-        <input ref={ref} {...props} type="text" />
+        <input ref={ref} {...props} type="text" placeholder="поиск"/>
       </div>
     );
   }
