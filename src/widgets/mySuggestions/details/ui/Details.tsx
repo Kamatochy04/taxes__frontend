@@ -160,7 +160,7 @@ export const Details = () => {
           name: "",
           description: "",
           price: "",
-          count: "10",
+          count: "1",
           category: "Выберите категорию",
           seller: "",
         }
