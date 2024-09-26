@@ -15,6 +15,8 @@ import { useGetUserInfQuery } from "@/features/user/api/user.api";
 import { addOrders } from "@/widgets/basket/api/ordersBasket";
 
 import productImg from "@/shared/assets/img/easyTaxLogo.png"
+import Modal from "@/shared/components/modal/modal";
+import { useState } from "react";
 
 export const ProductCard = () => {  
 
@@ -37,8 +39,15 @@ export const ProductCard = () => {
     buyer: userID,
   };
 
+  const [isModalActive, setModalActive] = useState(false);
+
   const handleUploudOrders = () => {
     PostOrders(dataOrders);
+    setModalActive(true);
+  };
+
+  const handleModalClose = () => {
+    setModalActive(false);
   };
 
   return (
@@ -79,6 +88,13 @@ export const ProductCard = () => {
           </Button>
           <div className={style.btn}>
             <Button variant={"smallOrange"} onClick={handleUploudOrders}>Заказать</Button>
+          </div>
+          <div>
+            {isModalActive && (
+              <Modal title="" onClose={handleModalClose}>
+                Оплата принята
+              </Modal>
+            )}
           </div>
         </div>
       </div>
