@@ -9,11 +9,13 @@ export const CardBasket = ({ item, plus, minus, count }: { item: any, plus:any, 
     .toString(36)
     .slice(2)}`;
 
+    console.log(item.images[0]);
+
   return (
     <div className={style.card}>
       <div className={style.card__descr}>
         <div className={style.card__img}>
-          <img src={item.images[0].photo !== undefined ? item.images[0].photo : productImg} alt="product" />
+          <img src={item.images[0] !== undefined ? item.images[0].photo : productImg} alt="product" />
         </div>
 
         <div className={style.card__d}>
