@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
+import { useAppDispatch } from "@/app/redux/hook";
 import { DataRegisterUser, setFormData } from "@/app/redux/registerSlice";
 
 import { Typography } from "@/shared/components/typography/Typography";
@@ -15,15 +15,21 @@ import style from "../Login/auth.module.scss";
 
 import * as yup from "yup";
 
-export const validationSchema = yup.object().shape({
-  first_name: yup.string().required("Обязательное поле"),
-  last_name: yup.string().required("Обязательное поле"),
-  patronymic: yup.string().required("Обязательное поле"),
+const validationSchema = yup.object().shape({
+  first_name: yup
+    .string()
+    .required("Обязательное поле")
+    .matches(/^[а-яА-ЯёЁ\s]+$/, "Допускаются только русские буквы и пробелы"),
+  last_name: yup
+    .string()
+    .required("Обязательное поле")
+    .matches(/^[а-яА-ЯёЁ\s]+$/, "Допускаются только русские буквы и пробелы"),
+  patronymic: yup
+    .string()
+    .matches(/^[а-яА-ЯёЁ\s]+$/, "Допускаются только русские буквы и пробелы"),
 });
-
 export const RegisterStepOne = () => {
   const dispatch = useAppDispatch();
-  const dataSelector = useAppSelector((state) => state.step1);
   const navigate = useNavigate();
 
   const onSubmit = (data: DataRegisterUser) => {

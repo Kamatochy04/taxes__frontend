@@ -1,4 +1,5 @@
 import { api } from "@/app/redux/services/api";
+import { UserData } from "@/model/userData/user";
 
 export interface IDataUser {
   first_name: string;
@@ -35,11 +36,14 @@ export const signupCodeApi = api.injectEndpoints({
         method: "POST",
       }),
     }),
+    getUser: builder.query<UserData, void>({
+      query: () => ({ url: "api/dev/users/me/", method: "GET" }),
+    }),
   }),
 });
 
-export const { useSignupCodeMutation } = signupCodeApi;
+export const { useSignupCodeMutation, useGetUserQuery } = signupCodeApi;
 
 export const {
-  endpoints: { signupCode },
+  endpoints: { signupCode, getUser },
 } = signupCodeApi;

@@ -26,7 +26,6 @@ export const RegisterStepFour = () => {
     data.confirm_code_id = Confirm_code_id.confirm_code_id;
 
     signupCode(data).then((response) => {
-      console.log(response);
       if (response.error) {
         return console.log(response.error);
       }

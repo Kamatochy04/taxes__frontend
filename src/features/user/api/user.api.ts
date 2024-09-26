@@ -4,7 +4,7 @@ import { UserData } from "@/model/userData/user";
 export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getUserInf: builder.query<UserData, void>({
-      query: () => "/api/dev/users/me/",
+      query: () => ({ url: "/api/dev/users/me/", method: "GET" }),
     }),
   }),
 });

@@ -8,19 +8,14 @@ import { Container } from "@/shared/components/container/Container";
 
 import { useAppDispatch } from "@/app/redux/hook";
 import { toggleSideBar } from "@/app/redux/sideBarSlice";
-import { Loader } from "@/shared/components/loader/Loader";
-import { useGetUserInfQuery } from "@/features/user/api/user.api";
-import { CostomInput } from "@/shared/components/costomInput/CostomInput";
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
-import { UserData } from "@/model/userData/user";
 
 import style from "./header.module.scss";
+import { CostomInput } from "@/shared/components/costomInput/CostomInput";
 
 export const Header = () => {
-  const [useData, setUserData] = useState<UserData | undefined>();
-  const { data, isLoading, refetch } = useGetUserInfQuery();
   const first_name = useSelector((state: RootState) => state.user.first_name);
   const last_name = useSelector((state: RootState) => state.user.last_name);
 
@@ -28,12 +23,11 @@ export const Header = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
-      {data ? (
+      {first_name && last_name ? (
         <HeaderVariantTwo
           count={count}
-          name={first_name! ?? first_name}
-          lastName={last_name! ?? last_name}
+          name={first_name}
+          lastName={last_name}
         />
       ) : (
         <HeaderVariantOne count={count} />
@@ -71,7 +65,10 @@ const HeaderVariantOne = ({ count }: { count: number }) => {
           </div>
 
           <div className={style.header__login}>
-            <div className={style.box} onClick={() => isAuth ? navigate("/basket") : ''}>
+            <div
+              className={style.box}
+              onClick={() => (isAuth ? navigate("/basket") : "")}
+            >
               {count > 0 ? <div className={style.price}>{count}</div> : null}
               <ShoppingCartIcon />
             </div>
@@ -120,6 +117,7 @@ const HeaderVariantTwo = ({
           <div
             className={`${style.burger} ${style[`burger__active`]}`}
             onClick={() => {
+              console.log("123123");
               dispathc(toggleSideBar());
               toggleClass();
             }}
