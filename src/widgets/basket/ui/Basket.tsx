@@ -81,7 +81,7 @@ export const Basket = () => {
 
   return (
     <>
-      <Path path="Корзина" />
+      <Path path="Моя корзина" />
       <div className={style.fild}>
         <section className={style.cards}>
           {prods.map((item, id) => (
