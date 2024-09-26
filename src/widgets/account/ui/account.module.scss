@@ -50,6 +50,7 @@
   }
 
   &__text {
+    height: 38px;
     width: 240px;
     font-weight: 400;
     font-size: 20px;
@@ -113,6 +114,11 @@
 
   &__photoX:hover>img {
     opacity: 0.2;
+  }
+
+  &__TopButton {
+    margin-top: 75px;
+    margin-left: 50px;
   }
 
 }

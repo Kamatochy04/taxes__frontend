@@ -74,7 +74,9 @@ export const TaxpayerDetails: FC<PersonalDetaProps> = ({ dataUser }) => {
                   placeholder="категорию"
                   as="select"
                 >
-                  <option value="none" key="0">Выберите категорию</option>
+                  <option value="none" key="0">
+                    Выберите категорию
+                  </option>
                   {data != undefined
                     ? data.results.map((item: CategoriesType) => (
                         <option value={item.id} key={item.id}>
@@ -83,6 +85,11 @@ export const TaxpayerDetails: FC<PersonalDetaProps> = ({ dataUser }) => {
                       ))
                     : "ERROR"}
                 </Field>
+              </div>
+
+              <div className={style.card__LineX}>
+                <p className={style.card__text}></p>
+                <p className={style.card__text}></p>
               </div>
 
               <div className={style.card__LineX}>

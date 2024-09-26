@@ -18,15 +18,15 @@ interface Type {
 }
 
 export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
+  let av = "http://84.38.182.213:1337" + `${Avatar}`;
 
-  let av = 'http://84.38.182.213:1337' + `${Avatar}`;
-
-  const [imageURL, setImageURL] = useState<any>(Avatar !== null ? av : productImg);
-  const [image, setImage] = useState<any>('');
+  const [imageURL, setImageURL] = useState<any>(
+    Avatar !== null ? av : productImg
+  );
+  const [image, setImage] = useState<any>("");
 
   const [AddAvatar] = useAddAvatarMutation();
   const [deleteAvatar] = useDeleteAvatarMutation();
-
 
   const handleOnChange = (event: any) => {
     setImage(event.target.files[0]);
@@ -68,7 +68,13 @@ export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
       <div className={style.card__Line}>
         <label htmlFor="ava" className={style.card__photoX}>
           <img src={imageURL} alt="product" />
-          { imageURL !== productImg ? <button className={style.card__photoDelete} onClick={deleteImage}>Удалить фото</button> : ''}
+          {imageURL !== productImg ? (
+            <button className={style.card__photoDelete} onClick={deleteImage}>
+              Удалить фото
+            </button>
+          ) : (
+            ""
+          )}
         </label>
 
         <input
@@ -86,11 +92,13 @@ export const ProfilePhoto: FC<Type> = ({ Avatar }) => {
             Создайте автопортрет при помощи веб камеры или найдите фото на своём
             компьютере
           </Typography>
-          <Button onClick={handleUploud} variant={"smallBlue"}>
-            <Typography variant="default" tag={"p"}>
-              Изменить
-            </Typography>
-          </Button>
+          <div className={style.card__TopButton}>
+            <Button onClick={handleUploud} variant={"smallBlue"}>
+              <Typography variant="default" tag={"p"}>
+                Изменить
+              </Typography>
+            </Button>
+          </div>
         </div>
       </div>
     </>
