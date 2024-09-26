@@ -12,7 +12,7 @@ export const Orders = () => {
 
   return (
     <>
-      <Path path="Заказы" />
+      <Path path="Текущие заказы" />
       <div className={style.orders}>
 
       {data !== undefined
