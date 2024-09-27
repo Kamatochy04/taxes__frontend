@@ -9,7 +9,39 @@ export const Basket = () => {
   const product: any = useSelector((state: RootState) => state.product.value);
   const orders = useSelector((state: RootState) => state.orders.value);
 
+  console.log(product);
+  console.log(orders);
+
   const [prods, setProds] = useState(product);
+ /* const [order, setOrder] = useState(orders);
+
+    useEffect(() => {
+    setOrder(
+      order.map<any>( item => {
+        prods.map( function (value:any) {
+          if (value.id == item.product) {
+            return {
+              product: item.product,
+              count: value.count,
+              seller: item.seller,
+              buyer: item.buyer,
+            };
+
+          } else {
+            return {
+              product: item.product,
+              count: item.count,
+              seller: item.seller,
+              buyer: item.buyer,
+            };
+          };
+        })
+      })
+    );
+
+  }, [prods]);*/
+
+
 
   const minus = (id: any) => {
     setProds(
@@ -59,10 +91,20 @@ export const Basket = () => {
     );
   };
 
+  const del = (id:any) => {    
+    let p = prods.filter(item => item.id !== id);
+    setProds(p);
+    //console.log(order);
+    //let o = order.filter(item => item.product !== id);
+    //setOrder(o);
+  };
+
   let productCount = 0;
+
   prods.forEach(function (item: any) {
     productCount += Number(item.count);
   });
+
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
@@ -79,6 +121,8 @@ export const Basket = () => {
     setProds(product);
   };
 
+
+
   return (
     <>
       <Path path="Моя корзина" />
@@ -91,6 +135,7 @@ export const Basket = () => {
               count={item.count}
               plus={plus}
               minus={minus}
+              del={del}
             />
           ))}
         </section>

@@ -6,6 +6,7 @@ import Modal from "@/shared/components/modal/modal";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { clearProduct } from "@/pages/ProductCard/api/ProductCard";
+import { clearOrders } from "@/widgets/basket/api/ordersBasket";
 
 export const CardAddPost = ({
   coutn,
@@ -30,6 +31,7 @@ export const CardAddPost = ({
     });
     setModalActive(true);
     dispatch(clearProduct());
+    dispatch(clearOrders());
     //location. reload();     
   };
 

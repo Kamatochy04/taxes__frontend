@@ -30,7 +30,6 @@ export const ProductCard = () => {
   const cardData = location.state as ProductsResults;
   const dispatch = useDispatch();
 
-  console.log(userID);
 
   const dataOrders = {
     product: cardData.id,

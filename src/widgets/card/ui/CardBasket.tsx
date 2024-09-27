@@ -3,13 +3,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import style from "./cardB.module.scss";
 
-export const CardBasket = ({ item, plus, minus, count }: { item: any, plus:any, minus:any, count:any }) => {
+export const CardBasket = ({ item, plus, minus, count, del }: { item: any, plus:any, minus:any, count:any, del:any }) => {
 
   const uniqueID = `id-${Date.now().toString(36)}-${Math.random()
     .toString(36)
     .slice(2)}`;
-
-    console.log(item.images[0]);
 
   return (
     <div className={style.card}>
@@ -34,7 +32,10 @@ export const CardBasket = ({ item, plus, minus, count }: { item: any, plus:any, 
 
             <div className={style.card__icon}>
               <FavoriteBorderIcon />
-              <DeleteForeverIcon />
+              <button onClick={() => del(item.id)} className={style.card__icon}>
+                <DeleteForeverIcon />
+              </button>
+              
             </div>
           </div>
           <p className={style.footer}>Доставка 5-7 дней до пункта выдачи</p>
