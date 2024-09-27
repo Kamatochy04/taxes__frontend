@@ -9,39 +9,14 @@ export const Basket = () => {
   const product: any = useSelector((state: RootState) => state.product.value);
   const orders = useSelector((state: RootState) => state.orders.value);
 
-  console.log(product);
-  console.log(orders);
+  //console.log(product);
+  //console.log(orders);
 
   const [prods, setProds] = useState(product);
- /* const [order, setOrder] = useState(orders);
+  const [order, setOrder] = useState(orders);
 
-    useEffect(() => {
-    setOrder(
-      order.map<any>( item => {
-        prods.map( function (value:any) {
-          if (value.id == item.product) {
-            return {
-              product: item.product,
-              count: value.count,
-              seller: item.seller,
-              buyer: item.buyer,
-            };
-
-          } else {
-            return {
-              product: item.product,
-              count: item.count,
-              seller: item.seller,
-              buyer: item.buyer,
-            };
-          };
-        })
-      })
-    );
-
-  }, [prods]);*/
-
-
+  console.log(prods);
+  console.log(order);
 
   const minus = (id: any) => {
     setProds(
@@ -61,6 +36,26 @@ export const Basket = () => {
             price: item.price,
             name: item.name,
             images: item.images,
+          };
+        }
+      })
+    );
+
+    setOrder(
+      order.map(function (item: any) {
+        if (item.product == id && item.count > 1) {
+          return {
+            product: item.product,
+            count: String(Number(item.count) - 1),
+            seller: item.seller,
+            buyer: item.buyer,
+          };
+        } else {
+          return {
+            product: item.product,
+            count: item.count,
+            seller: item.seller,
+            buyer: item.buyer,
           };
         }
       })
@@ -89,14 +84,35 @@ export const Basket = () => {
         }
       })
     );
+
+    setOrder(
+      order.map(function (item: any) {
+        if (item.product == id) {
+          return {
+            product: item.product,
+            count: String(Number(item.count) + 1),
+            seller: item.seller,
+            buyer: item.buyer,
+          };
+        } else {
+          return {
+            product: item.product,
+            count: item.count,
+            seller: item.seller,
+            buyer: item.buyer,
+          };
+        }
+      })
+    );
   };
 
   const del = (id:any) => {    
     let p = prods.filter(item => item.id !== id);
     setProds(p);
     //console.log(order);
-    //let o = order.filter(item => item.product !== id);
-    //setOrder(o);
+    let o = order.filter(item => item.product !== id);
+    console.log(o);
+    setOrder(o);
   };
 
   let productCount = 0;
@@ -112,6 +128,7 @@ export const Basket = () => {
 
     prods.map((item: any) => {
       a += Number(item.price)*Number(item.count);
+      a = Number(a.toFixed(2));
     });
 
     setPrice(a);
@@ -120,8 +137,6 @@ export const Basket = () => {
   function clear() {
     setProds(product);
   };
-
-
 
   return (
     <>
@@ -139,7 +154,7 @@ export const Basket = () => {
             />
           ))}
         </section>
-        <CardAddPost coutn={productCount} price={price} orders={orders} clear={clear} />
+        <CardAddPost coutn={productCount} price={price} order={order} clear={clear} />
       </div>
     </>
   );

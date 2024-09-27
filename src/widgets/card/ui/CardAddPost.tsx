@@ -11,12 +11,12 @@ import { clearOrders } from "@/widgets/basket/api/ordersBasket";
 export const CardAddPost = ({
   coutn,
   price,
-  orders,
+  order,
   clear,
 }: {
   coutn: number;
   price: number;
-  orders: OrdersData[];
+  order: any;
   clear: any;
 }) => {
 
@@ -26,7 +26,7 @@ export const CardAddPost = ({
   const [isModalActive, setModalActive] = useState(false);
   
   const handleUploudOrders = () => {
-    orders.map((item) => {
+    order.map((item) => {
       PostOrders(item)
     });
     setModalActive(true);
