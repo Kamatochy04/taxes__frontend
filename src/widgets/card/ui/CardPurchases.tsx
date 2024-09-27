@@ -13,9 +13,8 @@ export const CardPurchases = ({ name, price, images }: { name: any, price:any, i
       <Typography variant="price" tag={"h3"}>
       {price} BYN
       </Typography>
-      <Typography variant="default" tag={"p"}>
-        {name}
-      </Typography>
+      <p className={style.p}>{name} </p>
+
       <div className={style.card__descr}>
         <div className={style.card__icon}>
           <StarIcon />
