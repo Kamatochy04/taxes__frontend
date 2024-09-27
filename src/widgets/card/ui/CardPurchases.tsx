@@ -8,7 +8,7 @@ export const CardPurchases = ({ name, price, images }: { name: any, price:any, i
   return (
     <div className={style.card}>
       <div className={style.card__img}>
-        <img src={images !== undefined ? images : productImg} alt="product" />
+        <img src={images !== null ? images : productImg} alt="product" />
       </div>
       <Typography variant="price" tag={"h3"}>
       {price} BYN

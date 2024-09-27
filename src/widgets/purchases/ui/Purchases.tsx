@@ -16,7 +16,7 @@ export const Purchases = () => {
               key={item.id}
               name={item.product.name}
               price={item.product.price}
-              images={item.product.images[0].photo}
+              images={item.product.images[0] !== undefined ? item.product.images[0].photo : null}
             />
           )):''}
       </section>

@@ -35,7 +35,7 @@ export const CardOrders = ({ results }: any) => {
 
           <div className={style.card__field}>
             <div className={style.card__img}>
-              <img src={results.product.images[0].photo !== undefined ? results.product.images[0].photo : productImg} className={style.card__img} alt="" />            
+              <img src={results.product.images[0] !== undefined ? results.product.images[0].photo : productImg} className={style.card__img} alt="" />            
             </div>
 
             <div className={style.card__descr}>

@@ -31,6 +31,7 @@
     flex-direction: column;
     gap: 20px;
     &_title {
+      color: #C2C2C2;
       font-size: 25px;
       font-weight: 700;
     }
@@ -88,6 +89,7 @@
 }
 
 .btn {
+  margin-top: 18px;
   width: 224px;
   button {
     font-size: 20px;
